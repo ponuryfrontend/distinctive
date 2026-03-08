@@ -76,17 +76,15 @@ ch.liquid file in the snippets section of the Shopify code editor with the follo
                     <meta itemprop="ratingCount" content="{{ ssw_count_rate }}"/> 
                     <meta itemprop="ratingValue" content="{{ ssw_avg_rate }}"/> 
                </div> 
-              {% if detailed_review_data %}
-  <!-- DETAILED_REVIEW_DATA_BRANCH -->
-  {{ detailed_review_data.microdata }}
-{% else %}
-  <!-- FALLBACK_BRANCH -->
+                {% if detailed_review_data %}
+                 {{ detailed_review_data.microdata }}
+                {% else %}
                <div itemprop="review" itemscope itemtype="https://schema.org/Review"> 
                     <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating"> 
                         <meta itemprop="ratingValue" content="{{ ssw_avg_rate }}"/> 
                     </div> 
                     <div itemprop="author" itemscope itemtype="https://schema.org/Person"> 
-                        <meta itemprop="name" content="NUDYESS customers TEST 123"/> 
+                        <meta itemprop="name" content="NUDYESS Customers"/> 
                     </div> 
                 </div>
                 {% endif %} 
