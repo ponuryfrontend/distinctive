@@ -1,0 +1,251 @@
+{%- liquid
+  assign image = section.settings.image
+  assign mobile_image = section.settings.mobile_image
+
+  assign desktop_height = section.settings.desktop_height
+  assign mobile_height = section.settings.mobile_height
+
+  assign overlay_color = section.settings.overlay_color
+  assign overlay_opacity = section.settings.overlay_opacity
+
+  assign video_hosted = section.settings.video_hosted
+
+  assign disable_top_spacing = section.settings.disable_top_spacing
+  assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+
+  case mobile_height
+		when 'mobile-height-400'
+			assign mobile_image_height = 400
+		when 'mobile-height-450'
+			assign mobile_image_height = 450
+		when 'mobile-height-500'
+			assign mobile_image_height = 500
+		else
+			assign mobile_image_height = 500
+	endcase
+-%}
+<div class="section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+  <revealed-media class="revealed-media">
+    <div class="revealed-media--inner {{ mobile_height }} {{ desktop_height }}">
+      <div class="revealed-media--media" style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --color-overlay-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }};">
+        {%- if video_hosted -%}
+          {{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true, image_size: '1600x' }}
+        {%- elsif image -%}
+          {%- liquid
+            assign master_width = image.src.width | append: 'x' | append: image.src.height
+            assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+            assign class = nil
+
+            if mobile_image != blank
+              assign class = 'revealed-media--desktop'
+            endif
+            -%}
+            {%- render 'responsive-image', image: image, sizes: width, class: class -%}
+        {%- endif -%}
+        {%- if mobile_image != blank -%}
+          {%- liquid
+            assign master_width = mobile_image.src.width | append: 'x' | append: mobile_image.src.height
+            assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+            -%}
+            {%- render 'responsive-image', image: mobile_image, sizes: width, class: 'revealed-media--mobile' -%}
+        {%- endif -%}
+        
+        {%- unless image and video_hosted -%}
+          {%- liquid
+            assign class = 'placeholder_svg_tag'
+            if mobile_image != blank
+              assign class =  class | append: ' revealed-media--desktop'
+            endif
+          -%}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: class }}
+        {%- endunless -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+      <div class="revealed-media--content">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <div class="revealed-media--heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                {{ block.settings.text | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+    </div>
+  </revealed-media>
+</div>
+{{- 'revealed-media.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'revealed-media.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Revealed media with text",
+	"class": "section-revealed-media-with-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "2800 x 650 .jpg recommended."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "375 x 500 .jpg recommended."
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        {
+          "value": "desktop-height-450",
+          "label": "450px"
+        },
+        {
+          "value": "desktop-height-550",
+          "label": "550px"
+        },
+        {
+          "value": "desktop-height-650",
+          "label": "650px"
+        },
+        {
+          "value": "desktop-height-750",
+          "label": "750px"
+        },
+        {
+          "value": "desktop-height-full",
+          "label": "Full screen"
+        }
+      ],
+      "default": "desktop-height-550"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        {
+          "value": "mobile-height-350",
+          "label": "350px"
+        },
+        {
+          "value": "mobile-height-400",
+          "label": "400px"
+        },
+        {
+          "value": "mobile-height-450",
+          "label": "450px"
+        },
+        {
+          "value": "mobile-height-500",
+          "label": "500px"
+        },
+        {
+          "value": "mobile-height-full",
+          "label": "Full screen"
+        }
+      ],
+      "default": "mobile-height-500"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video_hosted",
+      "label": "Shopify-hosted video"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Revealed |image|",
+					"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Small"
+            },
+            {
+              "value": "h1",
+              "label": "Medium"
+            },
+            {
+              "value": "h1-large",
+              "label": "Large"
+            },
+            {
+              "value": "h1-xlarge",
+              "label": "Extra large"
+            }
+          ],
+          "default": "h1-xlarge"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Revealed media with text",
+      "blocks": [
+        {
+          "type": "heading"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

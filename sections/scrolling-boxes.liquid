@@ -1,0 +1,341 @@
+{{- 'scrolling-boxes.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+  assign columns_desktop = section.settings.columns_desktop
+  assign column_spacing = section.settings.column_spacing
+	assign image_ratio = section.settings.image_ratio
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<scrolling-boxes class="scrolling-boxes section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--columns-desktop: {{ columns_desktop }}" data-section-index="{{ section.index }}">
+  <div class="scrolling-boxes--inner column-spacing--{{ column_spacing }}">
+  {%- for block in section.blocks -%}
+    {%- liquid
+        assign ratio = 1
+        if image_ratio == 'adapt' and block.settings.image
+          assign ratio = block.settings.image.aspect_ratio
+        endif
+
+        assign content_position = block.settings.content_position
+        assign text_alignment = block.settings.text_alignment
+
+				assign color_text = block.settings.color_text
+				assign overlay_color = block.settings.overlay_color
+				assign overlay_gradient = block.settings.overlay_gradient
+				assign overlay_opacity = block.settings.overlay_opacity
+
+      -%}
+    <div class="scrolling-boxes--box" style="{%- if overlay_gradient != blank -%}--overlay-gradient: {{ overlay_gradient }};{%- endif -%} --color-text: {{ color_text }}; --color-body-rgb: {{ color_text.rgb | replace: ' ', ',' }}; --color-accent: {{ color_text }}; --color-accent-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}" {{ block.shopify_attributes }}>
+      <figure class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+        {%- if block.settings.enable_gallery_video -%}
+          {%- if block.settings.video_hosted -%}
+            {%- liquid
+              assign video = block.settings.video_hosted
+              assign autoplay = true
+              if block.settings.enable_hover_play
+                assign autoplay = false
+              endif
+            -%}
+            <div class="scrolling-boxes--video-hosted scrolling-boxes--video{% if block.settings.enable_hover_play %} hover-play{% endif %}" data-provider="hosted" data-video-id="{{ video.id }}" >
+              {{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true, image_size: '750x' }}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          {%- if block.settings.image -%}
+            {%- liquid
+              assign sizes = '420x0,840x0,1360x0,1680x0'
+            -%}
+            {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+          {%- else -%}
+            <div class="thb-placeholder">
+              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        <div class="scrolling-boxes--box-content content-{{ content_position }} text-{{ text_alignment }}" style="">
+          <div>
+            {% if block.settings.subheading != blank %}
+              <p class="subheading">{{ block.settings.subheading }}</p>
+            {% endif %}
+            {% if block.settings.title != blank %}
+              <div class="{{ block.settings.heading_size }} scrolling-boxes--box-content-heading">{{ block.settings.title | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.link_label != blank %}
+              <a class="text-button"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}><span>{{ block.settings.link_label }}</span></a>
+            {% endif %}
+            {% if block.settings.block_link != blank %}
+              <a href="{{ block.settings.block_link }}" class="scrolling-boxes--box-content-link" target="_blank"></a>
+            {% endif %}
+          </div>
+        </div>
+      </figure>
+    </div>
+  {%- endfor -%}
+  </div>
+</scrolling-boxes>
+
+<script src="{{ 'scrolling-boxes.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "Scrolling boxes",
+		"class": "section-scrolling-boxes",
+    "settings": [
+      {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 4,
+        "label": "Number of columns on desktop"
+      },
+      {
+	      "type": "select",
+	      "id": "column_spacing",
+	      "options": [
+					{
+	          "value": "none",
+	          "label": "None"
+	        },
+	        {
+	          "value": "small",
+	          "label": "Small"
+	        },
+					{
+	          "value": "medium",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "large",
+	          "label": "Large"
+	        }
+	      ],
+	      "default": "medium",
+	      "label": "Column spacing"
+	    },
+      {
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+					{
+	          "value": "landscape",
+	          "label": "Landscape"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "adapt",
+	      "label": "Image ratio"
+	    },
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+      {
+        "type": "box",
+        "name": "Box",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+            "info": "420 x 500 jpg recommended"
+					},
+          {
+						"type": "text",
+						"id": "subheading",
+						"label": "Subheading",
+						"default": "Add a tagline"
+					},
+          {
+						"type": "text",
+						"id": "title",
+						"default": "Scrolling |Box|",
+						"label": "Heading"
+					},
+          {
+						"type": "select",
+						"id": "heading_size",
+						"label": "Heading size",
+						"options": [
+							{
+								"value": "h2",
+								"label": "Large"
+							},
+							{
+								"value": "h3",
+								"label": "Medium"
+							},
+							{
+								"value": "h4",
+								"label": "Small"
+							}
+						],
+						"default": "h3"
+					},
+          {
+            "id": "link_label",
+            "type": "text",
+            "label": "Button label",
+            "default": "Explore",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+            "id": "block_link",
+            "type": "url",
+            "label": "Image link",
+						"info": "This will allow you to set a link to whole box."
+          },
+					{
+						"type": "header",
+						"content": "Video"
+					},
+					{
+					  "type": "checkbox",
+					  "id": "enable_gallery_video",
+					  "label": "Use video instead of image",
+					  "default": false
+					},
+					{
+					  "type": "video",
+					  "id": "video_hosted",
+					  "label": "A Shopify-hosted video"
+					},
+					{
+					  "type": "checkbox",
+					  "id": "enable_hover_play",
+					  "label": "Play on hover",
+					  "default": false
+					},
+          {
+						"type": "header",
+						"content": "Layout"
+					},
+          {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+              { "value": "top-left", "label": "Top left" },
+              { "value": "top-center", "label": "Top center" },
+              { "value": "top-right", "label": "Top right" },
+              { "value": "middle-left", "label": "Middle left" },
+              { "value": "middle-center", "label": "Middle center" },
+              { "value": "middle-right", "label": "Middle right" },
+              { "value": "bottom-left", "label": "Bottom left" },
+              { "value": "bottom-center", "label": "Bottom center" },
+              { "value": "bottom-right", "label": "Bottom right" }
+            ],
+            "default": "middle-center"
+          },
+          {
+            "type": "select",
+            "id": "text_alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "center",
+            "label": "Content alignment"
+          },
+          {
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "color_text",
+						"label": "Text",
+						"default": "#ffffff"
+					},
+					{
+						"type": "color",
+						"id": "overlay_color",
+						"label": "Overlay",
+						"default": "#000000"
+					},
+					{
+						"type": "range",
+						"id": "overlay_opacity",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Overlay opacity",
+						"default": 0
+					},
+					{
+					  "type": "color_background",
+					  "id": "overlay_gradient",
+					  "label": "Overlay gradient"
+					}
+				]
+			}
+		],
+    "presets": [
+      {
+        "name": "Scrolling boxes",
+				"blocks": [
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					}
+				]
+      }
+    ]
+  }
+{% endschema %}

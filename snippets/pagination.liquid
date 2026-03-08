@@ -1,0 +1,107 @@
+{%- liquid
+  assign active_page_index = 0
+  for part in paginate.parts
+    if part.title == paginate.current_page
+      assign active_page_index = forloop.index0
+    endif
+  endfor
+	
+  assign pagination_current_item_start = paginate.current_offset | plus: 1
+  assign pagination_current_item_end = paginate.current_page | times: paginate.page_size
+  assign current_pagination_range = pagination_current_item_start
+
+  if pagination_current_item_end > paginate.items
+    assign pagination_current_item_end = paginate.items
+  endif
+	assign pagination_current_item_end = pagination_current_item_end | at_least: 1
+
+  assign current_pagination_range = current_pagination_range | append: '-' | append: pagination_current_item_end
+	assign number_end = pagination_current_item_end | times: 1.00
+	assign total_end = paginate.items | times: 1.00
+	assign progress = number_end | divided_by: total_end
+
+-%}
+{{- 'pagination.css' | asset_url | stylesheet_tag -}}
+<div class="pagination--wrapper">
+	{% if paginate.items or results.results_count %}
+	<div class="thb-filter-count" id="ProductCount">
+		<span class="facets__label">
+			{%- if results.results_count -%}
+				{{ 'search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+			{%- else -%}
+				{%- if locale == 'blog' -%}
+					{{ 'blogs.blog.article_count' | t: product_count: current_pagination_range, count: paginate.items }}
+				{%- elsif locale == 'collection' -%}
+					{{ 'sections.collections.collection_count' | t: collection_count: current_pagination_range, count: paginate.items }}
+				{%- else -%}
+					{{ 'products.facets.product_count' | t: product_count: current_pagination_range, count: paginate.items }}
+				{%- endif -%}
+			{%- endif -%}
+		</span>
+		<div class="pagination--progress" style="--progress-count: {{ progress }}; "><div class="pagination--progress-bar"></div></div>
+		<span class="loading-overlay">
+			{% render 'svg-icons' with 'thb-loading' %}
+		</span>
+	</div>
+	{%- endif -%}
+	{%- if paginate.pages > 1 -%}
+		<pagination-theme class="pagination pagination-type--{{ pagination_type }}" data-section="{{ id }}">
+			<div class="row">
+				<div class="small-12 columns">
+					{%- if pagination_type == 'paginated' -%}
+					<ul class="page-numbers nav-links">
+						<li class="prev{% if paginate.previous == blank %} disabled{%- endif -%}">
+							<a href="{{ paginate.previous.url }}" {% unless paginate.previous %}disabled{% endunless %}>
+								{% render 'svg-icons' with 'thb-pagination-prev' %}
+							</a>
+						</li>
+						{%- for part in paginate.parts -%}
+							{%- capture li_classes -%}
+								{%- if part.title == paginate.current_page -%}
+									current
+								{%- elsif part.title == "&hellip;" -%}
+									ellip
+								{%- elsif forloop.index == active_page_index -%}
+									page
+								{%- else -%}
+									page
+								{%- endif -%}
+							{%- endcapture -%}
+
+							<li class="{{ li_classes }}">
+								{%- if part.is_link == true -%}
+									<a href="{{ part.url }}">
+										{{ part.title }}
+									</a>
+								{%- else -%}
+									<span class="page">{{ part.title }}</span>
+								{%- endif -%}
+							</li>
+						{%- endfor -%}
+						<li class="next{% if paginate.next == blank %} disabled{%- endif -%}">
+							<a href="{{ paginate.next.url }}" {% unless paginate.next %}disabled{% endunless %}>
+								{% render 'svg-icons' with 'thb-pagination-next' %}
+							</a>
+						</li>
+					</ul>
+					{%- else -%}
+					<button class="load-more button" aria-label="{{ 'sections.collection_template.load_more' | t | escape }}">
+						<span data-content="{{ 'sections.collection_template.load_more' | t }}"></span>
+						<span class="loading-overlay">
+							{% render 'svg-icons' with 'thb-loading' %}
+						</span>
+					</button>
+					{%- endif -%}
+				</div>
+			</div>
+			{%- if pagination_type != 'paginated' -%}
+				{%- if pagination_type == 'infinite' -%}
+					<span class="loading-overlay">
+						{% render 'svg-icons' with 'thb-loading' %}
+					</span>
+				{%- endif -%}
+			<script src="{{ 'pagination.js' | asset_url }}" defer></script>
+			{%- endif -%}
+		</pagination-theme>
+	{%- endif -%}
+</div>

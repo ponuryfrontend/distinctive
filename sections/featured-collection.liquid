@@ -1,0 +1,366 @@
+{{ 'featured-collection.css' | asset_url | stylesheet_tag }}
+{{ 'product-grid.css' | asset_url | stylesheet_tag }}
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign section_description = section.settings.description
+	assign display_type = section.settings.display_type
+	assign columns_desktop = section.settings.columns_desktop
+	assign featured_collection = section.settings.collection
+	assign show_view_all = section.settings.show_view_all
+	assign product_limit = section.settings.product_limit
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign show_progress_bar = section.settings.show_progress_bar
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign columns_class = 'medium-6 large-4'
+
+	assign product_card_columns = settings.product_card_columns
+
+	if product_card_columns == '2'
+		assign product_card_mobile_columns_class = 'small-6 '
+	else
+		assign product_card_mobile_columns_class = 'small-12 '
+	endif
+	
+	assign columns_class = columns_class | prepend: product_card_mobile_columns_class
+	case columns_desktop
+		when 2
+			assign columns_class = 'medium-6' | prepend: product_card_mobile_columns_class
+		when 3
+			assign columns_class = 'medium-4' | prepend: product_card_mobile_columns_class
+		when 4
+			assign columns_class = 'medium-6 large-3' | prepend: product_card_mobile_columns_class
+		when 5
+			assign columns_class = 'medium-3 large-1/5' | prepend: product_card_mobile_columns_class
+		when 6
+			assign columns_class = 'medium-3 large-2' | prepend: product_card_mobile_columns_class
+	endcase
+
+	if featured_collection.all_products_count > product_limit
+    assign more_in_collection = true
+  endif
+
+	if show_view_all and more_in_collection
+		assign section_heading_button = featured_collection
+	endif
+
+	if display_type == 'carousel'
+		assign element = 'slide-show'
+	else
+		assign element = 'div'
+	endif
+-%}
+<div class="featured-collection{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+	<div class="row full-width-row">
+		<div class="small-12 columns">
+			{% render 'section-header', section_heading: section_heading, section_description: section_description, section_heading_button: section_heading_button %}
+			<div class="featured-collection__inner display-type--{{ display_type }}">
+				<{{ element }} id="product-grid-{{ section.id }}" class="products row {{ display_type }}">
+					{%- if featured_collection != blank -%}
+						{%- for product in featured_collection.products limit: product_limit -%}
+							{%- assign product_loop = forloop -%}
+							{%- for block in section.blocks -%}
+								{%- liquid
+									assign display_promotion = false
+									if product_loop.index == block.settings.promotion_position
+										assign display_promotion = true
+									endif
+
+									if block.settings.promotion_collection != blank
+										if collection.handle == block.settings.promotion_collection.handle and product_loop.index == block.settings.promotion_position
+											assign display_promotion = true
+										else
+											assign display_promotion = false
+										endif
+									endif
+								-%}
+								{%- if display_promotion -%}
+									{{- 'gallery.css' | asset_url | stylesheet_tag -}}
+									<div class="promotion-column {{ columns_class }} columns promotion-column-width--1 product-columns-{{ columns_desktop }} carousel__slide">
+										{%- render 'product-promotion', block: block -%}
+									</div>
+								{%- endif -%}
+							{%- endfor -%}
+							<div class="{{ columns_class }} columns {% if display_type == 'carousel' %}carousel__slide{% endif %}">
+								{% render 'product-card', product_card_product: product %}
+							</div>
+						{%- endfor -%}
+					{%- else -%}
+						{%- for i in (1..product_limit) -%}
+						{%- assign product_loop = forloop -%}
+							{%- for block in section.blocks -%}
+								{%- liquid
+									assign display_promotion = false
+									if product_loop.index == block.settings.promotion_position
+										assign display_promotion = true
+									endif
+
+									if block.settings.promotion_collection != blank
+										if collection.handle == block.settings.promotion_collection.handle and product_loop.index == block.settings.promotion_position
+											assign display_promotion = true
+										else
+											assign display_promotion = false
+										endif
+									endif
+								-%}
+								{%- if display_promotion -%}
+									{{- 'gallery.css' | asset_url | stylesheet_tag -}}
+									<div class="promotion-column {{ columns_class }} columns promotion-column-width--1 product-columns-{{ columns_desktop }} carousel__slide">
+										{%- render 'product-promotion', block: block -%}
+									</div>
+								{%- endif -%}
+							{%- endfor -%}
+						<div class="{{ columns_class }} columns {% if display_type == 'carousel' %}carousel__slide{% endif %}">
+							{% render 'product-card' %}
+						</div>
+						{%- endfor -%}
+					{%- endif -%}
+					{%- if display_type == 'carousel' -%}
+						{%- if product_limit > columns_desktop -%}
+						{%- render 'slideshow-arrows' -%}
+						{%- endif -%}
+					{%- endif -%}
+				</{{ element }}>
+				{%- if display_type == 'carousel' and show_progress_bar -%}
+				<div class="flickity-progress">
+					<div class="flickity-progress--bar"></div>
+				</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured collection",
+	"class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Collection",
+			"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Describe your featured collection here</p>"
+    },
+		{
+			"type": "header",
+			"content": "Collection"
+		},
+		{
+		 "type": "collection",
+		 "id": "collection",
+		 "label": "Collection"
+		},
+		{
+			"type": "select",
+			"id": "display_type",
+			"options": [
+				{
+					"value": "grid",
+					"label": "Grid"
+				},
+				{
+					"value": "carousel",
+					"label": "Carousel"
+				}
+			],
+			"default": "grid",
+			"label": "Display type"
+		},
+		{
+			"type": "range",
+			"id": "product_limit",
+			"min": 2,
+			"max": 12,
+			"step": 1,
+			"label": "Maximum products to show",
+			"default": 4
+		},
+		{
+			"type": "range",
+			"id": "columns_desktop",
+			"min": 2,
+			"max": 6,
+			"step": 1,
+			"default": 4,
+			"label": "Number of columns on desktop"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_view_all",
+			"default": true,
+			"label": "Enable \"View all\" button if collection has more products than shown"
+		},
+		{
+			"type": "header",
+			"content": "Grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "mobile_swipe",
+			"default": true,
+			"label": "Enable swipe on mobile"
+		},
+		{
+			"type": "header",
+			"content": "Carousel"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_progress_bar",
+			"label": "Show progress bar",
+			"default": true
+		},
+		{
+      "type": "header",
+      "content": "Spacing"
+    },
+		{
+			"type": "checkbox",
+			"id": "disable_top_spacing",
+			"default": false,
+			"label": "Remove top spacing"
+		},
+		{
+			"type": "checkbox",
+			"id": "disable_bottom_spacing",
+			"default": false,
+			"label": "Remove bottom spacing"
+		}
+  ],
+	"blocks": [
+		{
+			"type": "promotion",
+			"name": "Promotion",
+      "limit": 1,
+			"settings": [
+				{
+					"type": "range",
+					"id": "promotion_position",
+					"min": 1,
+					"max": 24,
+					"step": 1,
+					"label": "Show in position",
+					"default": 1
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"default": "Promotion |Heading|",
+					"label": "Heading"
+				},
+				{
+					"type": "textarea",
+					"id": "text",
+					"default": "Advertise a promotion or a sale",
+					"label": "Description"
+				},
+				
+				{
+					"id": "link_label",
+					"type": "text",
+					"label": "Button label",
+					"default": "Explore",
+					"info": "Leave the label blank to hide the button."
+				},
+				{
+					"id": "link",
+					"type": "url",
+					"label": "Button link"
+				},
+				{
+					"type": "checkbox",
+					"id": "use_text_button",
+					"label": "Use text button",
+					"default": false
+				},
+				{
+					"id": "block_link",
+					"type": "url",
+					"label": "Link",
+					"info": "This will allow you to set a link to the promotion"
+				},
+				{
+					"type": "header",
+					"content": "Layout"
+				},
+				{
+					"type": "select",
+					"id": "content_position",
+					"label": "Content position",
+					"options": [
+						{ "value": "top-left", "label": "Top left" },
+						{ "value": "top-center", "label": "Top center" },
+						{ "value": "top-right", "label": "Top right" },
+						{ "value": "middle-left", "label": "Middle left" },
+						{ "value": "middle-center", "label": "Middle center" },
+						{ "value": "middle-right", "label": "Middle right" },
+						{ "value": "bottom-left", "label": "Bottom left" },
+						{ "value": "bottom-center", "label": "Bottom center" },
+						{ "value": "bottom-right", "label": "Bottom right" }
+					],
+					"default": "bottom-left"
+				},
+				{
+					"type": "select",
+					"id": "text_alignment",
+					"options": [
+						{
+							"value": "left",
+							"label": "Left"
+						},
+						{
+							"value": "center",
+							"label": "Center"
+						},
+						{
+							"value": "right",
+							"label": "Right"
+						}
+					],
+					"default": "left",
+					"label": "Content alignment"
+				},
+				{
+					"type": "header",
+					"content": "Colors"
+				},
+				{
+					"type": "color",
+					"id": "overlay_color",
+					"label": "Overlay",
+					"default": "#000000"
+				},
+				{
+					"type": "range",
+					"id": "overlay_opacity",
+					"min": 0,
+					"max": 100,
+					"step": 1,
+					"unit": "%",
+					"label": "Overlay opacity",
+					"default": 70
+				}
+			]
+		}
+	],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+
+{% endschema %}

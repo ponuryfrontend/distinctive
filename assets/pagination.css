@@ -1,0 +1,81 @@
+
+
+
+.pagination {
+  display: block;
+  text-align: center;
+  min-height: 42px;
+  position: relative; }
+  .pagination.pagination-type--infinite .button {
+    display: none; }
+  .pagination.pagination-type--infinite[loading="true"] .loading-overlay {
+    display: block; }
+  .pagination--wrapper {
+    text-align: center; }
+    .pagination--wrapper .thb-filter-count {
+      display: inline-block;
+      min-width: 160px;
+      margin-bottom: 30px; }
+      .pagination--wrapper .thb-filter-count.loading .facets__label {
+        opacity: 0; }
+      .pagination--wrapper .thb-filter-count .facets__label {
+        font-size: 0.8125rem;
+        margin-bottom: 15px; }
+      .pagination--wrapper .thb-filter-count .loading-overlay {
+        width: 18px;
+        height: 18px;
+        left: auto;
+        right: 0; }
+  .pagination--progress {
+    width: 100%;
+    height: 1px;
+    position: relative;
+    background-color: var(--color-border);
+    margin-top: 5px; }
+    .pagination--progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform-origin: top left;
+      background-color: var(--color-body);
+      height: 1px;
+      transform: scale(var(--progress-count, 0), 1); }
+
+.page-numbers {
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .page-numbers li {
+    display: inline-block;
+    vertical-align: middle; }
+  .page-numbers span {
+    display: inline-flex;
+    vertical-align: middle;
+    color: var(--color-accent); }
+  .page-numbers .page a,
+  .page-numbers .next a,
+  .page-numbers .prev a,
+  .page-numbers .current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 5px;
+    margin: 0 3px;
+    font-size: 0.8125rem;
+    line-height: 0; }
+  .page-numbers .disabled a,
+  .page-numbers .ellip a {
+    pointer-events: none;
+    border: 0;
+    opacity: 0.4; }
+  .page-numbers .page a,
+  .page-numbers .current {
+    border: 1px solid var(--color-border); }
+  .page-numbers .page a:hover {
+    border-color: var(--color-accent); }
+  .page-numbers .current {
+    border-color: var(--color-accent); }

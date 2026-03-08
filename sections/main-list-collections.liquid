@@ -1,0 +1,191 @@
+{{ 'list-collections.css' | asset_url | stylesheet_tag }}
+{% liquid
+	assign section_heading = section.settings.heading
+	assign section_description = section.settings.description
+	assign columns_desktop = section.settings.columns_desktop
+	assign collection_list_pagination_num = section.settings.collection_list_pagination_num
+	assign content_alignment = section.settings.content_alignment
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+%}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		<list-collections class="list-collections section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+			{% render 'section-header', section_heading: section_heading, section_description: section_description %}
+			<div class="row no-padding" style="--var-collection-list-columns: {{ columns_desktop }}">
+			  <div class="small-12 columns">
+					{%- if section.blocks.size > 0 -%}
+						<div class="collection-grid">
+					    {% for block in section.blocks %}
+					      {% render 'collection-card', grid_collection: collections[block.settings.collection], media_aspect_ratio: section.settings.image_ratio,index: forloop.index, columns_desktop: columns_desktop, content_alignment: content_alignment %}
+					    {% endfor %}
+						</div>
+					{%- else -%}
+						{%- liquid
+					    case section.settings.sort
+					      when 'products_high' or 'products_low'
+					        assign collections = collections | sort: 'all_products_count'
+					      when 'date' or 'date_reversed'
+					        assign collections = collections | sort: 'published_at'
+					    endcase
+
+					    if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+					      assign collections = collections | reverse
+					    endif
+					  -%}
+						{%- paginate collections by collection_list_pagination_num -%}
+							<div class="collection-grid">
+								{% for collection in collections %}
+									{% render 'collection-card', grid_collection: collection, media_aspect_ratio: section.settings.image_ratio, index: forloop.index, columns_desktop: columns_desktop, content_alignment: content_alignment %}
+								{% endfor %}
+							</div>
+							{%- render 'pagination', paginate: paginate, pagination_type: 'paginated', id: section.id, locale: 'collection' -%}
+						{%- endpaginate -%}
+					{%- endif -%}
+			  </div>
+			</div>
+		</list-collections>
+	</div>
+</div>
+<script src="{{ 'list-collections.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Collection list page",
+	  "class": "collection-list-section",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Shop by Category",
+				"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your collections</p>"
+			},
+			{
+	      "type": "select",
+	      "id": "sort",
+	      "options": [
+	        {
+	          "value": "alphabetical",
+	          "label": "Alphabetically, A-Z"
+	        },
+	        {
+	          "value": "alphabetical_reversed",
+	          "label": "Alphabetically, Z-A"
+	        },
+	        {
+	          "value": "date_reversed",
+	          "label": "Date, new to old"
+	        },
+	        {
+	          "value": "date",
+	          "label": "Date, old to new"
+	        },
+	        {
+	          "value": "products_high",
+	          "label": "Product count, high to low"
+	        },
+	        {
+	          "value": "products_low",
+	          "label": "Product count, low to high"
+	        }
+	      ],
+	      "default": "alphabetical",
+	      "label": "Sort collections by:"
+	    },
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "square",
+	      "label": "Image ratio",
+	      "info": "Add images by editing your collections. [Learn more](https://help.shopify.com/en/manual/products/collections)"
+	    },
+			{
+	      "type": "range",
+	      "id": "columns_desktop",
+	      "min": 2,
+	      "max": 4,
+	      "step": 1,
+	      "default": 3,
+	      "label": "Number of columns on desktop"
+	    },
+      {
+        "type": "range",
+        "id": "collection_list_pagination_num",
+        "min": 2,
+        "max": 30,
+        "step": 1,
+        "label": "Collections per page",
+        "default": 9
+      },
+			{
+        "type": "select",
+        "id": "content_alignment",
+        "label": "Content alignment",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+             "type": "collection",
+             "id": "collection",
+             "label": "Collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

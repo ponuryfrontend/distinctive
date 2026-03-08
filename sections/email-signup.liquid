@@ -1,0 +1,209 @@
+{%- liquid
+	assign layout_style = section.settings.layout_style
+	assign section_image = section.settings.image
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign color_bg = section.settings.color_bg
+	assign color_text = section.settings.color_text
+	assign overlay_color = section.settings.overlay_color
+	assign overlay_opacity = section.settings.overlay_opacity
+-%}
+<div class="email-signup section-spacing{% unless section_image %}-padding{%- endunless -%}{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }}; --color-text: {{ color_text }}; --color-body-rgb: {{ color_text.rgb | replace: ' ' , ',' }}">
+	<div class="email-signup--wrapper email-signup--wrapper-{{ layout_style }} {% if section_image %} email-signup--has-image{%- endif -%}">
+		{%- if section_image -%}
+			<div class="email-signup--image" style="--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
+				{%- assign master_width = section_image.src.width | append: 'x' | append: section_image.src.height -%}
+				{%- render 'responsive-image', image: section_image, sizes: master_width -%}
+			</div>
+		{%- endif -%}
+		<div class="email-signup--inner">
+			{%- for block in section.blocks -%}
+				{%- case block.type -%}
+					{%- when 'image' -%}
+						<div class="image-with-text__content__image" {{ block.shopify_attributes }}>
+							{%- if block.settings.image != blank -%}
+								{% assign image = block.settings.image %}
+								{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
+								{%- render 'responsive-image', image: image, sizes: master_width, retina: block.settings.retina -%}
+							{%- else -%}
+								<div class="thb-placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}</div>
+							{%- endif -%}
+						</div>
+					{%- when 'heading' -%}
+						<div class="h1">{{ block.settings.text | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+					{%- when 'text' -%}
+						<div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+					{% when 'space' %}
+						<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
+					{% when 'form' %}
+						{% render 'email-signup-form' %}
+				{%- endcase -%}
+			{%- endfor -%}
+		</div>
+	</div>
+</div>
+{{- 'email-signup.css' | asset_url | stylesheet_tag -}}
+{% schema %}
+  {
+    "name": "Newsletter",
+		"class": "section-newsletter",
+    "settings": [
+			{
+				"type": "paragraph",
+				"content": "Each email subscription creates a customer account. [Learn more](https://help.shopify.com/en/manual/customers)"
+			},
+			{
+				"type": "select",
+				"id": "layout_style",
+				"label": "Layout",
+				"options": [
+					{
+						"value": "split",
+						"label": "Split"
+					},
+					{
+						"value": "full",
+						"label": "Full"
+					}
+				],
+				"default": "split"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image",
+				"info": "1440 x 1040 .jpg recommended."
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#EBF5EB"
+      },
+			{
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#232323"
+      },
+			{
+				"type": "color",
+				"id": "overlay_color",
+				"label": "Overlay",
+				"default": "#000000"
+			},
+			{
+				"type": "range",
+				"id": "overlay_opacity",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"label": "Overlay opacity",
+				"default": 0
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+			{
+				"type": "image",
+				"name": "Image",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					},
+					{
+						"type": "checkbox",
+						"id": "retina",
+						"label": "Enable retina",
+						"default": true,
+						"info": "Image will be displayed at half the size, making it look crisp on retina screens."
+					}
+				]
+			},
+			{
+				"type": "heading",
+				"name": "Heading",
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Newsletter",
+						"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+					}
+				]
+			},
+			{
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Content",
+            "default": "<p>Add a short description for this section</p>"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "name": "Empty space",
+        "settings": [
+          {
+            "type": "range",
+            "id": "height",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Height",
+            "default": 50
+          }
+        ]
+      },
+      {
+        "type": "form",
+        "name": "Newsletter form"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+				"blocks": [
+					{
+						"type": "heading"
+					},
+					{
+						"type": "text"
+					},
+					{
+						"type": "form"
+					}
+				]
+      }
+    ]
+  }
+{% endschema %}

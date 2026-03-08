@@ -1,0 +1,10 @@
+<div class="full-menu--promotion">
+	{%- if promotion_link != null -%}<a href="{{ promotion_link }}" title="{{ promotion_heading | escape }}">{%- endif -%}
+		{%- render 'responsive-image', image: promotion_image, sizes: '640x0', priority: 'low' -%}
+		{%- if promotion_heading != blank -%}
+		<div class="full-menu--promotion-cover">
+			<p>{{ promotion_heading }}</p>
+		</div>
+		{%- endif -%}
+	{%- if promotion_link != null -%}</a>{%- endif -%}
+</div>

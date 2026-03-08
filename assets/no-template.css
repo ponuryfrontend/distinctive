@@ -1,0 +1,29 @@
+
+
+
+[role="main"] .shopify-policy__title {
+  text-align: center;
+  min-height: 250px;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media only screen and (min-width: 768px) {
+    [role="main"] .shopify-policy__title {
+      padding: 60px; } }
+
+[role="main"] .shopify-policy__container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 12.5px; }
+  @media only screen and (min-width: 768px) {
+    [role="main"] .shopify-policy__container {
+      padding: 0 40px; } }
+  @media only screen and (min-width: 1068px) {
+    [role="main"] .shopify-policy__container {
+      max-width: 1140px; } }
+  [role="main"] .shopify-policy__container .rte {
+    margin-bottom: 40px; }
+    @media only screen and (min-width: 768px) {
+      [role="main"] .shopify-policy__container .rte {
+        margin-bottom: 60px; } }

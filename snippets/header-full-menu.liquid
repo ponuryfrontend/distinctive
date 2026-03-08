@@ -1,0 +1,168 @@
+<full-menu class="full-menu">
+	<button class="full-menu--toggle mobile-toggle"><span></span><span></span><span></span></button>
+	<div class="full-menu--menu">
+		<ul class="full-menu--menu-primary" role="menubar">
+			{%- assign menu_id_slug = 'menu-' %}
+			{%- for link in menu.links -%}
+				{%- liquid
+					assign parent_index = forloop.index
+					assign has_sub_menu = false
+					assign has_menu_badge = false
+					assign menu_badge_index = false
+					assign menu_badge_blocks = blocks | where: "type", "menu_badge"
+
+					if link.links.size > 0
+						assign has_sub_menu = true
+					endif
+					assign menu_id = menu_id_slug
+
+					if has_sub_menu == true
+						assign menu_id = menu_id_slug | append: forloop.index
+					endif
+
+					for block in menu_badge_blocks
+						assign badge_position = block.settings.badge_position | plus: 0
+						if badge_position == parent_index
+							assign has_menu_badge = true
+							assign menu_badge_index = forloop.index0
+						endif
+					endfor
+				-%}
+				<li role="menuitem">
+					<a href="{{ link.url }}" title="{{ link.title | escape }}" class="full-menu--link-parent{% if has_sub_menu %} has-sub-menu{% endif %}" data-target="#{{ menu_id }}" {%- if link.active %} aria-current="page"{% endif -%}>
+						{{- link.title -}}
+					</a>
+					{%- if has_menu_badge -%}
+						{%- assign menu_badge_block = menu_badge_blocks[menu_badge_index] -%}
+						<span class="menu-item-badge">{{ menu_badge_block.settings.text }}</span>
+					{%- endif -%}
+				</li>
+			{%- endfor -%}
+		</ul>
+		{%- if secondary_menu != blank -%}
+		<ul class="full-menu--menu-secondary">
+			{%- for link in secondary_menu.links -%}
+			  <li class="{% if link.active %} active{% endif %}">
+			    <a href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+			  </li>
+		  {%- endfor -%}
+    </ul>
+		{%- endif -%}
+	</div>
+	<div class="full-menu--panel" tabindex="-1">
+		<div class="full-menu--panel--level"></div>
+		<div class="full-menu--panel--level full-menu--panel--level-1">
+			{%- assign menu_id_slug = 'menu-' %}
+			{%- for link in menu.links -%}
+				{%- liquid
+					assign parent_index = forloop.index
+					assign has_sub_menu = false
+					assign has_promotion = false
+					assign promotion_block_index = false
+					assign promotion_blocks = blocks | where: "type", "promotion"
+
+					if link.links.size > 0
+						assign has_sub_menu = true
+					endif
+					assign menu_id = menu_id_slug
+
+					for block in promotion_blocks
+						assign position = block.settings.position | plus: 0
+			    	if position == parent_index
+							assign has_promotion = true
+							assign promotion_block_index = forloop.index0
+						endif
+					endfor
+				-%}
+				{%- if has_sub_menu == true -%}
+				{%- assign promotion_block = promotion_blocks[promotion_block_index] -%}
+				{%- assign menu_id = menu_id_slug | append: forloop.index -%}
+				<div class="full-menu--subpanel" id="menu-{{ forloop.index }}">
+					<ul class="full-menu--submenu sub-menu" tabindex="-1">
+						{%- for l in link.links -%}
+							{%- liquid
+								assign has_sub_menu = false
+								if l.links.size > 0
+									assign has_sub_menu = true
+									assign submenu_id = menu_id | append: '-' | append: forloop.index
+								endif
+							-%}
+							<li role="none">
+								<a href="{{ l.url }}" title="{{ l.title | escape }}" class="full-menu--link-child{% if has_sub_menu == true %} has-sub-menu{% endif %}" data-target="#{{ submenu_id }}" role="menuitem">
+									{{- l.title -}}
+									{%- if has_sub_menu -%}{%- render 'svg-icons' with 'thb-dropdown-right' -%}{%- endif -%}
+								</a>
+							</li>
+							{% assign submenu_id = menu_id %}
+						{%- endfor -%}
+					</ul>
+					{%- if promotion_block -%}
+					<slide-show class="carousel full-menu--promotion-carousel" data-dots="true" data-adapt="true">
+						{%- if promotion_block.settings.promo_1_image -%}
+						<div class="carousel__slide">
+							{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_1_image, promotion_link: promotion_block.settings.promo_1_link, promotion_heading: promotion_block.settings.promo_1_heading %}
+						</div>
+						{%- endif -%}
+						{%- if promotion_block.settings.promo_2_image -%}
+						<div class="carousel__slide">
+							{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_2_image, promotion_link: promotion_block.settings.promo_2_link, promotion_heading: promotion_block.settings.promo_2_heading %}
+						</div>
+						{%- endif -%}
+						{%- if promotion_block.settings.promo_3_image -%}
+						<div class="carousel__slide">
+							{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_3_image, promotion_link: promotion_block.settings.promo_3_link, promotion_heading: promotion_block.settings.promo_3_heading %}
+						</div>
+						{%- endif -%}
+						{%- if promotion_block.settings.promo_4_image -%}
+						<div class="carousel__slide">
+							{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_4_image, promotion_link: promotion_block.settings.promo_4_link, promotion_heading: promotion_block.settings.promo_4_heading %}
+						</div>
+						{%- endif -%}
+					</slide-show>
+					{%- endif -%}
+				</div>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		<div class="full-menu--panel--level full-menu--panel--level-2">
+			{%- assign menu_id_slug = 'menu-' %}
+			{%- for link in menu.links -%}
+				{%- liquid
+					assign parent_index = forloop.index
+					assign has_sub_menu = false
+
+					if link.links.size > 0
+						assign has_sub_menu = true
+					endif
+					assign menu_id = menu_id_slug
+				-%}
+				{%- if has_sub_menu == true -%}
+					{% assign menu_id = menu_id_slug | append: forloop.index %}
+					{%- for l in link.links -%}
+						{%- liquid
+							assign has_sub_menu = false
+							if l.links.size > 0
+								assign has_sub_menu = true
+								assign submenu_id = menu_id | append: '-' | append: forloop.index
+							endif
+
+						-%}
+						{%- if has_sub_menu -%}
+						<div class="full-menu--subpanel" id="{{ submenu_id }}">
+							<ul class="full-menu--submenu sub-menu" role="menu">
+								{%- for sub_link in l.links -%}
+									<li class="{%- if sub_link.active %} active{% endif %}" role="none">
+										<a href="{{ sub_link.url }}" title="{{ sub_link.title | escape }}" role="menuitem">{{- sub_link.title -}}</a>
+									</li>
+								{%- endfor -%}
+							</ul>
+						</div>
+						{%- endif -%}
+					{%- endfor -%}
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+	</div>
+	
+	<div class="full-menu--cc"></div>
+</full-menu>

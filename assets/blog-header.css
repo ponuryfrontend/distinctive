@@ -1,0 +1,38 @@
+
+
+
+.blog-header--tags a {
+  display: inline-flex;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  height: 30px;
+  border-radius: 3px;
+  padding: 6px 12px;
+  align-items: center;
+  margin: 0 3px;
+  border: 1px solid var(--color-border); }
+  .blog-header--tags a:hover, .blog-header--tags a.active {
+    color: #fff;
+    background: var(--color-accent);
+    border-color: var(--color-accent); }
+
+.blog-header--tags {
+  font-size: 1.5rem;
+  margin-bottom: 20px; }
+  @media only screen and (min-width: 768px) {
+    .blog-header--tags {
+      margin-bottom: 40px; } }
+  .blog-header--tags scroll-shadow {
+    width: calc(100% + 30px);
+    margin: 0 -15px; }
+  .blog-header--tags--inner {
+    display: block;
+    text-align: center;
+    padding: 0 15px;
+    overflow-x: scroll;
+    line-height: 1;
+    width: 100%;
+    white-space: nowrap;
+    scrollbar-width: none; }
+    .blog-header--tags--inner::-webkit-scrollbar {
+      display: none; }

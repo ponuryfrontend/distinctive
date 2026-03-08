@@ -1,0 +1,72 @@
+{%- liquid
+	assign lazy_loading = settings.lazy_loading
+	assign image_sizes = sizes | split: ","
+
+	if priority
+		assign fetchpriority = priority
+	else
+		assign fetchpriority = 'auto'
+	endif
+-%}
+{%- capture srcset -%}
+  {%- for size in image_sizes -%}
+    {%- liquid
+			assign small_size = '20x'
+			assign size_array = size | split: "x"
+			assign size_width = size_array[0]
+			assign size_height = size_array[1]
+			if size_array[0] != "0"
+				assign size_x = size_array[0] | append: 'x'
+			else
+				assign size_width = image.width | times: size_array[1] | divided_by: image.height | floor
+			endif
+			if size_array[1] != "0"
+				assign size_x = size
+				assign small_x = size_array[1] | times: 20 | divided_by: size_array[0] | floor
+				assign small_size = small_size | append: small_x
+			endif
+			if size_height != '0'
+				assign srcset_url = image | image_url: width: size_width, height: size_height, crop: 'center'
+			else
+				assign srcset_url = image | image_url: width: size_width
+			endif
+		-%}
+    {{- srcset_url }} {{ size_width }}w,
+  {%- endfor -%}
+{%- endcapture -%}
+{%- liquid
+	assign l = srcset | size | minus: 1
+	assign w = image.width
+	assign h = image.height
+	if retina
+		assign w = image.width | divided_by: 2
+		assign h = image.height | divided_by: 2
+	endif
+
+	assign focal_point = image.presentation.focal_point
+
+	capture src
+		if lazy_loading
+			if small_size == '20x0'
+				assign small_size = '20x'
+			endif
+			assign small_array = small_size | split: 'x'
+			if small_array[1] != blank and small_array[1] != '0'
+				echo image | image_url: width: small_array[0], height: small_array[1], crop: 'center'
+			else
+				echo image | image_url: width: 20
+			endif
+		else
+			assign fallback_array = image_sizes[0] | split: 'x'
+			if fallback_array[1] != '0'
+				echo image | image_url: width: fallback_array[0], height: fallback_array[1], crop: 'center'
+			else
+				echo image | image_url: width: fallback_array[0]
+			endif
+		endif
+	endcapture
+-%}
+
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+<img class="lazyload{% unless lazy_loading %} no-blur{% endunless %}{% if retina %} retina_size{% endif %} {{ class | escape }}" width="{{ w }}" height="{{ h }}" data-sizes="auto" src="{{- src -}}" data-srcset="{{ srcset | slice: 0, l | strip_newlines -}}" fetchpriority="{{ fetchpriority }}" alt="{{ image.alt | escape }}" {% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %} />
+{% comment %}theme-check-enable ImgLazyLoading{% endcomment %}

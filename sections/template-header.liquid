@@ -1,0 +1,144 @@
+{%- liquid
+	assign show_subcollections = false
+	assign show_collection_image = section.settings.show_collection_image
+	assign uppercase_title = section.settings.uppercase_title
+	assign show_collection_description = section.settings.show_collection_description
+	assign display_description = section.settings.display_description
+	assign has_padding = false
+	if template contains 'collection'
+		assign has_padding = true
+		assign collection_image = collection.featured_image
+		assign show_subcollections = section.settings.show_subcollections
+		assign heading = collection.title
+		if show_collection_description
+			assign description = collection.description
+		endif
+		assign collection_handle = collection.handle
+	elsif template == 'search'
+		assign has_padding = true
+		assign heading = 'search.heading' | t
+		capture description
+			assign search_phrase = search.terms | replace: '*', ''
+			if '' != search_phrase
+				echo 'search.results_found' | t: count: search.results_count, key: search_phrase
+			endif
+		endcapture
+	elsif template contains 'page'
+		assign heading = page.title
+		if display_description
+			assign description = page_description
+		endif
+	elsif template contains 'cart'
+		assign heading = 'sections.cart.title' | t
+	elsif template contains 'customers/account'
+		assign heading = 'customer.account.title' | t
+	elsif template contains 'customers/addresses'
+		assign heading = 'customer.addresses.title' | t
+	elsif template contains 'customers/order'
+		assign heading = 'customer.order.title' | t: name: order.name
+	endif
+-%}
+{{ 'template-header.css' | asset_url | stylesheet_tag }}
+<div class="template-header template-header--has-padding-{{ has_padding }} {%- if collection_image and show_collection_image -%}template-header--has-image-true template-header--light{%- endif -%}" data-section-index="{{ section.index }}">
+	{%- if collection_image and show_collection_image -%}
+		{%- render 'responsive-image', class: 'template-header--image', image: collection_image, sizes: '0x350,0x700' -%}
+	{%- endif -%}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="template-header--content">
+					<h1 class="template-header--title template-header--title-uppercase-{{ uppercase_title }}">{{ heading }}</h1>
+					{%- if template == 'search' -%}
+						<form role="search" method="get" class="searchform" action="{{ routes.search_url }}">
+							<fieldset>
+								<input type="search" class="search-field" placeholder="{{ 'sections.header.search_for' | t | escape }}" value="{{ search.terms | replace: '*', '' }}" name="q" autocomplete="off">
+								<button type="submit" class="thb-search-submit">{% render 'svg-icons' with 'search' %}</button>
+							</fieldset>
+						</form>
+					{%- endif -%}
+					{%- if description != blank and description != '' -%}
+					<div class="template-header--description">
+						{{ description }}
+					</div>
+					{%- endif -%}
+					{%- if template contains 'customers/account' -%}
+					<a href="{{ routes.account_logout_url }}" title="{{ 'customer.account.log_out' | t | escape }}" class="myaccount--link">
+						{% render 'svg-icons' with 'thb-log-out' %}
+						<span class="text-button">{{ 'customer.account.log_out' | t }}</span>
+					</a>
+					{%- elsif template contains 'customers' -%}
+					<a href="{{ routes.account_url }}" class="myaccount--link">
+						{% render 'svg-icons' with 'thb-account-back' %}
+						<span class="text-button">{{ 'customer.account.return_to_account_details' | t }}</span>
+					</a>
+					{%- endif -%}
+					{%- if show_subcollections and linklists[collection_handle] != empty -%}
+					<div class="template-header--subcollections" style="--color-body: {{ color_subcollection_text }}">
+						{%- for link in linklists[collection_handle].links -%}
+							{%- assign link_collection = collections[link.handle] -%}
+							{%- if link_collection != blank -%}
+								<a href="{{ link_collection.url }}" title="{{ link_collection.title | escape }}" class="template-header--subcollection text-button">
+									<span>{{ link_collection.title }}</span>
+								</a>
+							{%- endif -%}
+						{%- endfor -%}
+					</div>
+					{%- endif -%}
+				
+			</div>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Template header",
+		"class": "section-template-header",
+    "settings": [
+			{
+				"type": "header",
+				"content": "Collection page",
+				"info": "These settings are only used on collection pages."
+			},
+			{
+	      "type": "checkbox",
+	      "id": "show_collection_image",
+	      "default": false,
+	      "label": "Show collection image"
+	    },
+			{
+	      "type": "checkbox",
+	      "id": "uppercase_title",
+	      "default": false,
+	      "label": "Make heading uppercase"
+	    },
+			{
+	      "type": "checkbox",
+	      "id": "show_collection_description",
+	      "default": true,
+	      "label": "Show collection description"
+	    },
+			{
+				"type": "header",
+				"content": "Subcollections",
+				"info": "These settings are only used on collection pages."
+			},
+			{
+	      "type": "checkbox",
+	      "id": "show_subcollections",
+	      "default": true,
+	      "label": "Show subcollections",
+				"info": "Links to subcollections from your menu will appear here. [Learn more.](https://documentation.fuelthemes.net/kb/how-do-i-add-sub-category-links-inside-template-header-distinctive/)"
+	    },
+			{
+        "type": "header",
+        "content": "Pages"
+      },
+			{
+	      "type": "checkbox",
+	      "id": "display_description",
+	      "label": "Show description text",
+	      "default": true,
+				"info": "Displays the page SEO description text under page title. [Learn more](https://help.shopify.com/en/manual/online-store/themes/theme-structure/pages#edit-the-search-engine-listing-for-a-webpage)"
+	    }
+    ]
+  }
+{% endschema %}

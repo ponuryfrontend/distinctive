@@ -1,0 +1,245 @@
+{{- 'multiple-media-with-text.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+  assign subheading = section.settings.subheading
+	assign heading = section.settings.heading
+	assign heading_size = section.settings.heading_size
+	assign description = section.settings.description
+	assign button_text = section.settings.button_text
+	assign button_label = section.settings.button_label
+	assign button_link = section.settings.button_link
+
+  assign layout = section.settings.layout
+  assign desktop_image_width = section.settings.desktop_image_width
+  assign content_position = section.settings.content_position
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+-%}
+<multiple-media-with-text class="multiple-media-with-text section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+  <div class="multiple-media-with-text--inner multiple-media-with-text--inner--image-{{ desktop_image_width }} content-{{ content_position }} {{ layout }}">
+    <div class="multiple-media-with-text--images image-layout--collage">
+      <div class="multiple-media-with-text--images-inner">
+        {%- for block in section.blocks -%}
+          {%- if forloop.index == 2 and forloop.length > 1-%}
+          <div class="multiple-media-with-text--images-column">
+          {%- endif -%}
+          <div class="multiple-media-with-text--images-image{% if forloop.index == 1 %} multiple-media-with-text--images-column{%- endif -%}">
+            <div class="multiple-media-with-text--images-image-inner">
+              {%- if block.settings.enable_gallery_video -%}
+                {%- if block.settings.video_hosted -%}
+                  {%- liquid
+                    assign video = block.settings.video_hosted
+                    assign autoplay = true
+                    if block.settings.enable_hover_play
+                      assign autoplay = false
+                    endif
+                  -%}
+                  <div class="multiple-media-with-text--video-hosted multiple-media-with-text--video" data-provider="hosted" data-video-id="{{ video.id }}"  style="--padding-bottom: {{ 1 | divided_by: video.aspect_ratio | times: 100 }}%;">
+                    {{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true, image_size: '750x' }}
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                {%- if block.settings.image -%}
+                  {%- liquid
+                    assign sizes = '375x0,750x0'
+
+                    if full_width
+                      assign sizes = sizes | append: ',1125x0'
+                    endif
+                  -%}
+                  {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+                {%- else -%}
+                  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if forloop.last and forloop.length > 1 -%}
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="multiple-media-with-text--content">
+      {%- if subheading != blank -%}
+      <p class="subheading">{{ subheading }}</p>
+      {%- endif -%}
+      {%- if heading != blank -%}
+      <div class="{{ heading_size }}">{{ heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+      {%- endif -%}
+      {%- if description != blank -%}
+      <div class="rte">
+      {{ description }}
+      </div>
+      {%- endif -%}
+      {% if button_text != blank %}
+        <a class="button outline" href="{{ button_link }}" role="button" title="{{ button_text | escape }}"><span data-content="{{ button_text }}"></span></a>
+      {% endif %}
+    </div>
+  </div>
+</multiple-media-with-text>
+<script src="{{ 'multiple-media-with-text.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Multiple media with text",
+		"class": "section-multiple-media-with-text",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Add a tagline"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Multiple media with |text|"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "label": "Heading size",
+        "options": [
+          {
+            "value": "h1",
+            "label": "Large"
+          },
+          {
+            "value": "h2",
+            "label": "Medium"
+          },
+          {
+            "value": "h3",
+            "label": "Small"
+          }
+        ],
+        "default": "h1"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "<p>Pair text with multiple images to focus on your chosen product, collection, or blog post.</p>"
+      },
+      {
+        "id": "button_text",
+        "type": "text",
+        "label": "Button label",
+        "default": "Explore",
+        "info": "Leave the label blank to hide the button."
+      },
+      {
+        "id": "button_link",
+        "type": "url",
+        "label": "Button link"
+      },
+			{
+	      "type": "select",
+	      "id": "layout",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        }
+	      ],
+	      "default": "image_first",
+	      "label": "Desktop image placement",
+	      "info": "Image first is the default mobile layout."
+	    },
+      {
+				"type": "select",
+				"id": "desktop_image_width",
+				"options": [
+					{
+						"value": "medium",
+						"label": "Medium"
+					},
+					{
+						"value": "large",
+						"label": "Large"
+					}
+				],
+				"default": "large",
+				"label": "Desktop image width"
+			},
+      {
+				 "type": "select",
+				 "id": "content_position",
+				 "label": "Content position",
+				 "options": [
+					 { "value": "top", "label": "Top" },
+					 { "value": "center", "label": "Middle" }
+				 ],
+				 "default": "center"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "2000 x 1300 .jpg recommended."
+					},
+          {
+						"type": "header",
+						"content": "Video"
+					},
+					{
+					  "type": "checkbox",
+					  "id": "enable_gallery_video",
+					  "label": "Use video instead of image",
+					  "default": false
+					},
+					{
+					  "type": "video",
+					  "id": "video_hosted",
+					  "label": "A Shopify-hosted video"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multiple media with text",
+				"blocks": [
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					}
+				]
+      }
+    ]
+  }
+{% endschema %}

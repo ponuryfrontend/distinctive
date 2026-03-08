@@ -1,0 +1,506 @@
+{%- liquid
+	assign style = section.settings.style
+	assign sticky_header = section.settings.sticky_header
+	assign use_drawer = section.settings.use_drawer
+	assign transparent_header = false
+	assign logo_height_range = section.settings.logo_height_range
+	assign logo_height_range_mobile = section.settings.logo_height_range_mobile
+
+	if template contains 'index'
+		assign transparent_header = section.settings.transparent_header
+
+		if transparent_header
+			assign fixed_header = true
+		endif
+	endif
+	if template contains 'product' or template contains 'collection' or template contains 'search' or template contains 'article'
+		assign fixed_header = true
+	endif
+	if template contains 'article'
+		assign transparent_header = true
+	endif
+	if template contains 'customers/login' or template contains 'customers/register'
+		assign fixed_header = true
+	endif
+-%}
+<theme-header id="header" class="header {{ style }} fixed--{{ fixed_header }} transparent--{{ transparent_header }} header--use-drawer-{{ use_drawer }}{% if style == 'style3' %} header--has-horizontal-navigation{% endif %}{% if sticky_header %} header-sticky--active{%- endif -%}">
+	<div class="row expanded">
+		<div class="small-12 columns">
+			{%- case style -%}
+			{%- when 'style1' -%}
+				{% render 'header-style1', blocks: section.blocks, header_settings: section.settings %}
+			{%- when 'style2' -%}
+				{% render 'header-style2', blocks: section.blocks, header_settings: section.settings %}
+			{%- when 'style3' -%}
+				{% render 'header-style3', blocks: section.blocks, header_settings: section.settings %}
+			{%- endcase -%}
+		</div>
+	</div>
+	{%- style -%}
+		:root {
+			--logo-height: {{ logo_height_range | append: 'px' }};
+			--logo-height-mobile: {{ logo_height_range_mobile | append: 'px' }};
+		}
+		{% unless sticky_header %}
+		.header-section {
+			position: static !important;
+		}
+		{%- endunless -%}
+	{%- endstyle -%}
+</theme-header>
+{%- if header_style == 'style3' -%}
+<script src="{{ 'full-menu-horizontal.js' | asset_url }}" async></script>
+{%- else -%}
+<script src="{{ 'full-menu.js' | asset_url }}" async></script>
+{%- endif -%}
+<script src="{{ 'header.js' | asset_url }}" async></script>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }},
+      {{ settings.social_linkedin_link | json }},
+      {{ settings.social_wechat_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+	"name": "Header",
+	"class": "header-section",
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "sticky_header",
+			"label": "Enable sticky header",
+			"default": true
+		},
+		{
+			"type": "image_picker",
+			"id": "logo",
+			"label": "Logo image",
+			"info": "400 x 68 px .png recommended."
+		},
+		{
+			"type": "range",
+			"id": "logo_height_range",
+			"min": 20,
+			"max": 120,
+			"step": 1,
+			"unit": "px",
+			"label": "Logo height",
+			"default": 30
+		},
+		{
+			"type": "range",
+			"id": "logo_height_range_mobile",
+			"min": 20,
+			"max": 80,
+			"step": 1,
+			"unit": "px",
+			"label": "Mobile logo height",
+			"default": 30
+		},
+		{
+			"type": "select",
+			"id": "style",
+			"label": "Desktop layout",
+			"default": "style1",
+			"options": [
+				{ "value": "style1", "label": "Logo left, vertical menu left" },
+				{ "value": "style2", "label": "Logo center, vertical menu left" },
+				{ "value": "style3", "label": "Logo center, horizontal menu left" }
+			],
+			"info": "Position is always center for mobile."
+		},
+		{
+			"type": "checkbox",
+			"id": "use_drawer",
+			"label": "Use drawer on desktop",
+			"default": true,
+			"info": "When disabled, longer menus may cause readability issues. We suggest using no more than 6 main menu items. "
+		},
+		{
+			"type": "link_list",
+			"id": "menu",
+			"default": "main-menu",
+			"label": "Menu"
+		},
+		{
+			"type": "link_list",
+			"id": "secondary_menu",
+			"label": "Secondary menu",
+			"info": "Secondary menu is shown under the vertical main menu."
+		},
+		{
+			"type": "checkbox",
+			"id": "show_cart_icon",
+			"label": "Show cart icon",
+			"default": false,
+			"info": "Displays cart icon next to cart contents count"
+		},
+		{
+			"type": "header",
+			"content": "Transparent header"
+		},
+		{
+			"type": "checkbox",
+			"id": "transparent_header",
+			"label": "Enable on homepage",
+			"default": true,
+			"info": "Ensure that you have a Slideshow, Video background, Image with text overlay section as the first section on your homepage."
+		},
+		{
+			"type": "image_picker",
+			"id": "logo_light",
+			"label": "Logo image",
+			"info": "Displayed when transparent header is enabled. Uses the dimensions set on your main logo."
+		},
+		{
+			"type": "header",
+			"content": "Account menu"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_shopify_account_menu",
+			"label": "Enable account menu",
+			"default": true,
+			"info": "Let customers sign in and access the account navigation menu without leaving the storefront"
+		},
+		{
+			"type": "link_list",
+			"id": "shopify_account_menu_menu",
+			"label": "Optional menu",
+			"info": "Show an optional menu under the login."
+		},
+		{
+			"type": "header",
+			"content": "Mobile menu"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_language_switcher",
+			"label": "Enable language switcher",
+			"default": true,
+			"info": "To add a language, go to your [language settings](/admin/settings/languages)."
+		},
+		{
+			"type": "checkbox",
+			"id": "show_currency_switcher",
+			"label": "Enable currency switcher",
+			"default": true,
+			"info": "To add a country/region, go to your [payment settings](/admin/settings/payments)."
+		},
+		{
+			"type": "checkbox",
+			"id": "show_social_links",
+			"label": "Show social links",
+			"default": true
+		}
+	],
+	"blocks": [
+		{
+			"type": "promotion",
+			"name": "Promotion",
+			"settings": [
+				{
+					"type": "select",
+					"id": "position",
+					"label": "Link position in main menu",
+					"default": "1",
+					"options": [
+		        {
+		          "value": "1",
+		          "label": "Item 1"
+		        },
+						{
+		          "value": "2",
+		          "label": "Item 2"
+		        },
+						{
+		          "value": "3",
+		          "label": "Item 3"
+		        },
+						{
+		          "value": "4",
+		          "label": "Item 4"
+		        },
+						{
+		          "value": "5",
+		          "label": "Item 5"
+		        },
+						{
+		          "value": "6",
+		          "label": "Item 6"
+		        },
+						{
+		          "value": "7",
+		          "label": "Item 7"
+		        },
+						{
+		          "value": "8",
+		          "label": "Item 8"
+		        },
+						{
+		          "value": "9",
+		          "label": "Item 9"
+		        },
+						{
+		          "value": "10",
+		          "label": "Item 10"
+		        },
+						{
+		          "value": "11",
+		          "label": "Item 11"
+		        },
+						{
+		          "value": "12",
+		          "label": "Item 12"
+		        }
+		      ]
+				},
+				{
+					"type": "header",
+					"content": "Promotion 1"
+				},
+				{
+	        "type": "image_picker",
+	        "id": "promo_1_image",
+	        "label": "Image",
+					"info": "320 x 280 px .jpg recommended."
+	      },
+				{
+					"type": "text",
+					"id": "promo_1_heading",
+					"default": "Promotion heading",
+					"label": "Heading"
+				},
+				{
+					"type": "url",
+					"id": "promo_1_link",
+					"label": "Link"
+				},
+				{
+					"type": "header",
+					"content": "Promotion 2"
+				},
+				{
+	        "type": "image_picker",
+	        "id": "promo_2_image",
+	        "label": "Image",
+					"info": "320 x 280 px .jpg recommended."
+	      },
+				{
+					"type": "text",
+					"id": "promo_2_heading",
+					"default": "Promotion heading 2",
+					"label": "Heading"
+				},
+				{
+					"type": "url",
+					"id": "promo_2_link",
+					"label": "Link"
+				},
+				{
+					"type": "header",
+					"content": "Promotion 3"
+				},
+				{
+	        "type": "image_picker",
+	        "id": "promo_3_image",
+	        "label": "Image",
+					"info": "320 x 280 px .jpg recommended."
+	      },
+				{
+					"type": "text",
+					"id": "promo_3_heading",
+					"default": "Promotion heading 3",
+					"label": "Heading"
+				},
+				{
+					"type": "url",
+					"id": "promo_3_link",
+					"label": "Link"
+				},
+				{
+					"type": "header",
+					"content": "Promotion 4"
+				},
+				{
+	        "type": "image_picker",
+	        "id": "promo_4_image",
+	        "label": "Image",
+					"info": "320 x 280 px .jpg recommended."
+	      },
+				{
+					"type": "text",
+					"id": "promo_4_heading",
+					"default": "Promotion heading 4",
+					"label": "Heading"
+				},
+				{
+					"type": "url",
+					"id": "promo_4_link",
+					"label": "Link"
+				}
+			]
+		},
+    {
+      "type": "menu_badge",
+      "name": "Menu badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "badge_position",
+          "label": "Badge position in main menu",
+          "default": "1",
+          "options": [
+            {
+              "value": "1",
+              "label": "Item 1"
+            },
+            {
+              "value": "2",
+              "label": "Item 2"
+            },
+            {
+              "value": "3",
+              "label": "Item 3"
+            },
+            {
+              "value": "4",
+              "label": "Item 4"
+            },
+            {
+              "value": "5",
+              "label": "Item 5"
+            },
+            {
+              "value": "6",
+              "label": "Item 6"
+            },
+            {
+              "value": "7",
+              "label": "Item 7"
+            },
+            {
+              "value": "8",
+              "label": "Item 8"
+            },
+            {
+              "value": "9",
+              "label": "Item 9"
+            },
+            {
+              "value": "10",
+              "label": "Item 10"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+		{
+			"type": "megamenu",
+			"name": "Mega menu",
+			"limit": 12,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "Mega menu block only works on horizontal style navigation"
+				},
+				{
+					"type": "select",
+					"id": "position",
+					"label": "Link position in main menu",
+					"default": "1",
+					"options": [
+		        {
+		          "value": "1",
+		          "label": "Item 1"
+		        },
+						{
+		          "value": "2",
+		          "label": "Item 2"
+		        },
+						{
+		          "value": "3",
+		          "label": "Item 3"
+		        },
+						{
+		          "value": "4",
+		          "label": "Item 4"
+		        },
+						{
+		          "value": "5",
+		          "label": "Item 5"
+		        },
+						{
+		          "value": "6",
+		          "label": "Item 6"
+		        },
+						{
+		          "value": "7",
+		          "label": "Item 7"
+		        },
+						{
+		          "value": "8",
+		          "label": "Item 8"
+		        },
+						{
+		          "value": "9",
+		          "label": "Item 9"
+		        },
+						{
+		          "value": "10",
+		          "label": "Item 10"
+		        },
+						{
+		          "value": "11",
+		          "label": "Item 11"
+		        },
+						{
+		          "value": "12",
+		          "label": "Item 12"
+		        }
+		      ]
+				}
+			]
+		}
+	]
+}
+{% endschema %}

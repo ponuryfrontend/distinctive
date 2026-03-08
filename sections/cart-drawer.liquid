@@ -1,0 +1,26 @@
+{%- render 'cart-drawer', section: section -%}
+{% schema %}
+  {
+    "name": "Cart drawer",
+	  "class": "cart-drawer-section",
+    "blocks": [
+      {
+        "type": "promotion",
+        "name": "Promotion",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Content",
+            "default": "Add campaign text here."
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+          }
+				]
+			}
+		]
+  }
+{% endschema %}

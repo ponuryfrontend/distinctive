@@ -1,0 +1,114 @@
+{%- liquid
+	assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+	assign font_family = section.settings.font_family
+	assign text_width = section.settings.text_width
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+  <revealed-text class="revealed-text">
+    <div class="revealed-text--inner text-width-{{ text_width }}">
+      <div class="revealed-text--heading {{ heading_size }} {{ font_family }}-font">{{ heading | newline_to_br }}</div>
+    </div>
+  </revealed-text>
+</div>
+{{- 'revealed-text.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'revealed-text.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Revealed text",
+	"class": "section-revealed-text",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Revealed text",
+      "info": "Recommend adding long text that would span multiple lines."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h1-large",
+          "label": "Large"
+        },
+        {
+          "value": "h1-xlarge",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "font_family",
+      "options": [
+        {
+          "value": "body",
+          "label": "Body"
+        },
+        {
+          "value": "heading",
+          "label": "Heading"
+        }
+      ],
+      "default": "body",
+      "label": "Font family"
+    },
+    {
+      "type": "select",
+      "id": "text_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Revealed text"
+    }
+  ]
+}
+{% endschema %}

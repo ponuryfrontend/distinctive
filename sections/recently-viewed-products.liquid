@@ -1,0 +1,70 @@
+{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign section_description = section.settings.description
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		<recently-viewed-products class="product-recommendations product-recommendations--recent recently-viewed-products {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-product-handle="{{ product.handle }}">
+			{% render 'section-header', section_heading: section_heading, section_description: section_description %}
+			<ul class="products collection row small-up-{{ settings.product_card_columns }} medium-up-4 no-padding">
+			</ul>
+		</recently-viewed-products>
+	</div>
+</div>
+<script src="{{ 'recently-viewed-products.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+	{
+		"name": "Recently viewed products",
+		"class": "recently-viewed-products-section",
+		"settings": [
+			{
+				"type": "paragraph",
+				"content": "Recently viewed products are only visible when browsing outside of the editor"
+			},
+			{
+	      "type": "text",
+	      "id": "heading",
+	      "label": "Heading",
+	      "default": "Recently viewed |products|",
+				"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+	    },
+	    {
+	      "type": "richtext",
+	      "id": "description",
+	      "label": "Description",
+	      "default": "<p>Describe your recently viewed products here</p>"
+	    },
+			{
+				"type": "checkbox",
+				"id": "mobile_swipe",
+				"default": true,
+				"label": "Enable swipe on mobile"
+			},
+	 		{
+	       "type": "header",
+	       "content": "Spacing"
+	     },
+	 		{
+	 			"type": "checkbox",
+	 			"id": "disable_top_spacing",
+	 			"default": false,
+	 			"label": "Remove top spacing"
+	 		},
+	 		{
+	 			"type": "checkbox",
+	 			"id": "disable_bottom_spacing",
+	 			"default": false,
+	 			"label": "Remove bottom spacing"
+	 		}
+		],
+    "presets": [
+      {
+        "name": "Recently viewed products"
+      }
+    ]
+	}
+{% endschema %}

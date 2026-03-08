@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+
+.testimonials--carousel .flickity-viewport {
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+
+
+
+
+.star-rating {
+  --star-percent: calc(var(--star-rating) / 5 * 100%);
+  display: inline-block;
+  font-size: 1rem;
+  font-family: Times;
+  line-height: 1; }
+  .star-rating:before {
+    content: "★★★★★";
+    background: linear-gradient(90deg, var(--color-star) var(--star-percent), #e1e1e1 var(--star-percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+
+.rating {
+  display: inline-block;
+  margin: 0; }
+
+.rating-star {
+  --letter-spacing: 0.3;
+  --font-size: 1.5;
+  --percent: calc(
+    (
+        var(--rating) / var(--rating-max) + var(--rating-decimal) *
+          var(--font-size) /
+          (var(--rating-max) * (var(--letter-spacing) + var(--font-size)))
+      ) * 100%
+  );
+  letter-spacing: calc(var(--letter-spacing) * 1rem);
+  font-size: calc(var(--font-size) * 1rem);
+  line-height: 1;
+  display: inline-block;
+  font-family: Times;
+  margin: 0; }
+
+.rating-star:before {
+  content: "\2605\2605\2605\2605\2605";
+  background: linear-gradient(90deg, var(--color-reviews) var(--percent), rgba(var(--color-foreground), 0.15) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
+
+.rating-text {
+  display: none; }
+
+.rating-count {
+  display: none;
+  margin: 0; }
+
+@media (forced-colors: active) {
+  .rating {
+    display: none; }
+  .rating-text {
+    display: block; } }
+
+
+.testimonials {
+  background: var(--color-bg, var(--bg-body));
+  color: var(--color-text, var(--color-body));
+  text-align: center;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .testimonials .section-header h2 {
+    color: inherit; }
+  .testimonials--heading {
+    text-align: center; }
+    .testimonials--heading h6 {
+      color: inherit; }
+  .testimonials--inner {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto; }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-small {
+        font-size: 1.5rem; } }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-medium {
+        font-size: 2.125rem; } }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-large {
+        font-size: 2.625rem; } }
+  .testimonials--carousel {
+    display: flex;
+    flex-direction: column-reverse; }
+  .testimonials--testimonial {
+    width: 100%; }
+    .testimonials--testimonial .star-rating {
+      font-size: 1.125rem;
+      margin-bottom: 1.25rem; }
+    .testimonials--testimonial-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .testimonials--testimonial-content p {
+      line-height: 1.3;
+      font-family: inherit; }
+    .testimonials--testimonial + .testimonials--testimonial {
+      display: none; }
+  .testimonials--author {
+    font-size: 0.875rem;
+    line-height: 1; }
+    .testimonials--author:before {
+      content: "\2014";
+      margin-right: 10px; }
+  .testimonials .flickity-enabled .testimonials--testimonial + .testimonials--testimonial {
+    display: block; }
+  .testimonials .flickity-page-dots.dot-style--logos {
+    flex-direction: row;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    grid-gap: 20px; }
+    @media only screen and (min-width: 768px) {
+      .testimonials .flickity-page-dots.dot-style--logos {
+        grid-gap: 40px; } }
+    .testimonials .flickity-page-dots.dot-style--logos .dot {
+      width: auto;
+      height: 50px;
+      background: none;
+      flex-shrink: 0;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-radius: 0; }
+      .testimonials .flickity-page-dots.dot-style--logos .dot img,
+      .testimonials .flickity-page-dots.dot-style--logos .dot .placeholder_svg_tag {
+        object-fit: contain;
+        max-height: 100%;
+        width: auto;
+        border-radius: 0; }
+  .testimonials .flickity-progress {
+    background: rgba(var(--color-text-rgb), 0.15); }
+    @media only screen and (min-width: 768px) {
+      .testimonials .flickity-progress {
+        max-width: 600px; } }
+    .testimonials .flickity-progress--bar {
+      background: var(--color-text, var(--color-body)); }
+      .testimonials .flickity-progress--bar.slideshow--autoplay-progress {
+        transform-origin: center left;
+        width: 100%; }
+  .testimonials scroll-shadow {
+    margin: 0 -15px;
+    width: calc(100% + 30px); }

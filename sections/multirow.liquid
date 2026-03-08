@@ -1,0 +1,145 @@
+{{- 'multirow.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+  assign desktop_layout = section.settings.layout
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<multi-row class="multi-row section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+  <div class="multi-row--inner">
+    {%- for block in section.blocks -%}
+    <div class="multi-row--row">
+      <div class="multi-row--row-inner {{ desktop_layout }}">
+        <div class="multi-row--content">
+          <div class="multi-row--content-heading h3">{{ block.settings.title | default: 'Row |heading|' | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+          <div class="multi-row--content-text rte">{{ block.settings.text }}</div>
+        </div>
+        <div class="multi-row--image">
+          <div class="multi-row--image-media aspect-ratio aspect-ratio--{{ height }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+            {% assign image = block.settings.image %}
+            {%- if image != blank -%}
+              {%- liquid
+                assign small_height = image.src.height | times: '690' | divided_by: image.src.width
+                assign mid_height = image.src.height | times: '1340' | divided_by: image.src.width
+                assign master_width = image.src.width | append: 'x' | append: image.src.height
+                assign width = '690x' | append: small_height | append: ',' | append: '1340x' | append: mid_height | append: ',' | append: master_width
+              -%}
+              {%- render 'responsive-image', image: image, sizes: width -%}
+            {%- else -%}
+            <div class="thb-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endfor -%}
+  </div>
+</multi-row>
+<script src="{{ 'multirow.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Multirow",
+		"class": "section-multirow",
+		"max_blocks": 3,
+    "settings": [
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "adapt",
+	      "label": "Image ratio"
+	    },
+      {
+	      "type": "select",
+	      "id": "layout",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        }
+	      ],
+	      "default": "image_first",
+	      "label": "Desktop image placement",
+	      "info": "Image first is the default mobile layout."
+	    },
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "row",
+        "name": "Row",
+        "settings": [
+          {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+            "info": "420 x 500 jpg recommended"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"default": "Row |heading|",
+						"label": "Heading",
+				    "info": "Wrap your text between | to use body font. For example: Heading |continued|"
+					},
+					{
+						"type": "richtext",
+						"id": "text",
+						"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+						"label": "Description"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multirow",
+				"blocks": [
+	        {
+	          "type": "row"
+	        },
+	        {
+	          "type": "row"
+	        },
+	        {
+	          "type": "row"
+	        }
+	      ]
+      }
+    ]
+  }
+{% endschema %}

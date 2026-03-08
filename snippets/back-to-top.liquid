@@ -1,0 +1,7 @@
+{%- if settings.back_to_top -%}
+<script src="{{ 'back-to-top.js' | asset_url }}" defer="defer"></script>
+<back-to-top class="back-to-top">
+	{%- render 'svg-icons' with 'thb-back-to-top' -%}
+</back-to-top>
+<link rel="stylesheet" href="{{ 'back-to-top.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}

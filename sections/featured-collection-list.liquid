@@ -1,0 +1,127 @@
+{%- liquid
+	assign heading = section.settings.heading
+	assign heading_size = section.settings.heading_size
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		<featured-collection-list class="featured-collection-list section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+			{% if heading -%}<div class="testimonials--heading heading-small"><h6 class="body-font">{{ heading }}</h6></div>{%- endif -%}
+			<div class="featured-collection-list--inner">
+				<div class="featured-collection-list--inner--content">
+					{%- for block in section.blocks -%}
+						{%- liquid
+							assign active = ''
+							if forloop.index == 1
+								assign active = 'active'
+							endif
+
+							assign block_image = block.settings.collection.featured_image
+
+							if block.settings.image
+								assign block_image = block.settings.image
+							endif
+						-%}
+						{%- if block.settings.collection != blank -%}
+						<a href="{{ block.settings.collection.url }}" class="featured-collection-list--button {{ active }}" {{ block.shopify_attributes }}>
+							<span class="featured-collection-list--span {{ heading_size }}"><span>{{ block.settings.collection.title }}</span></span>
+							<div class="featured-collection-list--image">
+								{%- render 'responsive-image', image: block_image, sizes: '640x600' -%}
+							</div>
+						</a>
+						{%- else -%}
+						<a href="#" class="featured-collection-list--button {{ active }}" {{ block.shopify_attributes }}>
+							<span class="featured-collection-list--span {{ heading_size }}"><span>{{ 'onboarding.collection_title' | t }} - {{ forloop.index }}</span></span>
+						</a>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</featured-collection-list>
+	</div>
+</div>
+{{ 'featured-collection-list.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'featured-collection-list.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Featured collection list",
+		"class": "section-featured-collection-list",
+    "settings": [
+			{
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Collections"
+      },
+			{
+				"type": "select",
+				"id": "heading_size",
+				"label": "Collection heading size",
+				"options": [
+					{
+						"value": "h2",
+						"label": "Small"
+					},
+					{
+						"value": "h1",
+						"label": "Large"
+					}
+				],
+				"default": "h1"
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Custom image",
+						"info": "Optional image to use for this collection."
+					}
+				]
+			}
+		],
+    "presets": [
+      {
+        "name": "Featured collection list",
+				"blocks": [
+					{
+						"type": "collection"
+					},
+					{
+						"type": "collection"
+					},
+					{
+						"type": "collection"
+					}
+				]
+      }
+    ]
+  }
+
+{% endschema %}

@@ -1,0 +1,46 @@
+
+
+
+.footer-email-bar {
+  padding: 0 15px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .footer-email-bar {
+      padding: 0 40px; } }
+
+.footer-email-bar {
+  background: var(--color-footer-bg, var(--bg-body));
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 0.9375rem;
+  color: var(--color-footer-text, var(--color-body));
+  border-top: 1px solid var(--color-footer-border);
+  max-width: 100%;
+  display: grid;
+  grid-gap: 15px;
+  --color-form-border: var(--color-footer-border);
+  --color-body: var(--color-footer-bg, var(--bg-body));
+  --color-accent: var(--color-footer-link, $accent); }
+  @media only screen and (min-width: 1068px) {
+    .footer-email-bar {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      grid-gap: 30px; } }
+  .footer-email-bar .h4 {
+    margin-bottom: 0;
+    color: var(--color-footer-heading); }
+  .footer-email-bar a {
+    color: var(--color-footer-link, var(--color-body)); }
+    .footer-email-bar a:hover {
+      color: var(--color-footer-link-hover, var(--color-accent)); }
+  .footer-email-bar .signup-container {
+    max-width: 540px;
+    width: 100%; }
+    @media only screen and (min-width: 1068px) {
+      .footer-email-bar .signup-container {
+        margin-left: auto; }
+        [dir="rtl"] .footer-email-bar .signup-container {
+          margin-left: 0;
+          margin-right: auto; } }

@@ -1,0 +1,18 @@
+{%- if show_language_switcher or show_currency_switcher -%}
+<localization-form class="thb-localization-forms {{ class }}">
+	{%- if show_language_switcher -%}
+	<modal-opener class="thb-localization-forms__opener no-js-hidden" data-modal="#LocalizationModal--locale">
+		<button class="thb-localization-forms__button" type="button" aria-haspopup="dialog">
+			{{- localization.language.endonym_name | capitalize }}
+		</button>
+	</modal-opener>
+	{%- endif -%}
+	{%- if show_currency_switcher -%}
+	<modal-opener class="thb-localization-forms__opener no-js-hidden" data-modal="#LocalizationModal--country">
+		<button class="thb-localization-forms__button" type="button" aria-haspopup="dialog">
+			{{- localization.country | image_url: width: 28, height: 28, format: 'jpg' | image_tag: loading: 'lazy', sizes: '14px', widths: '28', class: 'thb-localization-forms__flag' }} {{ localization.country.name | capitalize }} <span class="thb-localization-forms--currency">({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})</span>
+		</button>
+	</modal-opener>
+	{%- endif -%}
+</localization-form>
+{%- endif -%}

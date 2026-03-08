@@ -1,0 +1,128 @@
+
+
+
+.scrolling-boxes {
+  display: block;
+  overflow: hidden; }
+  .scrolling-boxes--inner {
+    display: flex;
+    flex-wrap: nowrap; }
+  .scrolling-boxes--box {
+    width: calc(90vw - 30px);
+    flex-shrink: 0;
+    color: var(--color-text, #fff); }
+    @media only screen and (min-width: 768px) {
+      .scrolling-boxes--box {
+        width: calc(100vw / var(--columns-desktop)); } }
+    .scrolling-boxes--box figure {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 0;
+      padding-bottom: var(--ratio-percent); }
+      .scrolling-boxes--box figure.aspect-ratio--portrait {
+        padding-bottom: 125%; }
+      .scrolling-boxes--box figure.aspect-ratio--square {
+        padding-bottom: 100%; }
+      .scrolling-boxes--box figure.aspect-ratio--landscape {
+        padding-bottom: 75%; }
+      .scrolling-boxes--box figure img,
+      .scrolling-boxes--box figure svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        object-fit: cover; }
+      .scrolling-boxes--box figure:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        background: var(--overlay-gradient, rgba(var(--overlay-color-rgb), var(--overlay-opacity))); }
+    .scrolling-boxes--box .scrolling-boxes--video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none; }
+      .scrolling-boxes--box .scrolling-boxes--video video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; }
+    .scrolling-boxes--box-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      display: flex;
+      padding: 30px;
+      color: var(--color-text, #fff);
+      display: flex; }
+      @media only screen and (min-width: 1068px) {
+        .scrolling-boxes--box-content {
+          padding: 45px; } }
+      @media only screen and (min-width: 1440px) {
+        .scrolling-boxes--box-content {
+          padding: 60px; } }
+      .scrolling-boxes--box-content.content-top-left {
+        justify-content: flex-start;
+        align-items: flex-start; }
+      .scrolling-boxes--box-content.content-top-center {
+        justify-content: center;
+        align-items: flex-start; }
+      .scrolling-boxes--box-content.content-top-right {
+        justify-content: flex-end;
+        align-items: flex-start; }
+      .scrolling-boxes--box-content.content-middle-left {
+        justify-content: flex-start;
+        align-items: center; }
+      .scrolling-boxes--box-content.content-middle-center {
+        justify-content: center;
+        align-items: center; }
+      .scrolling-boxes--box-content.content-middle-right {
+        justify-content: flex-end;
+        align-items: center; }
+      .scrolling-boxes--box-content.content-bottom-left {
+        justify-content: flex-start;
+        align-items: flex-end; }
+      .scrolling-boxes--box-content.content-bottom-center {
+        justify-content: center;
+        align-items: flex-end; }
+      .scrolling-boxes--box-content.content-bottom-right {
+        justify-content: flex-end;
+        align-items: flex-end; }
+      .scrolling-boxes--box-content-heading {
+        color: inherit;
+        margin-bottom: 8px; }
+        .scrolling-boxes--box-content-heading + .button {
+          margin-top: 20px; }
+      .scrolling-boxes--box-content p {
+        margin-bottom: 30px; }
+      .scrolling-boxes--box-content p.subheading {
+        font-size: 0.75rem;
+        margin-bottom: 15px; }
+      .scrolling-boxes--box-content .text-button {
+        color: inherit; }
+      @media only screen and (min-width: 768px) {
+        .scrolling-boxes--box-content > div {
+          max-width: 90%; } }
+      .scrolling-boxes--box-content > div > *:last-child {
+        margin-bottom: 0; }
+      .scrolling-boxes--box-content .text-button {
+        position: relative;
+        z-index: 22; }
+      .scrolling-boxes--box-content-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 21; }

@@ -1,0 +1,73 @@
+{%- if predictive_search.performed -%}
+	{%- liquid
+		assign predictive_search_products = predictive_search.resources.products
+		assign predictive_search_articles = predictive_search.resources.articles
+		assign predictive_search_collections = predictive_search.resources.collections
+		assign predictive_search_queries = predictive_search.resources.queries
+		assign total = predictive_search_products.size | plus: predictive_search_articles.size | plus: predictive_search_collections.size | plus: predictive_search_queries.size
+		-%}
+
+
+	<div class="thb-predictive-search--inner">
+		{%- if predictive_search_products.size != 0 -%}
+			<div class="thb-predictive-search--content">
+					<h6 class="thb-predictive-search--heading">{{ 'sections.header.products' | t }}</h6>
+					<div id="product-grid-{{ section.id }}" class="products row grid">
+						{%- for predictive_product in predictive_search_products -%}
+							<div class="small-6 medium-6 large-4 columns">
+								{% render 'product-card', product_card_product: predictive_product %}
+							</div>
+						{%- endfor -%}
+					</div>
+			</div>
+		{%- endif -%}
+		
+		<div class="thb-predictive-search--sidebar">
+			{%- if predictive_search_queries.size != 0 -%}
+				<div>
+					<h6 class="thb-predictive-search--heading">{{ 'sections.header.suggestions' | t }}</h6>
+					<ul>
+					{%- for query in predictive_search_queries -%}
+					<li>
+					<a href="{{ query.url }}" class="thb-predictive-search--query">{{ query.styled_text }}</a>
+					</li>
+					{%- endfor -%}
+					</ul>
+				</div>
+			{%- endif -%}
+			{%- if predictive_search_collections.size != 0 -%}
+				<div>
+					<h6 class="thb-predictive-search--heading">{{ 'sections.header.collections' | t }}</h6>
+					<ul>
+						{%- for pcollection in predictive_search_collections -%}
+						<li>
+							<a href="{{ pcollection.url }}" class="thb-predictive-search--collection">
+								{%- if pcollection.featured_image -%}
+									{%- assign pcollection_image_url = pcollection.featured_image | image_url -%}
+									{%- render 'responsive-image', image: pcollection_image_url, sizes: '120x120' -%}
+								{%- endif -%}
+								<div>
+									{{ pcollection.title }}
+									<span>{{ 'products.facets.product_count_simple' | t: count: pcollection.products_count }}</span>
+								</div>
+							</a>
+						</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+			{%- endif -%}
+			{%- if predictive_search_articles.size != 0 -%}
+				<div>
+					<h6 class="thb-predictive-search--heading">{{ 'sections.header.articles' | t }}</h6>
+					<ul>
+						{%- for predictive_article in predictive_search_articles -%}
+							<li><a href="{{ predictive_article.url }}" class="thb-predictive-search--article" title="{{ predictive_article.title | escape }}">{{ predictive_article.title | highlight: predictive_search.terms }}</a></li>
+						{%- endfor -%}
+					</ul>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+	<button id="search-results-submit" class="button outline thb-predictive-search--button{%- if total == 0 %} hidden{%- endif -%}"><span data-content="{{ 'sections.header.view_all_results' | t }}"></span></button>
+
+{%- endif -%}

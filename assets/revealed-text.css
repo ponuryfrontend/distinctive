@@ -1,0 +1,20 @@
+
+
+
+.revealed-text {
+  display: block;
+  text-align: center; }
+  .revealed-text--inner {
+    max-width: 710px;
+    margin: 0 auto;
+    padding: 0 15px; }
+    @media only screen and (min-width: 768px) {
+      .revealed-text--inner {
+        padding: 0 50px;
+        max-width: 780px; } }
+    @media only screen and (min-width: 768px) {
+      .revealed-text--inner.text-width-medium {
+        max-width: 980px; } }
+    @media only screen and (min-width: 768px) {
+      .revealed-text--inner.text-width-large {
+        max-width: 1180px; } }

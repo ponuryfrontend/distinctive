@@ -1,0 +1,302 @@
+{{- 'facets.css' | asset_url | stylesheet_tag -}}
+{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign enable_filtering = section.settings.enable_filtering
+	assign enable_sorting = section.settings.enable_sorting
+	assign show_counts = section.settings.show_counts
+	assign filter_color_swatches = section.settings.filter_color_swatches
+	assign pagination_type = section.settings.pagination_type
+	assign products_per_page = section.settings.products_per_page
+	assign columns_desktop = section.settings.columns_desktop
+
+	assign gallery_enabled = false
+-%}
+{%- for filter in collection.filters limit: 1 -%}{%- endfor -%}{%- comment -%} This is just to get rid of the "this theme does not support filters" message in the shopify admin {%- endcomment -%}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		{%- paginate collection.products by products_per_page -%}
+			<div class="collection-container section-spacing-bottom">
+				{%- render 'facets-bar', results: collection, enable_filtering: enable_filtering, enable_sorting: enable_sorting, filter_color_swatches: filter_color_swatches -%}
+				<div id="ProductGridContainer">
+					{%- if collection.products.size == 0 -%}
+						<div class="collection-empty collection" id="product-grid" data-id="{{ section.id }}">
+							{% render 'svg-icons' with 'thb-no-products' %}
+							<p>
+								{{ 'sections.collection_template.empty' | t }}<br>
+								{%- if collection.terms -%}
+								{{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url }}
+								{%- endif -%}
+							</p>
+						</div>
+					{%- else -%}
+						{%- assign product_card_columns = settings.product_card_columns -%}
+						<ul id="product-grid" data-id="{{ section.id }}" class="products collection row small-up-{{ product_card_columns }} medium-up-{{ columns_desktop }} pagination--{{ pagination_type }}">
+							{%- for product in collection.products -%}
+								{%- assign product_loop = forloop -%}
+								{%- for block in section.blocks -%}
+									{%- liquid
+										assign display_promotion = false
+										if product_loop.index == block.settings.promotion_position
+											assign display_promotion = true
+										endif
+
+										if block.settings.promotion_collection != blank
+											if collection.handle == block.settings.promotion_collection.handle and product_loop.index == block.settings.promotion_position
+												assign display_promotion = true
+											else
+												assign display_promotion = false
+											endif
+										endif
+									-%}
+									{%- if display_promotion -%}
+										{%- unless gallery_enabled -%}
+											{{- 'gallery.css' | asset_url | stylesheet_tag -}}
+											{%- assign gallery_enabled = true -%}
+										{%- endunless -%}
+										<li class="promotion-column column promotion-column-width--{{ block.settings.promotion_width }} product-columns-{{ columns_desktop }}">
+											{%- render 'product-promotion', block: block -%}
+										</li>
+									{%- endif -%}
+								{%- endfor -%}
+								<li class="column">
+									{%- liquid
+									if forloop.first and paginate.current_page == 1
+										assign product_priority = 'high'
+									else
+										assign product_priority = null
+									endif
+								-%}
+								{%- render 'product-card', product_card_product: product, priority: product_priority -%}
+								</li>
+							{%- endfor -%}
+						</ul>
+						{% render 'pagination', paginate: paginate, results: collection, pagination_type: pagination_type, id: section.id %}
+					{%- endif -%}
+				</div>
+			</div>
+		{%- endpaginate -%}
+	</div>
+</div>
+{%- if enable_filtering or enable_sorting -%}
+{%- if enable_filtering  -%}
+{{ 'nouislider.js' | asset_url | script_tag }}
+{%- endif -%}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Product grid",
+    "settings": [
+			{
+        "type": "range",
+        "id": "products_per_page",
+        "min": 2,
+        "max": 48,
+        "step": 1,
+        "label": "Number of products",
+        "default": 12
+      },
+			{
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "label": "Number of columns on desktop",
+        "default": 3
+      },
+			{
+	      "type": "select",
+	      "id": "pagination_type",
+	      "options": [
+	        {
+	          "value": "paginated",
+	          "label": "Paginated"
+	        },
+	        {
+	          "value": "loadmore",
+	          "label": "Click to load"
+	        },
+	        {
+	          "value": "infinite",
+	          "label": "Infinite"
+	        }
+	      ],
+	      "default": "paginated",
+	      "label": "Pagination",
+	      "info": "Choose how additional pages of products are navigated."
+	    },
+	    {
+	      "type": "header",
+	      "content": "Filtering and sorting"
+	    },
+	    {
+	      "type": "checkbox",
+	      "id": "enable_filtering",
+	      "default": true,
+	      "label": "Enable filtering",
+	      "info": "Customize [filters](/admin/menus)"
+	    },
+	    {
+	      "type": "checkbox",
+	      "id": "enable_sorting",
+	      "default": true,
+	      "label": "Enable sorting"
+	    },
+			{
+	      "type": "checkbox",
+	      "id": "show_counts",
+	      "default": true,
+	      "label": "Show filter values count"
+	    },
+			{
+				"type": "checkbox",
+				"id": "filter_color_swatches",
+				"default": true,
+				"label": "Show color swatches"
+			}
+    ],
+		"blocks": [
+      {
+        "type": "promotion",
+        "name": "Promotion",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "promotion_collection",
+            "label": "Collection",
+						"info": "Show on specific collection only"
+          },
+					{
+		        "type": "range",
+		        "id": "promotion_position",
+		        "min": 1,
+		        "max": 24,
+		        "step": 1,
+		        "label": "Show in position",
+		        "default": 1
+		      },
+					{
+			      "type": "select",
+			      "id": "promotion_width",
+			      "options": [
+			        {
+			          "value": "1",
+			          "label": "1 column"
+			        },
+			        {
+			          "value": "2",
+			          "label": "2 columns"
+			        }
+			      ],
+			      "default": "1",
+			      "label": "Width"
+			    },
+					{
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+					{
+						"type": "text",
+						"id": "title",
+						"default": "Promotion |Heading|",
+						"label": "Heading"
+					},
+					{
+						"type": "textarea",
+						"id": "text",
+						"default": "Advertise a promotion or a sale",
+						"label": "Description"
+					},
+					{
+            "id": "link_label",
+            "type": "text",
+            "label": "Button label",
+            "default": "Explore",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+						 "type": "checkbox",
+						 "id": "use_text_button",
+						 "label": "Use text button",
+						 "default": false
+					},
+					{
+            "id": "block_link",
+            "type": "url",
+            "label": "Link",
+						"info": "This will allow you to set a link to the promotion"
+          },
+					{
+						"type": "header",
+						"content": "Layout"
+					},
+					{
+						"type": "select",
+						"id": "content_position",
+						"label": "Content position",
+						"options": [
+							{ "value": "top-left", "label": "Top left" },
+							{ "value": "top-center", "label": "Top center" },
+							{ "value": "top-right", "label": "Top right" },
+							{ "value": "middle-left", "label": "Middle left" },
+							{ "value": "middle-center", "label": "Middle center" },
+							{ "value": "middle-right", "label": "Middle right" },
+							{ "value": "bottom-left", "label": "Bottom left" },
+							{ "value": "bottom-center", "label": "Bottom center" },
+							{ "value": "bottom-right", "label": "Bottom right" }
+						],
+						"default": "bottom-left"
+					},
+					{
+						"type": "select",
+						"id": "text_alignment",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						],
+						"default": "left",
+						"label": "Content alignment"
+					},
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "overlay_color",
+						"label": "Overlay",
+						"default": "#000000"
+					},
+					{
+						"type": "range",
+						"id": "overlay_opacity",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Overlay opacity",
+						"default": 70
+					}
+				]
+			}
+		]
+  }
+{% endschema %}

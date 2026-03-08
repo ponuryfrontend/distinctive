@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+
+
+.announcement-bar {
+  padding: 0 15px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .announcement-bar {
+      padding: 0 40px; } }
+
+.announcement-bar {
+  background: var(--color-announcement-bar-bg, var(--bg-body));
+  color: var(--color-announcement-bar-text, var(--color-body));
+  line-height: 1;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  min-height: 36px;
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-flow: dense;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  max-width: 100%; }
+  @media only screen and (min-width: 1068px) {
+    .announcement-bar {
+      grid-template-columns: 1fr 480px 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 30px;
+      align-items: center; } }
+  .announcement-bar--has-border-true {
+    border-bottom: 1px solid var(--color-announcement-bar-border, var(--color-border)); }
+  .announcement-bar--inner {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    max-width: none;
+    white-space: nowrap;
+    font-size: calc(var(--font-announcement-scale, 1) * 12px);
+    font-weight: 400;
+    max-width: 100%;
+    margin: 0 auto;
+    grid-area: span 2/ span 2; }
+    @media only screen and (min-width: 1068px) {
+      .announcement-bar--inner {
+        grid-area: auto;
+        max-width: 480px; } }
+  .announcement-bar--marquee {
+    display: flex;
+    overflow: hidden; }
+    .announcement-bar--marquee.direction-left > div {
+      animation: marquee-left var(--marquee-speed) linear infinite; }
+    .announcement-bar--marquee.direction-right > div {
+      animation: marquee-right var(--marquee-speed) linear infinite; }
+    .announcement-bar--marquee > div {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      will-change: transform; }
+    .announcement-bar--marquee:hover > div {
+      animation-play-state: paused; }
+    .announcement-bar--marquee .announcement-bar--item {
+      position: relative; }
+      .announcement-bar--marquee .announcement-bar--item:empty {
+        display: none; }
+      .announcement-bar--marquee .announcement-bar--item:before {
+        content: '●';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 80%; }
+  .announcement-bar--carousel {
+    text-align: center;
+    width: 100%;
+    padding: 0 20px; }
+    .announcement-bar--carousel .carousel {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto; }
+      .announcement-bar--carousel .carousel__slide {
+        width: 100%;
+        display: none;
+        white-space: normal;
+        text-align: center;
+        align-items: center;
+        justify-content: center; }
+        .announcement-bar--carousel .carousel__slide:first-child {
+          display: flex; }
+      .announcement-bar--carousel .carousel .flickity-viewport:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 100%;
+        z-index: 30;
+        pointer-events: none;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0, var(--color-announcement-bar-bg, var(--color-accent)) 50px, var(--color-announcement-bar-bg, var(--color-accent)) 100%); }
+      .announcement-bar--carousel .carousel .flickity-viewport:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 100%;
+        z-index: 30;
+        pointer-events: none;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, var(--color-announcement-bar-bg, var(--color-accent)) 50px, var(--color-announcement-bar-bg, var(--color-accent)) 100%); }
+      .announcement-bar--carousel .carousel .flickity-viewport .carousel__slide {
+        display: flex; }
+      .announcement-bar--carousel .carousel .flickity-slider {
+        display: flex;
+        align-items: center; }
+    .announcement-bar--carousel .flickity-nav {
+      display: flex;
+      opacity: 1;
+      background: transparent;
+      border: none;
+      height: 36px;
+      width: 30px;
+      margin-top: -18px; }
+      .announcement-bar--carousel .flickity-nav svg path {
+        stroke: var(--color-announcement-bar-text, var(--color-body)); }
+      .announcement-bar--carousel .flickity-nav.flickity-prev {
+        left: -30px; }
+      .announcement-bar--carousel .flickity-nav.flickity-next {
+        right: -30px; }
+  .announcement-bar--item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    letter-spacing: 0.03em; }
+    .announcement-bar--item svg {
+      margin-right: 12px;
+      height: 14px;
+      fill: var(--color-announcement-bar-text, var(--color-body)); }
+  .announcement-bar--social {
+    display: none; }
+    @media only screen and (min-width: 1068px) {
+      .announcement-bar--social {
+        display: block; } }
+    .announcement-bar--social ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      line-height: 1; }
+      .announcement-bar--social ul li {
+        margin: 0 4px 0 0; }
+        .announcement-bar--social ul li a {
+          display: flex;
+          align-items: center;
+          width: 38px;
+          height: 38px;
+          margin: -5px 0 -5px -5px; }
+          .announcement-bar--social ul li a svg {
+            width: 18px; }
+    .announcement-bar--social svg {
+      height: 14px;
+      width: auto; }
+      .announcement-bar--social svg path {
+        fill: var(--color-announcement-bar-text, var(--color-body)); }
+  .announcement-bar--localization {
+    display: none;
+    text-align: right; }
+    .announcement-bar--localization .thb-localization-forms__button {
+      color: var(--color-announcement-bar-text, var(--color-body)); }
+    @media only screen and (min-width: 1068px) {
+      .announcement-bar--localization {
+        display: block; } }
+    [dir="rtl"] .announcement-bar--localization {
+      text-align: left; }
+  .announcement-bar a {
+    color: var(--color-announcement-bar-text, var(--color-body)); }
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%); } }
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(0%); } }

@@ -1,0 +1,257 @@
+{{- 'image-with-text-slideshow.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign mobile_height = section.settings.mobile_height
+	assign desktop_height = section.settings.desktop_height
+	assign desktop_layout = section.settings.layout
+	assign autoplay = section.settings.autoplay
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	if autoplay
+		assign autoplay = section.settings.autoplay_length | times: 1000
+	endif
+
+	assign dots = true
+	assign dots_class = 'custom-dots'
+	if section.blocks.size < 2
+		assign dots = false
+		assign dots_class = ''
+	endif
+
+	comment
+	do mobile image height
+	endcomment
+-%}
+<div class="image-with-text-slideshow {{ desktop_layout }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+	<slide-show class="image-with-text-slideshow carousel" data-fade="true">
+		{% for block in section.blocks %}
+			{% assign assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 %}
+			<div class="image-with-text-slideshow--slide carousel__slide" {{ block.shopify_attributes }}>
+				<div class="image-with-text-slideshow--slide-content">
+					<div class="image-with-text-slideshow--slide-content-inner">
+						{% if block.settings.subheading %}
+							<p class="subheading">{{ block.settings.text }}</p>
+						{% endif %}
+						{% if block.settings.heading %}
+							<div class="image-with-text-slideshow--heading h1">{{ block.settings.heading | newline_to_br }}</div>
+						{% endif %}
+						{% if block.settings.content %}
+						<div class="image-with-text-slideshow--description">
+							<p>{{ block.settings.content | newline_to_br }}</p>
+						</div>
+						{% endif %}
+						{% if block.settings.button_text != blank %}
+							<a class="button outline" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}"><span data-content="{{ block.settings.button_text }}"></span></a>
+						{% endif %}
+					</div>
+				</div>
+				<div class="image-with-text-slideshow--slide-image {{ mobile_height }} {{ desktop_height }}">
+					<div class="image-with-text-slideshow--slide-media {{ mobile_height }} {{ desktop_height }}">
+						{%- if block.settings.image -%}
+							{%- liquid
+								assign image = block.settings.image
+								assign master_width = image.src.width | append: 'x' | append: image.src.height
+								assign width = '375x500' | append: ',' | append: master_width
+								
+								render 'responsive-image', image: image, sizes: width
+							-%}
+						{%- else -%}
+							{{- 'hero-apparel-' | append: placeholder_image_index | placeholder_svg_tag: 'placeholder_svg_tag' -}}
+						{%- endif -%}
+					</div>
+					{% if section.blocks.size > 1 %}
+					<div class="image-with-text-slideshow--arrows">
+						{%- render 'slideshow-arrows' -%}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</slide-show>
+</div>
+{% schema %}
+  {
+    "name": "Image with text slideshow",
+		"class": "section-image-with-text-slideshow",
+    "settings": [
+			{
+				"type": "select",
+				"id": "mobile_height",
+				"label": "Mobile height",
+				"options": [
+					{
+						"value": "mobile-height-auto",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "mobile-height-300",
+						"label": "300px"
+					},
+					{
+						"value": "mobile-height-350",
+						"label": "350px"
+					},
+					{
+						"value": "mobile-height-400",
+						"label": "400px"
+					},
+					{
+						"value": "mobile-height-450",
+						"label": "450px"
+					},
+					{
+						"value": "mobile-height-500",
+						"label": "500px"
+					},
+					{
+						"value": "mobile-height-full",
+						"label": "Full screen"
+					}
+				],
+				"default": "mobile-height-350"
+			},
+			{
+				"type": "select",
+				"id": "desktop_height",
+				"label": "Desktop height",
+				"options": [
+					{
+						"value": "desktop-height-auto",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "desktop-height-450",
+						"label": "450px"
+					},
+					{
+						"value": "desktop-height-550",
+						"label": "550px"
+					},
+					{
+						"value": "desktop-height-650",
+						"label": "650px"
+					},
+					{
+						"value": "desktop-height-750",
+						"label": "750px"
+					},
+					{
+						"value": "desktop-height-full",
+						"label": "Full screen"
+					}
+				],
+				"default": "desktop-height-650"
+			},
+			{
+	      "type": "select",
+	      "id": "layout",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        }
+	      ],
+	      "default": "image_first",
+	      "label": "Desktop image placement",
+	      "info": "Image first is the default mobile layout."
+	    },
+			{
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+			{
+				"type": "range",
+				"id": "autoplay_length",
+				"min": 3,
+				"max": 10,
+				"step": 1,
+				"unit": "s",
+				"label": "Change slides every",
+				"default": 5
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "2000 x 1300 .jpg recommended."
+					},
+					{
+						"type": "text",
+						"id": "subheading",
+						"label": "Subheading",
+						"default": "Add a tagline"
+					},
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Slide Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Description",
+            "default": "Add a descriptive text here for your slide."
+          },
+          {
+            "id": "button_text",
+            "type": "text",
+            "label": "Button label",
+            "default": "Shop Now",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "button_link",
+            "type": "url",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text slideshow",
+				"blocks": [
+					{
+						"type": "slide"
+					},
+					{
+						"type": "slide"
+					},
+					{
+						"type": "slide"
+					}
+				]
+      }
+    ]
+  }
+{% endschema %}

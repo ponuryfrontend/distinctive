@@ -1,0 +1,23 @@
+{%- liquid
+	assign heading = section.settings.heading
+-%}
+<link rel="stylesheet" href="{{ 'footer-email-bar.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'footer-email-bar.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="footer-email-bar">
+  <div class="h4">{{ heading }}</div>
+  {%- render 'email-signup-form' -%} 
+</div>
+
+{% schema %}
+  {
+		"name": "Footer signup bar",
+		"settings": [
+			{
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Add heading for your signup form"
+      }
+		]
+  }
+{% endschema %}

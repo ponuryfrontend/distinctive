@@ -1,0 +1,207 @@
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign section_description = section.settings.description
+	assign columns_desktop = section.settings.columns_desktop
+	assign columns_mobile = section.settings.columns_mobile
+	assign show_progress_bar = section.settings.show_progress_bar
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign collections = section.settings.collection_list
+	assign image_ratio = section.settings.image_ratio
+	assign collection_layout = section.settings.layout
+	assign content_alignment = section.settings.content_alignment
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign is_carousel = false
+
+	assign element = 'div'
+	if collection_layout == 'carousel'
+		assign is_carousel = true
+		assign carousel_class = 'carousel'
+		assign element = 'slide-show'
+	endif
+-%}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		<list-collections class="list-collections section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --var-collection-list-columns:{{ columns_desktop }}">
+			{% render 'section-header', section_heading: section_heading, section_description: section_description %}
+			<{{ element }} class="collection-grid collection-grid--{{ collection_layout }} {{ carousel_class }}{% if mobile_swipe and is_carousel == false %} swipe-on-mobile{% endif %} mobile-columns--{{ columns_mobile | default: 1 }}">
+				{% if collections.count > 0 %}
+					{% for collection in collections %}
+						{% render 'collection-card', grid_collection: collection, media_aspect_ratio: image_ratio, layout: collection_layout, index: forloop.index, is_carousel: is_carousel, columns_desktop: columns_desktop, columns_mobile: columns_mobile, content_alignment: content_alignment %}
+					{% endfor %}
+				{% else %}
+					{%- for i in (1..6) -%}
+						{% render 'collection-card', grid_collection: empty, media_aspect_ratio: image_ratio, layout: collection_layout, index: forloop.index, is_carousel: is_carousel, columns_desktop: columns_desktop, columns_mobile: columns_mobile, content_alignment: content_alignment %}
+					{% endfor %}
+				{% endif %}
+				{%- if collection_layout == 'carousel' -%}
+					{%- if collections.count > columns_desktop -%}
+					{%- render 'slideshow-arrows' -%}
+					{%- endif -%}
+				{%- endif -%}
+			</{{ element }}>
+			{%- if collection_layout == 'carousel' and show_progress_bar -%}
+			<div class="flickity-progress">
+				<div class="flickity-progress--bar"></div>
+			</div>
+			{%- endif -%}
+		</list-collections>
+	</div>
+</div>
+{{- 'list-collections.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'list-collections.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Collection list",
+	  "class": "collection-list-section",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Shop by Category",
+				"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your collections</p>"
+			},
+			{
+			  "type": "collection_list",
+			  "id": "collection_list",
+			  "label": "Collections",
+			  "limit": 24
+			},
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "portrait",
+	      "label": "Image ratio",
+	      "info": "Add images by editing your collections. [Learn more](https://help.shopify.com/en/manual/products/collections)"
+	    },
+			{
+				"type": "select",
+				"id": "layout",
+				"options": [
+					{
+						"value": "grid",
+						"label": "Grid"
+					},
+					{
+						"value": "carousel",
+						"label": "Carousel"
+					}
+				],
+				"default": "grid",
+				"label": "Layout"
+			},
+			{
+	      "type": "range",
+	      "id": "columns_desktop",
+	      "min": 2,
+	      "max": 6,
+	      "step": 1,
+	      "default": 4,
+	      "label": "Number of columns on desktop"
+	    },
+			{
+				"type": "select",
+				"id": "columns_mobile",
+				"options": [
+					{
+						"value": "1",
+						"label": "One column"
+					},
+					{
+						"value": "2",
+						"label": "Two Columns"
+					}
+				],
+				"default": "1",
+				"label": "Number of columns on mobile"
+			},
+			{
+        "type": "header",
+        "content": "Content"
+      },
+			{
+        "type": "select",
+        "id": "content_alignment",
+        "label": "Content alignment",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+			{
+        "type": "header",
+        "content": "Carousel"
+      },
+			{
+				"type": "checkbox",
+				"id": "show_progress_bar",
+				"label": "Show progress bar",
+				"default": true
+			},
+			{
+        "type": "header",
+        "content": "Grid"
+      },
+			{
+				"type": "checkbox",
+				"id": "mobile_swipe",
+				"default": true,
+				"label": "Enable swipe on mobile"
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "presets": [
+      {
+        "name": "Collection list"
+      }
+    ]
+  }
+{% endschema %}

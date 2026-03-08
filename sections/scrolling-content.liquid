@@ -1,0 +1,250 @@
+{{- 'scrolling-content.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign desktop_layout = section.settings.desktop_layout
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<scrolling-content class="scrolling-content section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-section-index="{{ section.index }}">
+	<div class="scrolling-content--inner">
+		{%- for block in section.blocks -%}
+			{%- liquid
+				assign subheading = block.settings.subheading
+				assign heading = block.settings.heading
+				assign heading_size = block.settings.heading_size
+				assign content = block.settings.content
+				assign description_size = block.settings.description_size
+
+				assign button_text = block.settings.button_text
+				assign button_link = block.settings.button_link
+
+				assign color_bg = block.settings.color_bg
+				assign color_heading = block.settings.color_heading
+				assign color_text = block.settings.color_text
+
+				assign ratio = 1
+				if image != blank
+					assign ratio = image.aspect_ratio
+				endif
+			-%}
+			<div class="scrolling-content--section" style="--color-bg: {{ color_bg }}; --solid-button-label: {{ color_bg }}; --outline-button-background: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-body: {{ color_text }}; --color-body-rgb: {{ color_text.rgb | replace: ' ', ',' }}; --solid-button-background: {{ color_text }}; --outline-button-label: {{ color_text }};">
+				<div class="scrolling-content--section-inner {{ desktop_layout }}">
+					<div class="scrolling-content--image">
+						<div class="scrolling-content--image-inner" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+							{%- if block.settings.image -%}
+								{%- liquid
+									assign image = block.settings.image
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									assign width = '375x0' | append: ',' | append: master_width
+									assign class = ''
+									if block.settings.mobile_image
+										assign class = 'scrolling-content--desktop'
+									endif
+								render 'responsive-image', image: image, sizes: width, class: class -%}
+							{%- else -%}
+								{%- assign index = forloop.index | modulo: 2 | plus: 1 -%}
+								{{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+							{%- endif -%}
+							{%- if block.settings.mobile_image -%}
+								{%- liquid
+									assign image = block.settings.mobile_image
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+
+									render 'responsive-image', image: image, sizes: width, class: 'scrolling-content--mobile'
+								-%}
+							{%- endif -%}
+						</div>
+					</div>
+					<div class="scrolling-content--content">
+						<div>
+							{% if subheading %}
+								<p class="subheading">{{ subheading }}</p>
+							{% endif %}
+							{% if heading %}
+								<div class="{{ heading_size }}">{{ heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+							{% endif %}
+							{% if content %}
+								<div class="rte description-size--{{ description_size }}">{{ content }}</div>
+							{% endif %}
+							{% if button_text != blank %}
+								<a class="button"{% if button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ button_link }}"{% endif %}><span data-content="{{ button_text }}"></span></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{%- endfor -%}
+	</div>
+</scrolling-content>
+<script src="{{ 'scrolling-content.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "Scrolling content",
+		"class": "section-scrolling-content",
+    "settings": [
+			{
+	      "type": "select",
+	      "id": "desktop_layout",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        }
+	      ],
+	      "default": "text_first",
+	      "label": "Desktop image placement",
+	      "info": "Image first is the default mobile layout."
+	    },
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+      {
+        "type": "section",
+        "name": "Section",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "1720 x 1670 .jpg recommended."
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image",
+						"label": "Mobile image (optional)"
+					},
+					{
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "subheading"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Section |heading|",
+						"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+          },
+					{
+						"type": "select",
+						"id": "heading_size",
+						"label": "Size",
+						"options": [
+							{
+								"value": "h2",
+								"label": "Small"
+							},
+							{
+								"value": "h1",
+								"label": "Medium"
+							},
+							{
+								"value": "h1-large",
+								"label": "Large"
+							}
+						],
+						"default": "h1"
+					},
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Description",
+            "default": "<p>Add a descriptive text here for your section.</p>"
+          },
+					{
+						"type": "select",
+						"id": "description_size",
+						"label": "Size",
+						"options": [
+							{
+								"value": "small",
+								"label": "Small"
+							},
+							{
+								"value": "medium",
+								"label": "Medium"
+							},
+							{
+								"value": "large",
+								"label": "Large"
+							}
+						],
+						"default": "medium"
+					},
+          {
+            "id": "button_text",
+            "type": "text",
+            "label": "Button label",
+            "default": "Shop Now",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "button_link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "color_bg",
+						"label": "Background",
+						"default": "#FFFFFF"
+					},
+					{
+						"type": "color",
+						"id": "color_heading",
+						"label": "Heading",
+						"default": "#151515"
+					},
+					{
+						"type": "color",
+						"id": "color_text",
+						"label": "Text",
+						"default": "#151515"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling content",
+				"blocks": [
+					{
+						"type": "section"
+					},
+					{
+						"type": "section"
+					},
+					{
+						"type": "section"
+					}
+				]
+      }
+    ]
+  }
+{% endschema %}

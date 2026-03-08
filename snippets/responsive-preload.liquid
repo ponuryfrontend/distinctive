@@ -1,0 +1,27 @@
+{%- assign image_sizes = sizes | split: "," -%}
+{%- capture srcset -%}
+  {%- for size in image_sizes -%}
+    {%- liquid
+      assign small_size = '20x'
+      assign size_array = size | split: "x"
+      assign size_x = size_array[0] | append: 'x'
+      if size_array[1] != "0"
+        assign size_x = size
+        assign small_x = size_array[1] | times: 20 | divided_by: size_array[0] | floor
+        assign small_size = small_size | append: small_x
+        assign preload_url = image | image_url: width: size_array[0], height: size_array[1], crop: 'center'
+      else
+        assign preload_url = image | image_url: width: size_array[0]
+      endif
+    -%}
+    {{- preload_url }} {{ size_array[0] }}w,
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign l = srcset | size | minus: 1 -%}
+{%- assign small_preload_array = small_size | split: 'x' -%}
+{%- if small_preload_array[1] != blank and small_preload_array[1] != '0' -%}
+  {%- assign preload_href = image | image_url: width: small_preload_array[0], height: small_preload_array[1], crop: 'center' -%}
+{%- else -%}
+  {%- assign preload_href = image | image_url: width: 20 -%}
+{%- endif -%}
+<link rel="preload" as="image" href="{{- preload_href -}}" imagesrcset="{{ srcset | slice: 0, l | strip_newlines }}" imagesizes="auto">

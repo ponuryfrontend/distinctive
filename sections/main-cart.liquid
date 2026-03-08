@@ -1,0 +1,949 @@
+{%- liquid
+	assign free_shipping = settings.free_shipping
+	assign free_shipping_minimum = settings.free_shipping_minimum | times: 100
+	assign total = cart.total_price
+	assign promotion_blocks = section.blocks | where: "type", "promotion"
+
+  assign shipping_estimator = section.blocks | where: "type", "shipping_estimator"
+	assign items_requiring_shipping = cart.items | where: 'requires_shipping'
+-%}
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{{ 'cart.js' | asset_url | script_tag }}
+<div class="row full-width-row">
+	<div class="small-12 columns">
+		<theme-cart class="thb-cart-form" id="Cart" data-id="{{ section.id }}">
+			{%- if cart != empty -%}
+				<form action="{{ routes.cart_url }}" method="post" id="cart-form" novalidate>
+					<div class="cart-items no-borders">
+						<div>
+							{%- liquid
+								if free_shipping and settings.free_shipping_minimum != blank
+									render 'free-shipping', free_shipping_minimum: free_shipping_minimum, total: total
+								endif
+							-%}
+							<header class="cart-items--header">
+								<div class="product-name">{{ 'sections.cart.headings.product' | t }}</div>
+								<div class="product-quantity">{{ 'sections.cart.headings.quantity' | t }}</div>
+								<div class="product-total">{{ 'sections.cart.headings.total' | t }}</div>
+							</header>
+							<div class="cart-items--items">
+								{%- for item in cart.items -%}
+									<div id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.key | escape }}">
+										<div class="product-cart-item">
+											<div class="product-cart-item-image">
+												{% if item.image %}
+													{%- render 'responsive-image', image: item.image, sizes: '168x180' -%}
+												{% else %}
+													<div class="thb-placeholder" style="width: 100px;">
+														{{ 'product-1' | placeholder_svg_tag }}
+													</div>
+												{% endif %}
+												<div class="loading-overlay">
+													{% render 'svg-icons' with 'thb-loading' %}
+												</div>
+											</div>
+											<div class="product-cart-item-info">
+												<div class="product-cart-item-info--inner">
+													<div class="product-cart-item-info--inner-first">
+														<a href="{{ item.url }}" title="{{ item.product.title | escape }}" class="cart-product-link">{{ item.product.title }}</a>
+														{% if item.selling_plan_allocation %}
+														<div class="properties">
+															<span class="selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</span>
+														</div>
+														{% endif %}
+														{% unless item.variant.title contains 'Default' %}
+															<div class="product-cart-item-options">
+																{% for option in item.product.options %}
+																	{{ item.variant.options[forloop.index0] }}{% if forloop.last != true %} / {% endif %}
+																{% endfor %}
+															</div>
+														{% endunless %}
+														{%- for property in item.properties -%}
+															{%- assign property_first_char = property.first | slice: 0 -%}
+															{%- if property.last != blank and property_first_char != '_' -%}
+																<div class="product-cart-item-options">
+																	<span>{{ property.first }}:</span>
+																		{%- if property.last contains '/uploads/' -%}
+																			<a href="{{ property.last }}" class="link" target="_blank">
+																				{{ property.last | split: '/' | last }}
+																			</a>
+																		{%- else -%}
+																			{{ property.last }}
+																		{%- endif -%}
+																		<br/>
+																</div>
+															{%- endif -%}
+														{%- endfor -%}
+														{%- if item.discounts != blank -%}
+														<ul class="discounts" role="list">
+															{%- for discount in item.discounts -%}
+																<li class="discounts__discount">
+																	{%- render 'svg-icons' with 'discount' -%}
+																	{{ discount.title }} (-{{ discount.amount | money }})
+																</li>
+															{%- endfor -%}
+														</ul>
+														{%- endif -%}
+														<div class="cart-item__error form-notification error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert" hidden>
+																{% render 'svg-icons' with 'thb-error' %}
+																<small class="cart-item__error-text"></small>
+														</div>
+													</div>
+													<div class="product-cart-item-info--inner-second">
+														<quantity-selector class="quantity cart-update small-qty" data-id="{{ item.key | escape }}">
+															<button class="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'minus' %}</button>
+															<input
+																type="number"
+																name="updates[]"
+																id="updates_{{ item.key }}"
+																value="{{ item.quantity }}"
+																min="{{ item.variant.quantity_rule.min }}"
+																{% if item.variant.quantity_rule.max != null %}
+																	max="{{ item.variant.quantity_rule.max }}"
+																{% endif %}
+																step="{{ item.variant.quantity_rule.increment }}"
+																class="qty"
+																data-index="{{ item.index | plus: 1 }}"
+																aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+															>
+															<button class="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'plus' %}</button>
+														</quantity-selector>
+														<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">{% render 'svg-icons' with 'trash' %}</a>
+													</div>
+													<div class="product-cart-item-info--inner-third">
+														<span class="price">
+															{%- if item.original_line_price != item.final_line_price -%}
+															<del><span class="amount">{{ item.original_line_price | money }}</span></del>
+															<ins><span class="amount">{{ item.final_line_price | money }}</span></ins>
+															{%- else -%}
+															<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>
+															{%- endif -%}
+															{%- if item.variant.available and item.unit_price_measurement -%}
+																<small class="unit-price">
+																	{{ item.variant.unit_price | money }}
+																	<span class="unit-price-separator">/</span>
+																	{%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+																	{{- item.variant.unit_price_measurement.reference_value -}}
+																	{%- endif -%}
+																	{{ item.variant.unit_price_measurement.reference_unit }}
+																</small>
+															{%- endif -%}
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									{%- assign block = promotion_blocks[forloop.index0] -%}
+									{% if block.settings.text != '' and block.settings.position == 'below-item' -%}
+									{%- render 'cart-promotion', block: block -%}
+									{%- endif -%}
+								{%- endfor -%}
+                {% if items_requiring_shipping.size > 0 and shipping_estimator.size > 0 %}
+                  <div class="thb-cart-form--shipping-estimator">
+                    <collapsible-row class="accordion shipping-estimator--container" {{ shipping_estimator[0].shopify_attributes }}>
+                      <details id="Details-{{ shipping_estimator[0].id }}-{{ section.id }}" {% if shipping_estimator[0].settings.open %}open{% endif %}>
+                        <summary>
+                          {{- 'sections.cart.shipping_estimator.estimate_shipping' | t -}}
+                          <span></span>
+                        </summary>
+                        <div class="collapsible__content accordion__content" id="Accordion-{{ shipping_estimator[0].id }}-{{ section.id }}">
+                          {%- render 'shipping-estimator', section: section, shipping_estimator: shipping_estimator[0] -%}
+                        </div>
+                      </details>
+                    </collapsible-row>
+                  </div>
+                {%- endif -%}
+								<div class="thb-cart-form--continue">
+									<a href="{{ routes.all_products_collection_url }}" class="back_to_shop text-button">{{ 'general.continue_shopping' | t }}</a>
+								</div>
+							</div>
+							{%- for block in promotion_blocks -%}
+								{% if block.settings.text != '' and block.settings.position == 'below-cart' -%}
+								{%- render 'cart-promotion', block: block -%}
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+						<div class="thb-cart-form--cart-collaterals" colspan="2">
+							{% if section.settings.cart_notes_enable %}
+							<div class="field">
+								<textarea name="note" id="CartSpecialInstructions" class="full" placeholder="{{ 'sections.cart.note' | t | escape }}">{{ cart.note }}</textarea>
+								<label for="CartSpecialInstructions">{{ 'sections.cart.note' | t }}</label>
+							</div>
+							{% endif %}
+							<table class="collaterals">
+								<tbody>
+									{%- if cart.cart_level_discount_applications.size > 0 -%}
+										{%- for discount in cart.cart_level_discount_applications -%}
+											<tr class="cart-discount">
+												<th>{{ discount.title }}</th>
+												<td>
+													<span class="price">
+														<span class="amount">
+														{% if settings.currency_code_enabled %}
+														-{{ discount.total_allocated_amount | money_with_currency }}
+														{% else %}
+														-{{ discount.total_allocated_amount | money }}
+														{% endif %}
+													</span>
+													</span>
+												</td>
+											</tr>
+										{%- endfor -%}
+									{%- endif -%}
+									<tr class="cart-total">
+										<th>{{ 'sections.cart.subtotal' | t }}</th>
+										<td>
+											<span class="price">
+												<span class="amount">
+												{% if settings.currency_code_enabled %}
+													{{ cart.total_price | money_with_currency }}
+												{% else %}
+													{{ cart.total_price | money }}
+												{% endif %}
+											</span>
+										</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							{% if settings.cart_terms_conditions_enable %}
+                {%- render 'cart-terms' -%}
+              {% endif %}
+							<div class="proceed-to-checkout" data-additional-checkout="{{ additional_checkout_buttons }}">
+								<button type="submit" name="checkout" class="checkout-button button full"><span data-content="{{ 'sections.cart.checkout' | t }}"></span></button>
+								{%- if additional_checkout_buttons -%}
+								<div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+									{{ content_for_additional_checkout_buttons }}
+								</div>
+								{%- endif -%}
+							</div>
+							<p class="cart-policy-text">
+								{%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+								{{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+								{%- elsif cart.taxes_included -%}
+								{{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+								{%- elsif shop.shipping_policy.body != blank -%}
+								{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+								{%- else -%}
+								{{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+								{%- endif -%}
+							</p>
+							{%- for block in section.blocks -%}
+								{%- if block.type == 'information' -%}
+								<div class="thb-cart-form--information">
+									{%- if block.settings.heading -%}
+									<div class="thb-cart-form--information-heading">{{ block.settings.heading }}</div>
+									{%- endif -%}
+									<div class="thb-cart-form--information-content rte">{{ block.settings.text }}</div>
+									<div class="thb-cart-form--information-icons">
+										{%- if block.settings.icon_1_label -%}
+										<div>
+										<a href="{{ block.settings.icon_1_url }}" class="thb-cart-form--information-button">{% render 'svg-icons-inline', icon: block.settings.icon_1_icon %}<span class="text-button">{{ block.settings.icon_1_label }}</span></a>
+										</div>
+										{%- endif -%}
+										{%- if block.settings.icon_2_label -%}
+										<div>
+										<a href="{{ block.settings.icon_2_url }}" class="thb-cart-form--information-button">{% render 'svg-icons-inline', icon: block.settings.icon_2_icon %}<span class="text-button">{{ block.settings.icon_2_label }}</span></a>
+										</div>
+										{%- endif -%}
+									</div>
+								</div>
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</div>
+				</form>
+			{%- else -%}
+				<div class="cart-empty">
+					<h1>{{ 'sections.cart.empty' | t }}</h1>
+					<p>{{ 'sections.cart.ready' | t }}</p>
+					<a href="{{ routes.root_url }}" class="button accent2"><span data-content="{{ 'general.continue_shopping' | t }}"></span></a>
+				</div>
+			{%- endif -%}
+		</theme-cart>
+	</div>
+</div>
+{% schema %}
+{
+  "name": "Cart",
+  "class": "cart-section",
+  "settings": [
+		{
+			"type": "checkbox",
+			"id": "cart_notes_enable",
+			"label": "Enable order notes",
+			"default": true
+		}
+  ],
+  "blocks": [
+		{
+			"type": "@app"
+		},
+    {
+			"type": "shipping_estimator",
+			"name": "Shipping estimator",
+			"limit": 1,
+			"settings": [
+					{
+					"type": "text",
+					"id": "default_country",
+					"info": "If the customer is logged in, the country of their shipping address will be used.",
+					"label": "Default country"
+				}
+			]
+		},
+		{
+      "type": "information",
+      "name": "Information",
+      "settings": [
+				{
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+				{
+          "type": "header",
+          "content": "Icon 1"
+        },
+				{
+          "type": "text",
+          "id": "icon_1_label",
+          "default": "Icon 1 label",
+          "label": "Label"
+        },
+        {
+          "type": "select",
+          "id": "icon_1_icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "apple",
+              "label": "Apple"
+            },
+            {
+              "value": "banana",
+              "label": "Banana"
+            },
+            {
+              "value": "bottle",
+              "label": "Bottle"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "carrot",
+              "label": "Carrot"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "check_mark",
+              "label": "Check mark"
+            },
+            {
+              "value": "clipboard",
+              "label": "Clipboard"
+            },
+            {
+              "value": "dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "dairy_free",
+              "label": "Dairy free"
+            },
+            {
+              "value": "dryer",
+              "label": "Dryer"
+            },
+            {
+              "value": "eye",
+              "label": "Eye"
+            },
+            {
+              "value": "fire",
+              "label": "Fire"
+            },
+            {
+              "value": "gluten_free",
+              "label": "Gluten free"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "iron",
+              "label": "Iron"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "leather",
+              "label": "Leather"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "Lightning bolt"
+            },
+            {
+              "value": "lipstick",
+              "label": "Lipstick"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "nut_free",
+              "label": "Nut free"
+            },
+            {
+              "value": "pants",
+              "label": "Pants"
+            },
+            {
+              "value": "paw_print",
+              "label": "Paw print"
+            },
+            {
+              "value": "pepper",
+              "label": "Pepper"
+            },
+            {
+              "value": "perfume",
+              "label": "Perfume"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "serving_dish",
+              "label": "Serving dish"
+            },
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "shoe",
+              "label": "Shoe"
+            },
+            {
+              "value": "silhouette",
+              "label": "Silhouette"
+            },
+            {
+              "value": "snowflake",
+              "label": "Snowflake"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "ruler",
+          "label": "Icon"
+        },
+				{
+          "type": "text",
+          "id": "icon_1_url",
+          "label": "Icon 1 url"
+        },
+				{
+          "type": "header",
+          "content": "Icon 2"
+        },
+				{
+          "type": "text",
+          "id": "icon_2_label",
+          "default": "Icon 2 label",
+          "label": "Label"
+        },
+        {
+          "type": "select",
+          "id": "icon_2_icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "apple",
+              "label": "Apple"
+            },
+            {
+              "value": "banana",
+              "label": "Banana"
+            },
+            {
+              "value": "bottle",
+              "label": "Bottle"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "carrot",
+              "label": "Carrot"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "check_mark",
+              "label": "Check mark"
+            },
+            {
+              "value": "clipboard",
+              "label": "Clipboard"
+            },
+            {
+              "value": "dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "dairy_free",
+              "label": "Dairy free"
+            },
+            {
+              "value": "dryer",
+              "label": "Dryer"
+            },
+            {
+              "value": "eye",
+              "label": "Eye"
+            },
+            {
+              "value": "fire",
+              "label": "Fire"
+            },
+            {
+              "value": "gluten_free",
+              "label": "Gluten free"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "iron",
+              "label": "Iron"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "leather",
+              "label": "Leather"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "Lightning bolt"
+            },
+            {
+              "value": "lipstick",
+              "label": "Lipstick"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "nut_free",
+              "label": "Nut free"
+            },
+            {
+              "value": "pants",
+              "label": "Pants"
+            },
+            {
+              "value": "paw_print",
+              "label": "Paw print"
+            },
+            {
+              "value": "pepper",
+              "label": "Pepper"
+            },
+            {
+              "value": "perfume",
+              "label": "Perfume"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "serving_dish",
+              "label": "Serving dish"
+            },
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "shoe",
+              "label": "Shoe"
+            },
+            {
+              "value": "silhouette",
+              "label": "Silhouette"
+            },
+            {
+              "value": "snowflake",
+              "label": "Snowflake"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "ruler",
+          "label": "Icon"
+        },
+				{
+          "type": "text",
+          "id": "icon_2_url",
+          "label": "Icon 2 url"
+        }
+			]
+		},
+		{
+      "type": "promotion",
+      "name": "Promotion",
+      "settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image",
+					"info": "64 x 64 .png recommended"
+				},
+				{
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "apple",
+              "label": "Apple"
+            },
+            {
+              "value": "banana",
+              "label": "Banana"
+            },
+            {
+              "value": "bottle",
+              "label": "Bottle"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "carrot",
+              "label": "Carrot"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "check_mark",
+              "label": "Check mark"
+            },
+            {
+              "value": "clipboard",
+              "label": "Clipboard"
+            },
+            {
+              "value": "dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "dairy_free",
+              "label": "Dairy free"
+            },
+            {
+              "value": "dryer",
+              "label": "Dryer"
+            },
+            {
+              "value": "eye",
+              "label": "Eye"
+            },
+            {
+              "value": "fire",
+              "label": "Fire"
+            },
+            {
+              "value": "gluten_free",
+              "label": "Gluten free"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "iron",
+              "label": "Iron"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "leather",
+              "label": "Leather"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "Lightning bolt"
+            },
+            {
+              "value": "lipstick",
+              "label": "Lipstick"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "nut_free",
+              "label": "Nut free"
+            },
+            {
+              "value": "pants",
+              "label": "Pants"
+            },
+            {
+              "value": "paw_print",
+              "label": "Paw print"
+            },
+            {
+              "value": "pepper",
+              "label": "Pepper"
+            },
+            {
+              "value": "perfume",
+              "label": "Perfume"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "serving_dish",
+              "label": "Serving dish"
+            },
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "shoe",
+              "label": "Shoe"
+            },
+            {
+              "value": "silhouette",
+              "label": "Silhouette"
+            },
+            {
+              "value": "snowflake",
+              "label": "Snowflake"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "ruler",
+          "label": "Icon"
+        },
+				{
+					 "type": "select",
+					 "id": "position",
+					 "label": "Position",
+					 "options": [
+						 { "value": "below-cart", "label": "Below cart" },
+						 { "value": "below-item", "label": "Below cart item" }
+					 ],
+					 "default": "below-cart"
+				},
+				{
+				  "type": "number",
+				  "id": "cart_item_position",
+				  "label": "Below cart item position",
+				  "default": 1,
+					"info": "Set the line number of the cart item that you would like to display the promotion under."
+				},
+				{
+          "type": "text",
+          "id": "text",
+          "default": "Promotion text",
+          "label": "Text"
+        },
+				{
+          "type": "url",
+          "id": "link",
+          "label": "Promotion link"
+        },
+				{
+					"type": "color",
+					"id": "color_bg",
+					"label": "Background",
+					"default": "#F9F4F2"
+				},
+				{
+					"type": "color",
+					"id": "color_text",
+					"label": "Text",
+					"default": "#B0542A"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

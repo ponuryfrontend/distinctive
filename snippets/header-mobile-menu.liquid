@@ -1,0 +1,157 @@
+<nav id="mobile-menu" class="mobile-menu-drawer" role="dialog" tabindex="-1">
+	<div class="mobile-menu-drawer--inner">
+		{%- if header_settings.menu -%}
+    <ul class="mobile-menu">
+			{%- for link in header_settings.menu.links -%}
+			  {%- liquid
+					assign parent_index = forloop.index
+					assign has_sub_menu = false
+					assign has_promotion = false
+					assign promotion_block_index = false
+					assign promotion_blocks = blocks | where: "type", "promotion"
+					assign menu_badge_index = false
+					assign menu_badge_blocks = blocks | where: "type", "menu_badge"
+
+					if link.links.size > 0
+						assign has_sub_menu = true
+					endif
+					for block in promotion_blocks
+						assign position = block.settings.position | plus: 0
+			    	if position == parent_index
+							assign has_promotion = true
+							assign promotion_block_index = forloop.index0
+						endif
+					endfor
+					for block in menu_badge_blocks
+						assign badge_position = block.settings.badge_position | plus: 0
+			    	if badge_position == parent_index
+							assign has_menu_badge = true
+
+							assign menu_badge_index = forloop.index0
+						endif
+					endfor
+				-%}
+			  <li>
+					{%- if has_sub_menu == true or has_promotion == true -%}
+						{%- liquid assign promotion_block = promotion_blocks[promotion_block_index] -%}
+						<details class="link-container">
+							<summary class="parent-link">{{ link.title }}{%- if has_menu_badge -%}
+								{%- assign menu_badge_block = menu_badge_blocks[menu_badge_index] -%}
+								<span class="menu-item-badge" style="--menu-badge-bg: {{ menu_badge_block.settings.color_bg }};--menu-badge-text: {{ menu_badge_block.settings.color_text }};">{{ menu_badge_block.settings.text }}</span>
+							{%- endif -%}<span class="link-forward">{%- render 'svg-icons' with 'thb-mobile-menu-forward' -%}</span></summary>
+							<ul class="sub-menu">
+								<li class="parent-link-back">
+									<button class="parent-link-back--button"><span>{%- render 'svg-icons' with 'thb-mobile-menu-back' -%}</span> {{ link.title }}</button>
+								</li>
+				        {%- for l in link.links -%}
+									{%- liquid
+										 assign has_sub_menu = false
+								  	if l.links.size > 0
+								    	assign has_sub_menu = true
+										endif
+									-%}
+									<li>
+										{%- if has_sub_menu -%}
+										<details class="link-container">
+											<summary>{{ l.title }}<span class="link-forward">{%- render 'svg-icons' with 'thb-mobile-menu-forward' -%}</span></summary>
+											<ul class="sub-menu" tabindex="-1">
+												<li class="parent-link-back">
+													<button class="parent-link-back--button"><span>{%- render 'svg-icons' with 'thb-mobile-menu-back' -%}</span> {{ l.title }}</button>
+												</li>
+												{%- for sub_link in l.links -%}
+													{%- liquid
+														assign has_sub_menu = false
+														if sub_link.links.size > 0
+															assign has_sub_menu = true
+														endif
+													-%}
+													<li>
+														<a href="{{ sub_link.url }}" title="{{ sub_link.title | escape }}" role="menuitem">{{ sub_link.title }} {% if has_sub_menu %}<span></span>{%- endif -%}</a>
+													</li>
+												{%- endfor -%}
+											</ul>
+										</details>
+										{%- else -%}
+										<a href="{{ l.url }}" title="{{ l.title | escape }}">{{ l.title }}</a>
+									  {%- endif -%}
+									</li>
+								{%- endfor -%}
+
+								{% if promotion_block %}
+									<li>
+										<slide-show class="carousel full-menu--promotion-carousel">
+											{%- if promotion_block.settings.promo_1_image -%}
+											<div class="carousel__slide">
+												{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_1_image, promotion_link: promotion_block.settings.promo_1_link, promotion_heading: promotion_block.settings.promo_1_heading %}
+											</div>
+											{%- endif -%}
+											{%- if promotion_block.settings.promo_2_image -%}
+											<div class="carousel__slide">
+												{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_2_image, promotion_link: promotion_block.settings.promo_2_link, promotion_heading: promotion_block.settings.promo_2_heading %}
+											</div>
+											{%- endif -%}
+											{%- if promotion_block.settings.promo_3_image -%}
+											<div class="carousel__slide">
+												{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_3_image, promotion_link: promotion_block.settings.promo_3_link, promotion_heading: promotion_block.settings.promo_3_heading %}
+											</div>
+											{%- endif -%}
+											{%- if promotion_block.settings.promo_4_image -%}
+											<div class="carousel__slide">
+												{% render 'header-full-menu-promotion', promotion_image: promotion_block.settings.promo_4_image, promotion_link: promotion_block.settings.promo_4_link, promotion_heading: promotion_block.settings.promo_4_heading %}
+											</div>
+											{%- endif -%}
+										</slide-show>
+									</li>
+								{%- endif -%}
+					    </ul>
+						</details>
+					{%- else -%}
+					<a href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+			    {%- endif -%}
+			  </li>
+		  {%- endfor -%}
+    </ul>
+		{%- endif -%}
+		{%- if header_settings.secondary_menu != blank -%}
+		<ul class="mobile-secondary-menu">
+			{%- for link in header_settings.secondary_menu.links -%}
+			  <li class="{% if link.active %} active{% endif %}">
+			    <a href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+			  </li>
+		  {%- endfor -%}
+    </ul>
+		{%- endif -%}
+		{%- if header_settings.show_social_links -%}
+		{%- render 'social-links' -%}
+		{%- endif -%}
+		<div class="thb-mobile-menu-footer">
+			{%- if shop.customer_accounts_enabled -%}
+				{%- if customer -%}
+				  {%- assign profile_link = routes.account_url -%}
+				  {%- capture profile_text -%}
+				    {{ 'sections.header.my_account' | t }}
+				  {%- endcapture -%}
+				{%- else -%}
+				  {%- assign profile_link = routes.account_login_url -%}
+				  {%- capture profile_text -%}
+				    {{ 'sections.header.login' | t }}
+				  {%- endcapture -%}
+				{%- endif -%}
+				{% if header_settings.show_shopify_account_menu %}
+					<shopify-account class="thb-shopify-account thb-mobile-account-link" menu="{{ header_settings.shopify_account_menu_menu }}">
+						<span slot="signed-out-avatar">
+							{%- render 'svg-icons' with 'myaccount' %} {{ profile_text }}
+						</span>
+					</shopify-account>
+				{%- else -%}
+		    	<a class="thb-mobile-account-link" href="{{ profile_link | escape }}" title="{{ profile_text | escape }}">{%- render 'svg-icons' with 'myaccount' %} {{ profile_text }}</a>
+		  	{%- endif -%}
+			{%- endif -%}
+			<div class="no-js-hidden">
+				{%- render 'localization', id: 'MobileMenuLocalization', show_language_switcher: header_settings.show_language_switcher, show_currency_switcher: header_settings.show_currency_switcher -%}
+			</div>
+		</div>
+	</div>
+</nav>
+<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'mobile-menu.css' | asset_url | stylesheet_tag }}</noscript>

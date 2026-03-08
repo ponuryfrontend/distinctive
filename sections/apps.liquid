@@ -1,0 +1,56 @@
+{%- liquid
+  assign full_width = section.settings.full_width
+
+  assign disable_top_spacing = section.settings.disable_top_spacing
+  assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="app-wrapper section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"">
+  <div class="row{% if full_width %} full-width-row{% endif %}">
+    <div class="small-12 columns">
+      {%- for block in section.blocks -%}
+        {% render block %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "App wrapper",
+    "class": "section-app-wrapper",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Make section full width",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Spacing"
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_top_spacing",
+        "default": false,
+        "label": "Remove top spacing"
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_bottom_spacing",
+        "default": false,
+        "label": "Remove bottom spacing"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ],
+    "presets": [
+      {
+        "name": "App wrapper"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,24 @@
+{%- liquid
+  assign image = block.settings.image
+  assign icon = block.settings.icon
+  assign text = block.settings.text
+  assign link = block.settings.link
+  assign color_bg = block.settings.color_bg
+  assign color_text = block.settings.color_text
+-%}
+<div class="thb-cart-form--promotion{% if link %} thb-cart-form--promotion-has-link{%- endif -%}" style="--color-bg: {{ color_bg }}; --color-text: {{ color_text }}; --color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }};">
+  {%- unless block.settings.image == blank and icon == 'none' -%}
+  <div class="thb-cart-form--promotion-icon">
+    {%- if block.settings.image != blank -%}
+    {%- render 'responsive-image', image: image, sizes: '64x64' -%}
+    {%- else -%}
+      {% render 'svg-icons-inline', icon: block.settings.icon %}
+    {%- endif -%}
+  </div>
+  {%- endunless -%}
+  <span>{{ text }}</span>
+  {%- if link -%}
+    <span class="thb-cart-form--promotion-arrow">{% render 'svg-icons' with 'thb-cart-promotion-arrow' %}</span>
+    <a href="{{ link | escape }}" class="thb-cart-form--promotion-link"></a>
+  {%- endif -%}
+</div>

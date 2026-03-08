@@ -1,0 +1,66 @@
+
+
+
+.scrolling-content {
+  display: block; }
+  .scrolling-content--section-inner {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg, var(--bg-body)); }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--section-inner {
+        flex-direction: row; } }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--section-inner.text_first {
+        flex-direction: row-reverse; } }
+  .scrolling-content--content, .scrolling-content--image {
+    width: 100%;
+    height: auto; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--content, .scrolling-content--image {
+        flex-basis: 50%;
+        height: calc(100vh - var(--header-height, 0px) - 1px); }
+        @supports (height: 100dvh) {
+          .scrolling-content--content, .scrolling-content--image {
+            height: calc(100dvh - var(--header-height, 0px) - 1px); } } }
+  .scrolling-content--image {
+    position: sticky;
+    top: calc(var(--header-offset, 0px) + var(--header-height, 80px));
+    left: 0;
+    z-index: 5; }
+    .scrolling-content--image img,
+    .scrolling-content--image svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover; }
+    .scrolling-content--image-inner {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: var(--ratio-percent, 100%); }
+      @media only screen and (min-width: 768px) {
+        .scrolling-content--image-inner {
+          padding-bottom: 0;
+          height: calc(100vh - var(--header-height, 0px) - 1px); }
+          @supports (height: 100dvh) {
+            .scrolling-content--image-inner {
+              height: calc(100dvh - var(--header-height, 0px) - 1px); } } }
+  .scrolling-content--content {
+    display: flex;
+    align-items: center;
+    padding: clamp(40px, 10%, 100px);
+    background-color: var(--color-bg, var(--bg-body));
+    position: relative;
+    z-index: 6;
+    color: var(--color-body); }
+  @media only screen and (min-width: 1068px) {
+    .scrolling-content .rte.description-size--medium {
+      font-size: 1.125rem; } }
+  @media only screen and (min-width: 1068px) {
+    .scrolling-content .rte.description-size--large {
+      font-size: 1.25rem; } }
+  .scrolling-content .rte p {
+    font-size: inherit; }
