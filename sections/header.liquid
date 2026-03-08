@@ -113,7 +113,7 @@
 -%}
 
 {%- if request.page_type == 'index' -%}
-  {%- assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' -%}
+  {%- assign search_action_target = request.origin | append: routes.search_url | append: "?q=%7Bsearch_term_string%7D" -%}
 {%- endif -%}
 
 <script type="application/ld+json">
@@ -162,14 +162,12 @@
       "@type": "WebSite",
       "@id": {{ shop.url | append: "#website" | json }},
       "url": {{ shop.url | json }},
-      "name": {{ shop.name | json }}
-      {%- if request.page_type == 'index' -%},
+      "name": {{ shop.name | json }}{% if request.page_type == 'index' %},
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+        "target": {{ search_action_target | json }},
         "query-input": "required name=search_term_string"
-      }
-      {%- endif -%}
+      }{% endif %}
     }{%- for country in localization.available_countries -%},
     {
       "@type": "MerchantReturnPolicy",
