@@ -135,6 +135,12 @@
     assign review_count = review_data.count | plus: 0
     assign review_avg = review_data.avg | plus: 0
   endif
+
+  assign promo_valid_until = blank
+
+  if product.metafields.custom.price_valid_until != blank
+    assign promo_valid_until = product.metafields.custom.price_valid_until.value | default: product.metafields.custom.price_valid_until
+  endif
 -%}
 
 <script type="application/ld+json">
@@ -166,6 +172,11 @@
         {%- liquid
           assign variant_url = shop.url | append: product.url | append: '?variant=' | append: variant.id
           assign variant_image = variant.featured_media.preview_image | default: product.featured_image
+          assign variant_on_sale = false
+
+          if variant.compare_at_price > variant.price
+            assign variant_on_sale = true
+          endif
         -%}
         {
           "@type": "Product",
@@ -206,7 +217,8 @@
             "@type": "Offer",
             "url": {{ variant_url | json }},
             "priceCurrency": {{ cart.currency.iso_code | json }},
-            "price": {{ variant.price | divided_by: 100.0 | json }},
+            "price": {{ variant.price | divided_by: 100.0 | json }}{% if variant_on_sale and promo_valid_until != blank %},
+            "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
             "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
             "itemCondition": "https://schema.org/NewCondition"
           }
@@ -250,7 +262,8 @@
       "@type": "Offer",
       "url": {{ product_url | json }},
       "priceCurrency": {{ cart.currency.iso_code | json }},
-      "price": {{ current_variant.price | divided_by: 100.0 | json }},
+      "price": {{ current_variant.price | divided_by: 100.0 | json }}{% if current_variant.compare_at_price > current_variant.price and promo_valid_until != blank %},
+      "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
       "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
       "itemCondition": "https://schema.org/NewCondition"
     }
