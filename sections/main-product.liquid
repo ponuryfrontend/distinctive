@@ -118,10 +118,145 @@
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
 
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_url = shop.url | append: product.url
+  assign product_desc = product.description | strip_html | strip_newlines | truncate: 5000
+
+  assign review_data = product.metafields.ssw['review']
+  if review_data and review_data.type == 'json'
+    assign review_data = review_data.value
+  endif
+
+  assign review_count = 0
+  assign review_avg = 0
+
+  if review_data
+    assign review_count = review_data.count | plus: 0
+    assign review_avg = review_data.avg | plus: 0
+  endif
+-%}
+
 <script type="application/ld+json">
-  {{ product | structured_data }}
+{
+  "@context": "https://schema.org",
+  {%- if product.variants.size > 1 -%}
+    "@type": "ProductGroup",
+    "@id": {{ product_url | append: '#productgroup' | json }},
+    "productGroupID": {{ product.id | json }},
+    "name": {{ product.title | strip | json }},
+    "description": {{ product_desc | json }},
+    "url": {{ product_url | json }},
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | default: shop.name | json }}
+    }{% if product.featured_image %},
+    "image": [
+      {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
+    ]{% endif %}{% if product.type != blank %},
+    "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
+    "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if review_count > 0 and review_avg > 0 %},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ review_avg | json }},
+      "reviewCount": {{ review_count | json }}
+    }{% endif %},
+    "hasVariant": [
+      {%- for variant in product.variants -%}
+        {%- liquid
+          assign variant_url = shop.url | append: product.url | append: '?variant=' | append: variant.id
+          assign variant_image = variant.featured_media.preview_image | default: product.featured_image
+        -%}
+        {
+          "@type": "Product",
+          "@id": {{ variant_url | append: '#product' | json }},
+          "isVariantOf": {
+            "@id": {{ product_url | append: '#productgroup' | json }}
+          },
+          "name": {{ product.title | append: ' - ' | append: variant.title | strip | json }},
+          "url": {{ variant_url | json }},
+          "description": {{ product_desc | json }},
+          "image": [
+            {{ variant_image | image_url: width: 1200 | prepend: 'https:' | json }}
+          ],
+          "brand": {
+            "@type": "Brand",
+            "name": {{ product.vendor | default: shop.name | json }}
+          }{% if variant.sku != blank %},
+          "sku": {{ variant.sku | strip | json }}{% endif %}{% if variant.barcode != blank %}
+            {%- assign barcode_length = variant.barcode | size -%}
+            {%- if barcode_length == 8 -%},
+              "gtin8": {{ variant.barcode | json }}
+            {%- elsif barcode_length == 12 -%},
+              "gtin12": {{ variant.barcode | json }}
+            {%- elsif barcode_length == 13 -%},
+              "gtin13": {{ variant.barcode | json }}
+            {%- elsif barcode_length == 14 -%},
+              "gtin14": {{ variant.barcode | json }}
+            {%- else -%},
+              "gtin": {{ variant.barcode | json }}
+            {%- endif -%}
+          {%- endif %}{% if review_count > 0 and review_avg > 0 %},
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": {{ review_avg | json }},
+            "reviewCount": {{ review_count | json }}
+          }{% endif %},
+          "offers": {
+            "@type": "Offer",
+            "url": {{ variant_url | json }},
+            "priceCurrency": {{ cart.currency.iso_code | json }},
+            "price": {{ variant.price | divided_by: 100.0 | json }},
+            "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+            "itemCondition": "https://schema.org/NewCondition"
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  {%- else -%}
+    "@type": "Product",
+    "@id": {{ product_url | append: '#product' | json }},
+    "name": {{ product.title | strip | json }},
+    "url": {{ product_url | json }},
+    "description": {{ product_desc | json }},
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | default: shop.name | json }}
+    }{% if product.featured_image %},
+    "image": [
+      {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
+    ]{% endif %}{% if product.type != blank %},
+    "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
+    "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if current_variant.barcode != blank %}
+      {%- assign barcode_length = current_variant.barcode | size -%}
+      {%- if barcode_length == 8 -%},
+        "gtin8": {{ current_variant.barcode | json }}
+      {%- elsif barcode_length == 12 -%},
+        "gtin12": {{ current_variant.barcode | json }}
+      {%- elsif barcode_length == 13 -%},
+        "gtin13": {{ current_variant.barcode | json }}
+      {%- elsif barcode_length == 14 -%},
+        "gtin14": {{ current_variant.barcode | json }}
+      {%- else -%},
+        "gtin": {{ current_variant.barcode | json }}
+      {%- endif -%}
+    {%- endif %}{% if review_count > 0 and review_avg > 0 %},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ review_avg | json }},
+      "reviewCount": {{ review_count | json }}
+    }{% endif %},
+    "offers": {
+      "@type": "Offer",
+      "url": {{ product_url | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ current_variant.price | divided_by: 100.0 | json }},
+      "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  {%- endif -%}
+}
 </script>
-{% capture ssw_rich_snippet %}{% render 'ssw-widget-avg-rate-rich', rich_snippet_type: 'json' %}{% endcapture %}{% unless ssw_rich_snippet contains 'Liquid error' %}{{ ssw_rich_snippet }}{% endunless %}
 
 {% schema %}
 {
