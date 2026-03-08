@@ -112,6 +112,10 @@
   endif
 -%}
 
+{%- if request.page_type == 'index' -%}
+  {%- assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' -%}
+{%- endif -%}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -168,7 +172,7 @@
       ]{% if request.page_type == 'index' %},
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {{ request.origin | append: routes.search_url | append: "?q={search_term_string}" | json }},
+        "target": {{ potential_action_target | json }},
         "query-input": "required name=search_term_string"
       }{% endif %}
     }{%- for country in localization.available_countries -%},
