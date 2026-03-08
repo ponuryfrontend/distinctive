@@ -23,6 +23,7 @@
 		assign fixed_header = true
 	endif
 -%}
+
 <theme-header id="header" class="header {{ style }} fixed--{{ fixed_header }} transparent--{{ transparent_header }} header--use-drawer-{{ use_drawer }}{% if style == 'style3' %} header--has-horizontal-navigation{% endif %}{% if sticky_header %} header-sticky--active{%- endif -%}">
 	<div class="row expanded">
 		<div class="small-12 columns">
@@ -48,51 +49,187 @@
 		{%- endunless -%}
 	{%- endstyle -%}
 </theme-header>
-{%- if header_style == 'style3' -%}
+
+{%- if style == 'style3' -%}
 <script src="{{ 'full-menu-horizontal.js' | asset_url }}" async></script>
 {%- else -%}
 <script src="{{ 'full-menu.js' | asset_url }}" async></script>
 {%- endif -%}
 <script src="{{ 'header.js' | asset_url }}" async></script>
 
+{%- liquid
+  assign social_links = ''
+  if settings.social_twitter_link != blank
+    assign social_links = social_links | append: settings.social_twitter_link | json
+  endif
+  if settings.social_facebook_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_facebook_link | json
+  endif
+  if settings.social_pinterest_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_pinterest_link | json
+  endif
+  if settings.social_instagram_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_instagram_link | json
+  endif
+  if settings.social_tiktok_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_tiktok_link | json
+  endif
+  if settings.social_youtube_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_youtube_link | json
+  endif
+  if settings.social_vimeo_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_vimeo_link | json
+  endif
+  if settings.social_linkedin_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_linkedin_link | json
+  endif
+  if settings.social_wechat_link != blank
+    if social_links != blank
+      assign social_links = social_links | append: ','
+    endif
+    assign social_links = social_links | append: settings.social_wechat_link | json
+  endif
+-%}
+
 <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if section.settings.logo %}
-      "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
-    {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }},
-      {{ settings.social_linkedin_link | json }},
-      {{ settings.social_wechat_link | json }}
-    ],
-    "url": {{ shop.url | append: page.url | json }}
-  }
-</script>
-{%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
-  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
+      "@type": "OnlineStore",
+      "@id": {{ shop.url | append: "#organization" | json }},
       "name": {{ shop.name | json }},
+      "url": {{ shop.url | json }}{% if section.settings.logo %},
+      "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }}{% endif %}{% if social_links != blank %},
+      "sameAs": [{{ social_links }}]{% endif %},
+      "availableLanguage": [
+        {%- for language in localization.available_languages -%}
+          {
+            "@type": "Language",
+            "name": {{ language.endonym_name | default: language.name | json }},
+            "alternateName": {{ language.iso_code | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "areaServed": [
+        {%- for country in localization.available_countries -%}
+          {
+            "@type": "Country",
+            "name": {{ country.name | json }},
+            "alternateName": {{ country.iso_code | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "hasMerchantReturnPolicy": [
+        {%- for country in localization.available_countries -%}
+          {
+            "@id": {{ shop.url | append: "#return-policy-" | append: country.iso_code | downcase | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "hasShippingService": [
+        {%- for country in localization.available_countries -%}
+          {
+            "@id": {{ shop.url | append: "#shipping-policy-" | append: country.iso_code | downcase | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ shop.url | append: "#website" | json }},
+      "url": {{ shop.url | json }},
+      "name": {{ shop.name | json }},
+      "inLanguage": [
+        {%- for language in localization.available_languages -%}
+          {{ language.iso_code | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]{% if request.page_type == 'index' %},
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {{ potential_action_target | json }},
+        "target": {{ request.origin | append: routes.search_url | append: "?q={search_term_string}" | json }},
         "query-input": "required name=search_term_string"
+      }{% endif %}
+    }{%- for country in localization.available_countries -%},
+    {
+      "@type": "MerchantReturnPolicy",
+      "@id": {{ shop.url | append: "#return-policy-" | append: country.iso_code | downcase | json }},
+      "name": {{ "Return policy - " | append: country.name | json }},
+      "applicableCountry": {{ country.iso_code | json }},
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 14,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+      "merchantReturnLink": {{ shop.url | append: "/policies/refund-policy" | json }},
+      "inLanguage": [
+        {%- for language in country.available_languages -%}
+          {{ language.iso_code | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    },
+    {
+      "@type": "ShippingService",
+      "@id": {{ shop.url | append: "#shipping-policy-" | append: country.iso_code | downcase | json }},
+      "name": {{ "Standard shipping - " | append: country.name | json }},
+      "areaServed": {
+        "@type": "Country",
+        "name": {{ country.name | json }},
+        "alternateName": {{ country.iso_code | json }}
       },
-      "url": {{ request.origin | append: page.url | json }}
-    }
-  </script>
-{%- endif -%}
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": {{ country.iso_code | json }}
+      },
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "currency": {{ country.currency.iso_code | json }},
+        "value": "0"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      },
+      "inLanguage": [
+        {%- for language in country.available_languages -%}
+          {{ language.iso_code | json }}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }{%- endfor -%}
+  ]
+}
+</script>
 
 {% schema %}
 {
