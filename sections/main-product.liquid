@@ -137,10 +137,22 @@
   endif
 
   assign promo_valid_until = blank
-
   if product.metafields.custom.price_valid_until != blank
     assign promo_valid_until = product.metafields.custom.price_valid_until.value | default: product.metafields.custom.price_valid_until
   endif
+
+  assign schema_country = localization.country.iso_code | default: 'PL'
+  assign schema_currency = cart.currency.iso_code
+  assign return_policy_id = shop.url | append: '#return-policy-' | append: schema_country | downcase
+
+  comment
+    DOSTOSUJ TE WARTOŚCI DO REALNEJ POLITYKI SKLEPU
+  endcomment
+  assign shipping_rate_value = 0
+  assign handling_min_days = 1
+  assign handling_max_days = 2
+  assign transit_min_days = 1
+  assign transit_max_days = 3
 -%}
 
 <script type="application/ld+json">
@@ -216,11 +228,45 @@
           "offers": {
             "@type": "Offer",
             "url": {{ variant_url | json }},
-            "priceCurrency": {{ cart.currency.iso_code | json }},
+            "priceCurrency": {{ schema_currency | json }},
             "price": {{ variant.price | divided_by: 100.0 | json }}{% if variant_on_sale and promo_valid_until != blank %},
             "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
             "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-            "itemCondition": "https://schema.org/NewCondition"
+            "itemCondition": "https://schema.org/NewCondition"{% if variant.requires_shipping or return_policy_id != blank %},{% endif %}
+            {% if variant.requires_shipping %}
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": {{ shipping_rate_value | json }},
+                "currency": {{ schema_currency | json }}
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": {{ schema_country | json }}
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": {{ handling_min_days | json }},
+                  "maxValue": {{ handling_max_days | json }},
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": {{ transit_min_days | json }},
+                  "maxValue": {{ transit_max_days | json }},
+                  "unitCode": "DAY"
+                }
+              }
+            }{% if return_policy_id != blank %},{% endif %}
+            {% endif %}
+            {% if return_policy_id != blank %}
+            "hasMerchantReturnPolicy": {
+              "@id": {{ return_policy_id | json }}
+            }
+            {% endif %}
           }
         }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
@@ -261,11 +307,45 @@
     "offers": {
       "@type": "Offer",
       "url": {{ product_url | json }},
-      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "priceCurrency": {{ schema_currency | json }},
       "price": {{ current_variant.price | divided_by: 100.0 | json }}{% if current_variant.compare_at_price > current_variant.price and promo_valid_until != blank %},
       "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
       "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
-      "itemCondition": "https://schema.org/NewCondition"
+      "itemCondition": "https://schema.org/NewCondition"{% if current_variant.requires_shipping or return_policy_id != blank %},{% endif %}
+      {% if current_variant.requires_shipping %}
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": {{ shipping_rate_value | json }},
+          "currency": {{ schema_currency | json }}
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": {{ schema_country | json }}
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": {{ handling_min_days | json }},
+            "maxValue": {{ handling_max_days | json }},
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": {{ transit_min_days | json }},
+            "maxValue": {{ transit_max_days | json }},
+            "unitCode": "DAY"
+          }
+        }
+      }{% if return_policy_id != blank %},{% endif %}
+      {% endif %}
+      {% if return_policy_id != blank %}
+      "hasMerchantReturnPolicy": {
+        "@id": {{ return_policy_id | json }}
+      }
+      {% endif %}
     }
   {%- endif -%}
 }
