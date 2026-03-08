@@ -118,27 +118,10 @@
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
 
-{%- assign ssw_reviews = product.metafields.ssw['review'].value -%}
-
 <script type="application/ld+json">
   {{ product | structured_data }}
 </script>
-
-{%- if ssw_reviews and ssw_reviews.count and ssw_reviews.count > 0 and ssw_reviews.avg -%}
-  <div style="position:absolute;left:-9999px;" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" aria-hidden="true">
-    <span itemprop="itemReviewed">{{ product.title | escape }}</span>
-    <div>
-      Product rating:
-      <span itemprop="ratingValue">{{ ssw_reviews.avg }}</span>
-      out of
-      <span itemprop="bestRating">5</span>
-      with
-      <span itemprop="ratingCount">{{ ssw_reviews.count }}</span>
-      ratings
-      <span itemprop="worstRating">1</span>
-    </div>
-  </div>
-{%- endif -%}
+{% render 'ssw-widget-avg-rate-rich' %}
 
 {% schema %}
 {
