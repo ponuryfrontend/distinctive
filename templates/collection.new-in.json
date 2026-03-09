@@ -66,7 +66,7 @@
         "promotion_3Ptxpz"
       ],
       "settings": {
-        "products_per_page": 7,
+        "products_per_page": 24,
         "columns_desktop": 3,
         "pagination_type": "loadmore",
         "enable_filtering": true,
@@ -109,7 +109,6 @@
     },
     "166367228131c52c01": {
       "type": "spacer",
-      "disabled": true,
       "settings": {
         "spacer_mobile": 35,
         "spacer_desktop": 40,
