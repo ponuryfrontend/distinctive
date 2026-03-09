@@ -1,1 +1,222 @@
-{"type":"header","name":"Header group","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"text_N9tMXF":{"type":"text","disabled":true,"settings":{"icon":"none","text":"15% z kodem  XMASS15","link":"shopify:\/\/collections\/new-now"}},"39385368-40fe-4e0e-b3fd-50677f0426dc":{"type":"text","settings":{"icon":"truck","text":"Darmowa dostawa od 400 zł","link":""}},"e27f3820-429c-4074-8f4e-80e9c2fd6a01":{"type":"text","settings":{"icon":"return","text":"14 dni na zwrot produktów","link":"shopify:\/\/policies\/refund-policy"}},"10e59a94-285d-4052-8452-4a42f5617374":{"type":"text","settings":{"icon":"price_tag","text":"Szybkie płatności Blik, PayPo","link":""}}},"block_order":["text_N9tMXF","39385368-40fe-4e0e-b3fd-50677f0426dc","e27f3820-429c-4074-8f4e-80e9c2fd6a01","10e59a94-285d-4052-8452-4a42f5617374"],"settings":{"announcement_bar_homepage_only":false,"announcement_bar_layout":"carousel","show_language_switcher":true,"show_currency_switcher":true,"show_social_links":true,"has_border":false,"direction":"left","speed":"50s","autoplay":true,"autoplay_length":5}},"header":{"type":"header","blocks":{"promotion_mKDLDT":{"type":"promotion","settings":{"position":"4","promo_1_image":"shopify:\/\/shop_images\/miniaturka_naturalne_piekno_desktop.webp","promo_1_heading":"Ubrania dla każdej z nas","promo_1_link":"shopify:\/\/pages\/filozofia-marki-nudyess","promo_2_heading":"Promotion heading 2","promo_2_link":"","promo_3_heading":"Promotion heading 3","promo_3_link":"","promo_4_heading":"Promotion heading 4","promo_4_link":""}},"promotion_79fe7V":{"type":"promotion","settings":{"position":"5","promo_1_image":"shopify:\/\/shop_images\/about_us_second_banner_desktop.webp","promo_1_heading":"Poznajmy się","promo_1_link":"shopify:\/\/pages\/filozofia-marki-nudyess","promo_2_heading":"Promotion heading 2","promo_2_link":"","promo_3_heading":"Promotion heading 3","promo_3_link":"","promo_4_heading":"Promotion heading 4","promo_4_link":""}}},"block_order":["promotion_mKDLDT","promotion_79fe7V"],"settings":{"sticky_header":false,"logo":"shopify:\/\/shop_images\/Black_Logo_Nudyess.svg","logo_height_range":40,"logo_height_range_mobile":35,"style":"style2","use_drawer":true,"menu":"new-menu","secondary_menu":"secondary-menu","show_cart_icon":true,"transparent_header":false,"logo_light":"shopify:\/\/shop_images\/White_Logo_Nudyess.svg","show_language_switcher":true,"show_currency_switcher":true,"show_social_links":true}},"spacer_Nia3KG":{"type":"spacer","disabled":true,"name":"Spacer","settings":{"spacer_mobile":50,"spacer_desktop":20,"border_separator":false,"border_separator_full":false}},"rich_text_id8bLf":{"type":"rich-text","blocks":{"button_69UfkV":{"type":"button","settings":{"link_label":"","link":"","button_outline":false}}},"block_order":["button_69UfkV"],"disabled":true,"name":"Rich text","settings":{"full_width":true,"text_width":"small","text_position":"center","text_alignment":"center","color_bg":"#eae3dc","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_tGLWFj":{"type":"rich-text","blocks":{"button_RdmpBV":{"type":"button","settings":{"link_label":"","link":"","button_outline":false}}},"block_order":["button_RdmpBV"],"disabled":true,"name":"Rich text","settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"#eae3dc","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"spacer_radi6B":{"type":"spacer","disabled":true,"name":"Spacer","settings":{"spacer_mobile":25,"spacer_desktop":20,"border_separator":false,"border_separator_full":false}}},"order":["announcement-bar","header","spacer_Nia3KG","rich_text_id8bLf","rich_text_tGLWFj","spacer_radi6B"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "text_N9tMXF": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "text": "15% z kodem  XMASS15",
+            "link": "shopify://collections/new-now"
+          }
+        },
+        "39385368-40fe-4e0e-b3fd-50677f0426dc": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "icon": "truck",
+            "text": "Darmowa dostawa od 400 zł",
+            "link": ""
+          }
+        },
+        "e27f3820-429c-4074-8f4e-80e9c2fd6a01": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "icon": "return",
+            "text": "14 dni na zwrot produktów",
+            "link": "shopify://policies/refund-policy"
+          }
+        },
+        "10e59a94-285d-4052-8452-4a42f5617374": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "icon": "price_tag",
+            "text": "Szybkie płatności Blik, PayPo",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_N9tMXF",
+        "39385368-40fe-4e0e-b3fd-50677f0426dc",
+        "e27f3820-429c-4074-8f4e-80e9c2fd6a01",
+        "10e59a94-285d-4052-8452-4a42f5617374"
+      ],
+      "disabled": true,
+      "settings": {
+        "announcement_bar_homepage_only": false,
+        "announcement_bar_layout": "carousel",
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
+        "show_social_links": true,
+        "has_border": false,
+        "direction": "left",
+        "speed": "50s",
+        "autoplay": true,
+        "autoplay_length": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "promotion_mKDLDT": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "position": "4",
+            "promo_1_image": "shopify://shop_images/miniaturka_naturalne_piekno_desktop.webp",
+            "promo_1_heading": "Ubrania dla każdej z nas",
+            "promo_1_link": "shopify://pages/filozofia-marki-nudyess",
+            "promo_2_heading": "Promotion heading 2",
+            "promo_2_link": "",
+            "promo_3_heading": "Promotion heading 3",
+            "promo_3_link": "",
+            "promo_4_heading": "Promotion heading 4",
+            "promo_4_link": ""
+          }
+        },
+        "promotion_79fe7V": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "position": "5",
+            "promo_1_image": "shopify://shop_images/about_us_second_banner_desktop.webp",
+            "promo_1_heading": "Poznajmy się",
+            "promo_1_link": "shopify://pages/filozofia-marki-nudyess",
+            "promo_2_heading": "Promotion heading 2",
+            "promo_2_link": "",
+            "promo_3_heading": "Promotion heading 3",
+            "promo_3_link": "",
+            "promo_4_heading": "Promotion heading 4",
+            "promo_4_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_mKDLDT",
+        "promotion_79fe7V"
+      ],
+      "settings": {
+        "sticky_header": false,
+        "logo": "shopify://shop_images/Black_Logo_Nudyess.svg",
+        "logo_height_range": 40,
+        "logo_height_range_mobile": 35,
+        "style": "style2",
+        "use_drawer": false,
+        "menu": "new-menu",
+        "secondary_menu": "secondary-menu",
+        "show_cart_icon": true,
+        "transparent_header": false,
+        "logo_light": "shopify://shop_images/White_Logo_Nudyess.svg",
+        "show_shopify_account_menu": true,
+        "shopify_account_menu_menu": "",
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
+        "show_social_links": true
+      }
+    },
+    "spacer_Nia3KG": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "rich_text_id8bLf": {
+      "type": "rich-text",
+      "blocks": {
+        "button_69UfkV": {
+          "type": "button",
+          "settings": {
+            "link_label": "",
+            "link": "",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "button_69UfkV"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "text_width": "small",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#eae3dc",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_tGLWFj": {
+      "type": "rich-text",
+      "blocks": {
+        "button_RdmpBV": {
+          "type": "button",
+          "settings": {
+            "link_label": "",
+            "link": "",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "button_RdmpBV"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#eae3dc",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "spacer_radi6B": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 25,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "spacer_Nia3KG",
+    "rich_text_id8bLf",
+    "rich_text_tGLWFj",
+    "spacer_radi6B"
+  ]
+}

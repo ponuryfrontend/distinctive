@@ -11,143 +11,6 @@
   "sections": {
     "16479477632637c9a7": {
       "type": "slideshow",
-      "blocks": {
-        "slide_CP46eJ": {
-          "type": "slide",
-          "name": "New",
-          "settings": {
-            "image": "shopify://shop_images/f_fcb866ae-57ba-417a-8ef9-237d5af95c7f.jpg",
-            "mobile_image": "shopify://shop_images/e3.jpg",
-            "slide_link": "",
-            "video_background": false,
-            "video": "",
-            "slide_title": "New",
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h2",
-            "content": "",
-            "description_size": "small",
-            "content_position": "middle-left",
-            "text_alignment": "left",
-            "content_size": "medium",
-            "color_text": "#ffffff",
-            "overlay_color": "rgba(0,0,0,0)",
-            "overlay_opacity": 0,
-            "overlay_gradient": "",
-            "button_1_text": "",
-            "button_1_color": "regular",
-            "button_1_link": "shopify://collections/new-now",
-            "use_text_button_1": false,
-            "button_2_text": "",
-            "button_2_color": "regular",
-            "button_2_link": "",
-            "use_text_button_2": true
-          }
-        },
-        "slide_4ancBh": {
-          "type": "slide",
-          "name": "Sale",
-          "settings": {
-            "image": "shopify://shop_images/IMG_8952.jpg",
-            "mobile_image": "shopify://shop_images/IMG_8954.jpg",
-            "slide_link": "shopify://collections/ostatnie-sztuki",
-            "video_background": false,
-            "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "slide_title": "Sale",
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h1-xlarge",
-            "content": "",
-            "description_size": "medium",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "content_size": "medium",
-            "color_text": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 70,
-            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
-            "button_1_text": "",
-            "button_1_color": "accent",
-            "button_1_link": "",
-            "use_text_button_1": false,
-            "button_2_text": "",
-            "button_2_color": "white",
-            "button_2_link": "",
-            "use_text_button_2": false
-          }
-        },
-        "slide_QWBzUA": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/9f4a621523326e33ec16a85fd82ad3e0.jpg",
-            "mobile_image": "shopify://shop_images/OSTMOB.jpg",
-            "slide_link": "shopify://collections/ostatnie-sztuki",
-            "video_background": false,
-            "video": "",
-            "slide_title": "New In",
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h2",
-            "content": "",
-            "description_size": "medium",
-            "content_position": "bottom-center",
-            "text_alignment": "center",
-            "content_size": "medium",
-            "color_text": "#ffffff",
-            "overlay_color": "#ffffff",
-            "overlay_opacity": 0,
-            "overlay_gradient": "linear-gradient(180deg, rgba(255, 0, 0, 0), rgba(NaN, NaN, NaN, 1) 83%)",
-            "button_1_text": "",
-            "button_1_color": "regular",
-            "button_1_link": "shopify://collections/ostatnie-sztuki",
-            "use_text_button_1": false,
-            "button_2_text": "",
-            "button_2_color": "regular",
-            "button_2_link": "",
-            "use_text_button_2": false
-          }
-        },
-        "slide_6hN9BJ": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/pre_spring_2026_mb.jpg",
-            "mobile_image": "shopify://shop_images/pss26m.jpg",
-            "slide_link": "shopify://collections/new-now",
-            "video_background": false,
-            "video": "",
-            "slide_title": "",
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h1-xlarge",
-            "content": "",
-            "description_size": "medium",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "content_size": "medium",
-            "color_text": "#ffffff",
-            "overlay_color": "#ffffff",
-            "overlay_opacity": 0,
-            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0) 100%)",
-            "button_1_text": "",
-            "button_1_color": "accent",
-            "button_1_link": "shopify://collections/new-now",
-            "use_text_button_1": false,
-            "button_2_text": "sprawdź teraz",
-            "button_2_color": "white",
-            "button_2_link": "shopify://collections/new-now",
-            "use_text_button_2": true
-          }
-        }
-      },
-      "block_order": [
-        "slide_CP46eJ",
-        "slide_4ancBh",
-        "slide_QWBzUA",
-        "slide_6hN9BJ"
-      ],
-      "disabled": true,
       "settings": {
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-full",
@@ -163,6 +26,7 @@
     },
     "countdown_banner_PdWpjA": {
       "type": "countdown-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "section_layout": "vertical",
@@ -759,9 +623,79 @@
         "disable_bottom_spacing": true
       }
     },
+    "gallery_aMdKe9": {
+      "type": "gallery",
+      "blocks": {
+        "image_KYqM6X": {
+          "type": "image",
+          "settings": {
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "Add a tagline",
+            "title": "Gallery |Column|",
+            "text": "Pair text with an image to focus on your chosen image",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "image_WFppjU": {
+          "type": "image",
+          "settings": {
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "Add a tagline",
+            "title": "Gallery |Column|",
+            "text": "Pair text with an image to focus on your chosen image",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "image_GPfmz8": {
+          "type": "image",
+          "settings": {
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "Add a tagline",
+            "title": "Gallery |Column|",
+            "text": "Pair text with an image to focus on your chosen image",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "image_KYqM6X",
+        "image_WFppjU",
+        "image_GPfmz8"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "columns_desktop": 3,
+        "full_width": true,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "content_position": "bottom-left",
+        "text_alignment": "left",
+        "column_spacing": "small",
+        "heading_size": "h2",
+        "color_bg": "transparent",
+        "overlay_color": "#000000",
+        "overlay_opacity": 70,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "background_video_WgeYT8": {
       "type": "background-video",
-      "disabled": true,
       "settings": {
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
@@ -885,6 +819,59 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "promotional_banner_zhYjhc": {
+      "type": "promotional-banner",
+      "blocks": {
+        "subheading_QHLWer": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "heading_gkYxcN": {
+          "type": "heading",
+          "settings": {
+            "text": "Promotional |banner|",
+            "heading_size": "h1"
+          }
+        },
+        "text_Q3yLAf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        },
+        "button_ajWFgJ": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": "",
+            "button_outline": true
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QHLWer",
+        "heading_gkYxcN",
+        "text_Q3yLAf",
+        "button_ajWFgJ"
+      ],
+      "name": "Promotional banner",
+      "settings": {
+        "full_width": true,
+        "image_height": "adapt",
+        "image_width": "split",
+        "frame_border": true,
+        "content_position": "text-left",
+        "split_layout": "image_first",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "overlay_color": "#000000",
+        "overlay_opacity": 20,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -901,6 +888,8 @@
     "scrolling_text_6Mf63D",
     "16614195534fb74bc3",
     "rich_text_XMAnUw",
+    "promotional_banner_zhYjhc",
+    "gallery_aMdKe9",
     "background_video_WgeYT8",
     "rich_text_cA9aUw",
     "multicolumn_BJybVe",
