@@ -163,6 +163,7 @@
     },
     "countdown_banner_PdWpjA": {
       "type": "countdown-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "section_layout": "vertical",
