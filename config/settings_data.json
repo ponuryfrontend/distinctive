@@ -104,6 +104,7 @@
         "blocks": {
           "promotion_DJBhrH": {
             "type": "promotion",
+            "disabled": true,
             "settings": {
               "text": "Wyprzedaż do -50% na wybrane produkty",
               "link": "shopify://collections/sale"

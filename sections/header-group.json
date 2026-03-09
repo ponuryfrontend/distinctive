@@ -114,8 +114,8 @@
       "settings": {
         "sticky_header": false,
         "logo": "shopify://shop_images/Black_Logo_Nudyess.svg",
-        "logo_height_range": 40,
-        "logo_height_range_mobile": 35,
+        "logo_height_range": 29,
+        "logo_height_range_mobile": 26,
         "style": "style2",
         "use_drawer": false,
         "menu": "new-menu",
