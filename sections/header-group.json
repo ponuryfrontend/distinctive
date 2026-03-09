@@ -154,14 +154,13 @@
       "block_order": [
         "button_69UfkV"
       ],
-      "disabled": true,
       "name": "Rich text",
       "settings": {
         "full_width": true,
         "text_width": "small",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#eae3dc",
+        "color_bg": "#ffffff",
         "color_text": "#151515",
         "color_links": "#151515",
         "disable_top_spacing": true,
