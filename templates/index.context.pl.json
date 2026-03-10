@@ -16,12 +16,13 @@
     "16479477632637c9a7": {
       "settings": {
         "desktop_height": "desktop-height-image",
+        "mobile_height": "mobile-height-full",
+        "change_header": true,
+        "transition": "swipe",
+        "dot_alignment": "center",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false,
-        "mobile_height": "mobile-height-full",
-        "transition": "swipe",
-        "change_header": true,
-        "dot_alignment": "center"
+        "dot_style": "titles"
       },
       "blocks": {
         "slide_TV4ah9": {
@@ -31,7 +32,119 @@
             "heading": "",
             "content": "",
             "button_1_text": "",
-            "button_2_text": ""
+            "button_2_text": "",
+            "image": "shopify://shop_images/uju.jpg"
+          }
+        }
+      }
+    },
+    "gallery_aMdKe9": {
+      "settings": {
+        "full_width": true,
+        "columns_desktop": 5,
+        "overlay_opacity": 0
+      },
+      "blocks": {
+        "image_cyKrR": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
+            "header-ecf7e0b85a559d37abd00c78d3164003": null,
+            "enable_gallery_video": false,
+            "video_hosted": null,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "header-299871de233203f1518379a2075fcbb4": null,
+            "product_list": []
+          }
+        },
+        "image_FdPnD": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/2_4c4dab4d-0b66-411f-88b8-d78d7128b958.jpg",
+            "header-ecf7e0b85a559d37abd00c78d3164003": null,
+            "enable_gallery_video": false,
+            "video_hosted": null,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "header-299871de233203f1518379a2075fcbb4": null,
+            "product_list": []
+          }
+        },
+        "image_KYqM6X": {
+          "settings": {
+            "image": "shopify://shop_images/1_b16b4429-d43f-4779-a3d8-e07f0b763218.jpg",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": ""
+          }
+        },
+        "image_WFppjU": {
+          "settings": {
+            "image": "shopify://shop_images/6_8198598f-a1dd-4d5a-ae35-300bb4dd829e.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "subheading": ""
+          }
+        },
+        "image_GPfmz8": {
+          "settings": {
+            "image": "shopify://shop_images/3_fdb37884-3023-4af0-9f43-5a940cc4a40e.jpg",
+            "text": "",
+            "title": "",
+            "subheading": "",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_FdPnD",
+        "image_cyKrR",
+        "image_WFppjU",
+        "image_KYqM6X",
+        "image_GPfmz8"
+      ]
+    },
+    "promotional_banner_zhYjhc": {
+      "settings": {
+        "image": "shopify://shop_images/0229-01.jpg"
+      },
+      "blocks": {
+        "subheading_QHLWer": {
+          "settings": {
+            "text": "NUDYESS 2.0"
+          }
+        },
+        "heading_gkYxcN": {
+          "settings": {
+            "text": "ESSENCE OF FORM",
+            "heading_size": "h2"
+          }
+        },
+        "text_Q3yLAf": {
+          "settings": {
+            "text": "<p>Po 8 latach wchodzimy w nowy rozdział swojej histroii. Kolekcja Essense of form to początek tej zmiany. Sukienki, które podążają za sylwetką zmaiast ją definiować. </p>"
+          }
+        },
+        "button_ajWFgJ": {
+          "settings": {
+            "button_text": "Sprawdź nasze nowe projekty"
           }
         }
       }
