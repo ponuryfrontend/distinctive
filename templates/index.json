@@ -648,7 +648,7 @@
         "image_width": "split",
         "frame_border": false,
         "content_position": "text-left",
-        "split_layout": "text_first",
+        "split_layout": "image_first",
         "color_bg": "#ffffff",
         "color_text": "#151515",
         "overlay_color": "#000000",
