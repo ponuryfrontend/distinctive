@@ -27,13 +27,51 @@
       "blocks": {
         "slide_TV4ah9": {
           "settings": {
-            "image": "shopify://shop_images/uju.jpg",
+            "image": "shopify://shop_images/ee_1b6a6e41-75f9-49ef-abfa-f9f4969ab233.jpg",
             "video": "",
             "subheading": "",
             "heading": "",
             "content": "",
             "button_1_text": "",
             "button_2_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TV4ah9"
+      ]
+    },
+    "promotional_banner_zhYjhc": {
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/0229-01.jpg",
+        "image_width": "split",
+        "frame_border": false,
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      },
+      "blocks": {
+        "subheading_QHLWer": {
+          "settings": {
+            "text": "NUDYESS 2.0"
+          }
+        },
+        "heading_gkYxcN": {
+          "settings": {
+            "text": "ESSENCE OF FORM",
+            "heading_size": "h2"
+          }
+        },
+        "text_Q3yLAf": {
+          "settings": {
+            "text": "<p>Po 8 latach wchodzimy w nowy rozdział swojej histroii. Kolekcja Essense of form to początek tej zmiany. Sukienki, które podążają za sylwetką zmaiast ją definiować. </p>"
+          }
+        },
+        "button_ajWFgJ": {
+          "settings": {
+            "button_text": "Sprawdź nasze nowe projekty"
           }
         }
       }
@@ -50,7 +88,7 @@
           "disabled": false,
           "settings": {
             "image": "shopify://shop_images/2_4c4dab4d-0b66-411f-88b8-d78d7128b958.jpg",
-            "header-ecf7e0b85a559d37abd00c78d3164003": null,
+            "header-782df73116f7ad1914f4b59ca0f59b99": null,
             "enable_gallery_video": false,
             "video_hosted": null,
             "enable_hover_play": false,
@@ -61,7 +99,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "header-299871de233203f1518379a2075fcbb4": null,
+            "header-9a4873e9f03fc9211edd4c147a799806": null,
             "product_list": []
           }
         },
@@ -70,7 +108,7 @@
           "disabled": false,
           "settings": {
             "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
-            "header-ecf7e0b85a559d37abd00c78d3164003": null,
+            "header-63fbf21991fb91a70aefcf284a312dbe": null,
             "enable_gallery_video": false,
             "video_hosted": null,
             "enable_hover_play": false,
@@ -81,7 +119,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "header-299871de233203f1518379a2075fcbb4": null,
+            "header-a96306b0755507229cdf27b27b3252ff": null,
             "product_list": []
           }
         },
@@ -120,41 +158,6 @@
         "image_KYqM6X",
         "image_GPfmz8"
       ]
-    },
-    "promotional_banner_zhYjhc": {
-      "settings": {
-        "image": "shopify://shop_images/0229-01.jpg",
-        "image_width": "split",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true,
-        "full_width": false,
-        "frame_border": false
-      },
-      "blocks": {
-        "subheading_QHLWer": {
-          "settings": {
-            "text": "NUDYESS 2.0"
-          }
-        },
-        "heading_gkYxcN": {
-          "settings": {
-            "text": "ESSENCE OF FORM",
-            "heading_size": "h2"
-          }
-        },
-        "text_Q3yLAf": {
-          "settings": {
-            "text": "<p>Po 8 latach wchodzimy w nowy rozdział swojej histroii. Kolekcja Essense of form to początek tej zmiany. Sukienki, które podążają za sylwetką zmaiast ją definiować. </p>"
-          }
-        },
-        "button_ajWFgJ": {
-          "settings": {
-            "button_text": "Sprawdź nasze nowe projekty"
-          }
-        }
-      }
     }
   }
 }
