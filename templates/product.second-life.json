@@ -175,8 +175,8 @@
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "Zobacz produkty, które mogą ci się spodobać",
-        "description": "",
+        "heading": "",
+        "description": "<h6>Zobacz produkty, które mogą ci się spodobać</h6>",
         "mobile_swipe": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
