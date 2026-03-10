@@ -201,15 +201,26 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "spacer_FKfBee": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 25,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
     }
   },
   "order": [
     "announcement-bar",
     "header",
+    "spacer_3HjX46",
     "spacer_Nia3KG",
     "rich_text_id8bLf",
     "rich_text_tGLWFj",
     "spacer_radi6B",
-    "spacer_3HjX46"
+    "spacer_FKfBee"
   ]
 }
