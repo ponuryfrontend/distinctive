@@ -109,6 +109,7 @@
         },
         "side_panel_PgPAFz": {
           "type": "side_panel",
+          "disabled": true,
           "settings": {
             "side_panel_label": "Sprawdź wymiary produktu",
             "side_panel_icon": "shirt",
@@ -155,12 +156,12 @@
       "settings": {
         "enable_sticky_add_to_cart": false,
         "show_taxes_included": false,
-        "display_slider_pagination": true,
+        "display_slider_pagination": false,
         "media_aspect_ratio": "adapt",
         "display_captions": false,
-        "hide_variants": true,
+        "hide_variants": false,
         "lightbox": false,
-        "enable_video_looping": true
+        "enable_video_looping": false
       }
     },
     "cf419534-b576-4781-b418-495982d63b57": {
