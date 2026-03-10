@@ -173,6 +173,15 @@
         "border_separator_full": false
       }
     },
+    "spacer_GGjRwJ": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -185,8 +194,9 @@
     }
   },
   "order": [
-    "main",
     "cf419534-b576-4781-b418-495982d63b57",
+    "main",
+    "spacer_GGjRwJ",
     "recommendations"
   ]
 }
