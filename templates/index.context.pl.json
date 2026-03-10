@@ -33,7 +33,9 @@
             "heading": "",
             "content": "",
             "button_1_text": "",
-            "button_2_text": ""
+            "button_2_text": "",
+            "video_hosted": "shopify://files/videos/IMG_1709.mov",
+            "video_background": true
           }
         }
       },
@@ -88,7 +90,7 @@
           "disabled": false,
           "settings": {
             "image": "shopify://shop_images/2_4c4dab4d-0b66-411f-88b8-d78d7128b958.jpg",
-            "header-782df73116f7ad1914f4b59ca0f59b99": null,
+            "header-87507ab90050339fe5452ebb7cc77fd1": null,
             "enable_gallery_video": false,
             "video_hosted": null,
             "enable_hover_play": false,
@@ -99,7 +101,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "header-9a4873e9f03fc9211edd4c147a799806": null,
+            "header-35c999988c58a4f13e9d49de1119f19d": null,
             "product_list": []
           }
         },
@@ -108,7 +110,7 @@
           "disabled": false,
           "settings": {
             "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
-            "header-63fbf21991fb91a70aefcf284a312dbe": null,
+            "header-33b5dac17fe75b5a22ddbf2b61f1a639": null,
             "enable_gallery_video": false,
             "video_hosted": null,
             "enable_hover_play": false,
@@ -119,7 +121,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "header-a96306b0755507229cdf27b27b3252ff": null,
+            "header-972e47a3f9d9afeab7bc85f2a8531f90": null,
             "product_list": []
           }
         },
