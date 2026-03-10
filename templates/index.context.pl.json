@@ -32,10 +32,14 @@
             "video": "",
             "video_hosted": "shopify://files/videos/IMG_1709-kopia.mov",
             "subheading": "",
-            "heading": "",
+            "heading": "ESSENCE OF FORM",
             "content": "",
             "button_1_text": "",
-            "button_2_text": ""
+            "button_2_text": "",
+            "content_position": "bottom-center",
+            "content_size": "medium",
+            "description_size": "large",
+            "heading_size": "h2"
           }
         }
       },
