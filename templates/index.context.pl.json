@@ -33,13 +33,13 @@
             "video_hosted": "shopify://files/videos/IMG_1709-kopia.mov",
             "subheading": "",
             "heading": "ESSENCE OF FORM",
+            "heading_size": "h2",
             "content": "",
-            "button_1_text": "",
-            "button_2_text": "",
+            "description_size": "large",
             "content_position": "bottom-center",
             "content_size": "medium",
-            "description_size": "large",
-            "heading_size": "h2"
+            "button_1_text": "",
+            "button_2_text": ""
           }
         }
       },
@@ -50,7 +50,7 @@
     "promotional_banner_zhYjhc": {
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/dlugasukniamaxizglebokimdekoltemVpistacjowa1_3eab5a4f-65f6-4c77-94bb-69cee1833854.webp",
+        "image": "shopify://shop_images/0947-02.jpg",
         "image_width": "split",
         "frame_border": false,
         "overlay_color": "#ffffff",
