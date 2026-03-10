@@ -120,7 +120,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Opis produktu",
-            "open": true,
+            "open": false,
             "content": "",
             "page": "",
             "custom_liquid": "{{ product.description }}"
