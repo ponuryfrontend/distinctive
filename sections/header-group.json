@@ -75,7 +75,6 @@
       "blocks": {
         "promotion_mKDLDT": {
           "type": "promotion",
-          "disabled": true,
           "settings": {
             "position": "4",
             "promo_1_image": "shopify://shop_images/miniaturka_naturalne_piekno_desktop.webp",
@@ -88,27 +87,10 @@
             "promo_4_heading": "Promotion heading 4",
             "promo_4_link": ""
           }
-        },
-        "promotion_79fe7V": {
-          "type": "promotion",
-          "disabled": true,
-          "settings": {
-            "position": "5",
-            "promo_1_image": "shopify://shop_images/about_us_second_banner_desktop.webp",
-            "promo_1_heading": "Poznajmy się",
-            "promo_1_link": "shopify://pages/filozofia-marki-nudyess",
-            "promo_2_heading": "Promotion heading 2",
-            "promo_2_link": "",
-            "promo_3_heading": "Promotion heading 3",
-            "promo_3_link": "",
-            "promo_4_heading": "Promotion heading 4",
-            "promo_4_link": ""
-          }
         }
       },
       "block_order": [
-        "promotion_mKDLDT",
-        "promotion_79fe7V"
+        "promotion_mKDLDT"
       ],
       "settings": {
         "sticky_header": false,
@@ -131,7 +113,6 @@
     },
     "spacer_Nia3KG": {
       "type": "spacer",
-      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 50,
