@@ -14,6 +14,7 @@
   "parent": "header-group.json",
   "sections": {
     "header": {
+      "disabled": false,
       "settings": {
         "style": "style3"
       },
@@ -35,6 +36,11 @@
       "blocks": {}
     },
     "spacer_radi6B": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "announcement-bar": {
       "disabled": true,
       "settings": {},
       "blocks": {}
