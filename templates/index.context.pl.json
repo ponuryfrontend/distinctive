@@ -15,9 +15,13 @@
   "sections": {
     "16479477632637c9a7": {
       "settings": {
-        "desktop_height": "desktop-height-750",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "desktop_height": "desktop-height-image",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false,
+        "mobile_height": "mobile-height-full",
+        "transition": "swipe",
+        "change_header": true,
+        "dot_alignment": "center"
       },
       "blocks": {
         "slide_TV4ah9": {
