@@ -113,8 +113,20 @@
         "show_social_links": true
       }
     },
+    "spacer_3HjX46": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 25,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "spacer_Nia3KG": {
       "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 50,
@@ -184,16 +196,7 @@
     },
     "spacer_radi6B": {
       "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 25,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "spacer_3HjX46": {
-      "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 25,
