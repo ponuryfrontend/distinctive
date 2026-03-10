@@ -30,7 +30,6 @@
     },
     "spacer_WhxHNn": {
       "type": "spacer",
-      "disabled": true,
       "settings": {
         "spacer_mobile": 30,
         "spacer_desktop": 50,
