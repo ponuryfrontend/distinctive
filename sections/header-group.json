@@ -207,6 +207,7 @@
     },
     "spacer_FKfBee": {
       "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 25,

@@ -20,8 +20,9 @@
     },
     "spacer_KxdJkj": {
       "type": "spacer",
+      "disabled": true,
       "settings": {
-        "spacer_mobile": 85,
+        "spacer_mobile": 10,
         "spacer_desktop": 50,
         "border_separator": false,
         "border_separator_full": false
@@ -29,6 +30,7 @@
     },
     "spacer_WhxHNn": {
       "type": "spacer",
+      "disabled": true,
       "settings": {
         "spacer_mobile": 30,
         "spacer_desktop": 50,
@@ -194,7 +196,7 @@
     "spacer_GGjRwJ": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 30,
+        "spacer_mobile": 0,
         "spacer_desktop": 50,
         "border_separator": false,
         "border_separator_full": false
