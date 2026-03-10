@@ -93,6 +93,16 @@
             "sizing_guide_page": "tabela-rozmiarow"
           }
         },
+        "a9bc54b3-69df-483b-8561-10c1c4f6caac": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Opis produktu",
+            "open": true,
+            "content": "",
+            "page": "",
+            "custom_liquid": "{{ product.description }}"
+          }
+        },
         "ac30e733-fe79-471f-a9b6-72b10279036c": {
           "type": "complementary",
           "disabled": true,
@@ -117,16 +127,6 @@
             "side_panel_page": ""
           }
         },
-        "a9bc54b3-69df-483b-8561-10c1c4f6caac": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Opis produktu",
-            "open": true,
-            "content": "",
-            "page": "",
-            "custom_liquid": "{{ product.description }}"
-          }
-        },
         "growave_loyalty_wishlist_block_product_review_widget_eptVB4": {
           "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
           "disabled": true,
@@ -147,10 +147,10 @@
         "3184ed78-b74d-40cc-a072-56e6212c92ea",
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
+        "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
         "custom_liquid_3tFncq",
         "side_panel_PgPAFz",
-        "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "growave_loyalty_wishlist_block_product_review_widget_eptVB4"
       ],
       "settings": {
