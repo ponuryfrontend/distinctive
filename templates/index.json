@@ -21,7 +21,7 @@
             "video_hosted": "shopify://files/videos/IMG_1709-kopia.mov",
             "slide_title": "",
             "subheading": "",
-            "heading": "ESSENCE OF FOARM",
+            "heading": "ESSENCE OF FORM",
             "heading_size": "h1",
             "content": "",
             "description_size": "medium",
@@ -608,27 +608,27 @@
         "subheading_QHLWer": {
           "type": "subheading",
           "settings": {
-            "text": "Add a tagline"
+            "text": "NUDYESS 2.0"
           }
         },
         "heading_gkYxcN": {
           "type": "heading",
           "settings": {
-            "text": "Promotional |banner|",
-            "heading_size": "h1"
+            "text": "ESSENCE OF FORM",
+            "heading_size": "h2"
           }
         },
         "text_Q3yLAf": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+            "text": "<p>Po 8 latach wchodzimy w nowy rozdział swojej histroii. Kolekcja Essense of form to początek tej zmiany. Sukienki, które podążają za sylwetką zmaiast ją definiować. </p>"
           }
         },
         "button_ajWFgJ": {
           "type": "button",
           "settings": {
-            "button_text": "Shop Now",
-            "button_link": "",
+            "button_text": "sprawdź naszą nową kolekcję",
+            "button_link": "shopify://collections/2-0",
             "button_outline": true
           }
         }
@@ -642,6 +642,8 @@
       "name": "Promotional banner",
       "settings": {
         "full_width": true,
+        "image": "shopify://shop_images/0947-02.jpg",
+        "mobile_image": "shopify://shop_images/0947-02.jpg",
         "image_height": "adapt",
         "image_width": "split",
         "frame_border": true,
