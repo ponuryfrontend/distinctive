@@ -1,1 +1,83 @@
-{"sections":{"template-header":{"type":"template-header","settings":{"show_collection_image":false,"uppercase_title":false,"show_collection_description":true,"show_subcollections":false,"display_description":false}},"product-grid":{"type":"main-collection-product-grid","blocks":{"promotion_KmfpWc":{"type":"promotion","settings":{"promotion_collection":"","promotion_position":1,"promotion_width":"1","image":"shopify:\/\/shop_images\/IMG_8954.jpg","title":"","text":"","link_label":"","link":"","use_text_button":false,"block_link":"","content_position":"bottom-left","text_alignment":"left","overlay_color":"#df4d4d","overlay_opacity":0}}},"block_order":["promotion_KmfpWc"],"settings":{"products_per_page":12,"columns_desktop":3,"pagination_type":"loadmore","enable_filtering":true,"enable_sorting":true,"show_counts":true,"filter_color_swatches":false}},"16636704759cbf64c5":{"type":"spacer","settings":{"spacer_mobile":50,"spacer_desktop":90,"border_separator":true,"border_separator_full":true}},"166366972953e881f5":{"type":"collection-list","settings":{"heading":"","description":"","collection_list":["sale","wyprzedaz-spodnice","wyprzedaz-sukienki","wyprzedaz-topy"],"image_ratio":"square","layout":"grid","columns_desktop":4,"columns_mobile":"2","content_alignment":"left","show_progress_bar":false,"mobile_swipe":false,"disable_top_spacing":false,"disable_bottom_spacing":false}},"166367228131c52c01":{"type":"spacer","disabled":true,"settings":{"spacer_mobile":35,"spacer_desktop":40,"border_separator":false,"border_separator_full":false}}},"order":["template-header","product-grid","16636704759cbf64c5","166366972953e881f5","166367228131c52c01"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "template-header": {
+      "type": "template-header",
+      "settings": {
+        "show_collection_image": false,
+        "uppercase_title": false,
+        "show_collection_description": true,
+        "show_subcollections": false,
+        "display_description": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "pagination_type": "loadmore",
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "show_counts": true,
+        "filter_color_swatches": false
+      }
+    },
+    "16636704759cbf64c5": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 90,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "166366972953e881f5": {
+      "type": "collection-list",
+      "settings": {
+        "heading": "",
+        "description": "",
+        "collection_list": [
+          "sale",
+          "wyprzedaz-spodnice",
+          "wyprzedaz-sukienki",
+          "wyprzedaz-topy"
+        ],
+        "image_ratio": "square",
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "content_alignment": "left",
+        "show_progress_bar": false,
+        "mobile_swipe": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "166367228131c52c01": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "spacer_mobile": 35,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    }
+  },
+  "order": [
+    "template-header",
+    "product-grid",
+    "16636704759cbf64c5",
+    "166366972953e881f5",
+    "166367228131c52c01"
+  ]
+}
