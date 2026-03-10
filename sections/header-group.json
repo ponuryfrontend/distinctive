@@ -118,7 +118,7 @@
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 50,
-        "spacer_desktop": 20,
+        "spacer_desktop": 60,
         "border_separator": false,
         "border_separator_full": false
       }
