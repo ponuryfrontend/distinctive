@@ -94,7 +94,7 @@
           "settings": {
             "show_quantity_selector": true,
             "outline_button": true,
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
