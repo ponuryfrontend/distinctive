@@ -12,5 +12,25 @@
     "market": "pl"
   },
   "parent": "index.json",
-  "sections": {}
+  "sections": {
+    "16479477632637c9a7": {
+      "settings": {
+        "desktop_height": "desktop-height-750",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      },
+      "blocks": {
+        "slide_TV4ah9": {
+          "settings": {
+            "video": "",
+            "subheading": "",
+            "heading": "",
+            "content": "",
+            "button_1_text": "",
+            "button_2_text": ""
+          }
+        }
+      }
+    }
+  }
 }
