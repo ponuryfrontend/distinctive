@@ -34,7 +34,7 @@
             "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
             "button_1_text": "",
             "button_1_color": "accent",
-            "button_1_link": "",
+            "button_1_link": "shopify://collections/2-0",
             "use_text_button_1": false,
             "button_2_text": "",
             "button_2_color": "white",
