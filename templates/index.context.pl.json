@@ -19,52 +19,32 @@
         "mobile_height": "mobile-height-full",
         "change_header": true,
         "transition": "swipe",
+        "dot_style": "titles",
         "dot_alignment": "center",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false,
-        "dot_style": "titles"
+        "disable_bottom_spacing": false
       },
       "blocks": {
         "slide_TV4ah9": {
           "settings": {
+            "image": "shopify://shop_images/uju.jpg",
             "video": "",
             "subheading": "",
             "heading": "",
             "content": "",
             "button_1_text": "",
-            "button_2_text": "",
-            "image": "shopify://shop_images/uju.jpg"
+            "button_2_text": ""
           }
         }
       }
     },
     "gallery_aMdKe9": {
       "settings": {
-        "full_width": true,
         "columns_desktop": 5,
+        "full_width": true,
         "overlay_opacity": 0
       },
       "blocks": {
-        "image_cyKrR": {
-          "type": "image",
-          "disabled": false,
-          "settings": {
-            "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
-            "header-ecf7e0b85a559d37abd00c78d3164003": null,
-            "enable_gallery_video": false,
-            "video_hosted": null,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "header-299871de233203f1518379a2075fcbb4": null,
-            "product_list": []
-          }
-        },
         "image_FdPnD": {
           "type": "image",
           "disabled": false,
@@ -85,6 +65,35 @@
             "product_list": []
           }
         },
+        "image_cyKrR": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
+            "header-ecf7e0b85a559d37abd00c78d3164003": null,
+            "enable_gallery_video": false,
+            "video_hosted": null,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "header-299871de233203f1518379a2075fcbb4": null,
+            "product_list": []
+          }
+        },
+        "image_WFppjU": {
+          "settings": {
+            "image": "shopify://shop_images/6_8198598f-a1dd-4d5a-ae35-300bb4dd829e.jpg",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": ""
+          }
+        },
         "image_KYqM6X": {
           "settings": {
             "image": "shopify://shop_images/1_b16b4429-d43f-4779-a3d8-e07f0b763218.jpg",
@@ -94,21 +103,12 @@
             "link_label": ""
           }
         },
-        "image_WFppjU": {
-          "settings": {
-            "image": "shopify://shop_images/6_8198598f-a1dd-4d5a-ae35-300bb4dd829e.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "subheading": ""
-          }
-        },
         "image_GPfmz8": {
           "settings": {
             "image": "shopify://shop_images/3_fdb37884-3023-4af0-9f43-5a940cc4a40e.jpg",
-            "text": "",
-            "title": "",
             "subheading": "",
+            "title": "",
+            "text": "",
             "link_label": ""
           }
         }
@@ -123,7 +123,14 @@
     },
     "promotional_banner_zhYjhc": {
       "settings": {
-        "image": "shopify://shop_images/0229-01.jpg"
+        "image": "shopify://shop_images/0229-01.jpg",
+        "image_width": "split",
+        "overlay_color": "#ffffff",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true,
+        "full_width": false,
+        "frame_border": false
       },
       "blocks": {
         "subheading_QHLWer": {
