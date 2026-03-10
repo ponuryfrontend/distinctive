@@ -47,7 +47,7 @@
         "slide_TV4ah9"
       ],
       "settings": {
-        "desktop_height": "desktop-height-750",
+        "desktop_height": "desktop-height-image",
         "mobile_height": "mobile-height-full",
         "change_header": true,
         "autoplay": true,
@@ -64,7 +64,7 @@
       "disabled": true,
       "settings": {
         "full_width": true,
-        "section_layout": "vertical",
+        "section_layout": "horizontal",
         "desktop_height": "desktop-height-full",
         "mobile_height": "mobile-height-full",
         "bg_image": "shopify://shop_images/soon_8a218e8f-6c0d-433a-a6eb-804830493c6d.jpg",
@@ -241,62 +241,6 @@
         "color_bg": "#0097b2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "promotional_banner_rk4bLe": {
-      "type": "promotional-banner",
-      "blocks": {
-        "subheading_qhNkKk": {
-          "type": "subheading",
-          "settings": {
-            "text": "DARMOWY E-BOOK"
-          }
-        },
-        "heading_JJw4dp": {
-          "type": "heading",
-          "settings": {
-            "text": "Święta w stylu Nudyess",
-            "heading_size": "h2"
-          }
-        },
-        "text_HcEzAp": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Nie wiesz co założyć na świąteczne spotkanie, firmową wigilię lub christmas party? Masz w szafie sukienki Nudyess, ale nie wiesz z czym je wystylizować? Jak połączyć kolory, jakie dobrać dodatki? </p><p>W naszym e-booku znajdziesz prawie 30 stylizacji na różne okazje z użyciem sukienek zarówno z kolekcji X-MASS 2025 jak i starszych kolekcji. Nie lubisz sukienek - dodatkowo znajdziesz tam propozycje stylizacji z użyciem naszych bestsellerowych topów. </p><p>Już teraz pobierz nasz darmowy przewodnik po świątecznych stylizacjach. </p><p></p><p></p>"
-          }
-        },
-        "button_XBgGxr": {
-          "type": "button",
-          "settings": {
-            "button_text": "POBIERZ E-BOOK",
-            "button_link": "https://nudyess.com/pages/swieta-w-stylu-nudyess",
-            "button_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_qhNkKk",
-        "heading_JJw4dp",
-        "text_HcEzAp",
-        "button_XBgGxr"
-      ],
-      "disabled": true,
-      "name": "Promotional banner",
-      "settings": {
-        "full_width": true,
-        "image": "shopify://shop_images/ban.jpg",
-        "mobile_image": "shopify://shop_images/ban.jpg",
-        "image_height": "adapt",
-        "image_width": "split",
-        "frame_border": false,
-        "content_position": "text-left",
-        "split_layout": "text_first",
-        "color_bg": "#eae3dc",
-        "color_text": "#6c1212",
-        "overlay_color": "#6c1212",
-        "overlay_opacity": 0,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "rich_text_cfaeYE": {
@@ -914,7 +858,6 @@
     "countdown_banner_PdWpjA",
     "rich_text_NgGmJL",
     "media_grid_cpjtDz",
-    "promotional_banner_rk4bLe",
     "rich_text_cfaeYE",
     "multiple_media_with_text_bNWA3W",
     "spacer_Ndiahc",

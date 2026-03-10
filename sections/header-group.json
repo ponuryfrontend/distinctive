@@ -131,6 +131,7 @@
     },
     "spacer_Nia3KG": {
       "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 50,
@@ -144,6 +145,7 @@
       "blocks": {
         "button_69UfkV": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "link_label": "",
             "link": "",
@@ -154,6 +156,7 @@
       "block_order": [
         "button_69UfkV"
       ],
+      "disabled": true,
       "name": "Rich text",
       "settings": {
         "full_width": true,
