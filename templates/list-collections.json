@@ -1,1 +1,85 @@
-{"sections":{"bb7f1961-0a71-4c65-88d6-617681cf8e8b":{"type":"spacer","settings":{"spacer_mobile":40,"spacer_desktop":80,"border_separator":false,"border_separator_full":false}},"main":{"type":"main-list-collections","blocks":{"collection_EfwbPh":{"type":"collection","settings":{"collection":"bestsellery"}},"collection_VFVBh7":{"type":"collection","settings":{"collection":"prazkowane-sukienki"}},"collection_7fMd3m":{"type":"collection","settings":{"collection":"ostatnie-sztuki"}},"collection_W9xiH9":{"type":"collection","settings":{"collection":"pre-order-przedsprzedaz"}},"collection_TzQQQj":{"type":"collection","settings":{"collection":"sale"}}},"block_order":["collection_EfwbPh","collection_VFVBh7","collection_7fMd3m","collection_W9xiH9","collection_TzQQQj"],"settings":{"heading":"","description":"","sort":"alphabetical","image_ratio":"square","columns_desktop":4,"collection_list_pagination_num":8,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["bb7f1961-0a71-4c65-88d6-617681cf8e8b","main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bb7f1961-0a71-4c65-88d6-617681cf8e8b": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 40,
+        "spacer_desktop": 80,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "blocks": {
+        "collection_EfwbPh": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellery"
+          }
+        },
+        "collection_VFVBh7": {
+          "type": "collection",
+          "settings": {
+            "collection": "prazkowane-sukienki"
+          }
+        },
+        "collection_7fMd3m": {
+          "type": "collection",
+          "settings": {
+            "collection": "ostatnie-sztuki"
+          }
+        },
+        "collection_W9xiH9": {
+          "type": "collection",
+          "settings": {
+            "collection": "pre-order-przedsprzedaz"
+          }
+        },
+        "collection_TzQQQj": {
+          "type": "collection",
+          "settings": {
+            "collection": "sale"
+          }
+        }
+      },
+      "block_order": [
+        "collection_EfwbPh",
+        "collection_VFVBh7",
+        "collection_7fMd3m",
+        "collection_W9xiH9",
+        "collection_TzQQQj"
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "sort": "alphabetical",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "collection_list_pagination_num": 8,
+        "content_alignment": "left",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "breadcrumbs_hihWVb": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    }
+  },
+  "order": [
+    "bb7f1961-0a71-4c65-88d6-617681cf8e8b",
+    "breadcrumbs_hihWVb",
+    "main"
+  ]
+}
