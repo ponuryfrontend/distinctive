@@ -84,6 +84,53 @@
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- liquid
+  assign collection_url = shop.url | append: collection.url
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ collection_url | append: '#breadcrumb' | json }},
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": {{ shop.url | append: routes.root_url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | strip | json }},
+          "item": {{ collection_url | json }}
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": {{ collection_url | append: '#itemlist' | json }},
+      "name": {{ collection.title | strip | json }},
+      "url": {{ collection_url | json }},
+      "numberOfItems": {{ collection.products_count | json }},
+      "itemListElement": [
+        {%- for product in collection.products limit: products_per_page -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index | json }},
+            "name": {{ product.title | strip | json }},
+            "url": {{ shop.url | append: product.url | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  ]
+}
+</script>
+
 {% schema %}
   {
     "name": "Product grid",
