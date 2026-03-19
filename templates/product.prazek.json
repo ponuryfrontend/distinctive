@@ -1,1 +1,235 @@
-{"sections":{"main":{"type":"main-product","blocks":{"ed7d166d-5568-4e1a-9c05-eeffaad02629":{"type":"label","settings":{}},"7a9e8be1-39f0-4a96-a5e1-73e5fb457704":{"type":"title","settings":{"uppercase":false,"show_products_rating":false,"show_custom_badges":true}},"sniffie_omnibus_pricing_omnibus_price_pUEPYR":{"type":"shopify:\/\/apps\/complimus-eu-omnibus-price\/blocks\/omnibus-price\/befd495a-705f-454e-9a70-d1d491f84538","settings":{"hide_if_not_on_sale":false,"hide_if_equal_to_compare_at_price":false,"label":"Najniższa cena z 30 dni:","show_percentage":false,"date_format":"%B %d, %Y","hide_date":true,"field":"price","update_variant_details_dynamically":true,"font_size":0,"text_color":"#000000","price_adjustment":0,"round_up_to":"0","add_after_rounding":0}},"growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a":{"type":"shopify:\/\/apps\/growave-loyalty-wishlist\/blocks\/block.product.reviewAvgProfile\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4","settings":{"custom_css":"","element_to_scroll_id":"","element_to_click_id":""}},"custom_liquid_NUqWbL":{"type":"custom_liquid","disabled":true,"settings":{"custom_liquid":"{%- render 'price-indication', product:product -%}"}},"siblings_6ytCwm":{"type":"siblings","settings":{"siblings_collection":"{{ product.metafields.theme.siblings.value }}","sibling_color":"{{ product.metafields.theme.sibling_color.value }}","color_picker_size":"regular","margin_bottom":20}},"inventory_level_iwYp9t":{"type":"inventory_level","settings":{"show_inventory_notice":"low","show_inventory_count":"low","inventory_notice_pulse":true,"inventory_notice_bar":false,"inventory_notice_threshold":2,"inventory_notice_base":30}},"3184ed78-b74d-40cc-a072-56e6212c92ea":{"type":"buy_buttons","settings":{"show_quantity_selector":true,"outline_button":true,"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"growave_loyalty_wishlist_block_product_fave_button_WNx6fm":{"type":"shopify:\/\/apps\/growave-loyalty-wishlist\/blocks\/block.product.faveButton\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4","settings":{"option_button_class":"","custom_css":"","shadow_root_options":"null"}},"7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b":{"type":"variant_picker","settings":{"picker_type":"button","color_picker":true,"color_picker_size":"small","color_picker_use_variants":false,"variant_is_disabled":false,"sizing_guide_variant":"Rozmiar","sizing_guide_text":"Dobierz swój rozmiar","sizing_guide_icon":"ruler","sizing_guide_page":"tabela-rozmiarow"}},"ac30e733-fe79-471f-a9b6-72b10279036c":{"type":"complementary","settings":{"block_heading":"Dodaj do zestawu z:","product_list_limit":8}},"custom_liquid_M4zQym":{"type":"custom_liquid","settings":{"custom_liquid":"<div id=\"projector_points_wrapper\"><\/div>"}},"side_panel_PgPAFz":{"type":"side_panel","disabled":true,"settings":{"side_panel_label":"Sprawdź wymiary produktu","side_panel_icon":"shirt","side_panel_content":"<p>{{ product.metafields.custom.product_size_info.value }}<\/p>","side_panel_page":""}},"a9bc54b3-69df-483b-8561-10c1c4f6caac":{"type":"collapsible_tab","settings":{"heading":"Opis produktu","open":true,"content":"","page":"","custom_liquid":"{{ product.description }}"}},"collapsible_tab_MrtDzH":{"type":"collapsible_tab","settings":{"heading":"Informacje o składzie i pielęgnacji","open":false,"content":"","page":"","custom_liquid":"<p><strong>Skład:<\/strong><\/p>\n<p>95% prążkowana bawełna i 5% elastan<\/p>\n<p><strong>Pielęgnacja:<\/strong><\/p>\n<p style=\"text-align: justify;\">Aby m&oacute;c latami cieszyć się produktami z naszej prążkowanej dzianiny należy zawsze prać je odwr&oacute;cone na lewą stronę używając delikatnych (nawet dziecięcych) detergent&oacute;w oraz ustawiać możliwie niskie obroty pralki. Dzięki takiej pielęgnacji szwy pozostaną nienaruszone i ubrania utrzymają swoją formę, elastyczność i strukturę, a także będą przyjemne dla sk&oacute;ry nawet po wielu praniach.<\/p>\n<p><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/7215\/0807\/files\/prazek-pranie.svg?v=1719830584\" alt=\"pielegnacja\" width=\"100%\" height=\"auto\" \/><\/p>\n<p style=\"text-align: justify;\">Prać ręcznie lub w pralce na programie prania ręcznego. Używać możliwie najdelikatniejszych środk&oacute;w piorących. Maksymalna temperatura prania&nbsp; 30&ordm; C. Wirowanie maksymalnie 600 obrot&oacute;w. Suszyć na płasko - nie suszyć w suszarce bębnowej. Prasować parowaczką lub żelazkiem w temperaturze do 110 stopni C. Nie czyścić chemicznie.<\/p>\n<p><\/p>"}},"collapsible_tab_UXbKiJ":{"type":"collapsible_tab","disabled":true,"settings":{"heading":"Opinie o produkcie","open":false,"content":"","page":"","custom_liquid":"{% capture the_snippet_reviews %}{% render 'socialshopwave-widget-recommends' with 1 %}{% endcapture %}\n{% unless the_snippet_reviews contains 'Liquid error' %}\n{{ the_snippet_reviews }}\n{% endunless %}"}},"growave_loyalty_wishlist_block_product_review_widget_QC76KW":{"type":"shopify:\/\/apps\/growave-loyalty-wishlist\/blocks\/block.product.reviewWidget\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4","settings":{"min_images_for_slider_visibility":6,"reviews_per_page":5,"custom_css":""}}},"block_order":["ed7d166d-5568-4e1a-9c05-eeffaad02629","7a9e8be1-39f0-4a96-a5e1-73e5fb457704","sniffie_omnibus_pricing_omnibus_price_pUEPYR","growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a","custom_liquid_NUqWbL","siblings_6ytCwm","inventory_level_iwYp9t","3184ed78-b74d-40cc-a072-56e6212c92ea","growave_loyalty_wishlist_block_product_fave_button_WNx6fm","7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b","ac30e733-fe79-471f-a9b6-72b10279036c","custom_liquid_M4zQym","side_panel_PgPAFz","a9bc54b3-69df-483b-8561-10c1c4f6caac","collapsible_tab_MrtDzH","collapsible_tab_UXbKiJ","growave_loyalty_wishlist_block_product_review_widget_QC76KW"],"settings":{"enable_sticky_add_to_cart":true,"show_taxes_included":false,"display_slider_pagination":true,"media_aspect_ratio":"adapt","display_captions":false,"hide_variants":true,"lightbox":false,"enable_video_looping":true}},"cf419534-b576-4781-b418-495982d63b57":{"type":"spacer","settings":{"spacer_mobile":30,"spacer_desktop":50,"border_separator":false,"border_separator_full":false}},"recommendations":{"type":"product-recommendations","settings":{"heading":"Zobacz produkty, które mogą ci się spodobać","description":"","mobile_swipe":false,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["main","cf419534-b576-4781-b418-495982d63b57","recommendations"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "ed7d166d-5568-4e1a-9c05-eeffaad02629": {
+          "type": "label",
+          "settings": {}
+        },
+        "7a9e8be1-39f0-4a96-a5e1-73e5fb457704": {
+          "type": "title",
+          "settings": {
+            "uppercase": false,
+            "show_products_rating": false,
+            "show_custom_badges": true
+          }
+        },
+        "sniffie_omnibus_pricing_omnibus_price_pUEPYR": {
+          "type": "shopify://apps/complimus-eu-omnibus-price/blocks/omnibus-price/befd495a-705f-454e-9a70-d1d491f84538",
+          "settings": {
+            "hide_if_not_on_sale": false,
+            "hide_if_equal_to_compare_at_price": false,
+            "label": "Najniższa cena z 30 dni:",
+            "show_percentage": false,
+            "date_format": "%B %d, %Y",
+            "hide_date": true,
+            "field": "price",
+            "update_variant_details_dynamically": true,
+            "font_size": 0,
+            "text_color": "#000000",
+            "price_adjustment": 0,
+            "round_up_to": "0",
+            "add_after_rounding": 0
+          }
+        },
+        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewAvgProfile/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "custom_css": "",
+            "element_to_scroll_id": "",
+            "element_to_click_id": ""
+          }
+        },
+        "custom_liquid_NUqWbL": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{%- render 'price-indication', product:product -%}"
+          }
+        },
+        "siblings_6ytCwm": {
+          "type": "siblings",
+          "settings": {
+            "siblings_collection": "{{ product.metafields.theme.siblings.value }}",
+            "sibling_color": "{{ product.metafields.theme.sibling_color.value }}",
+            "color_picker_size": "regular",
+            "margin_bottom": 20
+          }
+        },
+        "inventory_level_iwYp9t": {
+          "type": "inventory_level",
+          "settings": {
+            "show_inventory_notice": "low",
+            "show_inventory_count": "low",
+            "inventory_notice_pulse": true,
+            "inventory_notice_bar": false,
+            "inventory_notice_threshold": 2,
+            "inventory_notice_base": 30
+          }
+        },
+        "3184ed78-b74d-40cc-a072-56e6212c92ea": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "outline_button": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "growave_loyalty_wishlist_block_product_fave_button_WNx6fm": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.faveButton/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "option_button_class": "",
+            "custom_css": "",
+            "shadow_root_options": "null"
+          }
+        },
+        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_size": "small",
+            "color_picker_use_variants": false,
+            "variant_is_disabled": false,
+            "sizing_guide_variant": "Rozmiar",
+            "sizing_guide_text": "Dobierz swój rozmiar",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": "tabela-rozmiarow"
+          }
+        },
+        "ac30e733-fe79-471f-a9b6-72b10279036c": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Dodaj do zestawu z:",
+            "product_list_limit": 8
+          }
+        },
+        "custom_liquid_M4zQym": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"projector_points_wrapper\"></div>"
+          }
+        },
+        "side_panel_PgPAFz": {
+          "type": "side_panel",
+          "disabled": true,
+          "settings": {
+            "side_panel_label": "Sprawdź wymiary produktu",
+            "side_panel_icon": "shirt",
+            "side_panel_content": "<p>{{ product.metafields.custom.product_size_info.value }}</p>",
+            "side_panel_page": ""
+          }
+        },
+        "a9bc54b3-69df-483b-8561-10c1c4f6caac": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Opis produktu",
+            "open": true,
+            "content": "",
+            "page": "",
+            "custom_liquid": "{{ product.description }}"
+          }
+        },
+        "collapsible_tab_MrtDzH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Informacje o składzie i pielęgnacji",
+            "open": false,
+            "content": "",
+            "page": "",
+            "custom_liquid": "<p><strong>Skład:</strong></p>\n<p>95% prążkowana bawełna i 5% elastan</p>\n<p><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\">Aby m&oacute;c latami cieszyć się produktami z naszej prążkowanej dzianiny należy zawsze prać je odwr&oacute;cone na lewą stronę używając delikatnych (nawet dziecięcych) detergent&oacute;w oraz ustawiać możliwie niskie obroty pralki. Dzięki takiej pielęgnacji szwy pozostaną nienaruszone i ubrania utrzymają swoją formę, elastyczność i strukturę, a także będą przyjemne dla sk&oacute;ry nawet po wielu praniach.</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/prazek-pranie.svg?v=1719830584\" alt=\"pielegnacja\" width=\"100%\" height=\"auto\" /></p>\n<p style=\"text-align: justify;\">Prać ręcznie lub w pralce na programie prania ręcznego. Używać możliwie najdelikatniejszych środk&oacute;w piorących. Maksymalna temperatura prania&nbsp; 30&ordm; C. Wirowanie maksymalnie 600 obrot&oacute;w. Suszyć na płasko - nie suszyć w suszarce bębnowej. Prasować parowaczką lub żelazkiem w temperaturze do 110 stopni C. Nie czyścić chemicznie.</p>\n<p></p>"
+          }
+        },
+        "collapsible_tab_UXbKiJ": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Opinie o produkcie",
+            "open": false,
+            "content": "",
+            "page": "",
+            "custom_liquid": "{% capture the_snippet_reviews %}{% render 'socialshopwave-widget-recommends' with 1 %}{% endcapture %}\n{% unless the_snippet_reviews contains 'Liquid error' %}\n{{ the_snippet_reviews }}\n{% endunless %}"
+          }
+        },
+        "growave_loyalty_wishlist_block_product_review_widget_QC76KW": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "min_images_for_slider_visibility": 6,
+            "reviews_per_page": 5,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "ed7d166d-5568-4e1a-9c05-eeffaad02629",
+        "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
+        "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
+        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a",
+        "custom_liquid_NUqWbL",
+        "siblings_6ytCwm",
+        "inventory_level_iwYp9t",
+        "3184ed78-b74d-40cc-a072-56e6212c92ea",
+        "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
+        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
+        "ac30e733-fe79-471f-a9b6-72b10279036c",
+        "custom_liquid_M4zQym",
+        "side_panel_PgPAFz",
+        "a9bc54b3-69df-483b-8561-10c1c4f6caac",
+        "collapsible_tab_MrtDzH",
+        "collapsible_tab_UXbKiJ",
+        "growave_loyalty_wishlist_block_product_review_widget_QC76KW"
+      ],
+      "settings": {
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": false,
+        "display_slider_pagination": true,
+        "media_aspect_ratio": "adapt",
+        "display_captions": false,
+        "hide_variants": true,
+        "lightbox": false,
+        "enable_video_looping": true
+      }
+    },
+    "cf419534-b576-4781-b418-495982d63b57": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "breadcrumbs_L8earC": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Zobacz produkty, które mogą ci się spodobać",
+        "description": "",
+        "mobile_swipe": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cf419534-b576-4781-b418-495982d63b57",
+    "breadcrumbs_L8earC",
+    "recommendations"
+  ]
+}
