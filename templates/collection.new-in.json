@@ -134,12 +134,18 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "breadcrumbs_EDn79r": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "template-header",
     "spacer_3LkNQe",
     "spacer_z8zUMA",
+    "breadcrumbs_EDn79r",
     "product-grid",
     "16636704759cbf64c5",
     "166366972953e881f5",
