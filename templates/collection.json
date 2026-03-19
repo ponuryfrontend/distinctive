@@ -71,10 +71,16 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "breadcrumbs_KzjVBe": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "template-header",
+    "breadcrumbs_KzjVBe",
     "product-grid",
     "16636704759cbf64c5",
     "166366972953e881f5",
