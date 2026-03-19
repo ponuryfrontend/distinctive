@@ -192,13 +192,18 @@
         "border_separator_full": false
       }
     },
+    "breadcrumbs_a4KYiM": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
         "heading": "Zobacz produkty, które mogą ci się spodobać",
         "description": "",
         "mobile_swipe": true,
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -216,6 +221,7 @@
   "order": [
     "main",
     "cf419534-b576-4781-b418-495982d63b57",
+    "breadcrumbs_a4KYiM",
     "recommendations",
     "recently_viewed_products_aiYBWq"
   ]
