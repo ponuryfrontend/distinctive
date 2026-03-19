@@ -192,6 +192,27 @@
         "border_separator_full": false
       }
     },
+    "1773963134e6a9995d": {
+      "type": "apps",
+      "blocks": {
+        "growave_loyalty_wishlist_block_product_review_widget_HEVHBC": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "min_images_for_slider_visibility": 6,
+            "reviews_per_page": 5,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "growave_loyalty_wishlist_block_product_review_widget_HEVHBC"
+      ],
+      "settings": {
+        "full_width": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "breadcrumbs_a4KYiM": {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
@@ -221,6 +242,7 @@
   "order": [
     "main",
     "cf419534-b576-4781-b418-495982d63b57",
+    "1773963134e6a9995d",
     "breadcrumbs_a4KYiM",
     "recommendations",
     "recently_viewed_products_aiYBWq"
