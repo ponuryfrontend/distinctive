@@ -117,15 +117,19 @@
       "url": {{ collection_url | json }},
       "numberOfItems": {{ collection.products_count | json }},
       "itemListElement": [
-        {%- for product in collection.products limit: products_per_page -%}
-          {
-            "@type": "ListItem",
-            "position": {{ forloop.index | json }},
-            "name": {{ product.title | strip | json }},
-            "url": {{ shop.url | append: product.url | json }}
-          }{%- unless forloop.last -%},{%- endunless -%}
-        {%- endfor -%}
-      ]
+		{%- for product in collection.products limit: products_per_page -%}
+		{
+			"@type": "ListItem",
+			"position": {{ forloop.index }},
+			"item": {
+			"@type": "Product",
+			"@id": {{ shop.url | append: product.url | append: '#product' | json }},
+			"name": {{ product.title | json }},
+			"url": {{ shop.url | append: product.url | json }}
+			}
+		}{%- unless forloop.last -%},{%- endunless -%}
+		{%- endfor -%}
+		]
     }
   ]
 }
