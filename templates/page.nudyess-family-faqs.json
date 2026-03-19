@@ -1,1 +1,739 @@
-{"sections":{"template-header":{"type":"template-header","disabled":true,"settings":{"show_collection_image":false,"uppercase_title":false,"show_collection_description":true,"show_subcollections":true,"display_description":true}},"image_with_text_overlay_UQM6NG":{"type":"image-with-text-overlay","blocks":{"subheading_FeVP33":{"type":"subheading","settings":{"text":"Program Lojalnościowy"}},"heading_WmHNCm":{"type":"heading","settings":{"text":"Nudyess Family","heading_size":"h1"}},"text_fqP87e":{"type":"text","settings":{"text":"<p>Zbieraj punkty i wymieniaj na specjalne bony zakupowe.<\/p>","description_size":"medium"}},"space_PmDBFq":{"type":"space","settings":{"height":50}}},"block_order":["subheading_FeVP33","heading_WmHNCm","text_fqP87e","space_PmDBFq"],"settings":{"image":"shopify:\/\/shop_images\/czarne_tlo.webp","full_width":true,"image_parallax":false,"desktop_height":"desktop-height-450","mobile_height":"mobile-height-350","content_width":"medium","content_position":"bottom-center","text_alignment":"center","overlay_opacity":15,"disable_top_spacing":false,"disable_bottom_spacing":false}},"image_with_text_jYLk3k":{"type":"image-with-text","blocks":{"heading_bGihxU":{"type":"heading","settings":{"text":"Zostań Członkinią Nudyess Family","heading_size":"h3"}},"text_Ct3eQG":{"type":"text","settings":{"text":"<p>Utwórz konto Klienta, aby zbierać punkty i wymieniać na nagrody.<\/p>","description_size":"medium"}},"button_CBFyPD":{"type":"button","settings":{"button_text":"Zaloguj się do konta","button_link":"https:\/\/nudyess.com\/account\/register"}}},"block_order":["heading_bGihxU","text_Ct3eQG","button_CBFyPD"],"settings":{"image":"shopify:\/\/shop_images\/Obszar_roboczy_1_3x_9e0396bd-a4ce-447b-a945-174e3ccee824.png","use_video":false,"video":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","video_autoplay":false,"video_controls":false,"height":"adapt","desktop_image_width":"small","full_width":false,"layout":"image_first","content_position":"text-center","column_spacing":"none","color_bg":"#ffffff","color_text":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"page_ijygye":{"type":"page","settings":{"page":"program-lojalnosciowy-nudyess-family","show_page_title":true,"disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_cWH97t":{"type":"rich-text","blocks":{"heading_UCiwJc":{"type":"heading","settings":{"text":"Profil Klienta","size":"h3"}},"text_zKdCHb":{"type":"text","settings":{"text":"<p>Zaloguj się i wymień swoje punkty na pierwszą nagrodę. <\/p>","custom_liquid":"","size":"text-size-regular"}},"button_Vifyym":{"type":"button","settings":{"link_label":"Wymień punkty","link":"shopify:\/\/pages\/reward-old","button_outline":false}}},"block_order":["heading_UCiwJc","text_zKdCHb","button_Vifyym"],"settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_JqfVhY":{"type":"rich-text","blocks":{"heading_mbrF3g":{"type":"heading","settings":{"text":"Wishlist","size":"h3"}},"text_RKETVj":{"type":"text","settings":{"text":"<p>Stwórz swoją listę życzeń produktów, do których zawsze możesz wrócić. <\/p>","custom_liquid":"","size":"text-size-regular"}},"button_JkddT7":{"type":"button","settings":{"link_label":"SPRAWDŹ","link":"shopify:\/\/pages\/wishlist","button_outline":false}}},"block_order":["heading_mbrF3g","text_RKETVj","button_JkddT7"],"settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":false,"disable_bottom_spacing":false}},"rich_text_Wi3mdr":{"type":"rich-text","blocks":{"heading_6icgXX":{"type":"heading","settings":{"text":"Opinie do produktów","size":"h3"}},"text_TjTx4K":{"type":"text","settings":{"text":"<p>Podziel się opinią, na temat zakupionych produktów.<\/p>","custom_liquid":"","size":"text-size-regular"}},"button_EWHQj9":{"type":"button","settings":{"link_label":"DODAJ OPINIĘ","link":"shopify:\/\/pages\/share-review","button_outline":false}}},"block_order":["heading_6icgXX","text_TjTx4K","button_EWHQj9"],"settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":false,"disable_bottom_spacing":false}},"tabbed_content_9t7yMH":{"type":"tabbed-content","blocks":{"tab_6cqDqm":{"type":"tab","settings":{"tab_label":"Profil Klienta","icon":"silhouette","text":"<p>Prosimy o zalogowanie się na konto.<\/p>","text_columns":"1","page":"reward-old"}},"tab_Xd6NYV":{"type":"tab","settings":{"tab_label":"Wishlist'a","icon":"heart","text":"<p>Stwórz swoją listę życzeń<\/p>","text_columns":"1","page":"wishlist"}},"tab_JYKm8T":{"type":"tab","settings":{"tab_label":"Opinie","icon":"shirt","text":"<p>Podziel się opinią, na temat zakupionych produktów.<\/p>","text_columns":"1","page":"share-review"}}},"block_order":["tab_6cqDqm","tab_Xd6NYV","tab_JYKm8T"],"disabled":true,"settings":{"text_width":"medium","tab_alignment":"center","text_alignment":"center","color_bg":"#ffffff","color_tabs":"#151515","color_text":"#151515","color_border":"#e2e2e2","disable_top_spacing":true,"disable_bottom_spacing":false}},"55c5ef83-57c7-4478-b82b-cae55675d037":{"type":"rich-text","blocks":{"template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-heading-1":{"type":"heading","settings":{"text":"Dostępne działania w ramach Nudyess Family","size":"h2"}},"template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-text-1":{"type":"text","settings":{"text":"<p>Wykonaj odpowiednie działanie, aby otrzymać punkty na saldo przypisane do konta Klienta.<\/p>","custom_liquid":"","size":"text-size-regular"}}},"block_order":["template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-heading-1","template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-text-1"],"settings":{"full_width":true,"text_width":"full","text_position":"center","text_alignment":"center","color_bg":"#eeeeee","color_text":"#151515","color_links":"#151515","disable_top_spacing":false,"disable_bottom_spacing":false}},"text_with_icons_4c8fTe":{"type":"text-with-icons","blocks":{"icon_TqEtfi":{"type":"icon","settings":{"icon":"box","heading":"Złóż zamówienie","text":"<p>Za każdą wydaną złotówkę otrzymasz 1 punkt.<\/p>"}},"icon_UnAn36":{"type":"icon","settings":{"icon":"star","heading":"Wystaw opinię do produktu","text":"<p>Dodaj swoją opinie do zakupionego produktu, a otrzymasz 50 punktów. Dołącz do opinii swoje zdjęcie nosząc produkt, a zdobędziesz łącznie 100 pkt.<\/p>"}},"icon_QWKCrk":{"type":"icon","settings":{"icon":"none","image":"shopify:\/\/shop_images\/shopping-bag-svgrepo-com.svg","heading":"Wydaj 1.500 PLN a otrzymasz 1.700 PKT","text":"<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>"}}},"block_order":["icon_TqEtfi","icon_UnAn36","icon_QWKCrk"],"settings":{"text_alignment":"center","icon_position":"top","icon_size":"medium","heading_size":"large","mobile_swipe":false,"color_bg":"#eeeeee","color_heading":"#151515","color_text":"#151515","disable_top_spacing":true,"disable_bottom_spacing":true}},"text_with_icons_9inbbd":{"type":"text-with-icons","blocks":{"icon_YAMteT":{"type":"icon","settings":{"icon":"silhouette","heading":"Utwórz konto Klienta","text":"<p>Stwórz konto klienta, a na start otrzymasz 200 punktów.<\/p>"}},"icon_F7DLxD":{"type":"icon","settings":{"icon":"none","image":"shopify:\/\/shop_images\/envelope-svgrepo-com.svg","heading":"Dołącz do newslettera","text":"<p>Zapisz się na nasz newsletter, a otrzymasz 300 punktów.<\/p>"}},"icon_ntNKFD":{"type":"icon","settings":{"icon":"none","image":"shopify:\/\/shop_images\/cake-with-candles-svgrepo-com.svg","heading":"Podaj datę swoich urodzin","text":"<p>Wpisz datę urodzin, a otrzymasz w tym dniu 1.500 punktów.<\/p>"}}},"block_order":["icon_YAMteT","icon_F7DLxD","icon_ntNKFD"],"settings":{"text_alignment":"center","icon_position":"top","icon_size":"medium","heading_size":"large","mobile_swipe":false,"color_bg":"#eeeeee","color_heading":"#151515","color_text":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_rP4QHK":{"type":"rich-text","blocks":{"heading_3RwHpp":{"type":"heading","settings":{"text":"Wymieniaj punkty na nagrody","size":"h3"}},"text_K87iGf":{"type":"text","settings":{"text":"<p>Zbierz odpowiednią ilość punktów, by wymienić je na nagrody !<\/p>","custom_liquid":"","size":"text-size-regular"}}},"block_order":["heading_3RwHpp","text_K87iGf"],"settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"#eeeeee","color_text":"#151515","color_links":"#151515","disable_top_spacing":false,"disable_bottom_spacing":false}},"text_with_icons_abYgqp":{"type":"text-with-icons","blocks":{"icon_9Dk8Gx":{"type":"icon","settings":{"icon":"none","image":"shopify:\/\/shop_images\/gift-svgrepo-com_1.svg","heading":"Bon rabatowy 10 PLN","text":"<p>Zbierz 500 punktów.<\/p>"}},"icon_U6KeHy":{"type":"icon","settings":{"icon":"ruler","image":"shopify:\/\/shop_images\/gift-svgrepo-com_1.svg","heading":"Bon rabatowy 20 PLN","text":"<p>Zbierz 1.000 punktów.<\/p>"}},"icon_bMdgVx":{"type":"icon","settings":{"icon":"ruler","image":"shopify:\/\/shop_images\/gift-svgrepo-com_1.svg","heading":"Bon rabatowy 30 PLN","text":"<p>Zbierz 1.500 punktów.<\/p>"}}},"block_order":["icon_9Dk8Gx","icon_U6KeHy","icon_bMdgVx"],"settings":{"text_alignment":"center","icon_position":"top","icon_size":"medium","heading_size":"large","mobile_swipe":false,"color_bg":"#eeeeee","color_heading":"#151515","color_text":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"798f200b-e87f-4e2f-86ba-94ab2dc59f75":{"type":"collapsible-content","blocks":{"template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-1":{"type":"collapsible_tab","settings":{"heading":"Czym jest Nudyess Family ?","open":false,"content":"<p>Nudyess Family jest programem lojalnościowym, przeznaczonym w szczególności dla stałych Klientów sklepu Nudyess. W ramach programu Klienci otrzymują punkty w zamian za wykonanie określonych działań, a następnie wymienić zgromadzone punkty na nagrody.<\/p>","page":""}},"template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-2":{"type":"collapsible_tab","settings":{"heading":"W jaki sposób przystąpić do Nudyess Family ?","open":false,"content":"<p>Po utworzeniu konta Klienta, każdy użytkownik sklepu w sposób automatyczny staje się członkiem programu Nudyess Family. Program jest aktywny i będzie naliczać punkty, gdy użytkownik jest zalogowany do swojego konta.<\/p>","page":""}},"template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-3":{"type":"collapsible_tab","settings":{"heading":"Posiadam już konto klienta, w jaki sposób otrzymać punkty?","open":false,"content":"<p>Jeśli użytkownik posiadał już konto klienta przed startem Nudyess Family, należy zweryfikować konto. W tym przypadku należy kliknąć ikonę Nudyess Family zlokalizowaną w prawym dolnym rogu ekranu i wybrać zakładkę \"Otrzymaj punkty\". Na liście znaleźć pozycję \"Stwórz konto Klienta\" i kliknąć w przycisk zweryfikuj. Po chwili zostanie przesłany e-mail z prośbą o weryfikację konta. Punkty zostaną przydzielone, gdy weryfikacja przebiegnie pomyślnie.<\/p>","page":""}},"template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-4":{"type":"collapsible_tab","settings":{"heading":"Jak wymienić punkty na określone nagrody?","open":false,"content":"<p>Należy zalogować się na konto Klienta. Po zgromadzeniu odpowiedniej ilości punktów, aby wymienić punkty na nagrodę należy kliknąć ikonę \"Nudyess Family\" znajdującej się w prawym dolnym rogu ekranu urządzenia. W zakładce \"Otrzymaj nagrodę\" Klient wybiera nagrodę i klika w przycisk \"Wykorzystaj\". Po tej czynności użytkownik otrzymuje na swój adres e-mail wiadomość ze specjalnym bonem rabatowym. Otrzymany bon należy skopiować i wkleić w odpowiednie pole w czasie składania zamówienia.<\/p>","page":""}},"template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-5":{"type":"collapsible_tab","settings":{"heading":"Czy istnieje minimalna kwota zamówienia od której przyznawane są punkty?","open":false,"content":"<p>Nie istnieje minimalny próg wartości zamówienia, od którego przyznawane są punkty. Każde złożone, opłacone i niezwrócone zamówienie jest nagradzane odpowiednią ilością punktów.<\/p>","page":""}},"collapsible_tab_k8pyQN":{"type":"collapsible_tab","settings":{"heading":"Czy uzyskane punkty mają termin ważności ?","open":false,"content":"<p>Nie. Naliczone punkty nie mają terminu ważności i nie wygasają. Można wymienić je w każdym momencie na określone punktacją nagrody.<\/p>","page":""}},"collapsible_tab_9mKfWh":{"type":"collapsible_tab","settings":{"heading":"Czy otrzymane bony rabatowe mają ważność ?","open":false,"content":"<p>Tak, otrzymane bony rabatowe w ramach zrealizowanych punktów są ważne do wykorzystania w terminie 365 dni od daty ich otrzymania.<\/p>","page":""}},"collapsible_tab_pGFEmm":{"type":"collapsible_tab","settings":{"heading":"Od jakiej kwoty zamówienia mogę odliczyć otrzymany bon zakupowy?","open":false,"content":"<p>Minimalna kwota zamówienia musi wynosić co najmniej 199 PLN, aby można było wykorzystać otrzymany bon zakupowy.<\/p>","page":""}},"collapsible_tab_43976q":{"type":"collapsible_tab","settings":{"heading":"Czy mogę wykorzystać więcej niż 1 bon rabatowy ?","open":false,"content":"<p>Składając zamówienie Klient może wykorzystać jednocześnie tylko 1 bon rabatowy.<\/p>","page":""}},"collapsible_tab_9k7Fwf":{"type":"collapsible_tab","settings":{"heading":"Czy mogę skorzystać jednocześnie z kodu promocyjnego jak i bonu rabatowego ?","open":false,"content":"<p>Na tą chwilę niestety nie ma możliwości łączenia bonu rabatowego i kodu promocyjnego podczas składania zamówienia.<\/p>","page":""}},"collapsible_tab_gb3R9d":{"type":"collapsible_tab","settings":{"heading":"Czy w przypadku zwrotu towaru otrzymam nowy bon rabatowy w zamian za już wykorzystany ?","open":false,"content":"","page":""}},"collapsible_tab_Lct48p":{"type":"collapsible_tab","settings":{"heading":"Czy w przypadku zwrotu towaru, przyznane punkty są odejmowane z salda konta Klienta?","open":false,"content":"<p>Tak, punktacja przyznana za dany produkt jest odejmowana z salda konta Klienta w przypadku dokonania zwrotu. Punkty za złożenie zamówienia są przyznawane po 21 dniach, a zwrot można dokonać w ciągu 14 dni od daty doręczenia przesyłki. W związku z tym, istnieje małe prawdopodobieństwo by użytkownik miał odejmowane punkty z salda.<\/p>","page":""}}},"block_order":["template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-1","template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-2","template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-3","template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-4","template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-5","collapsible_tab_k8pyQN","collapsible_tab_9mKfWh","collapsible_tab_pGFEmm","collapsible_tab_43976q","collapsible_tab_9k7Fwf","collapsible_tab_gb3R9d","collapsible_tab_Lct48p"],"settings":{"heading":"FAQ","description":"<p>Najczęściej zadawane pytania do programu lojalnościowego Nudyess Family:<\/p>","uppercase_heading":false,"disable_top_spacing":false,"disable_bottom_spacing":false}},"a169791c-0d8a-46e9-9c0c-b76b4d625c4c":{"type":"spacer","settings":{"spacer_mobile":0,"spacer_desktop":0,"border_separator":true,"border_separator_full":false}},"collection_list_Cf98jQ":{"type":"collection-list","settings":{"heading":"Odkryj nasze kolekcje","description":"<p>Zajrzyj i znajdź coś dla siebie<\/p>","collection_list":["bestsellery","sale","new-now","sukienki"],"image_ratio":"square","layout":"grid","columns_desktop":4,"columns_mobile":"2","show_progress_bar":false,"mobile_swipe":false,"disable_top_spacing":false,"disable_bottom_spacing":false}},"main":{"type":"main-page","settings":{}}},"order":["main","template-header","image_with_text_overlay_UQM6NG","image_with_text_jYLk3k","page_ijygye","rich_text_cWH97t","rich_text_JqfVhY","rich_text_Wi3mdr","tabbed_content_9t7yMH","55c5ef83-57c7-4478-b82b-cae55675d037","text_with_icons_4c8fTe","text_with_icons_9inbbd","rich_text_rP4QHK","text_with_icons_abYgqp","798f200b-e87f-4e2f-86ba-94ab2dc59f75","a169791c-0d8a-46e9-9c0c-b76b4d625c4c","collection_list_Cf98jQ"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_jRDUWx": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "template-header": {
+      "type": "template-header",
+      "disabled": true,
+      "settings": {
+        "show_collection_image": false,
+        "uppercase_title": false,
+        "show_collection_description": true,
+        "show_subcollections": true,
+        "display_description": true
+      }
+    },
+    "image_with_text_overlay_UQM6NG": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_FeVP33": {
+          "type": "subheading",
+          "settings": {
+            "text": "Program Lojalnościowy"
+          }
+        },
+        "heading_WmHNCm": {
+          "type": "heading",
+          "settings": {
+            "text": "Nudyess Family",
+            "heading_size": "h1"
+          }
+        },
+        "text_fqP87e": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zbieraj punkty i wymieniaj na specjalne bony zakupowe.</p>",
+            "description_size": "medium"
+          }
+        },
+        "space_PmDBFq": {
+          "type": "space",
+          "settings": {
+            "height": 50
+          }
+        }
+      },
+      "block_order": [
+        "subheading_FeVP33",
+        "heading_WmHNCm",
+        "text_fqP87e",
+        "space_PmDBFq"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/czarne_tlo.webp",
+        "full_width": true,
+        "image_parallax": false,
+        "desktop_height": "desktop-height-450",
+        "mobile_height": "mobile-height-350",
+        "content_width": "medium",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "overlay_opacity": 15,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_jYLk3k": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_bGihxU": {
+          "type": "heading",
+          "settings": {
+            "text": "Zostań Członkinią Nudyess Family",
+            "heading_size": "h3"
+          }
+        },
+        "text_Ct3eQG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Utwórz konto Klienta, aby zbierać punkty i wymieniać na nagrody.</p>",
+            "description_size": "medium"
+          }
+        },
+        "button_CBFyPD": {
+          "type": "button",
+          "settings": {
+            "button_text": "Zaloguj się do konta",
+            "button_link": "https://nudyess.com/account/register"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bGihxU",
+        "text_Ct3eQG",
+        "button_CBFyPD"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Obszar_roboczy_1_3x_9e0396bd-a4ce-447b-a945-174e3ccee824.png",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": false,
+        "video_controls": false,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "full_width": false,
+        "layout": "image_first",
+        "content_position": "text-center",
+        "column_spacing": "none",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "page_ijygye": {
+      "type": "page",
+      "settings": {
+        "page": "program-lojalnosciowy-nudyess-family",
+        "show_page_title": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_cWH97t": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UCiwJc": {
+          "type": "heading",
+          "settings": {
+            "text": "Profil Klienta",
+            "size": "h3"
+          }
+        },
+        "text_zKdCHb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zaloguj się i wymień swoje punkty na pierwszą nagrodę. </p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "button_Vifyym": {
+          "type": "button",
+          "settings": {
+            "link_label": "Wymień punkty",
+            "link": "shopify://pages/reward-old",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_UCiwJc",
+        "text_zKdCHb",
+        "button_Vifyym"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_JqfVhY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mbrF3g": {
+          "type": "heading",
+          "settings": {
+            "text": "Wishlist",
+            "size": "h3"
+          }
+        },
+        "text_RKETVj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Stwórz swoją listę życzeń produktów, do których zawsze możesz wrócić. </p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "button_JkddT7": {
+          "type": "button",
+          "settings": {
+            "link_label": "SPRAWDŹ",
+            "link": "shopify://pages/wishlist",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_mbrF3g",
+        "text_RKETVj",
+        "button_JkddT7"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_Wi3mdr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6icgXX": {
+          "type": "heading",
+          "settings": {
+            "text": "Opinie do produktów",
+            "size": "h3"
+          }
+        },
+        "text_TjTx4K": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Podziel się opinią, na temat zakupionych produktów.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "button_EWHQj9": {
+          "type": "button",
+          "settings": {
+            "link_label": "DODAJ OPINIĘ",
+            "link": "shopify://pages/share-review",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_6icgXX",
+        "text_TjTx4K",
+        "button_EWHQj9"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "tabbed_content_9t7yMH": {
+      "type": "tabbed-content",
+      "blocks": {
+        "tab_6cqDqm": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Profil Klienta",
+            "icon": "silhouette",
+            "text": "<p>Prosimy o zalogowanie się na konto.</p>",
+            "text_columns": "1",
+            "page": "reward-old"
+          }
+        },
+        "tab_Xd6NYV": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Wishlist'a",
+            "icon": "heart",
+            "text": "<p>Stwórz swoją listę życzeń</p>",
+            "text_columns": "1",
+            "page": "wishlist"
+          }
+        },
+        "tab_JYKm8T": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Opinie",
+            "icon": "shirt",
+            "text": "<p>Podziel się opinią, na temat zakupionych produktów.</p>",
+            "text_columns": "1",
+            "page": "share-review"
+          }
+        }
+      },
+      "block_order": [
+        "tab_6cqDqm",
+        "tab_Xd6NYV",
+        "tab_JYKm8T"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_width": "medium",
+        "tab_alignment": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "color_tabs": "#151515",
+        "color_text": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "55c5ef83-57c7-4478-b82b-cae55675d037": {
+      "type": "rich-text",
+      "blocks": {
+        "template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Dostępne działania w ramach Nudyess Family",
+            "size": "h2"
+          }
+        },
+        "template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wykonaj odpowiednie działanie, aby otrzymać punkty na saldo przypisane do konta Klienta.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-heading-1",
+        "template--21310561714479__55c5ef83-57c7-4478-b82b-cae55675d037-text-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "full",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#eeeeee",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "text_with_icons_4c8fTe": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_TqEtfi": {
+          "type": "icon",
+          "settings": {
+            "icon": "box",
+            "heading": "Złóż zamówienie",
+            "text": "<p>Za każdą wydaną złotówkę otrzymasz 1 punkt.</p>"
+          }
+        },
+        "icon_UnAn36": {
+          "type": "icon",
+          "settings": {
+            "icon": "star",
+            "heading": "Wystaw opinię do produktu",
+            "text": "<p>Dodaj swoją opinie do zakupionego produktu, a otrzymasz 50 punktów. Dołącz do opinii swoje zdjęcie nosząc produkt, a zdobędziesz łącznie 100 pkt.</p>"
+          }
+        },
+        "icon_QWKCrk": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/shopping-bag-svgrepo-com.svg",
+            "heading": "Wydaj 1.500 PLN a otrzymasz 1.700 PKT",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_TqEtfi",
+        "icon_UnAn36",
+        "icon_QWKCrk"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "icon_position": "top",
+        "icon_size": "medium",
+        "heading_size": "large",
+        "mobile_swipe": false,
+        "color_bg": "#eeeeee",
+        "color_heading": "#151515",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "text_with_icons_9inbbd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_YAMteT": {
+          "type": "icon",
+          "settings": {
+            "icon": "silhouette",
+            "heading": "Utwórz konto Klienta",
+            "text": "<p>Stwórz konto klienta, a na start otrzymasz 200 punktów.</p>"
+          }
+        },
+        "icon_F7DLxD": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/envelope-svgrepo-com.svg",
+            "heading": "Dołącz do newslettera",
+            "text": "<p>Zapisz się na nasz newsletter, a otrzymasz 300 punktów.</p>"
+          }
+        },
+        "icon_ntNKFD": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/cake-with-candles-svgrepo-com.svg",
+            "heading": "Podaj datę swoich urodzin",
+            "text": "<p>Wpisz datę urodzin, a otrzymasz w tym dniu 1.500 punktów.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_YAMteT",
+        "icon_F7DLxD",
+        "icon_ntNKFD"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "icon_position": "top",
+        "icon_size": "medium",
+        "heading_size": "large",
+        "mobile_swipe": false,
+        "color_bg": "#eeeeee",
+        "color_heading": "#151515",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_rP4QHK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3RwHpp": {
+          "type": "heading",
+          "settings": {
+            "text": "Wymieniaj punkty na nagrody",
+            "size": "h3"
+          }
+        },
+        "text_K87iGf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zbierz odpowiednią ilość punktów, by wymienić je na nagrody !</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3RwHpp",
+        "text_K87iGf"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#eeeeee",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "text_with_icons_abYgqp": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_9Dk8Gx": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
+            "heading": "Bon rabatowy 10 PLN",
+            "text": "<p>Zbierz 500 punktów.</p>"
+          }
+        },
+        "icon_U6KeHy": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
+            "heading": "Bon rabatowy 20 PLN",
+            "text": "<p>Zbierz 1.000 punktów.</p>"
+          }
+        },
+        "icon_bMdgVx": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
+            "heading": "Bon rabatowy 30 PLN",
+            "text": "<p>Zbierz 1.500 punktów.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_9Dk8Gx",
+        "icon_U6KeHy",
+        "icon_bMdgVx"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "icon_position": "top",
+        "icon_size": "medium",
+        "heading_size": "large",
+        "mobile_swipe": false,
+        "color_bg": "#eeeeee",
+        "color_heading": "#151515",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "798f200b-e87f-4e2f-86ba-94ab2dc59f75": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czym jest Nudyess Family ?",
+            "open": false,
+            "content": "<p>Nudyess Family jest programem lojalnościowym, przeznaczonym w szczególności dla stałych Klientów sklepu Nudyess. W ramach programu Klienci otrzymują punkty w zamian za wykonanie określonych działań, a następnie wymienić zgromadzone punkty na nagrody.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "W jaki sposób przystąpić do Nudyess Family ?",
+            "open": false,
+            "content": "<p>Po utworzeniu konta Klienta, każdy użytkownik sklepu w sposób automatyczny staje się członkiem programu Nudyess Family. Program jest aktywny i będzie naliczać punkty, gdy użytkownik jest zalogowany do swojego konta.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Posiadam już konto klienta, w jaki sposób otrzymać punkty?",
+            "open": false,
+            "content": "<p>Jeśli użytkownik posiadał już konto klienta przed startem Nudyess Family, należy zweryfikować konto. W tym przypadku należy kliknąć ikonę Nudyess Family zlokalizowaną w prawym dolnym rogu ekranu i wybrać zakładkę \"Otrzymaj punkty\". Na liście znaleźć pozycję \"Stwórz konto Klienta\" i kliknąć w przycisk zweryfikuj. Po chwili zostanie przesłany e-mail z prośbą o weryfikację konta. Punkty zostaną przydzielone, gdy weryfikacja przebiegnie pomyślnie.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Jak wymienić punkty na określone nagrody?",
+            "open": false,
+            "content": "<p>Należy zalogować się na konto Klienta. Po zgromadzeniu odpowiedniej ilości punktów, aby wymienić punkty na nagrodę należy kliknąć ikonę \"Nudyess Family\" znajdującej się w prawym dolnym rogu ekranu urządzenia. W zakładce \"Otrzymaj nagrodę\" Klient wybiera nagrodę i klika w przycisk \"Wykorzystaj\". Po tej czynności użytkownik otrzymuje na swój adres e-mail wiadomość ze specjalnym bonem rabatowym. Otrzymany bon należy skopiować i wkleić w odpowiednie pole w czasie składania zamówienia.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-5": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy istnieje minimalna kwota zamówienia od której przyznawane są punkty?",
+            "open": false,
+            "content": "<p>Nie istnieje minimalny próg wartości zamówienia, od którego przyznawane są punkty. Każde złożone, opłacone i niezwrócone zamówienie jest nagradzane odpowiednią ilością punktów.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_k8pyQN": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy uzyskane punkty mają termin ważności ?",
+            "open": false,
+            "content": "<p>Nie. Naliczone punkty nie mają terminu ważności i nie wygasają. Można wymienić je w każdym momencie na określone punktacją nagrody.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_9mKfWh": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy otrzymane bony rabatowe mają ważność ?",
+            "open": false,
+            "content": "<p>Tak, otrzymane bony rabatowe w ramach zrealizowanych punktów są ważne do wykorzystania w terminie 365 dni od daty ich otrzymania.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_pGFEmm": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Od jakiej kwoty zamówienia mogę odliczyć otrzymany bon zakupowy?",
+            "open": false,
+            "content": "<p>Minimalna kwota zamówienia musi wynosić co najmniej 199 PLN, aby można było wykorzystać otrzymany bon zakupowy.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_43976q": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy mogę wykorzystać więcej niż 1 bon rabatowy ?",
+            "open": false,
+            "content": "<p>Składając zamówienie Klient może wykorzystać jednocześnie tylko 1 bon rabatowy.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_9k7Fwf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy mogę skorzystać jednocześnie z kodu promocyjnego jak i bonu rabatowego ?",
+            "open": false,
+            "content": "<p>Na tą chwilę niestety nie ma możliwości łączenia bonu rabatowego i kodu promocyjnego podczas składania zamówienia.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_gb3R9d": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy w przypadku zwrotu towaru otrzymam nowy bon rabatowy w zamian za już wykorzystany ?",
+            "open": false,
+            "content": "",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Lct48p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy w przypadku zwrotu towaru, przyznane punkty są odejmowane z salda konta Klienta?",
+            "open": false,
+            "content": "<p>Tak, punktacja przyznana za dany produkt jest odejmowana z salda konta Klienta w przypadku dokonania zwrotu. Punkty za złożenie zamówienia są przyznawane po 21 dniach, a zwrot można dokonać w ciągu 14 dni od daty doręczenia przesyłki. W związku z tym, istnieje małe prawdopodobieństwo by użytkownik miał odejmowane punkty z salda.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-1",
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-2",
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-3",
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-4",
+        "template--15927560208539__798f200b-e87f-4e2f-86ba-94ab2dc59f75-collapsible_tab-5",
+        "collapsible_tab_k8pyQN",
+        "collapsible_tab_9mKfWh",
+        "collapsible_tab_pGFEmm",
+        "collapsible_tab_43976q",
+        "collapsible_tab_9k7Fwf",
+        "collapsible_tab_gb3R9d",
+        "collapsible_tab_Lct48p"
+      ],
+      "settings": {
+        "heading": "FAQ",
+        "description": "<p>Najczęściej zadawane pytania do programu lojalnościowego Nudyess Family:</p>",
+        "uppercase_heading": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "a169791c-0d8a-46e9-9c0c-b76b4d625c4c": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 0,
+        "border_separator": true,
+        "border_separator_full": false
+      }
+    },
+    "collection_list_Cf98jQ": {
+      "type": "collection-list",
+      "settings": {
+        "heading": "Odkryj nasze kolekcje",
+        "description": "<p>Zajrzyj i znajdź coś dla siebie</p>",
+        "collection_list": [
+          "bestsellery",
+          "sale",
+          "new-now",
+          "sukienki"
+        ],
+        "image_ratio": "square",
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "content_alignment": "left",
+        "show_progress_bar": false,
+        "mobile_swipe": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_jRDUWx",
+    "main",
+    "template-header",
+    "image_with_text_overlay_UQM6NG",
+    "image_with_text_jYLk3k",
+    "page_ijygye",
+    "rich_text_cWH97t",
+    "rich_text_JqfVhY",
+    "rich_text_Wi3mdr",
+    "tabbed_content_9t7yMH",
+    "55c5ef83-57c7-4478-b82b-cae55675d037",
+    "text_with_icons_4c8fTe",
+    "text_with_icons_9inbbd",
+    "rich_text_rP4QHK",
+    "text_with_icons_abYgqp",
+    "798f200b-e87f-4e2f-86ba-94ab2dc59f75",
+    "a169791c-0d8a-46e9-9c0c-b76b4d625c4c",
+    "collection_list_Cf98jQ"
+  ]
+}
