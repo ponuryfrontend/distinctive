@@ -1,1 +1,474 @@
-{"sections":{"main":{"type":"main-page","settings":{"show_page_title":true,"disable_top_spacing":false,"disable_bottom_spacing":true}},"spacer_xi6B6c":{"type":"spacer","disabled":true,"settings":{"spacer_mobile":0,"spacer_desktop":40,"border_separator":false,"border_separator_full":false}},"single_image_mpngLn":{"type":"single-image","settings":{"image":"shopify:\/\/shop_images\/220903_Vogue_Loreal_2077.webp","full_width":true,"disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_Ydt8X9":{"type":"rich-text","blocks":{"subheading_MXQVzN":{"type":"subheading","disabled":true,"settings":{"text":"Jesteśmy tego warte"}},"heading_VRiLG4":{"type":"heading","disabled":true,"settings":{"text":"Nudyess & L'Oréal Paris","size":"h3"}},"text_wP6tWE":{"type":"text","settings":{"text":"<p>Nudyess & L’Oréal Paris to wyjątkowy projekt, którego rezultatem jest stworzony specjalnie na tę okazję projekt sukienki. Jest niezwykle kobieca, a jednocześnie uniwersalna i ponadczasowa jak kultowy podkład True Match.<\/p>","custom_liquid":"","size":"text-size-small"}},"text_aiMzLk":{"type":"text","settings":{"text":"<p>Do kampanii w roli modelek zostało zaproszonych sześć cudownych kobiet – wybrane w drodze castingu trzy nasze wspaniałe klientki - Magdalena Zalega, Weronika Madej i Magda Bisaga oraz kolejne trzy znane i uwielbiane influencerki - Basia Pasek, Magda Cygan i Klaudia Zając. Kobiety o różnych kształtach, potrzebach i skórach. Kobiety, które inspirują inne osoby do większej wiary w siebie i każdego dnia przypominają, że pewność siebie jest czymś, czego wszystkie jesteśmy warte i w czym każdej z nas jest zawsze do twarzy.<\/p>","custom_liquid":"","size":"text-size-small"}}},"block_order":["subheading_MXQVzN","heading_VRiLG4","text_wP6tWE","text_aiMzLk"],"settings":{"full_width":false,"text_width":"xlarge","text_position":"center","text_alignment":"left","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"image_with_text_8QyknQ":{"type":"image-with-text","blocks":{"subheading_zm78b3":{"type":"subheading","settings":{"text":"Nasze Klientki"}},"heading_qVyEkY":{"type":"heading","settings":{"text":"Po raz kolejny jako modelki","heading_size":"h4"}},"text_RJFB3c":{"type":"text","settings":{"text":"<p>Po raz trzeci ogłosiłyśmy casting skierowany do naszych Klientek. Z kilkuset zgłoszeń wybrałyśmy 3 wyjątkowe dziewczyny: dwie Magdy i Weronikę. Każda z nich ma inny typ urody, sylwetki, nosi inny rozmiar, ale łączy je jedno! Są pewne siebie, przebojowe i nie boją się realizować własnych marzeń. Wiemy, że tą sesją spełniłyśmy jedno z nich.<\/p>","description_size":"small"}}},"block_order":["subheading_zm78b3","heading_qVyEkY","text_RJFB3c"],"settings":{"image":"shopify:\/\/shop_images\/Kopia_220903_Vogue_Loreal_2410.webp","use_video":false,"video":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","video_autoplay":false,"video_controls":false,"height":"adapt","desktop_image_width":"small","full_width":false,"layout":"image_first","content_position":"text-left","column_spacing":"none","color_bg":"#ffffff","color_text":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"multicolumn_9nfBrb":{"type":"multicolumn","blocks":{"column_zbmHAY":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/220903_Vogue_Loreal_2773_7ac8e97e-a153-4636-9d21-05a91ccf71e5.webp","image_full_width":true,"retina":false,"title":"Weronika Madej","text":"","link_label":"","link":"","product_list":[]}},"column_NH7qeF":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/220903_Vogue_Loreal_3210.webp","image_full_width":true,"retina":false,"title":"Magda Bisaga","text":"","link_label":"","link":"","product_list":[]}},"column_VLYp3z":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Kopia_220903_Vogue_Loreal_3083.webp","image_full_width":true,"retina":false,"title":"Magda Zalega","text":"","link_label":"","link":"","product_list":[]}},"column_Uij7Tt":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Kopia_220903_Vogue_Loreal_0528.webp","image_full_width":true,"retina":false,"title":"Basia Pasek","text":"","link_label":"","link":"","product_list":[]}},"column_i7K6yc":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/220903_Vogue_Loreal_1329.webp","image_full_width":true,"retina":false,"title":"Klaudia Zając","text":"","link_label":"","link":"","product_list":[]}},"column_NbBbXb":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Kopia_220903_Vogue_Loreal_1000.webp","image_full_width":true,"retina":false,"title":"Magda Cygan","text":"","link_label":"","link":"","product_list":[]}}},"block_order":["column_zbmHAY","column_NH7qeF","column_VLYp3z","column_Uij7Tt","column_i7K6yc","column_NbBbXb"],"settings":{"heading":"Poznaj bohaterki kampanii","display_type":"grid","image_ratio":"adapt","text_alignment":"left","heading_size":"h4","mobile_swipe":false,"show_progress_bar":false,"color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","color_border":"#e2e2e2","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_fQhMEk":{"type":"rich-text","blocks":{"image_CxmXiA":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Kopia_220903_Vogue_Loreal_1943.webp","retina":false}},"image_jfmaBr":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/220903_Vogue_Loreal_0158.webp","retina":false}}},"block_order":["image_CxmXiA","image_jfmaBr"],"settings":{"full_width":false,"text_width":"full","text_position":"center","text_alignment":"center","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_ihime8":{"type":"rich-text","blocks":{"subheading_yhep8K":{"type":"subheading","settings":{"text":"Sukienka True"}},"heading_DCAR6f":{"type":"heading","settings":{"text":"Poznaj ten wyjątkowy projekt","size":"h3"}},"text_TfHtzc":{"type":"text","settings":{"text":"<p>Niezwykle zmysłowa sukienka uszyta z delikatnie modelującej, prążkowanej dzianiny. Głęboki dekolt w kształcie litery \"V\" fenomenalnie podkreśla biust, zaś przeszycie poniżej dodatkowo go podtrzymuje. Sukienka nie posiada suwaka, zatem będzie idealna dla każdego typu figury. Została stworzona z myślą o wyjątkowych okazjach, w których chcesz się poczuć kobieco i jednocześnie komfortowo.<\/p>","custom_liquid":"","size":"text-size-small"}},"text_zzLmdF":{"type":"text","settings":{"text":"<p><strong>Podkład True Match <\/strong>i <strong>sukienkę TRUE <\/strong>łączy nie tylko nazwa, ale przede wszystkim idealnie, doskonałe dopasowanie do skóry. Sukienka perfekcyjnie przylega do ciała przyjemnie je otulając, zaś podkład True Mach idealnie wtapia się w cerę tworząc lekki i subtelny makijaż.<\/p>","custom_liquid":"","size":"text-size-small"}},"text_9zjYfh":{"type":"text","settings":{"text":"<p>To połączenie zapewnia naturalny i świeży, a jednocześnie bardzo elegancki efekt.Trzy kolory sukienki - nasz nowy kolor <strong>PELICAN <\/strong>klasyczny <strong>TAN<\/strong>, oraz uwielbiany już <strong>CHOCOLATE <\/strong>odpowiadają trzem najpopularniejszym odcieniom podkładu True Mach - <strong>N.2, N.3 oraz  N.4.<\/strong><\/p>","custom_liquid":"","size":"text-size-small"}}},"block_order":["subheading_yhep8K","heading_DCAR6f","text_TfHtzc","text_zzLmdF","text_9zjYfh"],"settings":{"full_width":false,"text_width":"xlarge","text_position":"center","text_alignment":"left","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":false}},"multicolumn_dzVcyC":{"type":"multicolumn","blocks":{"column_dxdJdN":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Sierpien_1940.webp","image_full_width":true,"retina":false,"title":"PELICAN","text":"","link_label":"Kup teraz","link":"https:\/\/nudyess.com\/products\/true-prazkowana-sukienka-midi-loreal?variant=40304686989335","product_list":[]}},"column_BVjMgX":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Sierpien_0633.webp","image_full_width":false,"retina":false,"title":"Chocolate","text":"","link_label":"Kup teraz","link":"","product_list":[]}},"column_RCWJdU":{"type":"column","settings":{"column_size":"medium","image":"shopify:\/\/shop_images\/Sierpien_2046.webp","image_full_width":false,"retina":false,"title":"TAN","text":"","link_label":"Kup teraz","link":"https:\/\/nudyess.com\/products\/true-prazkowana-sukienka-midi-loreal?variant=40304686956567","product_list":[]}}},"block_order":["column_dxdJdN","column_BVjMgX","column_RCWJdU"],"settings":{"heading":"","display_type":"grid","image_ratio":"adapt","text_alignment":"center","heading_size":"h5","mobile_swipe":false,"show_progress_bar":false,"color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","color_border":"#e2e2e2","disable_top_spacing":true,"disable_bottom_spacing":false}},"rich_text_4YGqiD":{"type":"rich-text","blocks":{"text_rUycUx":{"type":"text","settings":{"text":"<p>A teraz zapraszamy Cię za kulisy tej wyjątkowej kampanii..<\/p>","custom_liquid":"","size":"text-size-regular"}}},"block_order":["text_rUycUx"],"settings":{"full_width":true,"text_width":"medium","text_position":"center","text_alignment":"center","color_bg":"rgba(0,0,0,0)","color_text":"#151515","color_links":"#151515","disable_top_spacing":true,"disable_bottom_spacing":true}},"background_video_LR36iy":{"type":"background-video","settings":{"desktop_height":"desktop-height-full","mobile_height":"mobile-height-350","full_width":false,"video_controls":true,"video":"","video_hosted":"shopify:\/\/files\/videos\/TrueMatch x Nudyess.mp4","overlay_color":"rgba(0,0,0,0)","overlay_opacity":0,"disable_top_spacing":false,"disable_bottom_spacing":false}}},"order":["main","spacer_xi6B6c","single_image_mpngLn","rich_text_Ydt8X9","image_with_text_8QyknQ","multicolumn_9nfBrb","rich_text_fQhMEk","rich_text_ihime8","multicolumn_dzVcyC","rich_text_4YGqiD","background_video_LR36iy"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_wkeA6N": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_xi6B6c": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "single_image_mpngLn": {
+      "type": "single-image",
+      "settings": {
+        "image": "shopify://shop_images/220903_Vogue_Loreal_2077.webp",
+        "full_width": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_Ydt8X9": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_MXQVzN": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Jesteśmy tego warte"
+          }
+        },
+        "heading_VRiLG4": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Nudyess & L'Oréal Paris",
+            "size": "h3"
+          }
+        },
+        "text_wP6tWE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nudyess & L’Oréal Paris to wyjątkowy projekt, którego rezultatem jest stworzony specjalnie na tę okazję projekt sukienki. Jest niezwykle kobieca, a jednocześnie uniwersalna i ponadczasowa jak kultowy podkład True Match.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        },
+        "text_aiMzLk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Do kampanii w roli modelek zostało zaproszonych sześć cudownych kobiet – wybrane w drodze castingu trzy nasze wspaniałe klientki - Magdalena Zalega, Weronika Madej i Magda Bisaga oraz kolejne trzy znane i uwielbiane influencerki - Basia Pasek, Magda Cygan i Klaudia Zając. Kobiety o różnych kształtach, potrzebach i skórach. Kobiety, które inspirują inne osoby do większej wiary w siebie i każdego dnia przypominają, że pewność siebie jest czymś, czego wszystkie jesteśmy warte i w czym każdej z nas jest zawsze do twarzy.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_MXQVzN",
+        "heading_VRiLG4",
+        "text_wP6tWE",
+        "text_aiMzLk"
+      ],
+      "settings": {
+        "full_width": false,
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "left",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_8QyknQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_zm78b3": {
+          "type": "subheading",
+          "settings": {
+            "text": "Nasze Klientki"
+          }
+        },
+        "heading_qVyEkY": {
+          "type": "heading",
+          "settings": {
+            "text": "Po raz kolejny jako modelki",
+            "heading_size": "h4"
+          }
+        },
+        "text_RJFB3c": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Po raz trzeci ogłosiłyśmy casting skierowany do naszych Klientek. Z kilkuset zgłoszeń wybrałyśmy 3 wyjątkowe dziewczyny: dwie Magdy i Weronikę. Każda z nich ma inny typ urody, sylwetki, nosi inny rozmiar, ale łączy je jedno! Są pewne siebie, przebojowe i nie boją się realizować własnych marzeń. Wiemy, że tą sesją spełniłyśmy jedno z nich.</p>",
+            "description_size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_zm78b3",
+        "heading_qVyEkY",
+        "text_RJFB3c"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Kopia_220903_Vogue_Loreal_2410.webp",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": false,
+        "video_controls": false,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "full_width": false,
+        "layout": "image_first",
+        "content_position": "text-left",
+        "column_spacing": "none",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_9nfBrb": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_zbmHAY": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/220903_Vogue_Loreal_2773_7ac8e97e-a153-4636-9d21-05a91ccf71e5.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Weronika Madej",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_NH7qeF": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/220903_Vogue_Loreal_3210.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Magda Bisaga",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_VLYp3z": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Kopia_220903_Vogue_Loreal_3083.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Magda Zalega",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_Uij7Tt": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Kopia_220903_Vogue_Loreal_0528.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Basia Pasek",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_i7K6yc": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/220903_Vogue_Loreal_1329.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Klaudia Zając",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_NbBbXb": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Kopia_220903_Vogue_Loreal_1000.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "Magda Cygan",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "column_zbmHAY",
+        "column_NH7qeF",
+        "column_VLYp3z",
+        "column_Uij7Tt",
+        "column_i7K6yc",
+        "column_NbBbXb"
+      ],
+      "settings": {
+        "heading": "Poznaj bohaterki kampanii",
+        "display_type": "grid",
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h4",
+        "mobile_swipe": false,
+        "show_progress_bar": false,
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_fQhMEk": {
+      "type": "rich-text",
+      "blocks": {
+        "image_CxmXiA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Kopia_220903_Vogue_Loreal_1943.webp",
+            "retina": false
+          }
+        },
+        "image_jfmaBr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/220903_Vogue_Loreal_0158.webp",
+            "retina": false
+          }
+        }
+      },
+      "block_order": [
+        "image_CxmXiA",
+        "image_jfmaBr"
+      ],
+      "settings": {
+        "full_width": false,
+        "text_width": "full",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_ihime8": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_yhep8K": {
+          "type": "subheading",
+          "settings": {
+            "text": "Sukienka True"
+          }
+        },
+        "heading_DCAR6f": {
+          "type": "heading",
+          "settings": {
+            "text": "Poznaj ten wyjątkowy projekt",
+            "size": "h3"
+          }
+        },
+        "text_TfHtzc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Niezwykle zmysłowa sukienka uszyta z delikatnie modelującej, prążkowanej dzianiny. Głęboki dekolt w kształcie litery \"V\" fenomenalnie podkreśla biust, zaś przeszycie poniżej dodatkowo go podtrzymuje. Sukienka nie posiada suwaka, zatem będzie idealna dla każdego typu figury. Została stworzona z myślą o wyjątkowych okazjach, w których chcesz się poczuć kobieco i jednocześnie komfortowo.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        },
+        "text_zzLmdF": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Podkład True Match </strong>i <strong>sukienkę TRUE </strong>łączy nie tylko nazwa, ale przede wszystkim idealnie, doskonałe dopasowanie do skóry. Sukienka perfekcyjnie przylega do ciała przyjemnie je otulając, zaś podkład True Mach idealnie wtapia się w cerę tworząc lekki i subtelny makijaż.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        },
+        "text_9zjYfh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To połączenie zapewnia naturalny i świeży, a jednocześnie bardzo elegancki efekt.Trzy kolory sukienki - nasz nowy kolor <strong>PELICAN </strong>klasyczny <strong>TAN</strong>, oraz uwielbiany już <strong>CHOCOLATE </strong>odpowiadają trzem najpopularniejszym odcieniom podkładu True Mach - <strong>N.2, N.3 oraz  N.4.</strong></p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yhep8K",
+        "heading_DCAR6f",
+        "text_TfHtzc",
+        "text_zzLmdF",
+        "text_9zjYfh"
+      ],
+      "settings": {
+        "full_width": false,
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "left",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_dzVcyC": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dxdJdN": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Sierpien_1940.webp",
+            "image_full_width": true,
+            "retina": false,
+            "title": "PELICAN",
+            "text": "",
+            "link_label": "Kup teraz",
+            "link": "https://nudyess.com/products/true-prazkowana-sukienka-midi-loreal?variant=40304686989335",
+            "product_list": []
+          }
+        },
+        "column_BVjMgX": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Sierpien_0633.webp",
+            "image_full_width": false,
+            "retina": false,
+            "title": "Chocolate",
+            "text": "",
+            "link_label": "Kup teraz",
+            "link": "",
+            "product_list": []
+          }
+        },
+        "column_RCWJdU": {
+          "type": "column",
+          "settings": {
+            "column_size": "medium",
+            "image": "shopify://shop_images/Sierpien_2046.webp",
+            "image_full_width": false,
+            "retina": false,
+            "title": "TAN",
+            "text": "",
+            "link_label": "Kup teraz",
+            "link": "https://nudyess.com/products/true-prazkowana-sukienka-midi-loreal?variant=40304686956567",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "column_dxdJdN",
+        "column_BVjMgX",
+        "column_RCWJdU"
+      ],
+      "settings": {
+        "heading": "",
+        "display_type": "grid",
+        "image_ratio": "adapt",
+        "text_alignment": "center",
+        "heading_size": "h5",
+        "mobile_swipe": false,
+        "show_progress_bar": false,
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_4YGqiD": {
+      "type": "rich-text",
+      "blocks": {
+        "text_rUycUx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A teraz zapraszamy Cię za kulisy tej wyjątkowej kampanii..</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_rUycUx"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "background_video_LR36iy": {
+      "type": "background-video",
+      "settings": {
+        "desktop_height": "desktop-height-full",
+        "mobile_height": "mobile-height-350",
+        "full_width": false,
+        "video_controls": true,
+        "video": "",
+        "video_hosted": "shopify://files/videos/TrueMatch x Nudyess.mp4",
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_opacity": 0,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_wkeA6N",
+    "main",
+    "spacer_xi6B6c",
+    "single_image_mpngLn",
+    "rich_text_Ydt8X9",
+    "image_with_text_8QyknQ",
+    "multicolumn_9nfBrb",
+    "rich_text_fQhMEk",
+    "rich_text_ihime8",
+    "multicolumn_dzVcyC",
+    "rich_text_4YGqiD",
+    "background_video_LR36iy"
+  ]
+}
