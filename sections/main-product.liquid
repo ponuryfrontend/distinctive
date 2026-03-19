@@ -144,381 +144,424 @@
   assign schema_country = localization.country.iso_code | default: 'PL'
   assign schema_currency = cart.currency.iso_code
   assign return_policy_id = shop.url | append: '#return-policy-' | append: schema_country | downcase
+
+  assign breadcrumb_collection = blank
+  if collection and collection.url
+    assign breadcrumb_collection = collection
+  elsif product.collections.size > 0
+    assign breadcrumb_collection = product.collections.first
+  endif
 -%}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  {%- if product.variants.size > 1 -%}
-    "@type": "ProductGroup",
-    "@id": {{ product_url | append: '#productgroup' | json }},
-    "productGroupID": {{ product.id | json }},
-    "name": {{ product.title | strip | json }},
-    "description": {{ product_desc | json }},
-    "url": {{ product_url | json }},
-    "brand": {
-      "@type": "Brand",
-      "name": {{ product.vendor | default: shop.name | json }}
-    }{% if product.featured_image %},
-    "image": [
-      {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
-    ]{% endif %}{% if product.type != blank %},
-    "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
-    "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if review_count > 0 and review_avg > 0 %},
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": {{ review_avg | json }},
-      "reviewCount": {{ review_count | json }}
-    }{% endif %},
-    "hasVariant": [
-      {%- for variant in product.variants -%}
-        {%- liquid
-          assign variant_url = shop.url | append: product.url | append: '?variant=' | append: variant.id
-          assign variant_image = variant.featured_media.preview_image | default: product.featured_image
-          assign variant_on_sale = false
-
-          if variant.compare_at_price > variant.price
-            assign variant_on_sale = true
-          endif
-        -%}
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ product_url | append: '#breadcrumb' | json }},
+      "itemListElement": [
         {
-          "@type": "Product",
-          "@id": {{ variant_url | append: '#product' | json }},
-          "isVariantOf": {
-            "@id": {{ product_url | append: '#productgroup' | json }}
-          },
-          "name": {{ product.title | append: ' - ' | append: variant.title | strip | json }},
-          "url": {{ variant_url | json }},
-          "description": {{ product_desc | json }},
-          "image": [
-            {{ variant_image | image_url: width: 1200 | prepend: 'https:' | json }}
-          ],
-          "brand": {
-            "@type": "Brand",
-            "name": {{ product.vendor | default: shop.name | json }}
-          }{% if variant.sku != blank %},
-          "sku": {{ variant.sku | strip | json }}{% endif %}{% if variant.barcode != blank %}
-            {%- assign barcode_length = variant.barcode | size -%}
-            {%- if barcode_length == 8 -%},
-              "gtin8": {{ variant.barcode | json }}
-            {%- elsif barcode_length == 12 -%},
-              "gtin12": {{ variant.barcode | json }}
-            {%- elsif barcode_length == 13 -%},
-              "gtin13": {{ variant.barcode | json }}
-            {%- elsif barcode_length == 14 -%},
-              "gtin14": {{ variant.barcode | json }}
-            {%- else -%},
-              "gtin": {{ variant.barcode | json }}
-            {%- endif -%}
-          {%- endif %}{% if review_count > 0 and review_avg > 0 %},
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": {{ review_avg | json }},
-            "reviewCount": {{ review_count | json }}
-          }{% endif %},
-          "offers": {
-            "@type": "Offer",
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": {{ shop.url | append: routes.root_url | json }}
+        }{% if breadcrumb_collection != blank %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ breadcrumb_collection.title | strip | json }},
+          "item": {{ shop.url | append: breadcrumb_collection.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | strip | json }},
+          "item": {{ product_url | json }}
+        }{% else %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | strip | json }},
+          "item": {{ product_url | json }}
+        }{% endif %}
+      ]
+    },
+    {%- if product.variants.size > 1 -%}
+    {
+      "@type": "ProductGroup",
+      "@id": {{ product_url | append: '#productgroup' | json }},
+      "productGroupID": {{ product.id | json }},
+      "name": {{ product.title | strip | json }},
+      "description": {{ product_desc | json }},
+      "url": {{ product_url | json }},
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | default: shop.name | json }}
+      }{% if product.featured_image %},
+      "image": [
+        {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
+      ]{% endif %}{% if product.type != blank %},
+      "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
+      "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if review_count > 0 and review_avg > 0 %},
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ review_avg | json }},
+        "reviewCount": {{ review_count | json }}
+      }{% endif %},
+      "hasVariant": [
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign variant_url = shop.url | append: product.url | append: '?variant=' | append: variant.id
+            assign variant_image = variant.featured_media.preview_image | default: product.featured_image
+            assign variant_on_sale = false
+
+            if variant.compare_at_price > variant.price
+              assign variant_on_sale = true
+            endif
+          -%}
+          {
+            "@type": "Product",
+            "@id": {{ variant_url | append: '#product' | json }},
+            "isVariantOf": {
+              "@id": {{ product_url | append: '#productgroup' | json }}
+            },
+            "name": {{ product.title | append: ' - ' | append: variant.title | strip | json }},
             "url": {{ variant_url | json }},
-            "priceCurrency": {{ schema_currency | json }},
-            "price": {{ variant.price | divided_by: 100.0 | json }}{% if variant_on_sale and promo_valid_until != blank %},
-            "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
-            "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-            "itemCondition": "https://schema.org/NewCondition"{% if variant.requires_shipping or return_policy_id != blank %},{% endif %}
-            {% if variant.requires_shipping %}
-            "shippingDetails": [
-              {% if schema_country == 'PL' %}
-              {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": 14,
-                  "currency": "PLN"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "PL"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
+            "description": {{ product_desc | json }},
+            "image": [
+              {{ variant_image | image_url: width: 1200 | prepend: 'https:' | json }}
+            ],
+            "brand": {
+              "@type": "Brand",
+              "name": {{ product.vendor | default: shop.name | json }}
+            }{% if variant.sku != blank %},
+            "sku": {{ variant.sku | strip | json }}{% endif %}{% if variant.barcode != blank %}
+              {%- assign barcode_length = variant.barcode | size -%}
+              {%- if barcode_length == 8 -%},
+                "gtin8": {{ variant.barcode | json }}
+              {%- elsif barcode_length == 12 -%},
+                "gtin12": {{ variant.barcode | json }}
+              {%- elsif barcode_length == 13 -%},
+                "gtin13": {{ variant.barcode | json }}
+              {%- elsif barcode_length == 14 -%},
+                "gtin14": {{ variant.barcode | json }}
+              {%- else -%},
+                "gtin": {{ variant.barcode | json }}
+              {%- endif -%}
+            {%- endif %}{% if review_count > 0 and review_avg > 0 %},
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": {{ review_avg | json }},
+              "reviewCount": {{ review_count | json }}
+            }{% endif %},
+            "offers": {
+              "@type": "Offer",
+              "url": {{ variant_url | json }},
+              "priceCurrency": {{ schema_currency | json }},
+              "price": {{ variant.price | divided_by: 100.0 | json }}{% if variant_on_sale and promo_valid_until != blank %},
+              "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
+              "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+              "itemCondition": "https://schema.org/NewCondition"{% if variant.requires_shipping or return_policy_id != blank %},{% endif %}
+              {% if variant.requires_shipping %}
+              "shippingDetails": [
+                {% if schema_country == 'PL' %}
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 14,
+                    "currency": "PLN"
                   },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  }
-                },
-                "shippingLabel": "Paczkomat InPost"
-              },
-              {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": 16,
-                  "currency": "PLN"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "PL"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PL"
                   },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  }
-                },
-                "shippingLabel": "Kurier InPost"
-              },
-              {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": 24,
-                  "currency": "PLN"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "PL"
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    }
                   },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                  }
+                  "shippingLabel": "Paczkomat InPost"
                 },
-                "shippingLabel": "Kurier za pobraniem"
-              }
-              {% else %}
-              {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {
-                  "@type": "MonetaryAmount",
-                  "value": 9.90,
-                  "currency": "EUR"
-                },
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": {{ schema_country | json }}
-                },
-                "deliveryTime": {
-                  "@type": "ShippingDeliveryTime",
-                  "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 16,
+                    "currency": "PLN"
                   },
-                  "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 4,
-                    "unitCode": "DAY"
-                  }
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    }
+                  },
+                  "shippingLabel": "Kurier InPost"
                 },
-                "shippingLabel": "Standard international shipping"
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 24,
+                    "currency": "PLN"
+                  },
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    }
+                  },
+                  "shippingLabel": "Kurier InPost Pobranie"
+                }
+                {% else %}
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": 9.90,
+                    "currency": "EUR"
+                  },
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": {{ schema_country | json }}
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 2,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  },
+                  "shippingLabel": "DHL"
+                }
+                {% endif %}
+              ]{% if return_policy_id != blank %},{% endif %}
+              {% endif %}
+              {% if return_policy_id != blank %}
+              "hasMerchantReturnPolicy": {
+                "@id": {{ return_policy_id | json }}
               }
               {% endif %}
-            ]{% if return_policy_id != blank %},{% endif %}
-            {% endif %}
-            {% if return_policy_id != blank %}
-            "hasMerchantReturnPolicy": {
-              "@id": {{ return_policy_id | json }}
             }
-            {% endif %}
-          }
-        }{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
-    ]
-  {%- else -%}
-    "@type": "Product",
-    "@id": {{ product_url | append: '#product' | json }},
-    "name": {{ product.title | strip | json }},
-    "url": {{ product_url | json }},
-    "description": {{ product_desc | json }},
-    "brand": {
-      "@type": "Brand",
-      "name": {{ product.vendor | default: shop.name | json }}
-    }{% if product.featured_image %},
-    "image": [
-      {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
-    ]{% endif %}{% if product.type != blank %},
-    "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
-    "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if current_variant.barcode != blank %}
-      {%- assign barcode_length = current_variant.barcode | size -%}
-      {%- if barcode_length == 8 -%},
-        "gtin8": {{ current_variant.barcode | json }}
-      {%- elsif barcode_length == 12 -%},
-        "gtin12": {{ current_variant.barcode | json }}
-      {%- elsif barcode_length == 13 -%},
-        "gtin13": {{ current_variant.barcode | json }}
-      {%- elsif barcode_length == 14 -%},
-        "gtin14": {{ current_variant.barcode | json }}
-      {%- else -%},
-        "gtin": {{ current_variant.barcode | json }}
-      {%- endif -%}
-    {%- endif %}{% if review_count > 0 and review_avg > 0 %},
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": {{ review_avg | json }},
-      "reviewCount": {{ review_count | json }}
-    }{% endif %},
-    "offers": {
-      "@type": "Offer",
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+    {%- else -%}
+    {
+      "@type": "Product",
+      "@id": {{ product_url | append: '#product' | json }},
+      "name": {{ product.title | strip | json }},
       "url": {{ product_url | json }},
-      "priceCurrency": {{ schema_currency | json }},
-      "price": {{ current_variant.price | divided_by: 100.0 | json }}{% if current_variant.compare_at_price > current_variant.price and promo_valid_until != blank %},
-      "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
-      "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
-      "itemCondition": "https://schema.org/NewCondition"{% if current_variant.requires_shipping or return_policy_id != blank %},{% endif %}
-      {% if current_variant.requires_shipping %}
-      "shippingDetails": [
-        {% if schema_country == 'PL' %}
-        {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": 14,
-            "currency": "PLN"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "PL"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
+      "description": {{ product_desc | json }},
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | default: shop.name | json }}
+      }{% if product.featured_image %},
+      "image": [
+        {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}
+      ]{% endif %}{% if product.type != blank %},
+      "category": {{ product.type | json }}{% endif %}{% if current_variant.sku != blank %},
+      "sku": {{ current_variant.sku | strip | json }}{% endif %}{% if current_variant.barcode != blank %}
+        {%- assign barcode_length = current_variant.barcode | size -%}
+        {%- if barcode_length == 8 -%},
+          "gtin8": {{ current_variant.barcode | json }}
+        {%- elsif barcode_length == 12 -%},
+          "gtin12": {{ current_variant.barcode | json }}
+        {%- elsif barcode_length == 13 -%},
+          "gtin13": {{ current_variant.barcode | json }}
+        {%- elsif barcode_length == 14 -%},
+          "gtin14": {{ current_variant.barcode | json }}
+        {%- else -%},
+          "gtin": {{ current_variant.barcode | json }}
+        {%- endif -%}
+      {%- endif %}{% if review_count > 0 and review_avg > 0 %},
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ review_avg | json }},
+        "reviewCount": {{ review_count | json }}
+      }{% endif %},
+      "offers": {
+        "@type": "Offer",
+        "url": {{ product_url | json }},
+        "priceCurrency": {{ schema_currency | json }},
+        "price": {{ current_variant.price | divided_by: 100.0 | json }}{% if current_variant.compare_at_price > current_variant.price and promo_valid_until != blank %},
+        "priceValidUntil": {{ promo_valid_until | date: "%Y-%m-%d" | json }}{% endif %},
+        "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition"{% if current_variant.requires_shipping or return_policy_id != blank %},{% endif %}
+        {% if current_variant.requires_shipping %}
+        "shippingDetails": [
+          {% if schema_country == 'PL' %}
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 14,
+              "currency": "PLN"
             },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
-            }
-          },
-          "shippingLabel": "Paczkomat InPost"
-        },
-        {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": 16,
-            "currency": "PLN"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "PL"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "PL"
             },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
-            }
-          },
-          "shippingLabel": "Kurier InPost"
-        },
-        {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": 24,
-            "currency": "PLN"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "PL"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              }
             },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
-            }
+            "shippingLabel": "Paczkomat InPost"
           },
-          "shippingLabel": "Kurier InPost Pobranie"
-        }
-        {% else %}
-        {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": 9.90,
-            "currency": "EUR"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": {{ schema_country | json }}
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "DAY"
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 16,
+              "currency": "PLN"
             },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 4,
-              "unitCode": "DAY"
-            }
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "PL"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              }
+            },
+            "shippingLabel": "Kurier InPost"
           },
-          "shippingLabel": "DHL"
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 24,
+              "currency": "PLN"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "PL"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              }
+            },
+            "shippingLabel": "Kurier InPost Pobranie"
+          }
+          {% else %}
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 9.90,
+              "currency": "EUR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": {{ schema_country | json }}
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 4,
+                "unitCode": "DAY"
+              }
+            },
+            "shippingLabel": "DHL"
+          }
+          {% endif %}
+        ]{% if return_policy_id != blank %},{% endif %}
+        {% endif %}
+        {% if return_policy_id != blank %}
+        "hasMerchantReturnPolicy": {
+          "@id": {{ return_policy_id | json }}
         }
         {% endif %}
-      ]{% if return_policy_id != blank %},{% endif %}
-      {% endif %}
-      {% if return_policy_id != blank %}
-      "hasMerchantReturnPolicy": {
-        "@id": {{ return_policy_id | json }}
       }
-      {% endif %}
     }
-  {%- endif -%}
+    {%- endif -%}
+  ]
 }
 </script>
 
