@@ -18,6 +18,21 @@
         "disable_bottom_spacing": false
       }
     },
+    "background_video_kiza38": {
+      "type": "background-video",
+      "settings": {
+        "desktop_height": "desktop-height-750",
+        "mobile_height": "mobile-height-450",
+        "full_width": false,
+        "video_controls": true,
+        "video": "",
+        "video_hosted": "shopify://files/videos/NUDYESS_-_Chapter_9.mp4",
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_opacity": 0,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "page_x6Bhre": {
       "type": "page",
       "settings": {
@@ -31,21 +46,6 @@
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
       "settings": {}
-    },
-    "background_video_kiza38": {
-      "type": "background-video",
-      "settings": {
-        "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-450",
-        "full_width": false,
-        "video_controls": true,
-        "video": "",
-        "video_hosted": "shopify://files/videos/NUDYESS_-_Chapter_9.mp4",
-        "overlay_color": "rgba(0,0,0,0)",
-        "overlay_opacity": 0,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
     },
     "rich_text_bppWd3": {
       "type": "rich-text",
@@ -590,9 +590,8 @@
   },
   "order": [
     "main",
-    "page_x6Bhre",
-    "breadcrumbs_7JMELK",
     "background_video_kiza38",
+    "page_x6Bhre",
     "rich_text_bppWd3",
     "rich_text_ERTfCP",
     "image_with_text_dmTVgL",
@@ -603,6 +602,7 @@
     "background_video_tRVdrq",
     "rich_text_YJXtkF",
     "multicolumn_WKYBEV",
-    "collection_tabs_CjMXFg"
+    "collection_tabs_CjMXFg",
+    "breadcrumbs_7JMELK"
   ]
 }
