@@ -19,7 +19,7 @@
             "video_background": true,
             "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_hosted": "shopify://files/videos/IMG_1709-kopia.mov",
-            "slide_title": "",
+            "slide_title": "NEW",
             "subheading": "",
             "heading": "ESSENCE OF FORM",
             "heading_size": "h2",
@@ -41,14 +41,46 @@
             "button_2_link": "",
             "use_text_button_2": false
           }
+        },
+        "slide_Ff6Hif": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MIDD.jpg",
+            "mobile_image": "shopify://shop_images/MMIDD.jpg",
+            "slide_link": "shopify://collections/2-0",
+            "video_background": false,
+            "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "slide_title": "SALE",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h1-xlarge",
+            "content": "",
+            "description_size": "medium",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "content_size": "medium",
+            "color_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 70,
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
+            "button_1_text": "",
+            "button_1_color": "accent",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": false
+          }
         }
       },
       "block_order": [
-        "slide_TV4ah9"
+        "slide_TV4ah9",
+        "slide_Ff6Hif"
       ],
       "settings": {
         "desktop_height": "desktop-height-image",
-        "mobile_height": "mobile-height-full",
+        "mobile_height": "mobile-height-400",
         "change_header": true,
         "autoplay": true,
         "autoplay_length": 5,
