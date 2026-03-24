@@ -14,6 +14,7 @@
       "blocks": {
         "slide_Ff6Hif": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/MIDD.jpg",
             "mobile_image": "shopify://shop_images/MMIDD.jpg",
