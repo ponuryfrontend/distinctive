@@ -157,7 +157,13 @@
             "content_position": "bottom-center",
             "content_size": "medium",
             "button_1_text": "",
-            "button_2_text": ""
+            "button_2_text": "",
+            "slide_title": ""
+          }
+        },
+        "slide_Ff6Hif": {
+          "settings": {
+            "slide_title": ""
           }
         }
       },
