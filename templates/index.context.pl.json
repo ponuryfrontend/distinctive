@@ -143,12 +143,18 @@
         "disable_bottom_spacing": false
       },
       "blocks": {
+        "slide_Ff6Hif": {
+          "settings": {
+            "slide_title": "Sale"
+          }
+        },
         "slide_TV4ah9": {
           "settings": {
             "image": "shopify://shop_images/uju_7a115688-98a7-4116-bb71-9473aa0db31a.jpg",
             "video_background": true,
             "video": "",
             "video_hosted": "shopify://files/videos/IMG_1709-kopia.mov",
+            "slide_title": "New",
             "subheading": "",
             "heading": "ESSENCE OF FORM",
             "heading_size": "h2",
@@ -157,13 +163,7 @@
             "content_position": "bottom-center",
             "content_size": "medium",
             "button_1_text": "",
-            "button_2_text": "",
-            "slide_title": ""
-          }
-        },
-        "slide_Ff6Hif": {
-          "settings": {
-            "slide_title": ""
+            "button_2_text": ""
           }
         }
       },
