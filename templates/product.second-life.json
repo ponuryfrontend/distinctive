@@ -9,25 +9,6 @@
  */
 {
   "sections": {
-    "cf419534-b576-4781-b418-495982d63b57": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 85,
-        "spacer_desktop": 50,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "spacer_KxdJkj": {
-      "type": "spacer",
-      "disabled": true,
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 50,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "spacer_WhxHNn": {
       "type": "spacer",
       "settings": {
@@ -238,8 +219,6 @@
     }
   },
   "order": [
-    "cf419534-b576-4781-b418-495982d63b57",
-    "spacer_KxdJkj",
     "spacer_WhxHNn",
     "main",
     "spacer_GGjRwJ",
