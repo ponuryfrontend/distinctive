@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "spacer_WhxHNn": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 30,
-        "spacer_desktop": 50,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -219,7 +210,6 @@
     }
   },
   "order": [
-    "spacer_WhxHNn",
     "main",
     "spacer_GGjRwJ",
     "17739627779202bc51",
