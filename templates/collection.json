@@ -19,6 +19,11 @@
         "display_description": false
       }
     },
+    "breadcrumbs_KzjVBe": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -29,15 +34,6 @@
         "enable_sorting": true,
         "show_counts": true,
         "filter_color_swatches": false
-      }
-    },
-    "16636704759cbf64c5": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 50,
-        "spacer_desktop": 90,
-        "border_separator": true,
-        "border_separator_full": true
       }
     },
     "166366972953e881f5": {
@@ -71,18 +67,12 @@
         "border_separator": false,
         "border_separator_full": false
       }
-    },
-    "breadcrumbs_KzjVBe": {
-      "type": "breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
     }
   },
   "order": [
     "template-header",
     "breadcrumbs_KzjVBe",
     "product-grid",
-    "16636704759cbf64c5",
     "166366972953e881f5",
     "166367228131c52c01"
   ]
