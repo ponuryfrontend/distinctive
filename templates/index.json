@@ -672,6 +672,7 @@
         "text_Q3yLAf",
         "button_ajWFgJ"
       ],
+      "disabled": true,
       "name": "Promotional banner",
       "settings": {
         "full_width": false,
@@ -781,6 +782,7 @@
         "image_WFppjU",
         "image_b8DXQW"
       ],
+      "disabled": true,
       "name": "Gallery",
       "settings": {
         "columns_desktop": 5,
