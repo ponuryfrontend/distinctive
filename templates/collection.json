@@ -67,6 +67,42 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "rich_text_Hd8wBf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kr3bhe": {
+          "type": "heading",
+          "settings": {
+            "text": "Talk about your brand",
+            "size": "h3"
+          }
+        },
+        "text_iMXwKB": {
+          "type": "text",
+          "settings": {
+            "text": "{{ collection.metafields.custom.seo_content | metafield_tag }}",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kr3bhe",
+        "text_iMXwKB"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -74,6 +110,7 @@
     "breadcrumbs_KzjVBe",
     "product-grid",
     "166366972953e881f5",
-    "166367228131c52c01"
+    "166367228131c52c01",
+    "rich_text_Hd8wBf"
   ]
 }
