@@ -71,13 +71,6 @@
     "rich_text_Hd8wBf": {
       "type": "rich-text",
       "blocks": {
-        "heading_kr3bhe": {
-          "type": "heading",
-          "settings": {
-            "text": "Talk about your brand",
-            "size": "h3"
-          }
-        },
         "text_iMXwKB": {
           "type": "text",
           "settings": {
@@ -88,7 +81,6 @@
         }
       },
       "block_order": [
-        "heading_kr3bhe",
         "text_iMXwKB"
       ],
       "name": "Rich text",
