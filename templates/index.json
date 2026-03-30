@@ -14,6 +14,7 @@
       "blocks": {
         "slide_Ff6Hif": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Rozowy_Kobiecy_Dzien_Kobiet_Promocja_Post_na_Facebooka.jpg",
             "mobile_image": "shopify://shop_images/SPRINGPROMOO.jpg",
@@ -45,7 +46,6 @@
         },
         "slide_TV4ah9": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "slide_link": "",
             "video_background": true,
