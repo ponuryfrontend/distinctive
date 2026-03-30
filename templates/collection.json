@@ -86,7 +86,7 @@
       "name": "Rich text",
       "settings": {
         "full_width": true,
-        "text_width": "medium",
+        "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "transparent",
