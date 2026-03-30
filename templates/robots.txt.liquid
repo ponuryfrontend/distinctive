@@ -8,6 +8,13 @@
   {{ group.sitemap }}
 {% endfor %}
 
+User-agent: *
+Disallow: /collections/*/products/*
+Disallow: /*/collections/*/products/*
+Disallow: /*?*variant=*
+Disallow: /*?*pr_*
+Disallow: /kategoria/
+
 # AI / LLM crawlers
 User-agent: GPTBot
 Allow: /
