@@ -76,7 +76,7 @@
           "settings": {
             "text": "{{ collection.metafields.custom.seo_content | metafield_tag }}",
             "custom_liquid": "",
-            "size": "text-size-regular"
+            "size": "text-size-large"
           }
         }
       },
