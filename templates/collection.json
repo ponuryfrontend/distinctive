@@ -86,10 +86,10 @@
       "name": "Rich text",
       "settings": {
         "full_width": true,
-        "text_width": "xlarge",
+        "text_width": "full",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "transparent",
+        "color_bg": "rgba(0,0,0,0)",
         "color_text": "#151515",
         "color_links": "#151515",
         "disable_top_spacing": true,
