@@ -76,7 +76,7 @@
           "settings": {
             "text": "{{ collection.metafields.custom.seo_content | metafield_tag }}",
             "custom_liquid": "",
-            "size": "text-size-large"
+            "size": "text-size-small"
           }
         }
       },
@@ -86,7 +86,7 @@
       "name": "Rich text",
       "settings": {
         "full_width": true,
-        "text_width": "large",
+        "text_width": "xlarge",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "transparent",
