@@ -425,7 +425,6 @@
         "icon_n7zzcn",
         "icon_czefQG"
       ],
-      "disabled": true,
       "settings": {
         "text_alignment": "center",
         "icon_position": "top",
@@ -437,107 +436,6 @@
         "color_text": "#151515",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "scrolling_text_6Mf63D": {
-      "type": "scrolling-text",
-      "blocks": {
-        "text_QJr46q": {
-          "type": "text",
-          "settings": {
-            "text": "ŚWIĘTUJ Z NAMI DZIEŃ KOBIET",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(241, 172, 214, 1) 100%, rgba(224, 224, 224, 0) 100%)"
-          }
-        },
-        "text_bqyHwL": {
-          "type": "text",
-          "settings": {
-            "text": "15% OFF",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(241, 172, 214, 1) 100%, rgba(224, 224, 224, 0) 100%)"
-          }
-        },
-        "text_DgaaLD": {
-          "type": "text",
-          "settings": {
-            "text": "KOD: WOMAN15",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(241, 172, 214, 1) 100%, rgba(224, 224, 224, 0) 100%)"
-          }
-        },
-        "text_NMp8CV": {
-          "type": "text",
-          "settings": {
-            "text": "ŚWIĘTUJ Z NAMI DZIEŃ KOBIET",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(241, 172, 214, 1) 100%, rgba(224, 224, 224, 0) 100%)"
-          }
-        },
-        "text_XkdQgR": {
-          "type": "text",
-          "settings": {
-            "text": "15% OFF",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(241, 172, 214, 1) 100%, rgba(224, 224, 224, 0) 100%)"
-          }
-        },
-        "text_xdHA9t": {
-          "type": "text",
-          "settings": {
-            "text": "KOD: WOMAN15",
-            "link": "shopify://collections/new-now",
-            "outline_text": false,
-            "color_text": "#ffffff",
-            "color_text_gradient": "linear-gradient(180deg, rgba(255, 182, 182, 1), rgba(NaN, NaN, NaN, 1))"
-          }
-        },
-        "text_QQm6bQ": {
-          "type": "text",
-          "settings": {
-            "text": "Add campaign text here.",
-            "link": "",
-            "outline_text": false,
-            "color_text": "#232323",
-            "color_text_gradient": "linear-gradient(180deg, rgba(224,224,224, 1), rgba(224, 224, 224, 0) 100%)"
-          }
-        }
-      },
-      "block_order": [
-        "text_QJr46q",
-        "text_bqyHwL",
-        "text_DgaaLD",
-        "text_NMp8CV",
-        "text_XkdQgR",
-        "text_xdHA9t",
-        "text_QQm6bQ"
-      ],
-      "disabled": true,
-      "settings": {
-        "height": "height-auto",
-        "text_position": "top",
-        "direction": "left",
-        "speed": "20s",
-        "rotation": 0,
-        "negative_rotation": false,
-        "text_size": 16,
-        "text_uppercase": false,
-        "image_size": "small",
-        "color_bg": "#d2b8ad",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     },
     "16614195534fb74bc3": {
@@ -661,62 +559,6 @@
         "color_bg": "rgba(0,0,0,0)",
         "color_text": "#151515",
         "color_links": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "promotional_banner_zhYjhc": {
-      "type": "promotional-banner",
-      "blocks": {
-        "subheading_QHLWer": {
-          "type": "subheading",
-          "settings": {
-            "text": "NUDYESS 2.0"
-          }
-        },
-        "heading_gkYxcN": {
-          "type": "heading",
-          "settings": {
-            "text": "ESSENCE OF FORM",
-            "heading_size": "h2"
-          }
-        },
-        "text_Q3yLAf": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Po 8 latach wchodzimy w nowy rozdział swojej histroii. Kolekcja Essense of form to początek tej zmiany. Sukienki, które podążają za sylwetką zmaiast ją definiować. </p>"
-          }
-        },
-        "button_ajWFgJ": {
-          "type": "button",
-          "settings": {
-            "button_text": "sprawdź naszą nową kolekcję",
-            "button_link": "shopify://collections/2-0",
-            "button_outline": true
-          }
-        }
-      },
-      "block_order": [
-        "subheading_QHLWer",
-        "heading_gkYxcN",
-        "text_Q3yLAf",
-        "button_ajWFgJ"
-      ],
-      "disabled": true,
-      "name": "Promotional banner",
-      "settings": {
-        "full_width": false,
-        "image": "shopify://shop_images/0947-02.jpg",
-        "mobile_image": "shopify://shop_images/0947-02.jpg",
-        "image_height": "adapt",
-        "image_width": "split",
-        "frame_border": false,
-        "content_position": "text-left",
-        "split_layout": "image_first",
-        "color_bg": "#ffffff",
-        "color_text": "#151515",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
@@ -855,14 +697,12 @@
     "multiple_media_with_text_bNWA3W",
     "spacer_Ndiahc",
     "featured_collection_CUfayx",
-    "text_with_icons_mBRPhG",
-    "scrolling_text_6Mf63D",
     "16614195534fb74bc3",
     "rich_text_XMAnUw",
-    "promotional_banner_zhYjhc",
     "background_video_WgeYT8",
     "rich_text_cA9aUw",
     "multicolumn_BJybVe",
+    "text_with_icons_mBRPhG",
     "spacer_nnHL6P"
   ]
 }
