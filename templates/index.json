@@ -722,115 +722,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "gallery_aMdKe9": {
-      "type": "gallery",
-      "blocks": {
-        "image_KYqM6X": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/2_4c4dab4d-0b66-411f-88b8-d78d7128b958.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "shopify://products/czerwona-sukienka-maxi-z-wiskozy-drapowany-szal-elegancka",
-            "product_list": []
-          }
-        },
-        "image_GPfmz8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/5_4c790484-a8cf-4737-aa9d-98ded2dbe218.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "shopify://products/czarna-sukienka-maxi-z-wiskozy-dlugi-rekaw-dekolt-lodka",
-            "product_list": []
-          }
-        },
-        "image_WtpBjN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/6_8198598f-a1dd-4d5a-ae35-300bb4dd829e.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "shopify://products/czarna-sukienka-maxi-z-wiskozy-rekaw-dzwonkowy-marszczenie",
-            "product_list": []
-          }
-        },
-        "image_WFppjU": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1_b16b4429-d43f-4779-a3d8-e07f0b763218.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "shopify://products/pistacjowa-dluga-sukienka-z-wiskozy-dekolt-v-odsloniete-plecy",
-            "product_list": []
-          }
-        },
-        "image_b8DXQW": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/3_fdb37884-3023-4af0-9f43-5a940cc4a40e.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "shopify://products/czarna-minimalistyczna-sukienka-midi-z-wiskozy-asymetryczna",
-            "product_list": []
-          }
-        }
-      },
-      "block_order": [
-        "image_KYqM6X",
-        "image_GPfmz8",
-        "image_WtpBjN",
-        "image_WFppjU",
-        "image_b8DXQW"
-      ],
-      "disabled": true,
-      "name": "Gallery",
-      "settings": {
-        "columns_desktop": 5,
-        "full_width": true,
-        "mobile_swipe": true,
-        "image_ratio": "adapt",
-        "content_position": "bottom-left",
-        "text_alignment": "left",
-        "column_spacing": "small",
-        "heading_size": "h2",
-        "color_bg": "rgba(0,0,0,0)",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "background_video_WgeYT8": {
       "type": "background-video",
       "settings": {
@@ -970,7 +861,6 @@
     "16614195534fb74bc3",
     "rich_text_XMAnUw",
     "promotional_banner_zhYjhc",
-    "gallery_aMdKe9",
     "background_video_WgeYT8",
     "rich_text_cA9aUw",
     "multicolumn_BJybVe",
