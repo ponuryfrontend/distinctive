@@ -45,8 +45,8 @@
         "slide_Ff6Hif": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Wiosenne_promo.jpg",
-            "mobile_image": "shopify://shop_images/MOBPROMO.jpg",
+            "image": "shopify://shop_images/LIKWIDACJA_09c98211-4900-421f-bd2c-a5f1f2487eed.jpg",
+            "mobile_image": "shopify://shop_images/LIBOM_e4cde4e6-78c6-4c49-a568-16977736bce0.jpg",
             "slide_link": "shopify://collections/2-0",
             "video_background": false,
             "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -389,55 +389,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "text_with_icons_mBRPhG": {
-      "type": "text-with-icons",
-      "blocks": {
-        "icon_MFCzkk": {
-          "type": "icon",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/package-box-svgrepo-com_1.svg",
-            "heading": "Darmowa wysyłka",
-            "text": "<p>Oferujemy darmową i ekspresową wysyłkę od 400 PLN, zwykle w ciągu 24h.</p>"
-          }
-        },
-        "icon_n7zzcn": {
-          "type": "icon",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/return-svgrepo-com.svg",
-            "heading": "Łatwe zwroty",
-            "text": "<p>Masz 14 dni na zmianę zdania i zwrot produktów.</p>"
-          }
-        },
-        "icon_czefQG": {
-          "type": "icon",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/mobile-payment-svgrepo-com_1.svg",
-            "heading": "Bezpieczne płatności",
-            "text": "<p>Płatności poprzez Przelewy24, Blik, PayPo, ApplePay, GooglePay, Revolut, karty kredytowe i za pobraniem.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "icon_MFCzkk",
-        "icon_n7zzcn",
-        "icon_czefQG"
-      ],
-      "settings": {
-        "text_alignment": "center",
-        "icon_position": "top",
-        "icon_size": "xlarge",
-        "heading_size": "large",
-        "mobile_swipe": false,
-        "color_bg": "rgba(0,0,0,0)",
-        "color_heading": "#151515",
-        "color_text": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "16614195534fb74bc3": {
       "type": "collection-tabs",
       "blocks": {
@@ -676,6 +627,55 @@
         "color_border": "rgba(0,0,0,0)",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
+      }
+    },
+    "text_with_icons_mBRPhG": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_MFCzkk": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/package-box-svgrepo-com_1.svg",
+            "heading": "Darmowa wysyłka",
+            "text": "<p>Oferujemy darmową i ekspresową wysyłkę od 400 PLN, zwykle w ciągu 24h.</p>"
+          }
+        },
+        "icon_n7zzcn": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/return-svgrepo-com.svg",
+            "heading": "Łatwe zwroty",
+            "text": "<p>Masz 14 dni na zmianę zdania i zwrot produktów.</p>"
+          }
+        },
+        "icon_czefQG": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/mobile-payment-svgrepo-com_1.svg",
+            "heading": "Bezpieczne płatności",
+            "text": "<p>Płatności poprzez Przelewy24, Blik, PayPo, ApplePay, GooglePay, Revolut, karty kredytowe i za pobraniem.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_MFCzkk",
+        "icon_n7zzcn",
+        "icon_czefQG"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "icon_position": "top",
+        "icon_size": "xlarge",
+        "heading_size": "large",
+        "mobile_swipe": false,
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#151515",
+        "color_text": "#151515",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "spacer_nnHL6P": {
