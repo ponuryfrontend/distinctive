@@ -724,6 +724,12 @@
         "discount_codes_removed_or_modified_summary": {
           "few": "Number of discount codes removed or modified: %{count}",
           "many": "Number of discount codes removed or modified: %{count}"
+        },
+        "crypto_payment_method": {
+          "cashback_descriptor": {
+            "few": "You will receive cashback after %{count} days",
+            "many": "You will receive cashback after %{count} days"
+          }
         }
       },
       "shipping_errors": {
@@ -970,6 +976,38 @@
         "pickup_unavailable_banner_title_with_country": {
           "few": "No locations with these products: %{country}",
           "many": "No locations with these products: %{country}"
+        },
+        "location_information_far_away_one_item": {
+          "few": "Your position is available in %{count} locations",
+          "many": "Your position is available in %{count} locations"
+        },
+        "location_information_far_away_other_items": {
+          "few": "Your items are available in %{count} locations",
+          "many": "Your items are available in %{count} locations"
+        },
+        "location_nearby_one_item": {
+          "few": "Your location is available in %{count} nearby locations",
+          "many": "Your location is available in %{count} nearby locations"
+        },
+        "location_nearby_other_items": {
+          "few": "Your items are available in %{count} nearby locations",
+          "many": "Your items are available in %{count} nearby locations"
+        },
+        "location_nearby_short_one_item": {
+          "few": "Nearby locations with your position: %{count}",
+          "many": "Nearby locations with your position: %{count}"
+        },
+        "location_nearby_short_other_items": {
+          "few": "Nearby locations with your positions: %{count}",
+          "many": "Nearby locations with your positions: %{count}"
+        },
+        "location_far_away_one_item": {
+          "few": "Locations with your position: %{count}",
+          "many": "Locations with your position: %{count}"
+        },
+        "location_far_away_other_items": {
+          "few": "Locations with your positions: %{count}",
+          "many": "Locations with your positions: %{count}"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -1028,6 +1066,38 @@
           "remove_item_only": {
             "few": "Delete items",
             "many": "Delete items"
+          }
+        },
+        "pickup_items_count": {
+          "few": "Received %{count} item(s)",
+          "many": "Received %{count} item(s)"
+        },
+        "ship_items_count": {
+          "few": "Shipping %{count} items.",
+          "many": "Shipping %{count} items."
+        }
+      },
+      "review": {
+        "blocks": {
+          "pickup_items_at": {
+            "few": "Receive %{count} items in",
+            "many": "Receive %{count} items in"
+          },
+          "ship_items_to": {
+            "few": "Shipping %{count} items to",
+            "many": "Shipping %{count} items to"
+          }
+        }
+      },
+      "notice_banner": {
+        "validation_errors_banner": {
+          "heading": {
+            "few": "Errors occurred ({{count}}):",
+            "many": "Errors occurred ({{count}}):"
+          },
+          "errors_in_section": {
+            "few": "Errors in the {{section}} section ({{count}})",
+            "many": "Errors in the {{section}} section ({{count}})"
           }
         }
       }
