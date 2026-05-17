@@ -1011,6 +1011,10 @@
           "pick_them_up_in_store": {
             "few": "Hol sie dir im Laden ab.",
             "many": "Hol sie dir im Laden ab."
+          },
+          "remove_item_only": {
+            "few": "Elemente löschen",
+            "many": "Elemente löschen"
           }
         }
       }
@@ -1183,7 +1187,19 @@
           "more_items": {
             "few": "{{count}} weitere Produkte",
             "many": "{{count}} weitere Produkte"
+          },
+          "product_count": {
+            "few": "{{count}} Produkte",
+            "many": "{{count}} Produkte"
           }
+        },
+        "updating_contracts": {
+          "few": "{{count}} Abonnementvereinbarungen werden aktualisiert …",
+          "many": "{{count}} Abonnementvereinbarungen werden aktualisiert …"
+        },
+        "contracts_updated": {
+          "few": "Abonnementvereinbarungen aktualisiert ( {{count}} )",
+          "many": "Abonnementvereinbarungen aktualisiert ( {{count}} )"
         }
       }
     }
