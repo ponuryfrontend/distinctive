@@ -1024,6 +1024,10 @@
           "pick_them_up_in_store": {
             "few": "pick them up in the store",
             "many": "pick them up in the store"
+          },
+          "remove_item_only": {
+            "few": "Delete items",
+            "many": "Delete items"
           }
         }
       }
@@ -1208,7 +1212,19 @@
           "more_items": {
             "few": "{{count}} more products",
             "many": "{{count}} more products"
+          },
+          "product_count": {
+            "few": "{{count}} products",
+            "many": "{{count}} products"
           }
+        },
+        "updating_contracts": {
+          "few": "Updating {{count}} subscription agreements...",
+          "many": "Updating {{count}} subscription agreements..."
+        },
+        "contracts_updated": {
+          "few": "Subscription agreements updated ( {{count}} )",
+          "many": "Subscription agreements updated ( {{count}} )"
         }
       }
     }
