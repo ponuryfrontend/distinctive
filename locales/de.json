@@ -680,6 +680,38 @@
         "pickup_unavailable_banner_title_with_country": {
           "few": "Diese Produkte sind an keinem Standort verfügbar: %{country}",
           "many": "Diese Produkte sind an keinem Standort verfügbar: %{country}"
+        },
+        "location_information_far_away_one_item": {
+          "few": "Ihr Artikel ist an %{count} Standorten verfügbar",
+          "many": "Ihr Artikel ist an %{count} Standorten verfügbar"
+        },
+        "location_information_far_away_other_items": {
+          "few": "Ihre Artikel sind an %{count} Standorten verfügbar",
+          "many": "Ihre Artikel sind an %{count} Standorten verfügbar"
+        },
+        "location_nearby_one_item": {
+          "few": "Ihr Standort ist an %{count} Standorten in der Nähe verfügbar",
+          "many": "Ihr Standort ist an %{count} Standorten in der Nähe verfügbar"
+        },
+        "location_nearby_other_items": {
+          "few": "Ihre Positionen sind an %{count} Standorten in der Nähe verfügbar",
+          "many": "Ihre Positionen sind an %{count} Standorten in der Nähe verfügbar"
+        },
+        "location_nearby_short_one_item": {
+          "few": "Orte in der Nähe Ihrer Position: %{count}",
+          "many": "Orte in der Nähe Ihrer Position: %{count}"
+        },
+        "location_nearby_short_other_items": {
+          "few": "Nahe gelegene Orte mit Ihren Einträgen: %{count}",
+          "many": "Nahe gelegene Orte mit Ihren Einträgen: %{count}"
+        },
+        "location_far_away_one_item": {
+          "few": "Standorte mit Ihrer Position: %{count}",
+          "many": "Standorte mit Ihrer Position: %{count}"
+        },
+        "location_far_away_other_items": {
+          "few": "Standorte mit Ihren Einträgen: %{count}",
+          "many": "Standorte mit Ihren Einträgen: %{count}"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -947,6 +979,12 @@
         "discount_codes_removed_or_modified_summary": {
           "few": "Anzahl der entfernten oder geänderten Rabattcodes: %{count}",
           "many": "Anzahl der entfernten oder geänderten Rabattcodes: %{count}"
+        },
+        "crypto_payment_method": {
+          "cashback_descriptor": {
+            "few": "Du erhältst Cashback in %{count} Tagen",
+            "many": "Du erhältst Cashback in %{count} Tagen"
+          }
         }
       },
       "shipping_errors": {
@@ -1015,6 +1053,38 @@
           "remove_item_only": {
             "few": "Elemente löschen",
             "many": "Elemente löschen"
+          }
+        },
+        "pickup_items_count": {
+          "few": "Empfang %{count} Pos.",
+          "many": "Empfang %{count} Pos."
+        },
+        "ship_items_count": {
+          "few": "Versand von %{count} Art.",
+          "many": "Versand von %{count} Art."
+        }
+      },
+      "review": {
+        "blocks": {
+          "pickup_items_at": {
+            "few": "Empfang von %{count} Artikeln in",
+            "many": "Empfang von %{count} Artikeln in"
+          },
+          "ship_items_to": {
+            "few": "Versand von %{count} Artikeln nach",
+            "many": "Versand von %{count} Artikeln nach"
+          }
+        }
+      },
+      "notice_banner": {
+        "validation_errors_banner": {
+          "heading": {
+            "few": "Es sind Fehler aufgetreten ({{count}}):",
+            "many": "Es sind Fehler aufgetreten ({{count}}):"
+          },
+          "errors_in_section": {
+            "few": "Fehler in Abschnitt {{section}} ({{count}})",
+            "many": "Fehler in Abschnitt {{section}} ({{count}})"
           }
         }
       }
