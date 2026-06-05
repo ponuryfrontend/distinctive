@@ -3144,7 +3144,7 @@ select {
 .price {
   display: block;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: .7rem;
   color: var(--color-price, --color-body); }
   .price > span {
     display: inline-flex;

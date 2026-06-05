@@ -170,7 +170,7 @@
     .product-card-vendor a {
       color: rgba(var(--color-body-rgb), 0.65); }
   .product-card-title {
-    font-size: calc(var(--font-product-title-scale, 1) * 0.9375rem);
+    font-size: .7rem;
     line-height: calc(var(--font-product-title-line-height-scale, 1) * 1.5);
     font-weight: var(--font-body-medium-weight, 500);
     display: block;
