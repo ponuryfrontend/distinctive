@@ -3131,10 +3131,10 @@ select {
   background: var(--color-badge-sale, #ee3a45);
   color: var(--color-badge-text, #fff);
   border-radius: var(--badge-corner-radius, 3px);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 400;
   height: 30px;
-  padding: 5px 12px;
+  padding: 5px 6px;
   line-height: 0; }
   .badge.out-of-stock {
     background: var(--color-badge-sold-out, #acacac); }
