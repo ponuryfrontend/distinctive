@@ -345,7 +345,7 @@
       letter-spacing: 0.05em;
       text-transform: uppercase; }
   .product-card .price {
-    margin-bottom: 10px; }
+    margin-bottom: 2em; }
   .product-card .star-rating {
     margin-top: 7px;
     font-size: 0.875rem; }
