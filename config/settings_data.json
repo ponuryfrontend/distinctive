@@ -16,7 +16,7 @@
     "body_font": "avenir_next_n4",
     "body_font_scale": 100,
     "body_font_line_height_scale": 100,
-    "product_title_uppercase": true,
+    "product_title_uppercase": false,
     "button_letter_spacing": 0,
     "button_uppercase": true,
     "color_heading": "#000000",
