@@ -1527,7 +1527,7 @@ h1, .h1, .h1-large, .h1-xlarge {
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 56px)); } }
   @media only screen and (min-width: 1068px) {
     h1, .h1, .h1-large, .h1-xlarge {
-      font-size: calc(var(--font-heading-scale) * 52px);
+      font-size: 1.2rem;
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 60px)); } }
 
 h2, .h2 {
