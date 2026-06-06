@@ -64,6 +64,44 @@
   max-width: 100%;
 }
 
+/* ── Typografia dopasowana do template-header ── */
+
+.section-seo-text .rich-text {
+  text-align: center;
+}
+
+.section-seo-text .seo-accordion__content h2,
+.section-seo-text .seo-accordion__content h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.section-seo-text .seo-accordion__content p,
+.section-seo-text .seo-accordion__content li {
+  font-size: 0.7rem;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+@media only screen and (min-width: 768px) {
+  .section-seo-text .seo-accordion__content p,
+  .section-seo-text .seo-accordion__content li {
+    font-size: 0.9rem;
+  }
+}
+
+.section-seo-text .seo-accordion__content ul,
+.section-seo-text .seo-accordion__content ol {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.section-seo-text .seo-accordion__content .rte {
+  margin-bottom: 0;
+}
+
 /* ── Akordeon SEO ── */
 
 .seo-accordion {

@@ -223,8 +223,8 @@
       "type": "collection-seo-text-section",
       "settings": {
         "text_width": "large",
-        "text_position": "left",
-        "text_alignment": "left",
+        "text_position": "center",
+        "text_alignment": "center",
         "color_bg": "#ffffff",
         "color_text": "#151515",
         "disable_top_spacing": false,

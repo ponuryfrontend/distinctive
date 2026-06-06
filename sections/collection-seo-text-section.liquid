@@ -40,25 +40,11 @@
 {%- endif -%}
 
 
-<script>
-  (function () {
-    var accordion = document.getElementById('seo-accordion-{{ section.id }}');
-    if (!accordion) return;
-
-    var content = accordion.querySelector('.seo-accordion__content');
-    var toggle = accordion.querySelector('.seo-accordion__toggle');
-
-    toggle.addEventListener('click', function () {
-      var isOpen = content.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.setAttribute('aria-label', isOpen ? 'Zwiń tekst' : 'Rozwiń tekst');
-    });
-  })();
-</script>
+<script src="{{ 'collection-seo-text.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
-  "name": "SEO Text (kolekcja)",
+  "name": "SEO Lower Collection Text",
   "class": "section-seo-text",
   "tag": "section",
   "settings": [
