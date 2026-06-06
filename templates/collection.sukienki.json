@@ -222,7 +222,7 @@
     "collection-seo-text": {
       "type": "collection-seo-text-section",
       "settings": {
-        "text_width": "large",
+        "text_width": "xlarge",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "#ffffff",
