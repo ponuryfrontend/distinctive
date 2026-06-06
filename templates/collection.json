@@ -83,6 +83,9 @@
       "block_order": [
         "text_iMXwKB"
       ],
+      "custom_css": [
+        "h1,h2,h3,h4,h5,h6 {font-weight: 600;}"
+      ],
       "name": "Rich text",
       "settings": {
         "full_width": true,
