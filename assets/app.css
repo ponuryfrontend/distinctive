@@ -3133,8 +3133,7 @@ select {
   border-radius: var(--badge-corner-radius, 3px);
   font-size: 0.65rem;
   font-weight: 400;
-  height: 30px;
-  padding: 5px 6px;
+  padding: 4px 2px;
   line-height: 0; }
   .badge.out-of-stock {
     background: var(--color-badge-sold-out, #acacac); }
