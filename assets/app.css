@@ -285,7 +285,7 @@ td {
 
 p {
   margin-bottom: 1.25rem;
-  font-size: inherit;
+  font-size: .8rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility; }
 
@@ -1531,7 +1531,7 @@ h1, .h1, .h1-large, .h1-xlarge {
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 60px)); } }
 
 h2, .h2 {
-  font-size: calc(var(--font-heading-scale) * 28px);
+  font-size: .9rem;
   line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); }
   @media only screen and (min-width: 768px) {
     h2, .h2 {
@@ -1543,7 +1543,7 @@ h2, .h2 {
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 48px)); } }
 
 h3, .h3 {
-  font-size: calc(var(--font-heading-scale) * 26px);
+  font-size: .9rem;
   line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 30px)); }
   @media only screen and (min-width: 768px) {
     h3, .h3 {
@@ -1555,7 +1555,7 @@ h3, .h3 {
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 42px)); } }
 
 h4, .h4 {
-  font-size: calc(var(--font-heading-scale) * 24px);
+  font-size: .9rem;
   line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); }
   @media only screen and (min-width: 1068px) {
     h4, .h4 {
@@ -1563,11 +1563,11 @@ h4, .h4 {
       line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); } }
 
 h5, .h5 {
-  font-size: calc(var(--font-heading-scale) * 24px);
+  font-size: .9rem;
   line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); }
 
 h6, .h6 {
-  font-size: calc(var(--font-heading-scale) * 20px);
+  font-size: .9rem;;
   line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 26px)); }
 
 @media only screen and (min-width: 768px) {
@@ -2562,7 +2562,7 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   height: 46px;
-  font-size: 0.8125rem;
+  font-size: .76rem;
   font-weight: var(--font-body-medium-weight, 500);
   letter-spacing: var(--button-letter-spacing);
   border: 1px solid var(--solid-button-background, var(--color-accent));
