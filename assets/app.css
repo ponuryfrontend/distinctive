@@ -1520,7 +1520,8 @@ scroll-shadow {
 
 h1, .h1, .h1-large, .h1-xlarge {
   font-size: .9rem;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 48px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 48px));
+  font-weight: 600; }
   @media only screen and (min-width: 768px) {
     h1, .h1, .h1-large, .h1-xlarge {
       font-size: 1rem;
@@ -1532,7 +1533,8 @@ h1, .h1, .h1-large, .h1-xlarge {
 
 h2, .h2 {
   font-size: .9rem;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px));
+  font-weight: 600; }
   @media only screen and (min-width: 768px) {
     h2, .h2 {
       font-size: calc(var(--font-heading-scale) * 36px);
@@ -1544,7 +1546,8 @@ h2, .h2 {
 
 h3, .h3 {
   font-size: .9rem;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 30px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 30px));
+  font-weight: 600; }
   @media only screen and (min-width: 768px) {
     h3, .h3 {
       font-size: calc(var(--font-heading-scale) * 30px);
@@ -1556,7 +1559,8 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: .9rem;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px));
+  font-weight: 600; }
   @media only screen and (min-width: 1068px) {
     h4, .h4 {
       font-size: calc(var(--font-heading-scale) * 28px);
@@ -1564,11 +1568,13 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: .9rem;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px));
+  font-weight: 600; }
 
 h6, .h6 {
   font-size: .9rem;;
-  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 26px)); }
+  line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 26px));
+  font-weight: 600; }
 
 @media only screen and (min-width: 768px) {
   .h1-large {
