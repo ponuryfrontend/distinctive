@@ -2839,7 +2839,7 @@ textarea {
   min-height: 200px; }
 
 label {
-  font-size: 0.8125rem;
+  font-size: 0.7rem;
   letter-spacing: 0.02em;
   font-weight: 400;
   color: var(--color-body); }

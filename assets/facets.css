@@ -67,7 +67,7 @@
 .facets--bar {
   display: block;
   margin-bottom: 25px;
-  font-size: 0.8125rem;
+  font-size: .7rem;
   z-index: 45; }
   .facets--bar .active-facets {
     display: none;
@@ -179,7 +179,7 @@
     .thb-filter-sort-count .select-arrow {
       right: 0; }
   .thb-filter-sort-count select {
-    font-size: 0.8125rem;
+    font-size: 0.7rem;
     line-height: 1rem;
     border: 0;
     height: auto;
