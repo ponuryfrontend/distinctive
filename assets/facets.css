@@ -365,10 +365,9 @@
   align-items: center;
   grid-gap: 7px;
   border: 1px solid var(--color-body);
-  font-size: 0.8125rem;
+  font-size: .8rem;
   border-radius: 3px;
-  padding: 10px 15px;
-  height: 38px; }
+  padding: .5em .8em; }
   .facets-popup-modal__button span {
     display: flex;
     background-color: var(--color-border);
