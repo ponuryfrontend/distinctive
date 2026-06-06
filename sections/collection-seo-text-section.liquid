@@ -1,16 +1,17 @@
-{{- 'collection-seo-text.css' | asset_url | stylesheet_tag -}}
-
 {%- liquid
   assign seo_content = collection.metafields.custom.seo_content
   assign text_width = section.settings.text_width
   assign text_position = section.settings.text_position
   assign text_alignment = section.settings.text_alignment
-  assign color_bg = section.settings.color_bg | downcase
+  assign color_bg = section.settings.color_bg
   assign color_text = section.settings.color_text
   assign disable_top_spacing = section.settings.disable_top_spacing
   assign disable_bottom_spacing = section.settings.disable_bottom_spacing
   assign visible_height = section.settings.visible_height
 -%}
+
+<link rel="preload" href="{{ 'collection-seo-text.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'collection-seo-text.css' | asset_url }}"></noscript>
 
 {%- if seo_content != blank -%}
 <div class="row full-width-row">
@@ -37,10 +38,8 @@
     </div>
   </div>
 </div>
-{%- endif -%}
-
-
 <script src="{{ 'collection-seo-text.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {% schema %}
 {

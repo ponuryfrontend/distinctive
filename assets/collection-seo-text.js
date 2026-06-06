@@ -6,6 +6,13 @@ document.querySelectorAll('.seo-accordion').forEach(function (accordion) {
 
   toggle.addEventListener('click', function () {
     var isOpen = content.classList.toggle('is-open');
+
+    if (isOpen) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '';
+    }
+
     toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     toggle.setAttribute('aria-label', isOpen ? 'Zwiń tekst' : 'Rozwiń tekst');
   });

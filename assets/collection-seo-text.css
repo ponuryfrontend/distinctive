@@ -114,10 +114,6 @@
   transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.seo-accordion__content.is-open {
-  max-height: 9999px;
-}
-
 .seo-accordion__fade {
   position: absolute;
   bottom: 48px;
