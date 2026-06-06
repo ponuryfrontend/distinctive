@@ -47,7 +47,7 @@
           "settings": {
             "image": "shopify://shop_images/trull.jpg",
             "mobile_image": "shopify://shop_images/mobbann.jpg",
-            "slide_link": "shopify://collections/2-0",
+            "slide_link": "shopify://collections/bestsellery",
             "video_background": false,
             "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "slide_title": "SALE",
@@ -111,8 +111,8 @@
         "slide_TV4ah9"
       ],
       "settings": {
-        "desktop_height": "desktop-height-image",
-        "mobile_height": "mobile-height-400",
+        "desktop_height": "desktop-height-full",
+        "mobile_height": "mobile-height-full",
         "change_header": true,
         "autoplay": true,
         "autoplay_length": 5,
@@ -123,203 +123,29 @@
         "disable_bottom_spacing": true
       }
     },
-    "countdown_banner_PdWpjA": {
-      "type": "countdown-banner",
-      "disabled": true,
+    "spacer_Ndiahc": {
+      "type": "spacer",
       "settings": {
-        "full_width": true,
-        "section_layout": "horizontal",
-        "desktop_height": "desktop-height-full",
-        "mobile_height": "mobile-height-full",
-        "bg_image": "shopify://shop_images/soon_8a218e8f-6c0d-433a-a6eb-804830493c6d.jpg",
-        "bg_mobile_image": "shopify://shop_images/soonmob.jpg",
-        "subheading": "-",
-        "heading": "New Collection",
-        "heading_size": "h2",
-        "content": "",
-        "content_size": "small",
-        "button_text": "",
-        "button_link": "",
-        "timer_year": 2026,
-        "timer_month": "03",
-        "timer_day": "10",
-        "timer_hour": "20",
-        "timer_minute": "00",
-        "color_bg": "#262121",
-        "color_text": "#f50c0c",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 0,
+        "spacer_mobile": 50,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "featured_collection_CUfayx": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "heading": "",
+        "description": "",
+        "collection": "prazkowane-sukienki",
+        "display_type": "carousel",
+        "product_limit": 10,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "mobile_swipe": true,
+        "show_progress_bar": false,
         "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "rich_text_NgGmJL": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_PhVcgc": {
-          "type": "subheading",
-          "settings": {
-            "text": "X-MASS 2025 New Holiday Collection is here"
-          }
-        },
-        "button_ejAwf8": {
-          "type": "button",
-          "settings": {
-            "link_label": "KUPUJ TERAZ",
-            "link": "shopify://collections/new-now",
-            "button_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_PhVcgc",
-        "button_ejAwf8"
-      ],
-      "disabled": true,
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "text_width": "small",
-        "text_position": "left",
-        "text_alignment": "left",
-        "color_bg": "#0097b2",
-        "color_text": "#ffffff",
-        "color_links": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "media_grid_cpjtDz": {
-      "type": "media-grid",
-      "blocks": {
-        "media_XqPK7H": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/2_51b5f7f7-aee9-4c78-a06c-d1cb72170ac6.jpg",
-            "slide_link": "shopify://products/bella-sukienka-z-poduszkami-o-pudelkowym-kroju",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 1,
-            "row": 1,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h3",
-            "button_text": "",
-            "button_link": "",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "color_bg": "rgba(0,0,0,0)",
-            "color_bg_gradient": "",
-            "color_text": "#2c2d2e",
-            "color_link": "#3f72e5",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_aUhwag": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/3_31795b15-9c47-43b1-bf93-a38670c63ac9.jpg",
-            "slide_link": "shopify://products/laurella-marszczona-sukienka-mimi-z-odkrytymi-ramionami",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 1,
-            "row": 1,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h4",
-            "button_text": "",
-            "button_link": "",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "color_bg": "rgba(0,0,0,0)",
-            "color_bg_gradient": "",
-            "color_text": "#2c2d2e",
-            "color_link": "#3f72e5",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_TDHqwH": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/4_69e213a2-1686-4f16-8b10-7ed1bccfcac6.jpg",
-            "slide_link": "shopify://products/bella-sukienka-z-poduszkami-o-pudelkowym-kroju-black",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 1,
-            "row": 1,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h3",
-            "button_text": "",
-            "button_link": "",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "color_bg": "rgba(0,0,0,0)",
-            "color_bg_gradient": "",
-            "color_text": "#2c2d2e",
-            "color_link": "#3f72e5",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_wYBnmw": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/5_c37b1e2e-aca1-427d-bd4d-b6782d6134a8.jpg",
-            "slide_link": "shopify://products/isabella-prazkowana-sukienka-mimi-z-napami",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 1,
-            "row": 1,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h3",
-            "button_text": "",
-            "button_link": "",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "color_bg": "rgba(0,0,0,0)",
-            "color_bg_gradient": "",
-            "color_text": "#ffffff",
-            "color_link": "#3f72e5",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_XqPK7H",
-        "media_aUhwag",
-        "media_TDHqwH",
-        "media_wYBnmw"
-      ],
-      "disabled": true,
-      "name": "Media grid",
-      "settings": {
-        "desktop_height": 355,
-        "mobile_height": 200,
-        "column_spacing": "medium",
-        "mobile_swipe": false,
-        "color_bg": "#0097b2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "rich_text_cfaeYE": {
-      "type": "rich-text",
-      "disabled": true,
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "text_width": "small",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#0097b2",
-        "color_text": "#151515",
-        "color_links": "#151515",
-        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
@@ -345,7 +171,6 @@
         "image_4JGhNM",
         "image_LDqh7A"
       ],
-      "disabled": true,
       "name": "Multiple media with text",
       "settings": {
         "subheading": "BIELIZNA",
@@ -358,34 +183,6 @@
         "desktop_image_width": "large",
         "content_position": "center",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_Ndiahc": {
-      "type": "spacer",
-      "disabled": true,
-      "settings": {
-        "spacer_mobile": 30,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "featured_collection_CUfayx": {
-      "type": "featured-collection",
-      "disabled": true,
-      "name": "Featured collection",
-      "settings": {
-        "heading": "",
-        "description": "",
-        "collection": "ostatnie-sztuki",
-        "display_type": "carousel",
-        "product_limit": 6,
-        "columns_desktop": 6,
-        "show_view_all": true,
-        "mobile_swipe": true,
-        "show_progress_bar": false,
-        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
@@ -690,13 +487,9 @@
   },
   "order": [
     "16479477632637c9a7",
-    "countdown_banner_PdWpjA",
-    "rich_text_NgGmJL",
-    "media_grid_cpjtDz",
-    "rich_text_cfaeYE",
-    "multiple_media_with_text_bNWA3W",
     "spacer_Ndiahc",
     "featured_collection_CUfayx",
+    "multiple_media_with_text_bNWA3W",
     "16614195534fb74bc3",
     "rich_text_XMAnUw",
     "background_video_WgeYT8",

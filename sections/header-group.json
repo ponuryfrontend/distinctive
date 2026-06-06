@@ -104,7 +104,7 @@
         "menu": "new-menu",
         "secondary_menu": "secondary-menu",
         "show_cart_icon": false,
-        "transparent_header": false,
+        "transparent_header": true,
         "logo_light": "shopify://shop_images/White_Logo_Nudyess.svg",
         "show_shopify_account_menu": true,
         "shopify_account_menu_menu": "",
