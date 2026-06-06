@@ -1,6 +1,6 @@
-<link rel="preload" as="style" href="{{ 'app.css' | asset_url }}">
+{{ 'app.css' | asset_url | preload_tag: as: 'style' }}
 {% if template contains 'product' -%}
-<link rel="preload" as="style" href="{{ 'product.css' | asset_url }}">
+{{ 'product.css' | asset_url | preload_tag: as: 'style' }}
 {% liquid
 	if product.selected_or_first_available_variant.featured_media.preview_image
 		assign image = product.selected_or_first_available_variant.featured_media.preview_image
@@ -8,7 +8,7 @@
 	endif
 -%}
 {%- endif %}
-{% if template contains 'collection' -%}
+{% if template.suffix == 'iconic' -%}
 {% liquid
 	if collection.featured_image
 		assign image = collection.featured_image
