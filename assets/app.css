@@ -311,7 +311,7 @@ h5, .h5,
 h6, .h6 {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
   font-style: normal;
-  font-weight: var(--font-heading-weight, 600);
+  font-weight: 600;
   color: var(--color-heading, #000000);
   text-rendering: optimizeLegibility; }
   h1 small, .h1 small, .h1-large small, .h1-xlarge small,
