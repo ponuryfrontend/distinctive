@@ -1,0 +1,130 @@
+/* ── Layout (przeniesione z rich-text.css) ── */
+
+.rich-text {
+  background: var(--color-bg, var(--bg-body));
+  color: var(--color-text, var(--color-body));
+}
+
+.rich-text__inner {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.rich-text__inner h3 {
+  color: inherit;
+}
+
+.rich-text__inner img,
+.rich-text__inner .thb-placeholder {
+  margin-bottom: 30px;
+}
+
+.rich-text__inner .thb-placeholder {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+}
+
+@media only screen and (min-width: 768px) {
+  .full-width-row-full .rich-text .rich-text__inner {
+    padding: 0 40px;
+  }
+}
+
+.rich-text .rte {
+  margin-bottom: 35px;
+}
+
+.rich-text .rte p:last-child {
+  margin-bottom: 0;
+}
+
+.rich-text.text-position-left .rich-text__inner {
+  margin-left: 0;
+}
+
+.rich-text.text-position-right .rich-text__inner {
+  margin-right: 0;
+}
+
+.rich-text.text-width-small .rich-text__inner {
+  max-width: 400px;
+}
+
+.rich-text.text-width-large .rich-text__inner {
+  max-width: 800px;
+}
+
+.rich-text.text-width-xlarge .rich-text__inner {
+  max-width: 1000px;
+}
+
+.rich-text.text-width-full .rich-text__inner {
+  max-width: 100%;
+}
+
+/* ── Akordeon SEO ── */
+
+.seo-accordion {
+  position: relative;
+}
+
+.seo-accordion__content {
+  max-height: var(--seo-visible-height, 150px);
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seo-accordion__content.is-open {
+  max-height: 9999px;
+}
+
+.seo-accordion__fade {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--seo-bg, #fff));
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.seo-accordion__content.is-open ~ .seo-accordion__fade {
+  opacity: 0;
+}
+
+.seo-accordion__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 16px auto 0;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-text, #151515);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--color-text, #151515);
+  line-height: 1;
+  transition: border-color 0.2s ease;
+}
+
+.seo-accordion__toggle:hover {
+  opacity: 0.7;
+}
+
+.seo-accordion__icon {
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 300;
+  transition: transform 0.35s ease;
+  transform-origin: center;
+}
+
+.seo-accordion__toggle[aria-expanded="true"] .seo-accordion__icon {
+  transform: rotate(45deg);
+}

@@ -192,6 +192,19 @@
 				"border_separator": false,
 				"border_separator_full": false
 			}
+		},
+		"collection-seo-text": {
+			"type": "collection-seo-text-section",
+			"settings": {
+				"visible_height": 150,
+				"text_width": "large",
+				"text_position": "left",
+				"text_alignment": "left",
+				"color_bg": "#ffffff",
+				"color_text": "#151515",
+				"disable_top_spacing": false,
+				"disable_bottom_spacing": false
+			}
 		}
 	},
 	"order": [
@@ -200,6 +213,7 @@
 		"product-grid",
 		"16636704759cbf64c5",
 		"166366972953e881f5",
-		"166367228131c52c01"
+		"166367228131c52c01",
+		"collection-seo-text"
 	]
 }
