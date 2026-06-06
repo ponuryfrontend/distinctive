@@ -104,7 +104,7 @@
       "type": "collection-seo-text-section",
       "name": "SEO Text (kolekcja)",
       "settings": {
-        "visible_height": 260,
+        "visible_height": 230,
         "text_width": "xlarge",
         "text_position": "center",
         "text_alignment": "center",
