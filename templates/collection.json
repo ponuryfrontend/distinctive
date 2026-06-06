@@ -105,7 +105,7 @@
       "name": "SEO Text (kolekcja)",
       "settings": {
         "visible_height": 230,
-        "text_width": "full",
+        "text_width": "xlarge",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "#ffffff",
