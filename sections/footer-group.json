@@ -51,33 +51,13 @@
             "custom_liquid": "<div class=\"klaviyo-form-VwF78E\"></div>",
             "size": "text-size-regular"
           }
-        },
-        "text_ab8eQW": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Dołącz do naszego newslettera i bądź na bieżąco.</p>",
-            "custom_liquid": "<div id=\"omnisend-embedded-v2-63a37e8102826472f21b4fc8\"></div>",
-            "size": "text-size-small"
-          }
-        },
-        "text_YL4LhX": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Administratorem danych osobowych jest Nudyess sp. z o.o. Twoje dane osobowe przetwarzane są w celu wysyłki informacji handlowych i marketingowych w ramach newslettera. Więcej informacji na temat przetwarzania Twoich danych osobowych, w tym o przysługujących Ci prawach, znajdziesz w polityce prywatności.</p>",
-            "custom_liquid": "",
-            "size": "text-size-small"
-          }
         }
       },
       "block_order": [
         "text_TbELtz",
         "subheading_4RqkEJ",
         "heading_ggexq8",
-        "text_Fcy7EH",
-        "text_ab8eQW",
-        "text_YL4LhX"
+        "text_Fcy7EH"
       ],
       "custom_css": [],
       "settings": {
