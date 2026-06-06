@@ -72,22 +72,10 @@
 
 /* H2 z metafieldu stylizowany jak H1 template-headera */
 .section-seo-text .seo-accordion__content h2 {
-  font-size: 2.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 10px;
   color: inherit;
-}
-
-@media only screen and (min-width: 768px) {
-  .section-seo-text .seo-accordion__content h2 {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (min-width: 1068px) {
-  .section-seo-text .seo-accordion__content h2 {
-    font-size: 3.375rem;
-  }
 }
 
 /* H3 (FAQ, podsekcje) — mniejszy, jak opis sekcji */
@@ -108,7 +96,7 @@
 /* Paragrafy i listy — dopasowane do .template-header--description */
 .section-seo-text .seo-accordion__content p,
 .section-seo-text .seo-accordion__content li {
-  font-size: 0.9rem;
+  font-size: .9rem;
   margin-bottom: 18px;
   line-height: 1.6;
 }
