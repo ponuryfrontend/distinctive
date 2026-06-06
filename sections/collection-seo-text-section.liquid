@@ -22,7 +22,7 @@
       <div class="rich-text__inner">
         <div class="seo-accordion" id="seo-accordion-{{ section.id }}" style="--seo-bg: {{ color_bg }};">
           <div class="seo-accordion__content rte" style="--seo-visible-height: {{ visible_height }}px;">
-            {{ seo_content.value }}
+            {{ seo_content | metafield_tag }}
           </div>
           <div class="seo-accordion__fade" aria-hidden="true"></div>
           <button
