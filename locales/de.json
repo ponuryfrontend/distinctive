@@ -1062,6 +1062,10 @@
         "ship_items_count": {
           "few": "Versand von %{count} Art.",
           "many": "Versand von %{count} Art."
+        },
+        "items_count": {
+          "few": "%{count} Artikel",
+          "many": "%{count} Posten"
         }
       },
       "review": {
