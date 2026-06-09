@@ -12,12 +12,14 @@
 	assign gallery_enabled = false
 -%}
 {%- for filter in collection.filters limit: 1 -%}{%- endfor -%}{%- comment -%} This is just to get rid of the "this theme does not support filters" message in the shopify admin {%- endcomment -%}
-<div class="row full-width-row">
-	<div class="small-12 columns">
-		{%- paginate collection.products by products_per_page -%}
-			<div class="collection-container section-spacing-bottom">
+{%- paginate collection.products by products_per_page -%}
+	<div class="collection-container section-spacing-bottom">
+		<div class="row full-width-row">
+			<div class="small-12 columns">
 				{%- render 'facets-bar', results: collection, enable_filtering: enable_filtering, enable_sorting: enable_sorting, filter_color_swatches: filter_color_swatches -%}
-				<div id="ProductGridContainer">
+			</div>
+		</div>
+		<div id="ProductGridContainer">
 					{%- if collection.products.size == 0 -%}
 						<div class="collection-empty collection" id="product-grid" data-id="{{ section.id }}">
 							{% render 'svg-icons' with 'thb-no-products' %}
@@ -30,7 +32,7 @@
 						</div>
 					{%- else -%}
 						{%- assign product_card_columns = settings.product_card_columns -%}
-						<ul id="product-grid" data-id="{{ section.id }}" class="products collection row small-up-{{ product_card_columns }} medium-up-{{ columns_desktop }} pagination--{{ pagination_type }}">
+						<ul id="product-grid" data-id="{{ section.id }}" class="products collection row expanded small-up-{{ product_card_columns }} medium-up-{{ columns_desktop }} pagination--{{ pagination_type }}">
 							{%- for product in collection.products -%}
 								{%- assign product_loop = forloop -%}
 								{%- for block in section.blocks -%}
@@ -72,11 +74,9 @@
 						</ul>
 						{% render 'pagination', paginate: paginate, results: collection, pagination_type: pagination_type, id: section.id %}
 					{%- endif -%}
-				</div>
 			</div>
-		{%- endpaginate -%}
-	</div>
-</div>
+		</div>
+	{%- endpaginate -%}
 {%- if enable_filtering or enable_sorting -%}
 {%- if enable_filtering  -%}
 <script src="{{ 'nouislider.js' | asset_url }}" defer="defer"></script>

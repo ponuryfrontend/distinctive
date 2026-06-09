@@ -92,7 +92,7 @@
       position: fixed;
       left: 15px;
       right: 15px;
-      bottom: 15px;
+      bottom: 25px;
       z-index: 20;
       opacity: 0;
       visibility: hidden;
@@ -102,7 +102,7 @@
         .facets--bar .facets-toggle--fixed {
           left: 50%;
           right: auto;
-          bottom: 40px;
+          bottom: 50px;
           transform: translateX(-50%); } }
     .facets--bar .facets-toggle.sticky {
       opacity: 1;
