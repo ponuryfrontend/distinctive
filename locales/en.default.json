@@ -1075,6 +1075,10 @@
         "ship_items_count": {
           "few": "Shipping %{count} items.",
           "many": "Shipping %{count} items."
+        },
+        "items_count": {
+          "few": "%{count} items",
+          "many": "%{count} items"
         }
       },
       "review": {
