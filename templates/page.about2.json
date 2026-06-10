@@ -60,23 +60,23 @@
         "text_Cg3km9": {
           "type": "text",
           "settings": {
-            "text": "<p>NUDYESS to marka tworzona przez kobiety i dla kobiet – celebrujemy piękno w każdej formie, niezależnie od zmieniających się trendów. Wierzymy, że siła tkwi w prostocie, dlatego nasze projekty łączą minimalistyczne fasony z idealnym dopasowaniem do różnych sylwetek, podkreślając atuty i dając komfort noszenia.</p>",
+            "text": "<p>NUDYESS to polska marka odzieżowa tworzona przez kobiety dla kobiet. Projektujemy minimalistyczne ubrania damskie, które łączą ponadczasową estetykę, kobiece dopasowanie i komfort noszenia. Nasze sukienki, topy, spódnice i komplety powstają z wyselekcjonowanych materiałów, takich jak bawełna, modal, cupro i wiskoza.</p>",
             "custom_liquid": "",
             "size": "text-size-small"
+          }
+        },
+        "text_HbFmtj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wierzymy, że moda powinna podkreślać naturalne piękno, wspierać różnorodność sylwetek i dawać pewność siebie, bez presji trendów i sezonowości.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
           }
         },
         "text_LmE49h": {
           "type": "text",
           "settings": {
             "text": "<p>Kolekcje NUDYESS to hołd dla ponadczasowej elegancji i klasyki. Nasze sukienki, topy i spódnice modelują sylwetkę, nie ograniczając ruchów, a wygodne dresy zapewniają stylowy wygląd na co dzień. Tworzymy modę, w której każda kobieta może czuć się pięknie, swobodnie i pewnie siebie.</p>",
-            "custom_liquid": "",
-            "size": "text-size-small"
-          }
-        },
-        "text_YmTWYT": {
-          "type": "text",
-          "settings": {
-            "text": "<p>W duchu odpowiedzialnej produkcji sięgamy po starannie wyselekcjonowane, naturalne materiały – bawełnę, modal, cupro i wiskozę. Wspieramy lokalne rzemiosło, szyjąc w polskich zakładach krawieckich, bo wierzymy, że moda może być zarówno stylowa, jak i etyczna. Paletę kolorów naszych kolekcji tworzą klasyczne odcienie nude, szarości, beżu, bieli i czerni, które harmonijnie podkreślają urodę każdej kobiety.</p>",
             "custom_liquid": "",
             "size": "text-size-small"
           }
@@ -93,8 +93,8 @@
       "block_order": [
         "heading_wVQac3",
         "text_Cg3km9",
+        "text_HbFmtj",
         "text_LmE49h",
-        "text_YmTWYT",
         "button_UTPKJP"
       ],
       "settings": {
