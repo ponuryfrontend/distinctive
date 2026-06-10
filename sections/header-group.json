@@ -95,7 +95,7 @@
         "promotion_mKDLDT"
       ],
       "settings": {
-        "sticky_header": false,
+        "sticky_header": true,
         "logo": "shopify://shop_images/Black_Logo_Nudyess.svg",
         "logo_height_range": 29,
         "logo_height_range_mobile": 26,
