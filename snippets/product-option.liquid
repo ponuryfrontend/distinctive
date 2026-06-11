@@ -43,7 +43,9 @@
 			</label>
 		{%- endfor -%}
 	</fieldset>
+	
 {%- when 'color' -%}
+{% comment %}
 	{%- liquid
 	assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
 	assign key_array = ''
@@ -69,8 +71,6 @@
 			assign variant_image_size = '152'
 	endcase
 	-%}
-
-{% comment %}
 
 	<fieldset class="product-form__input product-form__input--color product-form__input--color--{{ color_picker_size }}" data-use-images="{{ color_picker_use_variants }}" data-index="option{{ forloop.index }}" data-handle="{{ handle }}">
 		<div class="form__label">{{ option.name }}: <span class="form__label__value">{{ option.selected_value }}</span></div>
@@ -123,6 +123,5 @@
 			</label>
 		{%- endfor -%}
 	</fieldset>
-
 {% endcomment %}
 {%- endcase -%}
