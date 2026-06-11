@@ -21,6 +21,7 @@
         <div class="product-price-container">
           <div class="no-js-hidden" id="price-{{ section.id }}">
             {% render 'product-price', product: product, use_variant: true, show_badges: true, show_custom_badges: block.settings.show_custom_badges %}
+            {% render 'product-color-swatches', product: product %}
           </div>
           {%- if section.settings.show_taxes_included != blank -%}
             {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}

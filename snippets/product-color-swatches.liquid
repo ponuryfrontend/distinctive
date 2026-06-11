@@ -1,0 +1,73 @@
+{% comment %}
+  Renders cross-product color swatches using the "product_id" metaobject group.
+
+  Dependencies:
+    - Product metafield:  custom.product_id  → metaobject of type "product_id"
+      Fields on that metaobject:
+        • products        (list.product_reference) — sibling products in the color group
+        • product_handles (list.single_line_text_field) — optional, used as fallback
+
+    - Product taxonomy:  shopify['color-pattern']  → metaobject of type "shopify--color-pattern" (managed by Shopify)
+      Fields on that metaobject:
+        • label  (single_line_text_field) — e.g. "Czarny"
+        • color  (color)                 — hex value, e.g. #000000
+
+  Usage (in main-product.liquid or any block):
+    {% render 'product-color-swatches', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign color_group      = product.metafields.custom.product_id.value
+  assign sibling_handles  = nil
+  if color_group != blank
+    assign sibling_handles = color_group.product_handles.value
+  endif
+-%}
+
+{%- if sibling_handles and sibling_handles.size > 1 -%}
+  {{ 'color-swatches.css' | asset_url | stylesheet_tag }}
+
+  <div class="product-color-swatches" aria-label="Wybierz kolor">
+    {%- for handle in sibling_handles -%}
+      {%- liquid
+        assign sibling    = all_products[handle]
+        if sibling == blank
+          continue
+        endif
+        assign color_meta = sibling.metafields.shopify['color-pattern']
+        assign color_obj  = nil
+        for color_entry in color_meta.value
+          assign color_obj = color_entry
+          break
+        endfor
+        assign hex_value  = color_obj.color | default: '#cccccc'
+        assign color_name = color_obj.label | default: sibling.title
+      -%}
+      {%- liquid
+        assign is_current = false
+        if sibling.id == product.id
+          assign is_current = true
+        endif
+      -%}
+
+      {%- if is_current -%}
+        <span
+          class="color-swatch color-swatch--active"
+          style="--sw-color: {{ hex_value }}"
+          aria-label="{{ color_name }}"
+          aria-current="true"
+          data-label="{{ color_name }}"
+        ></span>
+      {%- else -%}
+        <a
+          href="{{ sibling.url }}"
+          class="color-swatch{% if sibling.available == false %} color-swatch--soldout{% endif %}"
+          style="--sw-color: {{ hex_value }}"
+          aria-label="{{ color_name }}{% if sibling.available == false %} (niedostępny){% endif %}"
+          data-label="{{ color_name }}"
+          data-product-url="{{ sibling.url }}"
+        ></a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
