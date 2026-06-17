@@ -872,6 +872,7 @@ html {
       scroll-padding-top: calc(var(--logo-height) + 106px); } }
 
 body {
+  overflow-x: hidden;
   overflow-wrap: break-word;
   font-size: 0.9375rem;
   line-height: calc(var(--font-body-line-height-scale) * 1.6);
