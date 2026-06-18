@@ -1008,6 +1008,9 @@
         "location_far_away_other_items": {
           "few": "Locations with your positions: %{count}",
           "many": "Locations with your positions: %{count}"
+        },
+        "selected_pickup_option_no_longer_available": {
+          "ship_to_address_link": "shipping address"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
