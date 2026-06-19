@@ -446,6 +446,8 @@
 @media only screen and (max-width: 767px) {
   .product-card .product-featured-image.thb-hover:hover .product-primary-image {
     opacity: 1 !important; }
+  .product-card .product-featured-image {
+    overflow: clip; }
   .product-card .product-featured-image-link.has-multiple-images {
     height: auto;
     padding-bottom: 0 !important;
@@ -453,9 +455,11 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; }
+    scrollbar-width: none;
+    max-width: 100%; }
   .product-card .product-featured-image-link.aspect-ratio--adapt.has-multiple-images {
     aspect-ratio: var(--aspect-ratio, 4/5); }
   .product-card .product-featured-image-link.aspect-ratio--portrait.has-multiple-images {

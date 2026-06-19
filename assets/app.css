@@ -866,7 +866,8 @@ kbd {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--logo-height-mobile) + 106px);
-  font-size: calc(var(--font-body-scale) * 16px); }
+  font-size: calc(var(--font-body-scale) * 16px);
+  overflow-x: clip; }
   @media only screen and (min-width: 768px) {
     html {
       scroll-padding-top: calc(var(--logo-height) + 106px); } }
