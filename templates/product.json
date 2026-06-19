@@ -138,7 +138,7 @@
             "hide_date": true,
             "field": "price",
             "update_variant_details_dynamically": true,
-            "font_size": 0,
+            "font_size": 12,
             "text_color": "#000000",
             "price_adjustment": 0,
             "round_up_to": "0",
