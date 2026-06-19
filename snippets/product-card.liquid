@@ -49,12 +49,7 @@
 <product-card class="product-card text-{{ product_content_alignment }}">
   <figure class="product-featured-image {% if products_hover_images and product_card_product.images.size > 1 %}thb-hover{% endif %}">
     {% render 'product-card-badge', product_card_product: product_card_product, product_on_sale: product_on_sale %}
-    <a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%;">
-      {%- if products_hover_images -%}
-				{%- if product_card_product.images.size > 1 -%}
-					{%- render 'responsive-image', class: 'product-secondary-image', image: product_card_product.images[1], sizes: sizes, priority: 'low' -%}
-				{%- endif %}
-			{%- endif -%}
+    <a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}{% if product_card_product.images.size > 1 %} has-multiple-images{% endif %}" style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%; --aspect-ratio: {{ ratio }};">
 			{%- if featured_media -%}
 				{%- if is_video and use_video -%}
 					{{ featured_media | video_tag: controls: false, loading: 'lazy', loop: true, autoplay: true, image_size: '770x' }}
@@ -65,6 +60,9 @@
 				<div class="thb-placeholder">
 					{{ 'product-1' | placeholder_svg_tag }}
 				</div>
+			{%- endif -%}
+			{%- if product_card_product.images.size > 1 -%}
+				{%- render 'responsive-image', class: 'product-secondary-image', image: product_card_product.images[1], sizes: sizes, priority: 'low' -%}
 			{%- endif -%}
 			{%- if settings.enable_quick_view -%}
 			<quick-view class="product-card-quickview" data-product-handle="{{ product_card_product.handle }}" tabindex="-1">
@@ -92,6 +90,12 @@
 				</quick-view>
 			{%- endif -%}
     </a>
+		{%- if product_card_product.images.size > 1 -%}
+		<div class="product-card-indicators">
+			<span class="product-card-indicator is-active"></span>
+			<span class="product-card-indicator"></span>
+		</div>
+		{%- endif -%}
 		{% render 'product-card-swatch', product: product_card_product, sizes: sizes %}
   </figure>
 	<div class="product-card-info">

@@ -114,7 +114,25 @@ if (!customElements.get('product-card')) {
       if (this.size_options) {
         this.enableSizeOptions();
       }
-
+      this.initMobileSwipe();
+    }
+    initMobileSwipe() {
+      if (window.innerWidth >= 768) return;
+      const link = this.querySelector('.product-featured-image-link.has-multiple-images');
+      const indicators = this.querySelectorAll('.product-card-indicator');
+      if (!link || indicators.length < 2) return;
+      const secondary = link.querySelector('.product-secondary-image');
+      if (secondary && typeof lazySizes !== 'undefined') {
+        lazySizes.loader.unveil(secondary);
+      }
+      link.addEventListener('scroll', () => {
+        const scrollLeft = link.scrollLeft;
+        const width = link.offsetWidth;
+        const index = Math.round(scrollLeft / width);
+        indicators.forEach((ind, i) => {
+          ind.classList.toggle('is-active', i === index);
+        });
+      }, { passive: true });
     }
     enableSwatches(swatches, image) {
       let swatch_list = swatches.querySelectorAll('.product-card-swatch'),
