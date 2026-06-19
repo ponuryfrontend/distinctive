@@ -160,6 +160,8 @@
       .product-card .product-featured-image-link .product-secondary-image {
         opacity: 0;
         z-index: 10; }
+      .product-card .product-featured-image-link.aspect-ratio--adapt {
+        padding-bottom: 125%; }
       .product-card .product-featured-image-link.aspect-ratio--square {
         padding-bottom: 100%; }
       .product-card .product-featured-image-link.aspect-ratio--portrait {
