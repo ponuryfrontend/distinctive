@@ -136,9 +136,9 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "heading": "",
-        "description": "",
-        "collection": "prazkowane-sukienki",
+        "heading": "Most Wanted",
+        "description": "<p>Modele ubrań, które nasze Klientki cenią najbardziej.</p>",
+        "collection": "bestsellery",
         "display_type": "grid",
         "product_limit": 6,
         "columns_desktop": 6,
