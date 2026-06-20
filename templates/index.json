@@ -126,8 +126,8 @@
     "spacer_Ndiahc": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 50,
-        "spacer_desktop": 40,
+        "spacer_mobile": 20,
+        "spacer_desktop": 30,
         "border_separator": false,
         "border_separator_full": false
       }
