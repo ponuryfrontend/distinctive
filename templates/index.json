@@ -189,23 +189,6 @@
     "16614195534fb74bc3": {
       "type": "collection-tabs",
       "blocks": {
-        "96873269-4325-446c-9ec5-0c388f286996": {
-          "type": "collection",
-          "settings": {
-            "collection": "topy-1",
-            "enable_promotion": false,
-            "title": "Promotion |Heading|",
-            "text": "Advertise a promotion or a sale",
-            "link_label": "Explore",
-            "content_position": "bottom-left",
-            "text_alignment": "left",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "overlay_color": "#000000",
-            "overlay_opacity": 70
-          }
-        },
         "1661419552da8d37a7-0": {
           "type": "collection",
           "settings": {
@@ -224,8 +207,27 @@
             "overlay_opacity": 30
           }
         },
+        "96873269-4325-446c-9ec5-0c388f286996": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "topy-1",
+            "enable_promotion": false,
+            "title": "Promotion |Heading|",
+            "text": "Advertise a promotion or a sale",
+            "link_label": "Explore",
+            "content_position": "bottom-left",
+            "text_alignment": "left",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 70
+          }
+        },
         "1661419552da8d37a7-1": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "spodnice-1",
             "enable_promotion": false,
@@ -243,6 +245,7 @@
         },
         "collection_nEFyqh": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "spodnie-legginsy",
             "enable_promotion": false,
@@ -260,12 +263,11 @@
         }
       },
       "block_order": [
-        "96873269-4325-446c-9ec5-0c388f286996",
         "1661419552da8d37a7-0",
+        "96873269-4325-446c-9ec5-0c388f286996",
         "1661419552da8d37a7-1",
         "collection_nEFyqh"
       ],
-      "disabled": true,
       "settings": {
         "heading": "NEW IN,",
         "description": "<p>czyli nowości w świecie Nudyess. Sprawdź najnowsze perełki i wybierz coś dla siebie.</p>",
