@@ -80,6 +80,9 @@
 
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 	{{ settings.custom_html_head }}
+	{%- if template contains 'collection' and collection.metafields.custom.schema_faq != blank -%}
+	<script type="application/ld+json">{{ collection.metafields.custom.schema_faq.value | json }}</script>
+	{%- endif -%}
 </head>
 <body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} product-card-columns-{{ settings.product_card_columns }} product-card-spacing-{{ settings.product_card_spacing }} product-title-uppercase-{{ settings.product_title_uppercase }}{% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}{% if request.design_mode %} shopify-design-mode{% endif %}">
 	<a class="screen-reader-shortcut" href="#main-content">{{ 'accessibility.skip_to_text' | t }}</a>
