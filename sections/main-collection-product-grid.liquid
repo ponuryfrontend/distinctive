@@ -127,6 +127,13 @@
         {%- endfor -%}
       ]
     }
+    {%- if collection.metafields.custom.schema_faq != blank -%}
+    ,{
+      "@type": "FAQPage",
+      "@id": {{ collection_url | append: '#faq' | json }},
+      "mainEntity": {{ collection.metafields.custom.schema_faq.value | json }}
+    }
+    {%- endif -%}
   ]
 }
 </script>
