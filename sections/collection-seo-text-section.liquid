@@ -10,8 +10,7 @@
   assign visible_height = section.settings.visible_height
 -%}
 
-<link rel="preload" href="{{ 'collection-seo-text.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ 'collection-seo-text.css' | asset_url }}"></noscript>
+{{ 'collection-seo-text.css' | asset_url | stylesheet_tag: preload: true }}
 
 {%- if seo_content != blank -%}
 <div class="row full-width-row">
