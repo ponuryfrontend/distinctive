@@ -1,0 +1,139 @@
+{%- liquid
+  assign seo_content = product.metafields.custom.seo_description
+  assign text_width = section.settings.text_width
+  assign text_position = section.settings.text_position
+  assign text_alignment = section.settings.text_alignment
+  assign color_bg = section.settings.color_bg
+  assign color_text = section.settings.color_text
+  assign disable_top_spacing = section.settings.disable_top_spacing
+  assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+  assign visible_height = section.settings.visible_height
+-%}
+
+{{ 'collection-seo-text.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- if seo_content != blank -%}
+<div class="row full-width-row">
+  <div class="small-12 columns">
+    <div
+      class="rich-text text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"
+      style="--color-bg: {{ color_bg }}; --color-text: {{ color_text }}; --bg-body: {{ color_bg }};"
+    >
+      <div class="rich-text__inner">
+        <div class="seo-accordion" id="seo-accordion-{{ section.id }}" style="--seo-bg: {{ color_bg }};">
+          <div class="seo-accordion__content rte" style="--seo-visible-height: {{ visible_height }}px;">
+            {{ seo_content | metafield_tag }}
+          </div>
+          <div class="seo-accordion__fade" aria-hidden="true"></div>
+          <button
+            class="seo-accordion__toggle"
+            aria-expanded="false"
+            aria-label="Rozwiń tekst"
+          >
+            <span class="seo-accordion__icon" aria-hidden="true">+</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ 'collection-seo-text.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SEO Product Text",
+  "class": "section-seo-text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Sekcja wyświetla zawartość metafieldu `custom.seo_description` przypisanego do produktu. Ustaw metafield w panelu produktu."
+    },
+    {
+      "type": "range",
+      "id": "visible_height",
+      "label": "Wysokość widocznej części (px)",
+      "min": 60,
+      "max": 400,
+      "step": 10,
+      "default": 150,
+      "info": "Część tekstu widoczna przed kliknięciem w '+'. Reszta jest ukryta przez CSS, ale dostępna w HTML dla wyszukiwarek."
+    },
+    {
+      "type": "select",
+      "id": "text_width",
+      "label": "Content width",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "xlarge", "label": "Extra large" },
+        { "value": "full", "label": "Full" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Content position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Content alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#ffffff",
+      "info": "Kolor tła sekcji. Używany też jako kolor końcowy gradientu fade."
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#151515"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
+  ],
+  "templates": ["product"],
+  "presets": [
+    {
+      "name": "SEO Text (produkt)"
+    }
+  ]
+}
+{% endschema %}
