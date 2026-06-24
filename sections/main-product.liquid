@@ -561,6 +561,13 @@
       }
     }
     {%- endif -%}
+    {%- if product.metafields.custom.faq_schema != blank -%}
+    ,{
+      "@type": "FAQPage",
+      "@id": {{ product_url | append: '#faq' | json }},
+      "mainEntity": {{ product.metafields.custom.faq_schema.value | json }}
+    }
+    {%- endif -%}
   ]
 }
 </script>
