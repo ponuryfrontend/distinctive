@@ -1,1 +1,59 @@
-{"sections":{"main-article":{"type":"main-article","blocks":{"content":{"type":"content","settings":{}},"tags":{"type":"tags","settings":{}},"share":{"type":"share","settings":{}},"post_navigation":{"type":"post_navigation","settings":{}}},"block_order":["content","tags","share","post_navigation"],"settings":{"article_show_date":true,"article_show_author":true}}},"order":["main-article"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-article": {
+      "type": "main-article",
+      "blocks": {
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "tags": {
+          "type": "tags",
+          "settings": {}
+        },
+        "post_navigation": {
+          "type": "post_navigation",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "content",
+        "tags",
+        "post_navigation"
+      ],
+      "settings": {
+        "article_show_date": true,
+        "article_show_author": true
+      }
+    },
+    "breadcrumbs_Tj7iPe": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
+    },
+    "spacer_fCGxgN": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 100,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    }
+  },
+  "order": [
+    "main-article",
+    "breadcrumbs_Tj7iPe",
+    "spacer_fCGxgN"
+  ]
+}
