@@ -88,7 +88,7 @@
         "text_mUhkFB": {
           "type": "text",
           "settings": {
-            "column_size": "medium",
+            "column_size": "small",
             "title": "Zajrzyj na nasze social media i zaobserwuj:",
             "text": "",
             "text_size": "large",
@@ -100,7 +100,7 @@
         "00a364e5-af4e-4073-871b-4d533bd4da06": {
           "type": "menu",
           "settings": {
-            "column_size": "medium",
+            "column_size": "small",
             "title": "Pomoc",
             "menu": "footer-3"
           }
@@ -108,7 +108,7 @@
         "a09a8a35-bedc-4119-aa04-3ce886faba9d": {
           "type": "menu",
           "settings": {
-            "column_size": "medium",
+            "column_size": "small",
             "title": "Nudyess Family",
             "menu": "menu-stopki-3"
           }
@@ -120,13 +120,22 @@
             "title": "Informacje prawne",
             "menu": "footer"
           }
+        },
+        "menu_BeYWjP": {
+          "type": "menu",
+          "settings": {
+            "column_size": "small",
+            "title": "O nas",
+            "menu": "footer-2"
+          }
         }
       },
       "block_order": [
         "text_mUhkFB",
         "00a364e5-af4e-4073-871b-4d533bd4da06",
         "a09a8a35-bedc-4119-aa04-3ce886faba9d",
-        "67e585b6-14b6-43e2-b5fa-dbc829dee86a"
+        "67e585b6-14b6-43e2-b5fa-dbc829dee86a",
+        "menu_BeYWjP"
       ],
       "settings": {
         "copyright_text": "All rights reserved.",
