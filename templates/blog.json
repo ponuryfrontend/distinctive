@@ -1,1 +1,34 @@
-{"sections":{"main-blog-header":{"type":"main-blog-header","settings":{"show_category_list":true}},"main-blog":{"type":"main-blog","settings":{"image_ratio":"square","show_date":true,"show_excerpt":false}}},"order":["main-blog-header","main-blog"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-blog-header": {
+      "type": "main-blog-header",
+      "settings": {
+        "heading": "Posty na blogu",
+        "description": "",
+        "show_category_list": true
+      }
+    },
+    "main-blog": {
+      "type": "main-blog",
+      "settings": {
+        "image_ratio": "square",
+        "show_date": true,
+        "show_excerpt": false,
+        "show_hover_letters": true
+      }
+    }
+  },
+  "order": [
+    "main-blog-header",
+    "main-blog"
+  ]
+}
