@@ -30,9 +30,13 @@ if (!customElements.get('theme-header')) {
 
       // Escape key — close mobile menu
       document.addEventListener('keyup', (e) => {
-        if (e.key === 'Escape' && this.toggle) {
+        if (e.key === 'Escape' && this.toggle && this.toggle.classList.contains('active')) {
+          const scrollY = parseInt(document.body.style.top || '0', 10) * -1;
+          document.body.classList.remove('overflow-hidden');
+          document.body.style.top = '';
           this.toggle.removeAttribute('open');
           this.toggle.classList.remove('active');
+          window.scrollTo(0, scrollY);
         }
       });
 
@@ -53,12 +57,16 @@ if (!customElements.get('theme-header')) {
         this.toggle.querySelector('.mobile-toggle').addEventListener('click', (e) => {
           if (this.toggle.classList.contains('active')) {
             e.preventDefault();
+            const scrollY = parseInt(document.body.style.top || '0', 10) * -1;
             document.body.classList.remove('overflow-hidden');
+            document.body.style.top = '';
             this.toggle.classList.remove('active');
             this.closeAnimation(this.toggle);
+            window.scrollTo(0, scrollY);
             window.dispatchEvent(new Event('scroll'));
           } else {
             this.classList.add('is-sticky');
+            document.body.style.top = `-${window.scrollY}px`;
             document.body.classList.add('overflow-hidden');
             requestAnimationFrame(() => {
               this.toggle.classList.add('active');
