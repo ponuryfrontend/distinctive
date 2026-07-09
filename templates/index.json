@@ -47,7 +47,7 @@
           "settings": {
             "image": "shopify://shop_images/EEE.jpg",
             "mobile_image": "shopify://shop_images/mobbann.jpg",
-            "slide_link": "shopify://collections/bestsellery",
+            "slide_link": "shopify://collections/sale",
             "video_background": false,
             "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "slide_title": "SALE",
