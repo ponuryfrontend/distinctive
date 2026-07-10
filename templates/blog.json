@@ -20,15 +20,21 @@
     "main-blog": {
       "type": "main-blog",
       "settings": {
-        "image_ratio": "square",
+        "image_ratio": "landscape",
         "show_date": true,
-        "show_excerpt": false,
-        "show_hover_letters": true
+        "show_excerpt": true,
+        "show_hover_letters": false
       }
+    },
+    "breadcrumbs_HmTdtB": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "main-blog-header",
-    "main-blog"
+    "main-blog",
+    "breadcrumbs_HmTdtB"
   ]
 }
