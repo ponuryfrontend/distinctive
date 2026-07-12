@@ -231,7 +231,7 @@
       "type": "product-seo-text-section",
       "name": "SEO Text (produkt)",
       "settings": {
-        "visible_height": 150,
+        "visible_height": 80,
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
