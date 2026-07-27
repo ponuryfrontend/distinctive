@@ -1304,6 +1304,12 @@
           "many": "Subscription agreements updated ( {{count}} )"
         }
       }
+    },
+    "navigation_and_structure": {
+      "store_credit_multi_currency_accessibility_label": {
+        "few": "{{formattedBalance}} store credit and in {{count}} other currencies",
+        "many": "{{formattedBalance}} store credit and in {{count}} other currencies"
+      }
     }
   }
 }
