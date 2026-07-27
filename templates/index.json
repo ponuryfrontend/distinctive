@@ -393,7 +393,7 @@
             "icon": "none",
             "image": "shopify://shop_images/mobile-payment-svgrepo-com_1.svg",
             "heading": "Bezpieczne płatności",
-            "text": "<p>Płatności poprzez Przelewy24, Blik, PayPo, ApplePay, GooglePay, Revolut, karty kredytowe i za pobraniem.</p>"
+            "text": "<p>Płatności poprzez Przelewy24, Blik, PayPo, ApplePay, GooglePay, karty kredytowe.</p>"
           }
         }
       },
