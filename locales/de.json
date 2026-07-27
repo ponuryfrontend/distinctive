@@ -1276,6 +1276,12 @@
           "many": "Abonnementvereinbarungen aktualisiert ( {{count}} )"
         }
       }
+    },
+    "navigation_and_structure": {
+      "store_credit_multi_currency_accessibility_label": {
+        "few": "{{formattedBalance}} Store-Guthaben und in {{count}} weiteren Währungen",
+        "many": "{{formattedBalance}} Store-Guthaben und in {{count}} weiteren Währungen"
+      }
     }
   }
 }
