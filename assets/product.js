@@ -110,9 +110,10 @@ if (!customElements.get('variant-selects')) {
       this.setActiveMedia(`#Slide-${this.dataset.section}-${this.currentVariant.featured_media.id}`, `#Thumb-${this.dataset.section}-${this.currentVariant.featured_media.id}`, this.productSlider, thumbnails);
     }
     setActiveMedia(mediaId, thumbId, productSlider, thumbnails) {
-      let flkty = Flickity.data(productSlider),
-        activeMedia = productSlider.querySelector(mediaId);
-      if (flkty && this.hideVariants) {
+      let activeMedia = productSlider.querySelector(mediaId);
+      if (!activeMedia) return;
+
+      if (this.hideVariants) {
         if (productSlider.querySelector('.product-images__slide.is-initial-selected')) {
           productSlider.querySelector('.product-images__slide.is-initial-selected').classList.remove('is-initial-selected');
         }
@@ -141,12 +142,9 @@ if (!customElements.get('variant-selects')) {
         }
 
         productSlider.reInit(this.imageSetIndex);
-        productSlider.selectCell(mediaId);
-
-      } else if (flkty) {
-        productSlider.selectCell(mediaId);
       }
 
+      productSlider.selectCell(mediaId);
     }
 
     updateURL() {
@@ -519,9 +517,17 @@ if (!customElements.get('product-slider')) {
       }
     }
     init() {
-      this.flkty = new Flickity(this, this.options);
+      // Desktop gallery scrolls vertically through all images instead of using
+      // the Flickity carousel, which stays reserved for mobile/tablet and quick view.
+      this.isVertical = window.matchMedia('(min-width: 1068px)').matches && !this.quickView;
 
-      this.selectedIndex = this.flkty.selectedIndex;
+      if (this.isVertical) {
+        this.classList.add('product-images--vertical');
+        this.setupVerticalGallery();
+      } else {
+        this.flkty = new Flickity(this, this.options);
+        this.selectedIndex = this.flkty.selectedIndex;
+      }
 
       // Setup Events
       this.setupEvents();
@@ -530,6 +536,14 @@ if (!customElements.get('product-slider')) {
       this.setupProductGallery();
     }
     reInit(imageSetIndex) {
+      if (!this.flkty) {
+        // Either running the vertical desktop gallery (no carousel instance to
+        // rebuild) or called before init() has run yet — in both cases just
+        // (re)attach the observer to whichever slides are active now.
+        this.setupVerticalGallery();
+        return;
+      }
+
       this.flkty.destroy();
 
       this.setOptions();
@@ -541,88 +555,165 @@ if (!customElements.get('product-slider')) {
 
       this.selectedIndex = this.flkty.selectedIndex;
     }
+    getActiveSlides() {
+      return Array.from(this.querySelectorAll('.product-images__slide.is-active'));
+    }
+    scrollSlideIntoView(slide) {
+      slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setupVerticalGallery() {
+      if (this.verticalObserver) {
+        this.verticalObserver.disconnect();
+      }
+
+      this.verticalObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.highlightActiveThumbnail(entry.target);
+          } else {
+            this.pauseSlideMedia(entry.target.querySelector('.product-single__media'));
+          }
+        });
+      }, {
+        root: this,
+        threshold: 0.6
+      });
+
+      this.getActiveSlides().forEach((slide) => this.verticalObserver.observe(slide));
+    }
+    highlightActiveThumbnail(slide) {
+      if (!this.thumbnails) return;
+
+      const index = this.getActiveSlides().indexOf(slide);
+      if (index === -1) return;
+
+      const active_thumbs = Array.from(this.thumbnails).filter((element) => element.classList.contains('is-active')),
+        active_thumb = active_thumbs[index];
+
+      if (!active_thumb) return;
+
+      this.thumbnails.forEach((item) => item.classList.remove('is-initial-selected'));
+      active_thumb.classList.add('is-initial-selected');
+
+      requestAnimationFrame(() => {
+        if (active_thumb.offsetParent === null) return;
+
+        const windowHalfHeight = active_thumb.offsetParent.clientHeight / 2,
+          windowHalfWidth = active_thumb.offsetParent.clientWidth / 2;
+        active_thumb.parentElement.scrollTo({
+          left: active_thumb.offsetLeft - windowHalfWidth + active_thumb.clientWidth / 2,
+          top: active_thumb.offsetTop - windowHalfHeight + active_thumb.clientHeight / 2,
+          behavior: 'smooth'
+        });
+      });
+    }
+    pauseSlideMedia(media) {
+      if (!media) return;
+
+      if (media.classList.contains('product-single__media-external-video')) {
+        if (media.dataset.provider === 'youtube') {
+          media.querySelector('iframe')?.contentWindow.postMessage(JSON.stringify({
+            event: "command",
+            func: "pauseVideo",
+            args: ""
+          }), "*");
+        } else if (media.dataset.provider === 'vimeo') {
+          media.querySelector('iframe')?.contentWindow.postMessage(JSON.stringify({
+            method: "pause"
+          }), "*");
+        }
+        media.querySelector('.product-single__media-external-video--play')?.removeAttribute('hidden');
+      } else if (media.classList.contains('product-single__media-native-video')) {
+        media.querySelector('video')?.pause();
+      }
+    }
     setupEvents() {
       const _this = this;
-      if (this.prev_button) {
-        let prev = this.prev_button.cloneNode(true);
-        this.prev_button.parentNode.append(prev);
-        this.prev_button.remove();
-        prev.addEventListener('click', (event) => {
-          document.dir === 'rtl' ? this.flkty.next() : this.flkty.previous();
-        });
-        prev.addEventListener('keyup', (event) => {
-          document.dir === 'rtl' ? this.flkty.next() : this.flkty.previous();
-          event.preventDefault();
-        });
-      }
-      if (this.next_button) {
-        let next = this.next_button.cloneNode(true);
-        this.next_button.parentNode.append(next);
-        this.next_button.remove();
-        next.addEventListener('click', (event) => {
-          document.dir === 'rtl' ? this.flkty.previous() : this.flkty.next();
-        });
-        next.addEventListener('keyup', (event) => {
-          document.dir === 'rtl' ? this.flkty.previous() : this.flkty.next();
-          event.preventDefault();
-        });
+      if (this.flkty) {
+        if (this.prev_button) {
+          let prev = this.prev_button.cloneNode(true);
+          this.prev_button.parentNode.append(prev);
+          this.prev_button.remove();
+          prev.addEventListener('click', (event) => {
+            document.dir === 'rtl' ? this.flkty.next() : this.flkty.previous();
+          });
+          prev.addEventListener('keyup', (event) => {
+            document.dir === 'rtl' ? this.flkty.next() : this.flkty.previous();
+            event.preventDefault();
+          });
+        }
+        if (this.next_button) {
+          let next = this.next_button.cloneNode(true);
+          this.next_button.parentNode.append(next);
+          this.next_button.remove();
+          next.addEventListener('click', (event) => {
+            document.dir === 'rtl' ? this.flkty.previous() : this.flkty.next();
+          });
+          next.addEventListener('keyup', (event) => {
+            document.dir === 'rtl' ? this.flkty.previous() : this.flkty.next();
+            event.preventDefault();
+          });
+        }
       }
       this.video_containers.forEach((container) => {
         container.querySelector('button').addEventListener('click', function () {
           container.setAttribute('hidden', '');
         });
       });
-      this.flkty.on('settle', function (index) {
-        _this.selectedIndex = index;
-      });
-      this.flkty.on('change', (index) => {
 
-        let previous_slide = this.flkty.cells[_this.selectedIndex].element,
-          previous_media = previous_slide.querySelector('.product-single__media');
+      if (this.flkty) {
+        this.flkty.on('settle', function (index) {
+          _this.selectedIndex = index;
+        });
+        this.flkty.on('change', (index) => {
 
-        if (this.thumbnails) {
-          let active_thumbs = Array.from(this.thumbnails).filter(element => element.classList.contains('is-active')),
-            active_thumb = active_thumbs[index] ? active_thumbs[index] : active_thumbs[0];
+          let previous_slide = this.flkty.cells[_this.selectedIndex].element,
+            previous_media = previous_slide.querySelector('.product-single__media');
 
-          this.thumbnails.forEach((item, i) => {
-            item.classList.remove('is-initial-selected');
-          });
-          active_thumb.classList.add('is-initial-selected');
+          if (this.thumbnails) {
+            let active_thumbs = Array.from(this.thumbnails).filter(element => element.classList.contains('is-active')),
+              active_thumb = active_thumbs[index] ? active_thumbs[index] : active_thumbs[0];
 
-          requestAnimationFrame(() => {
-            if (active_thumb.offsetParent === null) {
-              return;
-            }
-            const windowHalfHeight = active_thumb.offsetParent.clientHeight / 2,
-              windowHalfWidth = active_thumb.offsetParent.clientWidth / 2;
-            active_thumb.parentElement.scrollTo({
-              left: active_thumb.offsetLeft - windowHalfWidth + active_thumb.clientWidth / 2,
-              top: active_thumb.offsetTop - windowHalfHeight + active_thumb.clientHeight / 2,
-              behavior: 'smooth'
+            this.thumbnails.forEach((item, i) => {
+              item.classList.remove('is-initial-selected');
             });
-          });
-        }
+            active_thumb.classList.add('is-initial-selected');
 
-
-        // Stop previous video
-        if (previous_media.classList.contains('product-single__media-external-video')) {
-          if (previous_media.dataset.provider === 'youtube') {
-            previous_media.querySelector('iframe').contentWindow.postMessage(JSON.stringify({
-              event: "command",
-              func: "pauseVideo",
-              args: ""
-            }), "*");
-          } else if (previous_media.dataset.provider === 'vimeo') {
-            previous_media.querySelector('iframe').contentWindow.postMessage(JSON.stringify({
-              method: "pause"
-            }), "*");
+            requestAnimationFrame(() => {
+              if (active_thumb.offsetParent === null) {
+                return;
+              }
+              const windowHalfHeight = active_thumb.offsetParent.clientHeight / 2,
+                windowHalfWidth = active_thumb.offsetParent.clientWidth / 2;
+              active_thumb.parentElement.scrollTo({
+                left: active_thumb.offsetLeft - windowHalfWidth + active_thumb.clientWidth / 2,
+                top: active_thumb.offsetTop - windowHalfHeight + active_thumb.clientHeight / 2,
+                behavior: 'smooth'
+              });
+            });
           }
-          previous_media.querySelector('.product-single__media-external-video--play').removeAttribute('hidden');
-        } else if (previous_media.classList.contains('product-single__media-native-video')) {
-          previous_media.querySelector('video').pause();
-        }
 
-      });
+
+          // Stop previous video
+          if (previous_media.classList.contains('product-single__media-external-video')) {
+            if (previous_media.dataset.provider === 'youtube') {
+              previous_media.querySelector('iframe').contentWindow.postMessage(JSON.stringify({
+                event: "command",
+                func: "pauseVideo",
+                args: ""
+              }), "*");
+            } else if (previous_media.dataset.provider === 'vimeo') {
+              previous_media.querySelector('iframe').contentWindow.postMessage(JSON.stringify({
+                method: "pause"
+              }), "*");
+            }
+            previous_media.querySelector('.product-single__media-external-video--play').removeAttribute('hidden');
+          } else if (previous_media.classList.contains('product-single__media-native-video')) {
+            previous_media.querySelector('video').pause();
+          }
+
+        });
+      }
 
       if (this.thumbnails && !this.thumbnail_container.dataset.init) {
         setTimeout(() => {
@@ -665,14 +756,28 @@ if (!customElements.get('product-slider')) {
         el.classList.remove('is-initial-selected');
       });
       thumbnail.classList.add('is-initial-selected');
-      this.flkty.select(index);
+
+      if (this.flkty) {
+        this.flkty.select(index);
+        return;
+      }
+
+      const targetSlide = this.getActiveSlides()[index];
+      if (targetSlide) this.scrollSlideIntoView(targetSlide);
     }
     setDraggable(draggable) {
+      if (!this.flkty) return;
       this.flkty.options.draggable = draggable;
       this.flkty.updateDraggable();
     }
     selectCell(mediaId) {
-      this.flkty.selectCell(mediaId);
+      if (this.flkty) {
+        this.flkty.selectCell(mediaId);
+        return;
+      }
+
+      const slide = this.querySelector(mediaId);
+      if (slide) this.scrollSlideIntoView(slide);
     }
     setupProductGallery() {
       if (!this.querySelectorAll('.product-single__media-zoom').length) {
@@ -715,10 +820,11 @@ if (!customElements.get('product-slider')) {
         counterEl: true,
         arrowEl: true,
         preloaderEl: true,
-        getThumbBoundsFn: () => {
-          const thumbnail = this.querySelector('.product-images__slide.is-selected'),
+        getThumbBoundsFn: (index) => {
+          const openedMedia = this.activeImages && this.activeImages[index],
+            slide = (openedMedia && openedMedia.closest('.product-images__slide')) || this.querySelector('.product-images__slide.is-selected') || this,
             pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-            rect = thumbnail.getBoundingClientRect();
+            rect = slide.getBoundingClientRect();
           return {
             x: rect.left,
             y: rect.top + pageYScroll,
