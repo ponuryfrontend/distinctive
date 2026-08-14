@@ -146,7 +146,6 @@
         },
         "96873269-4325-446c-9ec5-0c388f286996": {
           "type": "collection",
-          "disabled": true,
           "settings": {
             "collection": "topy-1",
             "enable_promotion": false,
@@ -164,7 +163,6 @@
         },
         "1661419552da8d37a7-1": {
           "type": "collection",
-          "disabled": true,
           "settings": {
             "collection": "spodnice-1",
             "enable_promotion": false,
@@ -182,7 +180,6 @@
         },
         "collection_nEFyqh": {
           "type": "collection",
-          "disabled": true,
           "settings": {
             "collection": "spodnie-legginsy",
             "enable_promotion": false,
@@ -205,7 +202,6 @@
         "1661419552da8d37a7-1",
         "collection_nEFyqh"
       ],
-      "disabled": true,
       "settings": {
         "heading": "NEW IN,",
         "description": "<p>czyli nowości w świecie Nudyess. Sprawdź najnowsze perełki i wybierz coś dla siebie.</p>",
