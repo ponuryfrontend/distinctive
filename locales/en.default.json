@@ -519,6 +519,22 @@
             "few": "The selected shipping method is no longer available for these items.",
             "many": "The selected shipping method is no longer available for these items."
           }
+        },
+        "out_of_stock": {
+          "missing_items": {
+            "title": {
+              "few": "{{count}} items are no longer available",
+              "many": "{{count}} items are no longer available"
+            },
+            "some_available_notice": {
+              "few": "The remaining items are still available for purchase. Unavailable items will be removed from your cart.",
+              "many": "The remaining items are still available for purchase. Unavailable items will be removed from your cart."
+            },
+            "none_available_notice": {
+              "few": "These items are no longer available and have been removed from your cart.",
+              "many": "These items are no longer available and have been removed from your cart."
+            }
+          }
         }
       },
       "order_summary": {
