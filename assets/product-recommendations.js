@@ -75,7 +75,33 @@ class ProductRecommendations extends HTMLElement {
 			});
 	}
 	connectedCallback() {
-		this.fetchProducts();
+		// Fetching immediately on connect (i.e. as soon as this element exists
+		// in the DOM, typically right at page load) means the response —
+		// including its images — often arrives while this block is still far
+		// below the fold. Everything downstream (lazysizes, the GSAP
+		// ScrollTrigger reveal animation) is built to react to scroll
+		// position, so content that shows up long before anyone has scrolled
+		// near it ends up stuck until some unrelated later scroll/resize
+		// event happens to wake those systems back up.
+		// Deferring the fetch itself until this element is actually near the
+		// viewport sidesteps all of that: by the time the images arrive,
+		// the section is already visible, so the normal scroll-driven
+		// lazy-load and entrance-animation logic just works, same as any
+		// other product grid on the page. (This is the same approach
+		// Shopify's own reference theme, Dawn, uses for its product
+		// recommendations.)
+		if ('IntersectionObserver' in window) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					observer.unobserve(this);
+					this.fetchProducts();
+				});
+			}, { rootMargin: '0px 0px 400px 0px' });
+			observer.observe(this);
+		} else {
+			this.fetchProducts();
+		}
 	}
 	setupEvents() {
 		this.slideshow = Flickity.data(this.querySelector('slide-show'));
