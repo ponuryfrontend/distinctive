@@ -1415,6 +1415,12 @@ scroll-shadow {
   .mobile-height-500 {
     min-height: 500px; } }
 
+/* Custom numeric height — merchant-set px value via a range setting (see
+   sections/slideshow.liquid), instead of one of the fixed presets above. */
+@media only screen and (max-width: 767px) {
+  .mobile-height-custom {
+    min-height: var(--mobile-height-custom, 500px); } }
+
 @media only screen and (min-width: 768px) {
   .desktop-height-full {
     height: calc(100vh - var(--announcement-height, 0px)); }
@@ -1441,6 +1447,10 @@ scroll-shadow {
 @media only screen and (min-width: 768px) {
   .desktop-height-750 {
     min-height: 750px; } }
+
+@media only screen and (min-width: 768px) {
+  .desktop-height-custom {
+    min-height: var(--desktop-height-custom, 650px); } }
 
 .height-full {
   min-height: 100vh; }

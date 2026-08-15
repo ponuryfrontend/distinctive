@@ -29,8 +29,12 @@ if (!customElements.get('slide-show')) {
         autoplay_progress = slideshow.querySelector('.slideshow--autoplay-progress'),
         progress_bar = slideshow.parentNode.querySelector('.flickity-progress--bar:not(.slideshow--autoplay-progress)'),
         animations = [],
-        rightToLeft = document.dir === 'rtl',
-        animations_enabled = document.body.classList.contains('animations-true') && typeof gsap !== 'undefined';
+        rightToLeft = document.dir === 'rtl';
+
+      // let (not const) — prepareAnimations() below can turn this back off if
+      // it throws, so the rest of the callback doesn't keep trying to play
+      // entrance animations that were never actually built.
+      let animations_enabled = document.body.classList.contains('animations-true') && typeof gsap !== 'undefined';
 
       // Cache classList checks — avoids repeated DOM reads throughout connectedCallback
       const
@@ -78,7 +82,20 @@ if (!customElements.get('slide-show')) {
       // Main Slideshow
       if (isMainSlideshow) {
         if (animations_enabled) {
-          slideshow.prepareAnimations(slideshow, animations);
+          // prepareAnimations runs entirely before `new Flickity(...)` below.
+          // An uncaught error in here (e.g. a plugin like SplitText missing
+          // or failing on a particular slide's markup) used to abort the
+          // rest of connectedCallback silently — Flickity never got
+          // constructed, so the carousel was stuck showing only the first
+          // slide with no drag/autoplay/dots. Catch and degrade instead:
+          // the slideshow still initializes, just without entrance
+          // animations.
+          try {
+            slideshow.prepareAnimations(slideshow, animations);
+          } catch (e) {
+            console.error('Slideshow: entrance animations failed to set up, continuing without them.', e);
+            animations_enabled = false;
+          }
         }
 
         // Cache closest shopify section once for use in both ready and change

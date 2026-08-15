@@ -1,6 +1,8 @@
 {%- liquid
 	assign desktop_height = section.settings.desktop_height
 	assign mobile_height = section.settings.mobile_height
+	assign desktop_height_custom = section.settings.desktop_height_custom
+	assign mobile_height_custom = section.settings.mobile_height_custom
 	assign transition = section.settings.transition
 	
 	assign change_header = section.settings.change_header
@@ -25,6 +27,8 @@
 			assign mobile_image_height = 450
 		when 'mobile-height-500'
 			assign mobile_image_height = 500
+		when 'mobile-height-custom'
+			assign mobile_image_height = mobile_height_custom
 		else
 			assign mobile_image_height = 500
 	endcase
@@ -37,12 +41,16 @@
 	assign first_color = section.blocks[0].settings.color_text
 
 	assign preload = false
-	if section.index == 1 
+	if section.index == 1
 		assign preload = true
 	endif
 -%}
+{%- capture height_style -%}
+	{%- if desktop_height == 'desktop-height-custom' -%}--desktop-height-custom: {{ desktop_height_custom }}px;{%- endif -%}
+	{%- if mobile_height == 'mobile-height-custom' -%}--mobile-height-custom: {{ mobile_height_custom }}px;{%- endif -%}
+{%- endcapture -%}
 {{- 'slideshow.css' | asset_url | stylesheet_tag: preload: preload -}}
-<slide-show class="slideshow main-slideshow carousel{% if dot_style == 'titles' %} custom-dots{%- endif %} change-header--{{ change_header }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} transition--{{ transition }} dots--{{ dot_alignment }}" data-dots="{{ dots }}" data-autoplay="{{ autoplay }}" data-fade="{{ fade }}" data-transition="{{ transition }}" style="--dot-speed: {{ autoplay | divided_by: 1000 | append: 's' }}; --color-text: {{ first_color }}; --color-text-rgb: {{ first_color.rgb | replace: ' ' , ',' }};" data-section-index="{{ section.index }}">
+<slide-show class="slideshow main-slideshow carousel{% if dot_style == 'titles' %} custom-dots{%- endif %} change-header--{{ change_header }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} transition--{{ transition }} dots--{{ dot_alignment }}" data-dots="{{ dots }}" data-autoplay="{{ autoplay }}" data-fade="{{ fade }}" data-transition="{{ transition }}" style="--dot-speed: {{ autoplay | divided_by: 1000 | append: 's' }}; --color-text: {{ first_color }}; --color-text-rgb: {{ first_color.rgb | replace: ' ' , ',' }};{{ height_style | strip_newlines | strip }}" data-section-index="{{ section.index }}">
 	{%- for block in section.blocks -%}
 		{%- liquid
 			assign content_position = block.settings.content_position
@@ -223,9 +231,25 @@
 					{
 						"value": "desktop-height-full",
 						"label": "Full screen"
+					},
+					{
+						"value": "desktop-height-custom",
+						"label": "Custom height…"
 					}
 				],
 				"default": "desktop-height-650"
+			},
+			{
+				"type": "range",
+				"id": "desktop_height_custom",
+				"min": 300,
+				"max": 1000,
+				"step": 10,
+				"unit": "px",
+				"label": "Custom desktop height",
+				"info": "Used when \"Desktop height\" above is set to Custom height.",
+				"default": 650,
+				"visible_if": "{{ section.settings.desktop_height == 'desktop-height-custom' }}"
 			},
 			{
 				"type": "select",
@@ -255,9 +279,25 @@
 					{
 						"value": "mobile-height-full",
 						"label": "Full screen"
+					},
+					{
+						"value": "mobile-height-custom",
+						"label": "Custom height…"
 					}
 				],
 				"default": "mobile-height-500"
+			},
+			{
+				"type": "range",
+				"id": "mobile_height_custom",
+				"min": 300,
+				"max": 900,
+				"step": 10,
+				"unit": "px",
+				"label": "Custom mobile height",
+				"info": "Used when \"Mobile height\" above is set to Custom height.",
+				"default": 500,
+				"visible_if": "{{ section.settings.mobile_height == 'mobile-height-custom' }}"
 			},
 			{
         "type": "checkbox",
