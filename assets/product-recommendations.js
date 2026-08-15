@@ -21,21 +21,25 @@ class ProductRecommendations extends HTMLElement {
 				this.classList.add('product-recommendations--loaded');
 				this.setupEvents();
 
-				// The product images just inserted above are lazysizes' usual
-				// <img class="lazyload" data-src="..."> — but lazysizes decides
-				// whether to load each one based on scroll position at the moment
-				// it notices the element, and this carousel is usually still below
-				// the fold when this fetch resolves. checkElems() alone re-queues
-				// them for that same scroll-position check, so if they're not near
-				// the viewport yet it still skips them — same as leaving lazysizes
-				// to its own devices, which is what left them stuck unloaded until
-				// something else further down the page happened to trigger a
-				// recheck. unveil() sidesteps that decision entirely and loads
-				// each one immediately, same pattern used in app.js for hover-swap
-				// images.
+				// The product images just inserted above already carry a real
+				// src (a tiny width=20 blur-up placeholder) with the full-size
+				// version waiting in data-srcset — lazysizes' own unveil()
+				// refuses to swap that in while the placeholder itself hasn't
+				// finished loading yet (its internal guard checks
+				// img.complete). Right after innerHTML assignment the browser
+				// hasn't had a chance to even fetch that tiny placeholder, so
+				// calling unveil() immediately was a no-op every time — it
+				// only "worked" once some unrelated later scroll/resize event
+				// gave the placeholder time to finish loading first. Wait for
+				// each image's own load (already-cached placeholders fire
+				// .complete immediately) before unveiling it for real.
 				if (typeof lazySizes !== 'undefined') {
 					this.querySelectorAll('.lazyload').forEach((el) => {
-						lazySizes.loader.unveil(el);
+						if (el.complete) {
+							lazySizes.loader.unveil(el);
+						} else {
+							el.addEventListener('load', () => lazySizes.loader.unveil(el), { once: true });
+						}
 					});
 				}
 
