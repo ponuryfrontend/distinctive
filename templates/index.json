@@ -80,77 +80,16 @@
         "slide_ye8yLD"
       ],
       "settings": {
-        "desktop_height": "desktop-height-650",
+        "desktop_height": "desktop-height-full",
+        "desktop_height_custom": 650,
         "mobile_height": "mobile-height-full",
+        "mobile_height_custom": 500,
         "change_header": true,
         "autoplay": true,
         "autoplay_length": 5,
         "transition": "slide",
         "dot_style": "regular",
         "dot_alignment": "center",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_Ndiahc": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 20,
-        "spacer_desktop": 30,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "multiple_media_with_text_bNWA3W": {
-      "type": "multiple-media-with-text",
-      "blocks": {
-        "image_4JGhNM": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/5_13c7a8d6-959c-46e6-8817-43fe4f5db046.jpg",
-            "enable_gallery_video": false
-          }
-        },
-        "image_LDqh7A": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/2_1ef3b9d3-b9e6-4a00-8f8f-f208a85316e7.jpg",
-            "enable_gallery_video": false
-          }
-        }
-      },
-      "block_order": [
-        "image_4JGhNM",
-        "image_LDqh7A"
-      ],
-      "name": "Multiple media with text",
-      "settings": {
-        "subheading": "BIELIZNA",
-        "heading": "SHAPEWEAR",
-        "heading_size": "h3",
-        "description": "<p>Powróciły nasze bestellerowe - modelujące majtki - idealne do dopasowanych sukienek i nie tylko.  Teraz dostępne są w dwóch wersjach: z wysokim oraz niskim stanem.</p>",
-        "button_text": "Odkryj coś dla siebie",
-        "button_link": "shopify://collections/bielizna",
-        "layout": "image_first",
-        "desktop_image_width": "large",
-        "content_position": "center",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "featured_collection_CUfayx": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "heading": "Most Wanted",
-        "description": "<p>Modele ubrań, które nasze Klientki cenią najbardziej.</p>",
-        "collection": "bestsellery",
-        "display_type": "grid",
-        "product_limit": 6,
-        "columns_desktop": 6,
-        "show_view_all": true,
-        "mobile_swipe": false,
-        "show_progress_bar": false,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -242,6 +181,69 @@
         "show_view_all": false,
         "show_progress_bar": false,
         "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_Ndiahc": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 20,
+        "spacer_desktop": 30,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "multiple_media_with_text_bNWA3W": {
+      "type": "multiple-media-with-text",
+      "blocks": {
+        "image_4JGhNM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5_13c7a8d6-959c-46e6-8817-43fe4f5db046.jpg",
+            "enable_gallery_video": false
+          }
+        },
+        "image_LDqh7A": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2_1ef3b9d3-b9e6-4a00-8f8f-f208a85316e7.jpg",
+            "enable_gallery_video": false
+          }
+        }
+      },
+      "block_order": [
+        "image_4JGhNM",
+        "image_LDqh7A"
+      ],
+      "name": "Multiple media with text",
+      "settings": {
+        "subheading": "BIELIZNA",
+        "heading": "SHAPEWEAR",
+        "heading_size": "h3",
+        "description": "<p>Powróciły nasze bestellerowe - modelujące majtki - idealne do dopasowanych sukienek i nie tylko.  Teraz dostępne są w dwóch wersjach: z wysokim oraz niskim stanem.</p>",
+        "button_text": "Odkryj coś dla siebie",
+        "button_link": "shopify://collections/bielizna",
+        "layout": "image_first",
+        "desktop_image_width": "large",
+        "content_position": "center",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "featured_collection_CUfayx": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "heading": "Most Wanted",
+        "description": "<p>Modele ubrań, które nasze Klientki cenią najbardziej.</p>",
+        "collection": "bestsellery",
+        "display_type": "grid",
+        "product_limit": 6,
+        "columns_desktop": 6,
+        "show_view_all": true,
+        "mobile_swipe": false,
+        "show_progress_bar": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
