@@ -110,13 +110,6 @@
             "shadow_root_options": "null"
           }
         },
-        "ac30e733-fe79-471f-a9b6-72b10279036c": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "Dodaj do zestawu z:",
-            "product_list_limit": 8
-          }
-        },
         "side_panel_PgPAFz": {
           "type": "side_panel",
           "disabled": true,
@@ -131,7 +124,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Opis produktu",
-            "open": true,
+            "open": false,
             "content": "",
             "page": "",
             "custom_liquid": "{{ product.description }}"
@@ -145,6 +138,13 @@
             "content": "",
             "page": "",
             "custom_liquid": "<p><strong>Skład:</strong></p>\n<p>95% prążkowana bawełna i 5% elastan</p>\n<p><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\">Aby m&oacute;c latami cieszyć się produktami z naszej prążkowanej dzianiny należy zawsze prać je odwr&oacute;cone na lewą stronę używając delikatnych (nawet dziecięcych) detergent&oacute;w oraz ustawiać możliwie niskie obroty pralki. Dzięki takiej pielęgnacji szwy pozostaną nienaruszone i ubrania utrzymają swoją formę, elastyczność i strukturę, a także będą przyjemne dla sk&oacute;ry nawet po wielu praniach.</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/prazek-pranie.svg?v=1719830584\" alt=\"pielegnacja\" width=\"100%\" height=\"auto\" /></p>\n<p style=\"text-align: justify;\">Prać ręcznie lub w pralce na programie prania ręcznego. Używać możliwie najdelikatniejszych środk&oacute;w piorących. Maksymalna temperatura prania&nbsp; 30&ordm; C. Wirowanie maksymalnie 600 obrot&oacute;w. Suszyć na płasko - nie suszyć w suszarce bębnowej. Prasować parowaczką lub żelazkiem w temperaturze do 110 stopni C. Nie czyścić chemicznie.</p>\n<p></p>"
+          }
+        },
+        "ac30e733-fe79-471f-a9b6-72b10279036c": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Dodaj do zestawu z:",
+            "product_list_limit": 8
           }
         },
         "collapsible_tab_UXbKiJ": {
@@ -178,10 +178,10 @@
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "3184ed78-b74d-40cc-a072-56e6212c92ea",
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
-        "ac30e733-fe79-471f-a9b6-72b10279036c",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "collapsible_tab_MrtDzH",
+        "ac30e733-fe79-471f-a9b6-72b10279036c",
         "collapsible_tab_UXbKiJ",
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW"
       ],
