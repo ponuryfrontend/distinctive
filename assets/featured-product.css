@@ -564,8 +564,12 @@
 /* "Collapsible row" heading size / letter case — same rules as assets/product.css
    (see snippets/product-information.liquid), duplicated here since this
    section only loads featured-product.css, not product.css. */
-.product__accordion--size summary {
-  font-size: var(--accordion-heading-size); }
+@media only screen and (min-width: 768px) {
+  .product__accordion--size-desktop summary {
+    font-size: var(--accordion-heading-size-desktop); } }
+@media only screen and (max-width: 767px) {
+  .product__accordion--size-mobile summary {
+    font-size: var(--accordion-heading-size-mobile); } }
 .product__accordion--case-upper summary {
   text-transform: uppercase; }
 .product__accordion--case-lower summary {
