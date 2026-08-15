@@ -96,9 +96,9 @@
       ],
       "settings": {
         "sticky_header": true,
-        "logo": "shopify://shop_images/NUDYESS_301C18.svg",
-        "logo_height_range": 30,
-        "logo_height_range_mobile": 28,
+        "logo": "shopify://shop_images/NUDYESS_301C18_113ade80-73ec-43d9-bc6a-4e1db4e55099.svg",
+        "logo_height_range": 20,
+        "logo_height_range_mobile": 20,
         "style": "style1",
         "use_drawer": false,
         "menu": "new-menu",
