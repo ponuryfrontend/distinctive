@@ -245,7 +245,7 @@
         "heading": "Dopełnij stylizację",
         "description": "",
         "mobile_swipe": false,
-        "product_limit": 8,
+        "product_limit": 10,
         "carousel_gap_desktop": 6,
         "small_heading": "MOŻE SPODOBA SIĘ TAKŻE",
         "small_heading_color": "#301c18",
