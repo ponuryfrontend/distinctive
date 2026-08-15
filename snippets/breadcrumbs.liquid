@@ -6,7 +6,7 @@
 		<i aria-hidden="true">•</i>
 		<a href="{{ routes.all_products_collection_url }}">{{ 'sections.breadcrumbs.shop' | t }}</a>
     <i aria-hidden="true">•</i>
-    {{ collection.title }}
+    <a href="{{ collection.url }}" title="{{ collection.title | escape }}">{{ collection.title }}</a>
   {% endif %}
 	{% if template contains 'cart' %}
     <i aria-hidden="true">•</i>
