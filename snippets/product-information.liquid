@@ -188,7 +188,18 @@
       {%- endunless -%}
     {%- when 'collapsible_tab' -%}
       {%- if block.settings.heading != blank -%}
-      <collapsible-row class="product__accordion accordion" {{ block.shopify_attributes }}>
+      {%- liquid
+        assign tab_heading_size = block.settings.heading_font_size
+        assign tab_heading_case = block.settings.heading_case
+      -%}
+      {%- capture tab_heading_classes -%}
+        {%- if tab_heading_size > 0 %} product__accordion--size{% endif -%}
+        {%- if tab_heading_case == 'uppercase' %} product__accordion--case-upper{% elsif tab_heading_case == 'lowercase' %} product__accordion--case-lower{% elsif tab_heading_case == 'capitalize' %} product__accordion--case-capitalize{% elsif tab_heading_case == 'none' %} product__accordion--case-normal{% endif -%}
+      {%- endcapture -%}
+      {%- capture tab_heading_style -%}
+        {%- if tab_heading_size > 0 -%}--accordion-heading-size: {{ tab_heading_size }}px;{%- endif -%}
+      {%- endcapture -%}
+      <collapsible-row class="product__accordion accordion{{ tab_heading_classes }}"{% if tab_heading_style != blank %} style="{{ tab_heading_style | strip_newlines | strip }}"{% endif %} {{ block.shopify_attributes }}>
         <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
           <summary>
             {{ block.settings.heading | default: block.settings.page.title }}

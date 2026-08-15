@@ -560,6 +560,21 @@
         [dir="rtl"] .thb-product-detail .product-information .accordion {
           margin-left: -15px;
           margin-right: -40px; } }
+
+/* "Collapsible row" heading size / letter case — same rules as assets/product.css
+   (see snippets/product-information.liquid), duplicated here since this
+   section only loads featured-product.css, not product.css. */
+.product__accordion--size summary {
+  font-size: var(--accordion-heading-size); }
+.product__accordion--case-upper summary {
+  text-transform: uppercase; }
+.product__accordion--case-lower summary {
+  text-transform: lowercase; }
+.product__accordion--case-capitalize summary {
+  text-transform: capitalize; }
+.product__accordion--case-normal summary {
+  text-transform: none; }
+
   .thb-product-detail .product-information--line {
     margin-left: -15px;
     width: calc(100% + 30px);

@@ -1313,6 +1313,21 @@
     .accordion .accordion__content > *:last-child {
       margin-bottom: 0; }
 
+/* "Collapsible row" heading size / letter case — per-block overrides from
+   the collapsible_tab block settings (see snippets/product-information.liquid).
+   Scoped under .product__accordion (only present on this block's markup,
+   not on sections/collapsible-content.liquid's plain .accordion) so the
+   standalone "Collapsible content" section is unaffected. */
+.product__accordion--size summary {
+  font-size: var(--accordion-heading-size); }
+.product__accordion--case-upper summary {
+  text-transform: uppercase; }
+.product__accordion--case-lower summary {
+  text-transform: lowercase; }
+.product__accordion--case-capitalize summary {
+  text-transform: capitalize; }
+.product__accordion--case-normal summary {
+  text-transform: none; }
 
 .share-article {
   display: block;

@@ -622,6 +622,30 @@
 					"label": "Heading"
 				},
 				{
+					"type": "range",
+					"id": "heading_font_size",
+					"min": 0,
+					"max": 40,
+					"step": 1,
+					"unit": "px",
+					"label": "Heading font size",
+					"info": "0 uses the theme default size.",
+					"default": 0
+				},
+				{
+					"type": "select",
+					"id": "heading_case",
+					"label": "Heading letter case",
+					"options": [
+						{ "value": "", "label": "Theme default" },
+						{ "value": "uppercase", "label": "UPPERCASE" },
+						{ "value": "lowercase", "label": "lowercase" },
+						{ "value": "capitalize", "label": "Capitalize" },
+						{ "value": "none", "label": "As typed" }
+					],
+					"default": ""
+				},
+				{
 					"type": "checkbox",
 					"id": "open",
 					"default": false,
