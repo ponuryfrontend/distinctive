@@ -15,12 +15,10 @@
         "slide_Ff6Hif": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/EEE.jpg",
-            "mobile_image": "shopify://shop_images/iji.jpg",
-            "slide_link": "shopify://collections/sale",
+            "slide_link": "shopify://collections/new-now",
             "video_background": false,
             "video": "",
-            "slide_title": "SALE",
+            "slide_title": "",
             "subheading": "",
             "heading": "",
             "heading_size": "h1-xlarge",
@@ -35,11 +33,11 @@
             "overlay_gradient": "linear-gradient(180deg, rgba(255, 6, 6, 0.1), rgba(0, 0, 0, 0.4) 100%)",
             "button_1_text": "ZNAJDŹ COŚ DLA SIEBIE",
             "button_1_color": "accent",
-            "button_1_link": "shopify://collections/sale",
+            "button_1_link": "shopify://collections/new-now",
             "use_text_button_1": false,
             "button_2_text": "",
             "button_2_color": "regular",
-            "button_2_link": "",
+            "button_2_link": "shopify://collections/new-now",
             "use_text_button_2": false
           }
         }
