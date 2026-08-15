@@ -171,7 +171,7 @@
     align-items: center;
     font-weight: 400;
     font-size: 0.8125rem;
-    margin-bottom: 9px;
+    margin: 12px 0;
     color: rgba(var(--color-body-rgb), 0.65); }
     .product-form__input .form__label__value {
       font-weight: 400;
