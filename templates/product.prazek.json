@@ -123,7 +123,7 @@
         "a9bc54b3-69df-483b-8561-10c1c4f6caac": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Opis produktu",
+            "heading": "Opis",
             "open": false,
             "content": "",
             "page": "",
@@ -133,11 +133,31 @@
         "collapsible_tab_MrtDzH": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Informacje o składzie i pielęgnacji",
+            "heading": "Materiały i pielęgnacja",
             "open": false,
             "content": "",
             "page": "",
             "custom_liquid": "<p><strong>Skład:</strong></p>\n<p>95% prążkowana bawełna i 5% elastan</p>\n<p><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\">Aby m&oacute;c latami cieszyć się produktami z naszej prążkowanej dzianiny należy zawsze prać je odwr&oacute;cone na lewą stronę używając delikatnych (nawet dziecięcych) detergent&oacute;w oraz ustawiać możliwie niskie obroty pralki. Dzięki takiej pielęgnacji szwy pozostaną nienaruszone i ubrania utrzymają swoją formę, elastyczność i strukturę, a także będą przyjemne dla sk&oacute;ry nawet po wielu praniach.</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/prazek-pranie.svg?v=1719830584\" alt=\"pielegnacja\" width=\"100%\" height=\"auto\" /></p>\n<p style=\"text-align: justify;\">Prać ręcznie lub w pralce na programie prania ręcznego. Używać możliwie najdelikatniejszych środk&oacute;w piorących. Maksymalna temperatura prania&nbsp; 30&ordm; C. Wirowanie maksymalnie 600 obrot&oacute;w. Suszyć na płasko - nie suszyć w suszarce bębnowej. Prasować parowaczką lub żelazkiem w temperaturze do 110 stopni C. Nie czyścić chemicznie.</p>\n<p></p>"
+          }
+        },
+        "collapsible_tab_Ca3CWD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Wymiary",
+            "open": false,
+            "content": "",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_iJTc83": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Płatności i dostawy",
+            "open": false,
+            "content": "",
+            "page": "",
+            "custom_liquid": ""
           }
         },
         "ac30e733-fe79-471f-a9b6-72b10279036c": {
@@ -145,17 +165,6 @@
           "settings": {
             "block_heading": "Dodaj do zestawu z:",
             "product_list_limit": 8
-          }
-        },
-        "collapsible_tab_UXbKiJ": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Opinie o produkcie",
-            "open": false,
-            "content": "",
-            "page": "",
-            "custom_liquid": "{% capture the_snippet_reviews %}{% render 'socialshopwave-widget-recommends' with 1 %}{% endcapture %}\n{% unless the_snippet_reviews contains 'Liquid error' %}\n{{ the_snippet_reviews }}\n{% endunless %}"
           }
         },
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW": {
@@ -182,8 +191,9 @@
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "collapsible_tab_MrtDzH",
+        "collapsible_tab_Ca3CWD",
+        "collapsible_tab_iJTc83",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
-        "collapsible_tab_UXbKiJ",
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW"
       ],
       "settings": {
@@ -214,7 +224,7 @@
         "mobile_swipe": false,
         "product_limit": 4,
         "small_heading": "MOŻE SPODOBA SIĘ TAKŻE",
-        "small_heading_color": "#301C18",
+        "small_heading_color": "#301c18",
         "small_heading_align_desktop": "center",
         "small_heading_align_mobile": "center",
         "small_heading_font_desktop": "",
@@ -225,7 +235,7 @@
         "small_heading_size_mobile": 12,
         "small_heading_case_desktop": "",
         "small_heading_case_mobile": "",
-        "heading_color": "#301C18",
+        "heading_color": "#301c18",
         "heading_align_desktop": "center",
         "heading_align_mobile": "center",
         "heading_font_desktop": "",
