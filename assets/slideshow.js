@@ -57,6 +57,15 @@ if (!customElements.get('slide-show')) {
         rightToLeft,
         prevNextButtons: false,
         cellSelector: '.carousel__slide',
+        // draggable:false also disables touch/finger swipe, not just mouse
+        // drag — Flickity treats both under the same "dragging" gesture.
+        // Arrow buttons keep working regardless (they call flkty.next()/
+        // previous() directly, see below), so this only removes the
+        // swipe/drag gesture. Opt-in via data-draggable="false" on the
+        // <slide-show> element (see complementary-products--carousel in
+        // snippets/product-information.liquid) rather than a global default,
+        // so every other carousel keeps swiping as before.
+        draggable: dataset.draggable !== 'false',
         on: {}
       };
       this.paused = false;

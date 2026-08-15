@@ -316,7 +316,7 @@
             {%- endif -%}
           </div>
           {%- if cp_is_carousel -%}
-            <slide-show class="complementary-products--carousel carousel--paged products carousel" data-align="left">
+            <slide-show class="complementary-products--carousel carousel--paged products carousel" data-align="left" data-draggable="false">
               {%- for recommendation in recommendations.products -%}
                 <div class="carousel__slide">
                   {% render 'product-card', product_card_product: recommendation %}
