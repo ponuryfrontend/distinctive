@@ -526,6 +526,7 @@ if (!customElements.get('product-slider')) {
         this.setupVerticalGallery();
       } else {
         this.flkty = new Flickity(this, this.options);
+        this.lockGalleryDragAngle();
         this.selectedIndex = this.flkty.selectedIndex;
       }
 
@@ -549,11 +550,40 @@ if (!customElements.get('product-slider')) {
       this.setOptions();
 
       this.flkty = new Flickity(this, this.options);
+      this.lockGalleryDragAngle();
 
       // Setup Events
       this.setupEvents();
 
       this.selectedIndex = this.flkty.selectedIndex;
+    }
+    lockGalleryDragAngle() {
+      // Flickity's stock hasDragStarted (flickity/js/drag in vendor.min.js)
+      // only checks horizontal distance: `Math.abs(moveVector.x) >
+      // dragThreshold` — it ignores the vertical distance entirely. So a
+      // touch that's mostly a vertical page-scroll still gets claimed as
+      // an active carousel drag (and preventDefault() gets called on every
+      // following touchmove) the instant x happens to cross that 3px bar,
+      // fighting the browser's own native vertical pan for the same
+      // gesture — that fight is what read as "the page also nudges a
+      // little" instability on an imprecise diagonal swipe.
+      // Swiper (used by the reference site) avoids this with a
+      // touchAngle option (default 45°): it only claims a gesture once
+      // horizontal movement is clearly ahead of vertical, otherwise it
+      // steps aside and lets the browser scroll normally. Reproduce that
+      // here by overriding hasDragStarted on this specific Flickity
+      // instance only — Flickity.prototype itself, shared by every other
+      // carousel in the theme, is left untouched — to also require |x| >
+      // |y| before committing to a drag. Horizontal swipes are then
+      // claimed immediately and cleanly (no vertical creep); swipes that
+      // are more vertical than horizontal are left alone and still
+      // scroll the page normally, same as before this change.
+      if (!this.flkty) return;
+
+      this.flkty.hasDragStarted = function (moveVector) {
+        return Math.abs(moveVector.x) > this.options.dragThreshold &&
+          Math.abs(moveVector.x) > Math.abs(moveVector.y);
+      };
     }
     getActiveSlides() {
       return Array.from(this.querySelectorAll('.product-images__slide.is-active'));
