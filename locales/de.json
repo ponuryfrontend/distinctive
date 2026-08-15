@@ -779,6 +779,22 @@
             "few": "Für diese Artikel ist die gewählte Versandart nicht mehr verfügbar.",
             "many": "Für diese Artikel ist die gewählte Versandart nicht mehr verfügbar."
           }
+        },
+        "out_of_stock": {
+          "missing_items": {
+            "title": {
+              "few": "{{count}} Artikel sind nicht mehr verfügbar",
+              "many": "{{count}} Artikel sind nicht mehr verfügbar"
+            },
+            "some_available_notice": {
+              "few": "Die übrigen Artikel können weiterhin gekauft werden. Nicht verfügbare Artikel werden aus dem Warenkorb entfernt.",
+              "many": "Die übrigen Artikel können weiterhin gekauft werden. Nicht verfügbare Artikel werden aus dem Warenkorb entfernt."
+            },
+            "none_available_notice": {
+              "few": "Diese Artikel sind nicht mehr verfügbar und wurden aus Ihrem Warenkorb entfernt.",
+              "many": "Diese Artikel sind nicht mehr verfügbar und wurden aus Ihrem Warenkorb entfernt."
+            }
+          }
         }
       },
       "order_summary": {
