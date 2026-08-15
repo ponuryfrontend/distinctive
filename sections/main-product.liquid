@@ -1417,7 +1417,105 @@
           "max": 10,
           "step": 1,
           "default": 10,
-          "label": "Maximum products to show"
+          "label": "Maximum products to show",
+          "info": "More than 3 switches to a carousel that pages by whole rows of products, on both mobile and desktop."
+        },
+        {
+          "type": "header",
+          "content": "Heading typography"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Color"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "info": "0 uses the theme default size.",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "heading_case",
+          "label": "Letter case",
+          "options": [
+            { "value": "", "label": "Theme default" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" },
+            { "value": "none", "label": "As typed" }
+          ],
+          "default": ""
+        },
+        {
+          "type": "select",
+          "id": "heading_font",
+          "label": "Font",
+          "options": [
+            { "value": "", "label": "Theme default" },
+            { "value": "heading", "label": "Heading font" },
+            { "value": "body", "label": "Body font" },
+            { "value": "custom", "label": "Custom font…" }
+          ],
+          "default": ""
+        },
+        {
+          "type": "font_picker",
+          "id": "heading_font_picker",
+          "label": "Custom font",
+          "info": "Used when \"Font\" above is set to Custom font.",
+          "default": "archivo_narrow_n4",
+          "visible_if": "{{ block.settings.heading_font == 'custom' }}"
+        },
+        {
+          "type": "header",
+          "content": "Section spacing"
+        },
+        {
+          "type": "range",
+          "id": "margin_top_desktop",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "label": "Top margin (desktop)",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom_desktop",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "label": "Bottom margin (desktop)",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "margin_top_mobile",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "label": "Top margin (mobile)",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom_mobile",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "label": "Bottom margin (mobile)",
+          "default": 30
         }
       ]
     },

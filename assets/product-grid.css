@@ -620,3 +620,56 @@
          width past 100% and break that grouping as gap/product count grow. */
       width: 25%;
       padding-right: var(--rec-carousel-gap-desktop, 0px); } }
+
+/* Complementary products — PDP "Product information" block ("Połącz w
+   zestaw z:"). Deliberately scoped under .complementary-products and its
+   own BEM classes rather than reusing .product-recommendations--complementary
+   / --heading / --products, which snippets/cart-drawer.liquid still relies
+   on for its compact cart-drawer widget — sharing those classes here would
+   restyle the cart drawer too. */
+.complementary-products {
+  display: block;
+  margin-top: var(--cp-margin-top-desktop, 40px);
+  margin-bottom: var(--cp-margin-bottom-desktop, 40px); }
+  @media only screen and (max-width: 767px) {
+    .complementary-products {
+      margin-top: var(--cp-margin-top-mobile, 30px);
+      margin-bottom: var(--cp-margin-bottom-mobile, 30px); } }
+
+.complementary-products--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px; }
+
+.complementary-products--heading {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase; }
+  .complementary-products--heading-case-upper { text-transform: uppercase; }
+  .complementary-products--heading-case-lower { text-transform: lowercase; }
+  .complementary-products--heading-case-capitalize { text-transform: capitalize; }
+  .complementary-products--heading-case-normal { text-transform: none; }
+
+/* Pager reuses .product-recommendations--pager for its JS hook (see
+   product-recommendations.js#setupPager) and base layout, but that class
+   also carries `display: none` below 1068px in the rule above — this block
+   should page identically on mobile and desktop, so the compound selector
+   (higher specificity than either single-class rule) keeps it visible at
+   every width. */
+.complementary-products--pager.product-recommendations--pager {
+  display: flex; }
+
+/* 2 columns on mobile, 3 on desktop/tablet — both the static grid
+   (.complementary-products--grid) and the carousel variant (more than 3
+   products) share the same column counts so the layout doesn't jump when
+   the carousel kicks in. */
+.complementary-products--grid.small-up-2 > .columns {
+  margin-bottom: 20px; }
+
+.products.carousel.complementary-products--carousel .carousel__slide {
+  width: 50%; }
+  @media only screen and (min-width: 768px) {
+    .products.carousel.complementary-products--carousel .carousel__slide {
+      width: 33.33333%; } }

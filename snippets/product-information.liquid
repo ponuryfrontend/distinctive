@@ -203,16 +203,71 @@
       </collapsible-row>
       {%- endif -%}
     {%- when 'complementary' -%}
-      <product-recommendations class="product-recommendations product-recommendations--complementary complementary-products no-js-hidden" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
+      {{- 'product-grid.css' | asset_url | stylesheet_tag -}}
+      {%- liquid
+        assign cp_heading = block.settings.block_heading
+        assign cp_heading_color = block.settings.heading_color
+        assign cp_heading_size = block.settings.heading_font_size
+        assign cp_heading_case = block.settings.heading_case
+        assign cp_heading_font = block.settings.heading_font
+        assign cp_heading_font_picker = block.settings.heading_font_picker
+        assign cp_margin_top_d = block.settings.margin_top_desktop
+        assign cp_margin_bottom_d = block.settings.margin_bottom_desktop
+        assign cp_margin_top_m = block.settings.margin_top_mobile
+        assign cp_margin_bottom_m = block.settings.margin_bottom_mobile
+      -%}
+      {%- capture cp_heading_classes -%}
+        {%- if cp_heading_case == 'uppercase' %} complementary-products--heading-case-upper{% elsif cp_heading_case == 'lowercase' %} complementary-products--heading-case-lower{% elsif cp_heading_case == 'capitalize' %} complementary-products--heading-case-capitalize{% elsif cp_heading_case == 'none' %} complementary-products--heading-case-normal{% endif -%}
+      {%- endcapture -%}
+      {%- capture cp_heading_style -%}
+        {%- if cp_heading_size > 0 -%}font-size: {{ cp_heading_size }}px;{%- endif -%}
+        {%- if cp_heading_color != blank -%}color: {{ cp_heading_color }};{%- endif -%}
+        {%- if cp_heading_font == 'heading' -%}font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif cp_heading_font == 'body' -%}font-family: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif cp_heading_font == 'custom' and cp_heading_font_picker -%}font-family: {{ cp_heading_font_picker.family }}, {{ cp_heading_font_picker.fallback_families }};{%- endif -%}
+      {%- endcapture -%}
+      {%- capture cp_section_style -%}
+        {%- if cp_margin_top_d != blank -%}--cp-margin-top-desktop: {{ cp_margin_top_d }}px;{%- endif -%}
+        {%- if cp_margin_bottom_d != blank -%}--cp-margin-bottom-desktop: {{ cp_margin_bottom_d }}px;{%- endif -%}
+        {%- if cp_margin_top_m != blank -%}--cp-margin-top-mobile: {{ cp_margin_top_m }}px;{%- endif -%}
+        {%- if cp_margin_bottom_m != blank -%}--cp-margin-bottom-mobile: {{ cp_margin_bottom_m }}px;{%- endif -%}
+      {%- endcapture -%}
+      {%- if cp_heading_font == 'custom' and cp_heading_font_picker -%}
+        <style>{{ cp_heading_font_picker | font_face: font_display: 'swap' }}</style>
+      {%- endif -%}
+      <product-recommendations class="product-recommendations complementary-products no-js-hidden" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"{% if cp_section_style != blank %} style="{{ cp_section_style | strip_newlines | strip }}"{% endif %} {{ block.shopify_attributes }}>
         {%- if recommendations.performed and recommendations.products_count > 0 -%}
-          <h6 class="product-recommendations--heading">{{ block.settings.block_heading }}{% render 'slideshow-arrows' %}</h6>
-          <slide-show class="product-recommendations--products carousel" data-align="left">
-            {%- for recommendation in recommendations.products -%}
-              <div class="carousel__slide">
-                {% render 'product-card-small' product_small: recommendation, quick_add: true %}
+          {%- assign cp_is_carousel = false -%}
+          {%- if recommendations.products_count > 3 -%}
+            {%- assign cp_is_carousel = true -%}
+          {%- endif -%}
+          <div class="complementary-products--header">
+            {%- if cp_heading != blank -%}
+              <div class="complementary-products--heading{{ cp_heading_classes }}"{% if cp_heading_style != blank %} style="{{ cp_heading_style | strip_newlines | strip }}"{% endif %}>{{ cp_heading }}</div>
+            {%- endif -%}
+            {%- if cp_is_carousel -%}
+              <div class="product-recommendations--pager complementary-products--pager">
+                <div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
+                <span class="product-recommendations--pager-count"><span class="product-recommendations--pager-current">1</span> / <span class="product-recommendations--pager-total">1</span></span>
+                <div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
               </div>
-            {%- endfor -%}
-          </slide-show>
+            {%- endif -%}
+          </div>
+          {%- if cp_is_carousel -%}
+            <slide-show class="complementary-products--carousel carousel--paged products carousel" data-align="left">
+              {%- for recommendation in recommendations.products -%}
+                <div class="carousel__slide">
+                  {% render 'product-card', product_card_product: recommendation %}
+                </div>
+              {%- endfor -%}
+            </slide-show>
+          {%- else -%}
+            <ul class="products collection row small-up-2 medium-up-3 no-padding complementary-products--grid">
+              {%- for recommendation in recommendations.products -%}
+                <li class="columns">
+                  {% render 'product-card', product_card_product: recommendation %}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
         {%- endif -%}
       </product-recommendations>
     {%- when 'image' -%}
