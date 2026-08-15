@@ -689,6 +689,43 @@
   .product-recommendations--pager {
     display: flex; } }
 
+/* Match this section's mobile tile height to Complementary products'
+   ("Dodaj do zestawu z:", .complementary-products--carousel / --grid
+   below) exactly. Both sit at the same 50% slide width and the same 3/4
+   image ratio, but on mobile they sit in different ambient page padding:
+   this section's own row/column gutter is 4px each side, while
+   Complementary products additionally sits inside .thb-product-detail
+   .product-information's own 15px padding — 19px each side there, 38px
+   combined, vs 8px combined here. At the same 50%, that made this
+   section's tiles visibly wider, and therefore taller (padding-bottom /
+   aspect-ratio height is a function of the tile's own width), than
+   Complementary's. Pin this section's image height to the same formula
+   Complementary's naturally computes to — half of a (100vw - 38px) row,
+   at a 4/3 ratio — instead of the 133.333% padding-bottom / 3:4
+   aspect-ratio rules above, which are self-referential to each section's
+   own (different) width.
+   Repeats .aspect-ratio--adapt (4 classes) / adds it in on top of
+   .has-multiple-images (5 classes) to safely out-specificity the base
+   rules above and the mobile .has-multiple-images override further up,
+   regardless of source order. */
+@media only screen and (max-width: 767px) {
+  .product-recommendations--carousel .product-card .product-featured-image-link.aspect-ratio--adapt,
+  .product-recommendations--carousel .product-card .product-featured-image-link.aspect-ratio--adapt.has-multiple-images {
+    padding-bottom: 0;
+    height: calc((100vw - 38px) * 2 / 3); }
+  /* Same reasoning, applied to the title: Complementary products' cards
+     (.complementary-products--carousel / --grid .product-card-title
+     below) are forced to a single line with an ellipsis, so their tile
+     height is predictable regardless of product name length. This
+     section's titles had no such limit and could wrap to a second line
+     on a long name, adding extra tile height that Complementary's cards
+     never have — matching it here too so tile height stays identical
+     regardless of which product names happen to be long. */
+  .product-recommendations--carousel .product-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; } }
+
 /* Complementary products — PDP "Product information" block ("Połącz w
    zestaw z:"). Deliberately scoped under .complementary-products and its
    own BEM classes rather than reusing .product-recommendations--complementary
