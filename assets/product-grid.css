@@ -669,7 +669,32 @@
   margin-bottom: 20px; }
 
 .products.carousel.complementary-products--carousel .carousel__slide {
-  width: 50%; }
+  width: 50%;
+  padding-right: var(--cp-carousel-gap-mobile, 0px); }
   @media only screen and (min-width: 768px) {
     .products.carousel.complementary-products--carousel .carousel__slide {
-      width: 33.33333%; } }
+      width: 33.33333%;
+      padding-right: var(--cp-carousel-gap-desktop, 0px); } }
+
+/* .flickity-enabled normally switches to overflow: visible (see the base
+   .products.carousel rules above) so slides can peek past the edge of a
+   full-bleed row like sections/product-recommendations.liquid's. This block
+   instead sits inside the narrow "product information" column next to the
+   gallery, so with overflow visible every off-screen slide rendered past
+   the current page — not just the current one — spilled out past that
+   column, over whatever sits to its right. Force clipping back on here. */
+.products.carousel.flickity-enabled.complementary-products--carousel,
+.products.carousel.flickity-enabled.product-recommendations--carousel {
+  overflow: hidden; }
+  .products.carousel.flickity-enabled.complementary-products--carousel .flickity-viewport,
+  .products.carousel.flickity-enabled.product-recommendations--carousel .flickity-viewport {
+    overflow: hidden; }
+
+/* Keep the product title on a single line (ellipsis instead of wrapping to
+   2-3 lines) so the price stays right underneath it at these smaller tile
+   sizes, instead of being pushed down by a tall title. */
+.complementary-products--carousel .product-card-title,
+.complementary-products--grid .product-card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }

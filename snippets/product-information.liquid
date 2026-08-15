@@ -215,6 +215,8 @@
         assign cp_margin_bottom_d = block.settings.margin_bottom_desktop
         assign cp_margin_top_m = block.settings.margin_top_mobile
         assign cp_margin_bottom_m = block.settings.margin_bottom_mobile
+        assign cp_gap_desktop = block.settings.carousel_gap_desktop
+        assign cp_gap_mobile = block.settings.carousel_gap_mobile
       -%}
       {%- capture cp_heading_classes -%}
         {%- if cp_heading_case == 'uppercase' %} complementary-products--heading-case-upper{% elsif cp_heading_case == 'lowercase' %} complementary-products--heading-case-lower{% elsif cp_heading_case == 'capitalize' %} complementary-products--heading-case-capitalize{% elsif cp_heading_case == 'none' %} complementary-products--heading-case-normal{% endif -%}
@@ -229,6 +231,8 @@
         {%- if cp_margin_bottom_d != blank -%}--cp-margin-bottom-desktop: {{ cp_margin_bottom_d }}px;{%- endif -%}
         {%- if cp_margin_top_m != blank -%}--cp-margin-top-mobile: {{ cp_margin_top_m }}px;{%- endif -%}
         {%- if cp_margin_bottom_m != blank -%}--cp-margin-bottom-mobile: {{ cp_margin_bottom_m }}px;{%- endif -%}
+        {%- if cp_gap_desktop != blank -%}--cp-carousel-gap-desktop: {{ cp_gap_desktop }}px;{%- endif -%}
+        {%- if cp_gap_mobile != blank -%}--cp-carousel-gap-mobile: {{ cp_gap_mobile }}px;{%- endif -%}
       {%- endcapture -%}
       {%- if cp_heading_font == 'custom' and cp_heading_font_picker -%}
         <style>{{ cp_heading_font_picker | font_face: font_display: 'swap' }}</style>
