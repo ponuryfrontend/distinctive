@@ -335,6 +335,7 @@
       "block_order": [
         "growave_loyalty_wishlist_block_product_review_widget_DmbaQh"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "disable_top_spacing": false,
