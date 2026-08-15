@@ -161,7 +161,7 @@
         opacity: 0;
         z-index: 10; }
       .product-card .product-featured-image-link.aspect-ratio--adapt {
-        padding-bottom: 125%; }
+        padding-bottom: 133.333%; }
       .product-card .product-featured-image-link.aspect-ratio--square {
         padding-bottom: 100%; }
       .product-card .product-featured-image-link.aspect-ratio--portrait {
@@ -474,7 +474,7 @@
   .product-card .product-featured-image-link.has-multiple-images {
     height: auto;
     padding-bottom: 0 !important;
-    aspect-ratio: var(--aspect-ratio, 4/5);
+    aspect-ratio: var(--aspect-ratio, 3/4);
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -489,11 +489,11 @@
      already a fixed ratio here), "adapt" was reading --aspect-ratio — the
      true per-photo ratio set inline in snippets/product-card.liquid — so
      mobile tiles varied in height from card to card while desktop's
-     .aspect-ratio--adapt rule above (padding-bottom: 125%, i.e. 4/5) stays
-     fixed. Pinning this to the same 4/5 makes mobile match desktop: every
-     tile the same size regardless of each product's own photo shape. */
+     .aspect-ratio--adapt rule above (padding-bottom: 133.333%, i.e. 3/4)
+     stays fixed. Pinning this to the same 3/4 makes mobile match desktop:
+     every tile the same size regardless of each product's own photo shape. */
   .product-card .product-featured-image-link.aspect-ratio--adapt.has-multiple-images {
-    aspect-ratio: 4/5; }
+    aspect-ratio: 3/4; }
   .product-card .product-featured-image-link.aspect-ratio--portrait.has-multiple-images {
     aspect-ratio: 4/5; }
   .product-card .product-featured-image-link.aspect-ratio--square.has-multiple-images {
