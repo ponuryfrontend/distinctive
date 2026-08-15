@@ -208,11 +208,11 @@
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "Zobacz produkty, które mogą ci się spodobać",
+        "heading": "Dopełnij stylizację",
         "description": "",
         "mobile_swipe": false,
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "product_seo_text_section_J9iqUG": {
