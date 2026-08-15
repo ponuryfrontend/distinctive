@@ -300,7 +300,21 @@ if (!customElements.get('slide-show')) {
       }
 
       // Initiate
-      const flkty = new Flickity(slideshow, args);
+      let flkty;
+      try {
+        flkty = new Flickity(slideshow, args);
+      } catch (e) {
+        // If this throws, it is almost never this file's own logic — it's
+        // usually a third-party script (an analytics/pixel app running in a
+        // sandboxed context) that monkey-patched a DOM API like
+        // addEventListener earlier on the same page and left it broken.
+        // That reliably reproduces as "works in the theme editor preview
+        // (pixels don't fire there) but not on the live storefront" — check
+        // the browser console for an unrelated "sandboxed environment" /
+        // "read only property" error from another script when this fires.
+        console.error('Slideshow: Flickity failed to initialize — likely a conflicting third-party script (see comment above this line in slideshow.js).', e);
+        return;
+      }
 
       dataset.initiated = true;
 
