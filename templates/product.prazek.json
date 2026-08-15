@@ -38,6 +38,8 @@
             "title_font_desktop_picker": "instrument_sans_i4",
             "title_font_mobile": "",
             "title_font_mobile_picker": "archivo_narrow_n4",
+            "title_case_desktop": "uppercase",
+            "title_case_mobile": "uppercase",
             "title_margin_top_desktop": 12,
             "title_margin_bottom_desktop": 0,
             "title_margin_top_mobile": 12,
