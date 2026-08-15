@@ -52,6 +52,22 @@ class ProductRecommendations extends HTMLElement {
 							gsap.to(elements, { scale: 1, opacity: 1, stagger: 0.15, ease: window.theme.settings.animation_easing });
 						}
 					});
+
+					// The cards just inserted start at opacity: 0 (see
+					// .animations-true .product-card .product-featured-image-link in
+					// product-grid.css) until the batch above fires onEnter — but
+					// ScrollTrigger's trigger-position math is cached from the last
+					// refresh, normally the initial page load, before this content
+					// existed. Adding a big chunk of markup changes the page's
+					// scrollable height, so without an explicit refresh here the
+					// batch can check stale positions and never fire, leaving these
+					// cards invisible until something unrelated elsewhere on the
+					// page happens to trigger GSAP's own refresh. Same fix already
+					// used in gallery.js / media-grid.js / list-collections.js for
+					// this exact "content added after initial load" situation.
+					setTimeout(() => {
+						ScrollTrigger.refresh();
+					}, 100);
 				});
 			})
 			.catch(e => {
