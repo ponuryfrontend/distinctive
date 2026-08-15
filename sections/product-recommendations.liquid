@@ -9,19 +9,97 @@
 	if template == 'cart' and cart != empty
 		assign product_id = cart.items[0].product_id
 	endif
+
+	assign product_limit = section.settings.product_limit | default: 4
+
+	assign small_heading = section.settings.small_heading
+	assign small_heading_font_d = section.settings.small_heading_font_desktop
+	assign small_heading_font_m = section.settings.small_heading_font_mobile
+	assign small_heading_size_d = section.settings.small_heading_size_desktop
+	assign small_heading_size_m = section.settings.small_heading_size_mobile
+	assign small_heading_case_d = section.settings.small_heading_case_desktop
+	assign small_heading_case_m = section.settings.small_heading_case_mobile
+
+	assign heading_font_d = section.settings.heading_font_desktop
+	assign heading_font_m = section.settings.heading_font_mobile
+	assign heading_size_d = section.settings.heading_size_desktop
+	assign heading_size_m = section.settings.heading_size_mobile
+	assign heading_case_d = section.settings.heading_case_desktop
+	assign heading_case_m = section.settings.heading_case_mobile
 -%}
+{%- capture small_heading_classes -%}
+	{%- if small_heading_font_d == 'heading' %} rec-kicker--font-desktop{% elsif small_heading_font_d == 'body' %} rec-kicker--font-desktop{% endif -%}
+	{%- if small_heading_font_m == 'heading' %} rec-kicker--font-mobile{% elsif small_heading_font_m == 'body' %} rec-kicker--font-mobile{% endif -%}
+	{%- if small_heading_size_d > 0 %} rec-kicker--size-desktop{% endif -%}
+	{%- if small_heading_size_m > 0 %} rec-kicker--size-mobile{% endif -%}
+	{%- if small_heading_case_d == 'uppercase' %} rec-kicker--case-upper-desktop{% elsif small_heading_case_d == 'none' %} rec-kicker--case-normal-desktop{% endif -%}
+	{%- if small_heading_case_m == 'uppercase' %} rec-kicker--case-upper-mobile{% elsif small_heading_case_m == 'none' %} rec-kicker--case-normal-mobile{% endif -%}
+{%- endcapture -%}
+{%- capture small_heading_style -%}
+	{%- if small_heading_font_d == 'heading' -%}--rec-kicker-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_d == 'body' -%}--rec-kicker-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if small_heading_font_m == 'heading' -%}--rec-kicker-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_m == 'body' -%}--rec-kicker-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if small_heading_size_d > 0 -%}--rec-kicker-size-desktop: {{ small_heading_size_d }}px;{%- endif -%}
+	{%- if small_heading_size_m > 0 -%}--rec-kicker-size-mobile: {{ small_heading_size_m }}px;{%- endif -%}
+{%- endcapture -%}
+{%- capture heading_classes -%}
+	{%- if heading_font_d == 'heading' %} rec-heading--font-desktop{% elsif heading_font_d == 'body' %} rec-heading--font-desktop{% endif -%}
+	{%- if heading_font_m == 'heading' %} rec-heading--font-mobile{% elsif heading_font_m == 'body' %} rec-heading--font-mobile{% endif -%}
+	{%- if heading_size_d > 0 %} rec-heading--size-desktop{% endif -%}
+	{%- if heading_size_m > 0 %} rec-heading--size-mobile{% endif -%}
+	{%- if heading_case_d == 'uppercase' %} rec-heading--case-upper-desktop{% elsif heading_case_d == 'none' %} rec-heading--case-normal-desktop{% endif -%}
+	{%- if heading_case_m == 'uppercase' %} rec-heading--case-upper-mobile{% elsif heading_case_m == 'none' %} rec-heading--case-normal-mobile{% endif -%}
+{%- endcapture -%}
+{%- capture heading_style -%}
+	{%- if heading_font_d == 'heading' -%}--rec-heading-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_d == 'body' -%}--rec-heading-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if heading_font_m == 'heading' -%}--rec-heading-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_m == 'body' -%}--rec-heading-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if heading_size_d > 0 -%}--rec-heading-size-desktop: {{ heading_size_d }}px;{%- endif -%}
+	{%- if heading_size_m > 0 -%}--rec-heading-size-mobile: {{ heading_size_m }}px;{%- endif -%}
+{%- endcapture -%}
 <div class="row full-width-row">
 	<div class="small-12 columns">
-		<product-recommendations class="product-recommendations product-recommendations--cart {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product_id }}&limit=4">
+		<product-recommendations class="product-recommendations product-recommendations--cart {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product_id }}&limit={{ product_limit }}">
 			{% if recommendations.performed and recommendations.products_count > 0 %}
-				{% render 'section-header', section_heading: section_heading, section_description: section_description %}
-				<ul class="products collection row small-up-{{ settings.product_card_columns }} medium-up-4 no-padding">
-					{% for recommendation in recommendations.products %}
-						<li class="columns">
-							{% render 'product-card', product_card_product: recommendation %}
-						</li>
-					{% endfor %}
-				</ul>
+				{%- assign is_carousel = false -%}
+				{%- if recommendations.products_count > 4 -%}
+					{%- assign is_carousel = true -%}
+				{%- endif -%}
+				<div class="product-recommendations--header">
+					<div class="product-recommendations--header-content">
+						{%- if small_heading != blank -%}
+							<div class="product-recommendations--kicker{{ small_heading_classes }}"{% if small_heading_style != blank %} style="{{ small_heading_style | strip_newlines | strip }}"{% endif %}>{{ small_heading }}</div>
+						{%- endif -%}
+						{%- if section_heading != blank -%}
+							<h2 class="product-recommendations--main-heading{{ heading_classes }}"{% if heading_style != blank %} style="{{ heading_style | strip_newlines | strip }}"{% endif %}>{{ section_heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</h2>
+						{%- endif -%}
+						{%- if section_description != blank -%}
+							<div class="rte">{{ section_description }}</div>
+						{%- endif -%}
+					</div>
+					{%- if is_carousel -%}
+					<div class="product-recommendations--pager">
+						<div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
+						<span class="product-recommendations--pager-count"><span class="product-recommendations--pager-current">1</span> / <span class="product-recommendations--pager-total">1</span></span>
+						<div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
+					</div>
+					{%- endif -%}
+				</div>
+				{%- if is_carousel -%}
+					<slide-show class="product-recommendations--carousel carousel--paged products carousel" data-align="left">
+						{%- for recommendation in recommendations.products -%}
+							<div class="carousel__slide">
+								{% render 'product-card', product_card_product: recommendation %}
+							</div>
+						{%- endfor -%}
+					</slide-show>
+				{%- else -%}
+					<ul class="products collection row small-up-{{ settings.product_card_columns }} medium-up-4 no-padding">
+						{% for recommendation in recommendations.products %}
+							<li class="columns">
+								{% render 'product-card', product_card_product: recommendation %}
+							</li>
+						{% endfor %}
+					</ul>
+				{%- endif -%}
 			{% endif %}
 		</product-recommendations>
 	</div>
@@ -56,6 +134,166 @@
 			"id": "mobile_swipe",
 			"default": true,
 			"label": "Enable swipe on mobile"
+		},
+		{
+			"type": "header",
+			"content": "Products"
+		},
+		{
+			"type": "range",
+			"id": "product_limit",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 4,
+			"label": "Number of products to show",
+			"info": "More than 4 switches to a swipeable carousel with page arrows on desktop. Shopify's recommendations API caps this at 10."
+		},
+		{
+			"type": "header",
+			"content": "Small heading"
+		},
+		{
+			"type": "text",
+			"id": "small_heading",
+			"label": "Small heading",
+			"info": "Optional label shown above the heading. Leave blank to hide."
+		},
+		{
+			"type": "select",
+			"id": "small_heading_font_desktop",
+			"label": "Font (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "small_heading_font_mobile",
+			"label": "Font (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" }
+			],
+			"default": ""
+		},
+		{
+			"type": "range",
+			"id": "small_heading_size_desktop",
+			"min": 0,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Font size (desktop)",
+			"info": "0 uses the theme default size.",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "small_heading_size_mobile",
+			"min": 0,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Font size (mobile)",
+			"info": "0 uses the theme default size.",
+			"default": 0
+		},
+		{
+			"type": "select",
+			"id": "small_heading_case_desktop",
+			"label": "Letter case (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "small_heading_case_mobile",
+			"label": "Letter case (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
+		},
+		{
+			"type": "header",
+			"content": "Heading typography"
+		},
+		{
+			"type": "select",
+			"id": "heading_font_desktop",
+			"label": "Font (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "heading_font_mobile",
+			"label": "Font (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" }
+			],
+			"default": ""
+		},
+		{
+			"type": "range",
+			"id": "heading_size_desktop",
+			"min": 0,
+			"max": 80,
+			"step": 1,
+			"unit": "px",
+			"label": "Font size (desktop)",
+			"info": "0 uses the theme default size.",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "heading_size_mobile",
+			"min": 0,
+			"max": 80,
+			"step": 1,
+			"unit": "px",
+			"label": "Font size (mobile)",
+			"info": "0 uses the theme default size.",
+			"default": 0
+		},
+		{
+			"type": "select",
+			"id": "heading_case_desktop",
+			"label": "Letter case (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "heading_case_mobile",
+			"label": "Letter case (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
 		},
  		{
        "type": "header",

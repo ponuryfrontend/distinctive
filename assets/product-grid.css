@@ -507,3 +507,79 @@
     opacity: 0;
     z-index: 10; }
 }
+
+/* Product recommendations — header row (kicker + heading on the left,
+   page-arrow pager on the right) and the schema-driven typography overrides
+   for both headings. See sections/product-recommendations.liquid. */
+.product-recommendations--header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px; }
+  .product-recommendations--header-content {
+    min-width: 0;
+    flex: 1 1 auto; }
+  .product-recommendations--kicker {
+    display: block;
+    opacity: 0.6;
+    margin-bottom: 6px; }
+  .product-recommendations--main-heading {
+    margin-bottom: 0; }
+
+.product-recommendations--pager {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2px; }
+  @media only screen and (min-width: 1068px) {
+    .product-recommendations--pager {
+      display: flex; } }
+  .product-recommendations--pager .flickity-nav {
+    position: static;
+    display: flex;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    opacity: 1;
+    border: 0;
+    background: transparent; }
+    .product-recommendations--pager .flickity-nav svg {
+      width: 6px;
+      height: auto; }
+  .product-recommendations--pager-count {
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    padding: 0 6px; }
+
+@media only screen and (min-width: 768px) {
+  .rec-kicker--font-desktop { font-family: var(--rec-kicker-font-desktop); }
+  .rec-kicker--size-desktop { font-size: var(--rec-kicker-size-desktop); }
+  .rec-kicker--case-upper-desktop { text-transform: uppercase; }
+  .rec-kicker--case-normal-desktop { text-transform: none; }
+  .rec-heading--font-desktop { font-family: var(--rec-heading-font-desktop); }
+  .rec-heading--size-desktop { font-size: var(--rec-heading-size-desktop); }
+  .rec-heading--case-upper-desktop { text-transform: uppercase; }
+  .rec-heading--case-normal-desktop { text-transform: none; }
+}
+@media only screen and (max-width: 767px) {
+  .rec-kicker--font-mobile { font-family: var(--rec-kicker-font-mobile); }
+  .rec-kicker--size-mobile { font-size: var(--rec-kicker-size-mobile); }
+  .rec-kicker--case-upper-mobile { text-transform: uppercase; }
+  .rec-kicker--case-normal-mobile { text-transform: none; }
+  .rec-heading--font-mobile { font-family: var(--rec-heading-font-mobile); }
+  .rec-heading--size-mobile { font-size: var(--rec-heading-size-mobile); }
+  .rec-heading--case-upper-mobile { text-transform: uppercase; }
+  .rec-heading--case-normal-mobile { text-transform: none; }
+}
+
+/* Product recommendations — carousel variant (more than 4 products). Slide
+   width mirrors the static grid's own breakpoints (small-up-N / medium-up-4)
+   so cards are the same size whether the section renders as a grid or a
+   carousel. */
+.product-recommendations--carousel .carousel__slide {
+  width: 82%; }
+  @media only screen and (min-width: 768px) {
+    .product-recommendations--carousel .carousel__slide {
+      width: 25%; } }

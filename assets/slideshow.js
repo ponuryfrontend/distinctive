@@ -39,7 +39,8 @@ if (!customElements.get('slide-show')) {
         isProducts = slideshow.classList.contains('products'),
         isCustomerReviews = slideshow.classList.contains('customer-reviews--carousel'),
         isCollectionGrid = slideshow.classList.contains('collection-grid__carousel'),
-        isQuickView = slideshow.classList.contains('product-images-quick-view');
+        isQuickView = slideshow.classList.contains('product-images-quick-view'),
+        isPaged = slideshow.classList.contains('carousel--paged');
 
       // ES6 shorthand properties
       const args = {
@@ -265,6 +266,13 @@ if (!customElements.get('slide-show')) {
           }
           slideshow.centerArrows(flickity, slideshow, prev_buttons[0], next_buttons[0]);
         };
+      }
+      // Paged carousels — group cells into full-row "pages" so arrows step a
+      // whole row at a time and selectedIndex/slides map directly to page
+      // number (used by the "1 / 2" pager in product-recommendations.js).
+      if (isPaged) {
+        args.groupCells = true;
+        args.wrapAround = false;
       }
       if (progress_bar) {
         args.wrapAround = false;
