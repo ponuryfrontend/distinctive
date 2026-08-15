@@ -15,6 +15,7 @@
         "slide_Ff6Hif": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/dresy-banner-desktop.jpg",
             "slide_link": "shopify://collections/new-now",
             "video_background": false,
             "video": "",
@@ -30,7 +31,7 @@
             "color_text": "#ffffff",
             "overlay_color": "#ffffff",
             "overlay_opacity": 0,
-            "overlay_gradient": "linear-gradient(180deg, rgba(255, 6, 6, 0.1), rgba(0, 0, 0, 0.4) 100%)",
+            "overlay_gradient": "linear-gradient(180deg, rgba(NaN, NaN, NaN, 1), rgba(0, 0, 0, 0.4) 100%)",
             "button_1_text": "ZNAJDŹ COŚ DLA SIEBIE",
             "button_1_color": "accent",
             "button_1_link": "shopify://collections/new-now",
