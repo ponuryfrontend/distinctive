@@ -264,6 +264,27 @@
         padding-right: 2px; }
     .product-card-quickview[disabled] {
       cursor: not-allowed; }
+    /* Pre-order quick-add button — unlike the normal icon-only-until-hover
+       pill, this one shows "Pre-order" as soon as the card reveals it, then
+       swaps the label to the regular "Add to cart" wording specifically
+       while the button itself is hovered/focused. See
+       snippets/product-card.liquid. */
+    .product-card-quickview.product-card--add-to-cart-button-preorder .product-card--add-to-cart-label-default {
+      max-width: 94px;
+      padding-right: 9px; }
+    .product-card-quickview.product-card--add-to-cart-button-preorder:hover .product-card--add-to-cart-label-default,
+    .product-card-quickview.product-card--add-to-cart-button-preorder:focus .product-card--add-to-cart-label-default {
+      max-width: 0;
+      padding-right: 0; }
+    .product-card-quickview.product-card--add-to-cart-button-preorder:hover .product-card--add-to-cart-label-hover,
+    .product-card-quickview.product-card--add-to-cart-button-preorder:focus .product-card--add-to-cart-label-hover {
+      max-width: 94px;
+      padding-right: 9px; }
+      [dir="rtl"] .product-card-quickview.product-card--add-to-cart-button-preorder .product-card--add-to-cart-label-default,
+      [dir="rtl"] .product-card-quickview.product-card--add-to-cart-button-preorder:hover .product-card--add-to-cart-label-hover,
+      [dir="rtl"] .product-card-quickview.product-card--add-to-cart-button-preorder:focus .product-card--add-to-cart-label-hover {
+        padding-left: 15px;
+        padding-right: 2px; }
   .product-card-sizes {
     grid-gap: 5px;
     grid-auto-flow: column;

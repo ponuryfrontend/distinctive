@@ -73,20 +73,25 @@
 			{%- endif -%}
 			{%- if settings.enable_quick_add -%}
 				{%- liquid
+					assign is_preorder_button = false
 					if product_card_product.selected_or_first_available_variant.available == false
 						assign button_content = 'products.product.sold_out' | t
 					else
 						if product_card_product.metafields.theme.preorder and product_card_product.available
+							assign is_preorder_button = true
 							assign button_content = 'products.product.pre_order' | t
 						else
 							assign button_content = 'products.product.add_to_cart' | t
 						endif
 					endif
 				-%}
-				<quick-view class="product-card-quickview product-card--add-to-cart-button{% if is_purchasable %} product-card--add-to-cart-button-simple{% endif %}" data-product-handle="{{ product_card_product.handle }}" data-product-id="{{ product_card_product.selected_or_first_available_variant.id }}" tabindex="-1" {% if product_card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+				<quick-view class="product-card-quickview product-card--add-to-cart-button{% if is_purchasable %} product-card--add-to-cart-button-simple{% endif %}{% if is_preorder_button %} product-card--add-to-cart-button-preorder{% endif %}" data-product-handle="{{ product_card_product.handle }}" data-product-id="{{ product_card_product.selected_or_first_available_variant.id }}" tabindex="-1" {% if product_card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
 					{% render 'svg-icons' with 'quick-add-to-cart' %}
 					{% render 'svg-icons' with 'thb-loading' %}
-					<span>{{ button_content }}</span>
+					<span class="product-card--add-to-cart-label-default">{{ button_content }}</span>
+					{%- if is_preorder_button -%}
+						<span class="product-card--add-to-cart-label-hover">{{ 'products.product.add_to_cart' | t }}</span>
+					{%- endif -%}
 				</quick-view>
 			{%- endif -%}
     </a>
