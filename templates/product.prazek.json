@@ -119,12 +119,6 @@
             "product_list_limit": 8
           }
         },
-        "custom_liquid_M4zQym": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"projector_points_wrapper\"></div>"
-          }
-        },
         "side_panel_PgPAFz": {
           "type": "side_panel",
           "disabled": true,
@@ -187,7 +181,6 @@
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
-        "custom_liquid_M4zQym",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "collapsible_tab_MrtDzH",
