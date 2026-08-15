@@ -351,7 +351,16 @@
   height: auto; }
   @media only screen and (max-width: 767px) {
     .shopify-design-mode .product-images {
-      height: auto; } }
+      height: auto; }
+    /* See matching comment in product.css — .flickity-viewport (which
+       carries the real full-height mobile styling below) only exists once
+       Flickity has constructed it, a frame or more after first paint, so
+       without this the container sat at height: auto (sized by the first
+       slide's natural aspect ratio, close to how the desktop stacked
+       gallery looks) until Flickity caught up and visibly snapped it to
+       this full-height cropped layout. */
+    .product-images {
+      height: calc(100svh - var(--header-height, 60px) - var(--announcement-height, 0px)); } }
   @media only screen and (min-width: 768px) {
     .product-images {
       height: calc(100vh - var(--announcement-height, 0px) - 1px); }

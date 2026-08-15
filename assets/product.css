@@ -469,7 +469,22 @@
   height: auto; }
   @media only screen and (max-width: 767px) {
     .shopify-design-mode .product-images {
-      height: auto; } }
+      height: auto; }
+    /* Match the full-height, cropped mobile treatment below
+       (.product-images .flickity-viewport at this same breakpoint) on the
+       container itself, not just on .flickity-viewport — that wrapper
+       element only exists once Flickity has actually constructed it (a
+       DOM node Flickity creates and inserts itself), which happens a
+       frame or more after first paint (see the requestAnimationFrame-
+       deferred init() in product.js). Until then this container was only
+       height: auto, sized by its first slide's own natural aspect-ratio
+       box — visually close to how the desktop stacked gallery looks —
+       so the very first paint showed that, then visibly snapped to the
+       full-height cropped mobile layout once Flickity caught up. Sizing
+       the container correctly from first paint removes that jump; the
+       .flickity-viewport rule stays as-is for once it does exist. */
+    .product-images {
+      height: calc(100svh - var(--header-height, 60px) - var(--announcement-height, 0px)); } }
   @media only screen and (min-width: 768px) {
     .product-images {
       height: calc(100vh - var(--announcement-height, 0px) - 1px); }
