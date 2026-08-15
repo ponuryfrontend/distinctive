@@ -14,7 +14,6 @@
       "blocks": {
         "slide_Ff6Hif": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/dresy-banner-desktop.jpg",
             "mobile_image": "shopify://shop_images/dresy-banner-mobile.jpg",
