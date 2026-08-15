@@ -51,6 +51,7 @@
         },
         "slide_ye8yLD": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/dresy-banner-desktop-2.jpg",
             "mobile_image": "shopify://shop_images/dresy-banner-mobile-2.jpg",
