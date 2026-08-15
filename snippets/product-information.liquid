@@ -6,6 +6,11 @@
     {%- case block.type -%}
     {%- when '@app' -%}
       {% render block %}
+    {%- when 'breadcrumbs' -%}
+      {%- comment -%} Same trail/logic as the standalone Breadcrumbs section (snippets/breadcrumbs.liquid), just placeable inside Product information as a block. {%- endcomment -%}
+      <div class="product-information--breadcrumbs" {{ block.shopify_attributes }}>
+        {%- render 'breadcrumbs' -%}
+      </div>
     {%- when 'label' -%}
       {%- render 'product-card-labels', product: product -%}
     {%- when 'text' -%}

@@ -920,6 +920,15 @@
         margin-left: calc(var(--info-padding-x, 40px) * -1);
         width: calc(100% + (var(--info-padding-x, 40px) * 2)); } }
 
+/* The `breadcrumbs` block reuses snippets/breadcrumbs.liquid as-is, whose
+   .breadcrumbs class carries its own padding sized for a full-width
+   standalone section — zero it out here so it aligns with the rest of the
+   Product information content instead of adding a second layer of padding. */
+.thb-product-detail .product-information--breadcrumbs {
+  margin-bottom: 12px; }
+  .thb-product-detail .product-information--breadcrumbs .breadcrumbs {
+    padding: 0; }
+
 @media only screen and (min-width: 1068px) {
   .thb-product-detail.featured-product .product-information {
     padding-top: 40px; } }
