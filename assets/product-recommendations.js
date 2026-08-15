@@ -22,15 +22,21 @@ class ProductRecommendations extends HTMLElement {
 				this.setupEvents();
 
 				// The product images just inserted above are lazysizes' usual
-				// <img class="lazyload" data-src="..."> — but lazysizes only scans
-				// for new candidates on its own triggers (scroll, resize, DOM
-				// mutations it's watching). Injecting a big chunk of markup via
-				// innerHTML doesn't reliably fire one of those on its own, so
-				// without an explicit checkElems() call these images silently sit
-				// unloaded until something else on the page happens to trigger a
-				// recheck later (e.g. another lazyload section coming into view).
+				// <img class="lazyload" data-src="..."> — but lazysizes decides
+				// whether to load each one based on scroll position at the moment
+				// it notices the element, and this carousel is usually still below
+				// the fold when this fetch resolves. checkElems() alone re-queues
+				// them for that same scroll-position check, so if they're not near
+				// the viewport yet it still skips them — same as leaving lazysizes
+				// to its own devices, which is what left them stuck unloaded until
+				// something else further down the page happened to trigger a
+				// recheck. unveil() sidesteps that decision entirely and loads
+				// each one immediately, same pattern used in app.js for hover-swap
+				// images.
 				if (typeof lazySizes !== 'undefined') {
-					lazySizes.loader.checkElems();
+					this.querySelectorAll('.lazyload').forEach((el) => {
+						lazySizes.loader.unveil(el);
+					});
 				}
 
 				setTimeout(() => {
