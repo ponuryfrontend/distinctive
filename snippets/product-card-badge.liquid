@@ -39,10 +39,17 @@
 		{%- endif -%}
 	</span>
 	{%- endif -%}
+	{%- comment -%}
+		Pre-order badge temporarily hidden on product cards (collections, search,
+		related products, etc.) per request. The PDP's own pre-order badge in
+		snippets/product-price.liquid is untouched. To re-enable, uncomment below.
+	{%- endcomment -%}
+	{%- comment -%}
 	{%- if product_card_product.metafields.theme.preorder and product_card_product.available -%}
 	<span class="badge pre-order">
 		{{ 'products.product.pre_order' | t }}
 	</span>
 	{%- endif -%}
+	{%- endcomment -%}
 	{{ custom_badges }}
 </div>
