@@ -570,21 +570,8 @@
   .product-images .flickity-page-dots .dot:hover {
     opacity: 1; }
 
-/* Desktop gallery: vertical scroll instead of Flickity carousel.
-   This targets every gallery at this width EXCEPT the quick-view drawer
-   (`.product-images-quick-view`, set server-side in the Liquid markup) —
-   deliberately a plain media query + class-on-the-element-itself instead of
-   a class product.js adds at runtime, so the correct (full-width) image
-   sizing applies from first paint. Waiting for JS meant the old, smaller
-   height-based sizing rendered for a frame or two first, then jumped to
-   this one once the script caught up. */
 @media only screen and (min-width: 1068px) {
   .product-images:not(.product-images-quick-view) {
-    /* Plain continuous scroll — no scroll-snap. Snap containers trap wheel
-       momentum at their last stop instead of handing it to the page (this is
-       what caused the janky handoff), so we deliberately don't use it here.
-       The `.product-information` column next to it already scrolls smoothly
-       this same way. */
     overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior-y: auto; /* let the wheel/touch scroll hand off to the page once the gallery hits its top/bottom edge */
@@ -602,18 +589,12 @@
     width: 100%;
     height: auto;
     padding-left: 0; }
-    /* `.thb-product-detail` here isn't just scoping — it also bumps the
-       specificity above the `:not(.flickity-enabled)` pre-init fallback
-       above, which would otherwise still win this tie before product.js has
-       run (see the comment on that rule). */
     .thb-product-detail .product-images:not(.product-images-quick-view) .product-images__slide.is-active {
       display: block; }
     .thb-product-detail .product-images:not(.product-images-quick-view) > .product-images__slide:first-child:not(.is-active) {
       display: none; }
     .product-images:not(.product-images-quick-view) .product-images__slide.is-active:not(:first-child) {
       margin-top: 4px; }
-  /* Image fills the full gallery-column width instead of being letterboxed
-     at a fixed viewport-height size. */
   .product-images:not(.product-images-quick-view) .product-single__media-image {
     height: auto;
     min-height: 0; }
@@ -857,21 +838,9 @@
       padding: 40px; } }
   @media only screen and (min-width: 1068px) {
     .thb-product-detail .product-information {
-      /* Fallback matters here: --header-height is only set once header.js
-         measures the real header element (assets/header.js), not before
-         first paint. Without a fallback, `var(--header-height)` resolves to
-         nothing, the whole calc() becomes invalid, padding-top silently
-         drops to 0 — then jumps down once JS catches up a moment later. */
       padding-top: calc(var(--header-height, 86px) + 30px);
       overflow-y: auto;
       max-height: 100%; } }
-  /* theodderside.com/products/10326 caps its equivalent content
-     (.product__details) at max-width:428px and centers it inside the wider
-     column via its flex parent — same idea here, but on the inner wrapper
-     rather than on `.product-information` itself: that element is the one
-     that scrolls on hover (see scroll-shadow.js), so it has to stay the
-     full column width, or hovering the "breathing room" on either side
-     would scroll the page instead of this panel. */
   @media only screen and (min-width: 1068px) {
     .thb-product-detail .product-information--inner {
       max-width: 428px;
@@ -914,11 +883,6 @@
       .thb-product-detail .product-information--line {
         margin-left: -40px;
         width: calc(100% + 80px); } }
-
-/* The `breadcrumbs` block reuses snippets/breadcrumbs.liquid as-is, whose
-   .breadcrumbs class carries its own padding sized for a full-width
-   standalone section — zero it out here so it aligns with the rest of the
-   Product information content instead of adding a second layer of padding. */
 .thb-product-detail .product-information--breadcrumbs {
   margin-bottom: 12px; }
   .thb-product-detail .product-information--breadcrumbs .breadcrumbs {
