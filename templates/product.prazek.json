@@ -259,6 +259,16 @@
         "disable_bottom_spacing": true
       }
     },
+    "spacer_TXaymg": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "product_seo_text_section_J9iqUG": {
       "type": "product-seo-text-section",
       "name": "SEO Text (produkt)",
@@ -299,6 +309,7 @@
     "main",
     "cf419534-b576-4781-b418-495982d63b57",
     "recommendations",
+    "spacer_TXaymg",
     "product_seo_text_section_J9iqUG",
     "17867838500379beae"
   ]
