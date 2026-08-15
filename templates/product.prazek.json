@@ -33,7 +33,7 @@
           "settings": {
             "uppercase": false,
             "show_products_rating": false,
-            "show_custom_badges": true
+            "show_custom_badges": false
           }
         },
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR": {
