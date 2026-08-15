@@ -857,7 +857,12 @@
       padding: 40px; } }
   @media only screen and (min-width: 1068px) {
     .thb-product-detail .product-information {
-      padding-top: calc(var(--header-height) + 30px);
+      /* Fallback matters here: --header-height is only set once header.js
+         measures the real header element (assets/header.js), not before
+         first paint. Without a fallback, `var(--header-height)` resolves to
+         nothing, the whole calc() becomes invalid, padding-top silently
+         drops to 0 — then jumps down once JS catches up a moment later. */
+      padding-top: calc(var(--header-height, 86px) + 30px);
       overflow-y: auto;
       max-height: 100%;
       /* Now that the column itself is a full 50% of the viewport, keep the
