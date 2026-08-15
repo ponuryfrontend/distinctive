@@ -645,19 +645,12 @@
 
 .complementary-products--heading {
   font-size: 0.8125rem;
-  letter-spacing: 0.08em;
   text-transform: uppercase; }
   .complementary-products--heading-case-upper { text-transform: uppercase; }
   .complementary-products--heading-case-lower { text-transform: lowercase; }
   .complementary-products--heading-case-capitalize { text-transform: capitalize; }
   .complementary-products--heading-case-normal { text-transform: none; }
 
-/* Pager reuses .product-recommendations--pager for its JS hook (see
-   product-recommendations.js#setupPager) and base layout, but that class
-   also carries `display: none` below 1068px in the rule above — this block
-   should page identically on mobile and desktop, so the compound selector
-   (higher specificity than either single-class rule) keeps it visible at
-   every width. */
 .complementary-products--pager.product-recommendations--pager {
   display: flex; }
 
