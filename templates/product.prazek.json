@@ -16,6 +16,14 @@
           "type": "breadcrumbs",
           "settings": {}
         },
+        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewAvgProfile/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "custom_css": ".gw-rv-average {margin-top: .8em;}",
+            "element_to_scroll_id": "",
+            "element_to_click_id": ""
+          }
+        },
         "ed7d166d-5568-4e1a-9c05-eeffaad02629": {
           "type": "label",
           "settings": {}
@@ -46,14 +54,6 @@
             "add_after_rounding": 0,
             "exclude_tag": "",
             "exclude_market": ""
-          }
-        },
-        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a": {
-          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewAvgProfile/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-          "settings": {
-            "custom_css": ".gw-rv-average {margin-top: .8em;}",
-            "element_to_scroll_id": "",
-            "element_to_click_id": ""
           }
         },
         "custom_liquid_NUqWbL": {
@@ -175,10 +175,10 @@
       },
       "block_order": [
         "breadcrumbs_j8LCJz",
+        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a",
         "ed7d166d-5568-4e1a-9c05-eeffaad02629",
         "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
-        "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a",
         "custom_liquid_NUqWbL",
         "siblings_6ytCwm",
         "inventory_level_iwYp9t",
