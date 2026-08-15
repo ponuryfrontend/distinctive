@@ -670,13 +670,22 @@
    own BEM classes rather than reusing .product-recommendations--complementary
    / --heading / --products, which snippets/cart-drawer.liquid still relies
    on for its compact cart-drawer widget — sharing those classes here would
-   restyle the cart drawer too. */
-.complementary-products {
+   restyle the cart drawer too.
+   Selector repeats .product-recommendations (also on this same element —
+   see snippets/product-information.liquid) on purpose: product.css /
+   featured-product.css set `.product-recommendations { display: none; }`
+   by default (revealed only once JS adds --loaded). That's a single-class
+   selector, same specificity as `.complementary-products` alone, so which
+   one wins came down to which of several duplicate <link> tags for these
+   two stylesheets happened to apply last — this element was intermittently
+   stuck at display: none depending on load order. Two classes beats one,
+   unconditionally, regardless of stylesheet order. */
+.product-recommendations.complementary-products {
   display: block;
   margin-top: var(--cp-margin-top-desktop, 40px);
   margin-bottom: var(--cp-margin-bottom-desktop, 40px); }
   @media only screen and (max-width: 767px) {
-    .complementary-products {
+    .product-recommendations.complementary-products {
       margin-top: var(--cp-margin-top-mobile, 28px);
       margin-bottom: var(--cp-margin-bottom-mobile, 28px); } }
 
