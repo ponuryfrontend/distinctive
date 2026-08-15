@@ -142,6 +142,28 @@
       .js .animations-true .product-card .product-featured-image-link {
         opacity: 0;
         transform: scale(1.15); }
+      /* Complementary products / Product recommendations cards, exempted
+         from the reveal-on-scroll animation above. Both live inside (or,
+         for Complementary products specifically, get their card markup
+         injected into) .thb-product-detail .product-information — which
+         gets `overflow-y: auto; max-height: 100%` from 1068px up (see
+         product.css), turning it into its own independently-scrolling
+         container. GSAP ScrollTrigger's default "start: top 90%" trigger
+         (assets/product-recommendations.js) tracks the window's scroll
+         position, not this nested container's own scrollbar, so on desktop
+         these cards' entrance animation never fires from a real scroll —
+         only an unrelated later ScrollTrigger.refresh() elsewhere on the
+         page (which re-checks current state directly) would happen to
+         reveal them. Skip the scroll-triggered animation for these
+         specifically and just show them as soon as they're loaded.
+         Selectors repeat .js/.animations-true so this wins on specificity
+         (4 classes vs 4 classes, same weight, but this rule comes later in
+         the file) rather than relying on source order against a selector
+         of equal or higher weight. */
+      .js .animations-true .complementary-products .product-card .product-featured-image-link,
+      .js .animations-true .product-recommendations .product-card .product-featured-image-link {
+        opacity: 1;
+        transform: none; }
       .product-card .product-featured-image-link img,
       .product-card .product-featured-image-link video {
         position: absolute;
