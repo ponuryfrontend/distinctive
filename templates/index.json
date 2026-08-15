@@ -243,7 +243,7 @@
         "show_view_all": true,
         "mobile_swipe": false,
         "show_progress_bar": false,
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
