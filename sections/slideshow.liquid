@@ -60,10 +60,41 @@
 			assign overlay_opacity = block.settings.overlay_opacity
 			assign color_text = block.settings.color_text
 
+			assign subheading_size_d = block.settings.subheading_font_size_desktop
+			assign subheading_size_m = block.settings.subheading_font_size_mobile
+			assign heading_font_size_d = block.settings.heading_font_size_desktop
+			assign heading_font_size_m = block.settings.heading_font_size_mobile
+			assign description_font_size_d = block.settings.description_font_size_desktop
+			assign description_font_size_m = block.settings.description_font_size_mobile
+
 			if forloop.index == 1 and preload
 				assign priority = 'high'
 			endif
 		-%}
+		{%- capture subheading_classes -%}
+			{%- if subheading_size_d > 0 %} subheading--size-desktop{% endif -%}
+			{%- if subheading_size_m > 0 %} subheading--size-mobile{% endif -%}
+		{%- endcapture -%}
+		{%- capture subheading_style -%}
+			{%- if subheading_size_d > 0 -%}--subheading-size-desktop: {{ subheading_size_d }}px;{%- endif -%}
+			{%- if subheading_size_m > 0 -%}--subheading-size-mobile: {{ subheading_size_m }}px;{%- endif -%}
+		{%- endcapture -%}
+		{%- capture heading_font_classes -%}
+			{%- if heading_font_size_d > 0 %} slideshow__slide-heading--size-desktop{% endif -%}
+			{%- if heading_font_size_m > 0 %} slideshow__slide-heading--size-mobile{% endif -%}
+		{%- endcapture -%}
+		{%- capture heading_font_style -%}
+			{%- if heading_font_size_d > 0 -%}--slideshow-heading-size-desktop: {{ heading_font_size_d }}px;{%- endif -%}
+			{%- if heading_font_size_m > 0 -%}--slideshow-heading-size-mobile: {{ heading_font_size_m }}px;{%- endif -%}
+		{%- endcapture -%}
+		{%- capture description_font_classes -%}
+			{%- if description_font_size_d > 0 %} slideshow__slide-description--size-desktop{% endif -%}
+			{%- if description_font_size_m > 0 %} slideshow__slide-description--size-mobile{% endif -%}
+		{%- endcapture -%}
+		{%- capture description_font_style -%}
+			{%- if description_font_size_d > 0 -%}--slideshow-description-size-desktop: {{ description_font_size_d }}px;{%- endif -%}
+			{%- if description_font_size_m > 0 -%}--slideshow-description-size-mobile: {{ description_font_size_m }}px;{%- endif -%}
+		{%- endcapture -%}
 		<div class="slideshow__slide carousel__slide {{ mobile_height }} {{ desktop_height }} text-{{ text_alignment }} content-size-{{ content_size }}{% if forloop.index == 1 %} is-initial-selected{% endif %}" style="--color-text: {{ color_text }}; --color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }};" {{ block.shopify_attributes }}>
 			{%- if desktop_height == 'desktop-height-image' or mobile_height == 'mobile-height-image' -%}
 				<div class="slideshow__slide-adapt-to-image">
@@ -154,13 +185,13 @@
 			<div class="slideshow__slide-inner content-{{ content_position }}">
 				<div class="slideshow__slide-content">
 					{% if block.settings.subheading != blank %}
-						<p class="subheading">{{ block.settings.subheading }}</p>
+						<p class="subheading{{ subheading_classes }}"{% if subheading_style != blank %} style="{{ subheading_style | strip_newlines | strip }}"{% endif %}>{{ block.settings.subheading }}</p>
 					{% endif %}
 					{% if block.settings.heading != blank %}
-						<div class="split-text slideshow__slide-heading {{ block.settings.heading_size }}">{{ block.settings.heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
+						<div class="split-text slideshow__slide-heading {{ block.settings.heading_size }}{{ heading_font_classes }}"{% if heading_font_style != blank %} style="{{ heading_font_style | strip_newlines | strip }}"{% endif %}>{{ block.settings.heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</div>
 					{% endif %}
 					{% if block.settings.content != blank %}
-					<p class="split-text description-size--{{ block.settings.description_size }}">{{ block.settings.content | newline_to_br }}</p>
+					<p class="split-text description-size--{{ block.settings.description_size }}{{ description_font_classes }}"{% if description_font_style != blank %} style="{{ description_font_style | strip_newlines | strip }}"{% endif %}>{{ block.settings.content | newline_to_br }}</p>
 					{% endif %}
 					{% if block.settings.button_1_text != blank %}
 						{% if block.settings.use_text_button_1 %}
@@ -466,6 +497,28 @@
 						"label": "Subheading",
 						"default": "Add a tagline"
 					},
+					{
+						"type": "range",
+						"id": "subheading_font_size_desktop",
+						"min": 0,
+						"max": 40,
+						"step": 1,
+						"unit": "px",
+						"label": "Subheading font size (desktop)",
+						"info": "0 uses the theme default size.",
+						"default": 0
+					},
+					{
+						"type": "range",
+						"id": "subheading_font_size_mobile",
+						"min": 0,
+						"max": 40,
+						"step": 1,
+						"unit": "px",
+						"label": "Subheading font size (mobile)",
+						"info": "0 uses the theme default size.",
+						"default": 0
+					},
           {
             "type": "textarea",
             "id": "heading",
@@ -497,6 +550,28 @@
 						],
 						"default": "h1-xlarge"
 					},
+					{
+						"type": "range",
+						"id": "heading_font_size_desktop",
+						"min": 0,
+						"max": 120,
+						"step": 1,
+						"unit": "px",
+						"label": "Heading font size (desktop)",
+						"info": "0 uses the \"Heading size\" preset above.",
+						"default": 0
+					},
+					{
+						"type": "range",
+						"id": "heading_font_size_mobile",
+						"min": 0,
+						"max": 80,
+						"step": 1,
+						"unit": "px",
+						"label": "Heading font size (mobile)",
+						"info": "0 uses the \"Heading size\" preset above.",
+						"default": 0
+					},
           {
             "type": "textarea",
             "id": "content",
@@ -522,6 +597,28 @@
 							}
 						],
 						"default": "medium"
+					},
+					{
+						"type": "range",
+						"id": "description_font_size_desktop",
+						"min": 0,
+						"max": 40,
+						"step": 1,
+						"unit": "px",
+						"label": "Description font size (desktop)",
+						"info": "0 uses the \"Description size\" preset above.",
+						"default": 0
+					},
+					{
+						"type": "range",
+						"id": "description_font_size_mobile",
+						"min": 0,
+						"max": 40,
+						"step": 1,
+						"unit": "px",
+						"label": "Description font size (mobile)",
+						"info": "0 uses the \"Description size\" preset above.",
+						"default": 0
 					},
 					{
 						 "type": "select",

@@ -48,6 +48,26 @@
         font-size: 1.5rem; } }
     .js .animations-true .slideshow__slide .subheading {
       opacity: 0; }
+    /* Per-slide font size overrides (subheading / heading / description),
+       set from the "slide" block settings — see sections/slideshow.liquid.
+       Selectors repeat the base class alongside .slideshow__slide so they
+       out-specificity the shared .subheading / heading-size presets /
+       description-size--medium|large rules above and elsewhere in the
+       theme, without touching those shared rules themselves. */
+    @media only screen and (min-width: 768px) {
+      .slideshow__slide .subheading.subheading--size-desktop {
+        font-size: var(--subheading-size-desktop); }
+      .slideshow__slide .slideshow__slide-heading.slideshow__slide-heading--size-desktop {
+        font-size: var(--slideshow-heading-size-desktop); }
+      .slideshow__slide p.split-text.slideshow__slide-description--size-desktop {
+        font-size: var(--slideshow-description-size-desktop); } }
+    @media only screen and (max-width: 767px) {
+      .slideshow__slide .subheading.subheading--size-mobile {
+        font-size: var(--subheading-size-mobile); }
+      .slideshow__slide .slideshow__slide-heading.slideshow__slide-heading--size-mobile {
+        font-size: var(--slideshow-heading-size-mobile); }
+      .slideshow__slide p.split-text.slideshow__slide-description--size-mobile {
+        font-size: var(--slideshow-description-size-mobile); } }
     .slideshow__slide-inner {
       display: flex;
       flex-shrink: 0;
