@@ -864,16 +864,19 @@
          drops to 0 — then jumps down once JS catches up a moment later. */
       padding-top: calc(var(--header-height, 86px) + 30px);
       overflow-y: auto;
-      max-height: 100%;
-      /* Now that the column itself is a full 50% of the viewport, keep the
-         content from stretching edge-to-edge by growing the side padding
-         instead of shrinking the element with max-width/margin:auto — the
-         element scrolls on hover (see scroll-shadow.js), so its box has to
-         stay the full column width or hovering the "breathing room" on
-         either side would scroll the page instead of this panel. */
-      --info-padding-x: max(40px, calc((100% - 560px) / 2));
-      padding-left: var(--info-padding-x);
-      padding-right: var(--info-padding-x); } }
+      max-height: 100%; } }
+  /* theodderside.com/products/10326 caps its equivalent content
+     (.product__details) at max-width:428px and centers it inside the wider
+     column via its flex parent — same idea here, but on the inner wrapper
+     rather than on `.product-information` itself: that element is the one
+     that scrolls on hover (see scroll-shadow.js), so it has to stay the
+     full column width, or hovering the "breathing room" on either side
+     would scroll the page instead of this panel. */
+  @media only screen and (min-width: 1068px) {
+    .thb-product-detail .product-information--inner {
+      max-width: 428px;
+      margin-left: auto;
+      margin-right: auto; } }
   .thb-product-detail .product-information--container {
     --scroll-shadow-size: 40; }
     @media only screen and (min-width: 1068px) {
@@ -902,15 +905,6 @@
         [dir="rtl"] .thb-product-detail .product-information .accordion {
           margin-left: -15px;
           margin-right: -40px; } }
-    @media only screen and (min-width: 1068px) {
-      .thb-product-detail .product-information .accordion {
-        margin-left: calc(var(--info-padding-x, 40px) * -1);
-        width: calc(100% + (var(--info-padding-x, 40px) * 2));
-        padding-left: var(--info-padding-x, 40px);
-        padding-right: var(--info-padding-x, 40px); }
-        [dir="rtl"] .thb-product-detail .product-information .accordion {
-          margin-left: calc(var(--info-padding-x, 40px) * -1);
-          margin-right: calc(var(--info-padding-x, 40px) * -1); } }
   .thb-product-detail .product-information--line {
     margin-left: -15px;
     width: calc(100% + 30px);
@@ -920,10 +914,6 @@
       .thb-product-detail .product-information--line {
         margin-left: -40px;
         width: calc(100% + 80px); } }
-    @media only screen and (min-width: 1068px) {
-      .thb-product-detail .product-information--line {
-        margin-left: calc(var(--info-padding-x, 40px) * -1);
-        width: calc(100% + (var(--info-padding-x, 40px) * 2)); } }
 
 /* The `breadcrumbs` block reuses snippets/breadcrumbs.liquid as-is, whose
    .breadcrumbs class carries its own padding sized for a full-width
