@@ -18,6 +18,7 @@
         },
         "growave_loyalty_wishlist_block_product_review_avg_profile_RiUU3a": {
           "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewAvgProfile/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "disabled": true,
           "settings": {
             "custom_css": ".gw-rv-average {margin-top: .8em;}",
             "element_to_scroll_id": "",
