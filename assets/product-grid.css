@@ -603,9 +603,14 @@
 /* Product recommendations — carousel variant (more than 4 products). Slide
    width mirrors the static grid's own breakpoints (small-up-N / medium-up-4)
    so cards are the same size whether the section renders as a grid or a
-   carousel. */
-.product-recommendations--carousel .carousel__slide {
+   carousel.
+   Selector repeats .products.carousel (already on the same element as
+   .product-recommendations--carousel) to out-specificity the generic
+   ".products.carousel .carousel__slide { width: 100%; }" rule above —
+   otherwise that rule wins and every slide renders full-width regardless
+   of screen size. */
+.products.carousel.product-recommendations--carousel .carousel__slide {
   width: 82%; }
   @media only screen and (min-width: 768px) {
-    .product-recommendations--carousel .carousel__slide {
+    .products.carousel.product-recommendations--carousel .carousel__slide {
       width: 25%; } }
