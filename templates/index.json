@@ -86,7 +86,7 @@
         "autoplay": true,
         "autoplay_length": 5,
         "transition": "slide",
-        "dot_style": "titles",
+        "dot_style": "regular",
         "dot_alignment": "center",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
