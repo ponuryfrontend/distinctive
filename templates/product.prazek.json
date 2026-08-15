@@ -140,7 +140,7 @@
             "heading_font_size_desktop": 13,
             "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
-            "open": false,
+            "open": true,
             "content": "",
             "page": "",
             "custom_liquid": "{{ product.description }}"
@@ -161,6 +161,7 @@
         },
         "collapsible_tab_Ca3CWD": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Wymiary",
             "heading_font_size_desktop": 13,
@@ -174,6 +175,7 @@
         },
         "collapsible_tab_iJTc83": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Płatności i dostawy",
             "heading_font_size_desktop": 13,
