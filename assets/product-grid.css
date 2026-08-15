@@ -629,9 +629,13 @@
    .product-recommendations--carousel) to out-specificity the generic
    ".products.carousel .carousel__slide { width: 100%; }" rule above —
    otherwise that rule wins and every slide renders full-width regardless
-   of screen size. */
+   of screen size.
+   Mobile now mirrors the same block-paging structure as
+   .complementary-products--carousel (2 slides per page, exact width so
+   groupCells pages by whole rows) instead of the old 82% single-item peek
+   width — everything else about this section is unchanged. */
 .products.carousel.product-recommendations--carousel .carousel__slide {
-  width: 82%; }
+  width: 50%; }
   @media only screen and (min-width: 768px) {
     .products.carousel.product-recommendations--carousel .carousel__slide {
       /* Gap between images is padding, not margin — with border-box sizing
@@ -641,6 +645,16 @@
          width past 100% and break that grouping as gap/product count grow. */
       width: 25%;
       padding-right: var(--rec-carousel-gap-desktop, 0px); } }
+
+/* ...and the pager (prev/next + "1 / 2") that goes with that mobile paging
+   structure needs to actually be visible below 1068px to use it — the base
+   .product-recommendations--pager rule only shows it from 1068px up. This
+   media query is declared after that rule so it wins the (otherwise tied)
+   cascade specifically in the sub-768px range; 768px–1067px keeps the
+   existing hidden-pager behavior unchanged. */
+@media only screen and (max-width: 767px) {
+  .product-recommendations--pager {
+    display: flex; } }
 
 /* Complementary products — PDP "Product information" block ("Połącz w
    zestaw z:"). Deliberately scoped under .complementary-products and its
