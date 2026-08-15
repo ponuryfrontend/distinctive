@@ -56,15 +56,9 @@
             "exclude_market": ""
           }
         },
-        "custom_liquid_NUqWbL": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "{%- render 'price-indication', product:product -%}"
-          }
-        },
         "siblings_6ytCwm": {
           "type": "siblings",
+          "disabled": true,
           "settings": {
             "siblings_collection": "{{ product.metafields.theme.siblings.value }}",
             "sibling_color": "{{ product.metafields.theme.sibling_color.value }}",
@@ -81,6 +75,20 @@
             "inventory_notice_bar": false,
             "inventory_notice_threshold": 2,
             "inventory_notice_base": 30
+          }
+        },
+        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_size": "small",
+            "color_picker_use_variants": false,
+            "variant_is_disabled": false,
+            "sizing_guide_variant": "Rozmiar",
+            "sizing_guide_text": "Dobierz swój rozmiar",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": "tabela-rozmiarow"
           }
         },
         "3184ed78-b74d-40cc-a072-56e6212c92ea": {
@@ -100,20 +108,6 @@
             "option_button_class": "",
             "custom_css": "",
             "shadow_root_options": "null"
-          }
-        },
-        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "color_picker": true,
-            "color_picker_size": "small",
-            "color_picker_use_variants": false,
-            "variant_is_disabled": false,
-            "sizing_guide_variant": "Rozmiar",
-            "sizing_guide_text": "Dobierz swój rozmiar",
-            "sizing_guide_icon": "ruler",
-            "sizing_guide_page": "tabela-rozmiarow"
           }
         },
         "ac30e733-fe79-471f-a9b6-72b10279036c": {
@@ -179,12 +173,11 @@
         "ed7d166d-5568-4e1a-9c05-eeffaad02629",
         "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
-        "custom_liquid_NUqWbL",
         "siblings_6ytCwm",
         "inventory_level_iwYp9t",
+        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "3184ed78-b74d-40cc-a072-56e6212c92ea",
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
-        "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
