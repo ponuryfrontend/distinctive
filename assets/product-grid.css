@@ -550,7 +550,7 @@
     background: rgba(0, 0, 0, 0.15);
     transition: background 0.3s ease; }
   .product-card-indicator.is-active {
-    background: #000; }
+    background: #301C18; }
 }
 @media only screen and (min-width: 768px) {
   .product-card-indicators {
