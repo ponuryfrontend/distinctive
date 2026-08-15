@@ -22,12 +22,25 @@
   if color_group != blank
     assign sibling_handles = color_group.product_handles.value
   endif
+
+  # Current product's own color name, for the visible "Kolor: X" label above
+  # the swatches — same shopify['color-pattern'] taxonomy field read for each
+  # sibling further down.
+  assign current_color_meta = product.metafields.shopify['color-pattern']
+  assign current_color_obj  = nil
+  for color_entry in current_color_meta.value
+    assign current_color_obj = color_entry
+    break
+  endfor
+  assign current_color_name = current_color_obj.label | default: product.title
 -%}
 
 {%- if sibling_handles and sibling_handles.size > 1 -%}
   {{ 'color-swatches.css' | asset_url | stylesheet_tag }}
 
-  <div class="product-color-swatches" aria-label="Wybierz kolor">
+  <div class="product-form__input product-form__input--color-swatches">
+    <div class="form__label">{{ 'products.product.siblings.label' | t }}: <span class="form__label__value">{{ current_color_name }}</span></div>
+    <div class="product-color-swatches" aria-label="Wybierz kolor">
     {%- for handle in sibling_handles -%}
       {%- liquid
         assign sibling    = all_products[handle]
@@ -69,5 +82,6 @@
         ></a>
       {%- endif -%}
     {%- endfor -%}
+    </div>
   </div>
 {%- endif -%}
