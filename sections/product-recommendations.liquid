@@ -12,6 +12,7 @@
 
 	assign product_limit = section.settings.product_limit | default: 4
 	assign carousel_gap_desktop = section.settings.carousel_gap_desktop | default: 0
+	assign carousel_gap_mobile = section.settings.carousel_gap_mobile | default: 6
 
 	assign small_heading = section.settings.small_heading
 	assign small_heading_color = section.settings.small_heading_color
@@ -141,7 +142,7 @@
 					{%- endif -%}
 				</div>
 				{%- if is_carousel -%}
-					<slide-show class="product-recommendations--carousel carousel--paged products carousel" data-align="left" style="--rec-carousel-gap-desktop: {{ carousel_gap_desktop }}px;">
+					<slide-show class="product-recommendations--carousel carousel--paged products carousel" data-align="left" data-draggable="false" style="--rec-carousel-gap-desktop: {{ carousel_gap_desktop }}px; --rec-carousel-gap-mobile: {{ carousel_gap_mobile }}px;">
 						{%- for recommendation in recommendations.products -%}
 							<div class="carousel__slide">
 								{% render 'product-card', product_card_product: recommendation %}
@@ -215,6 +216,17 @@
 			"unit": "px",
 			"default": 0,
 			"label": "Gap between images (desktop)",
+			"info": "Only applies to the carousel shown when there are more than 4 products."
+		},
+		{
+			"type": "range",
+			"id": "carousel_gap_mobile",
+			"min": 0,
+			"max": 60,
+			"step": 1,
+			"unit": "px",
+			"default": 6,
+			"label": "Gap between images (mobile)",
 			"info": "Only applies to the carousel shown when there are more than 4 products."
 		},
 		{

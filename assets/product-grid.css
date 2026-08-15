@@ -664,16 +664,18 @@
    Mobile now mirrors the same block-paging structure as
    .complementary-products--carousel (2 slides per page, exact width so
    groupCells pages by whole rows) instead of the old 82% single-item peek
-   width — everything else about this section is unchanged. */
+   width — everything else about this section is unchanged.
+   Gap between images is padding, not margin, on both mobile and desktop —
+   with border-box sizing (the theme's global default) each slide stays
+   exactly 50%/25% wide no matter the gap value, so rows of 2 (mobile) / 4
+   (desktop) always fill exactly and groupCells keeps paging by whole rows.
+   A margin-based gap would drift the row width past 100% and break that
+   grouping as gap/product count grow. */
 .products.carousel.product-recommendations--carousel .carousel__slide {
-  width: 50%; }
+  width: 50%;
+  padding-right: var(--rec-carousel-gap-mobile, 6px); }
   @media only screen and (min-width: 768px) {
     .products.carousel.product-recommendations--carousel .carousel__slide {
-      /* Gap between images is padding, not margin — with border-box sizing
-         (the theme's global default) each slide stays exactly 25% wide no
-         matter the gap value, so 4 always fill one row and groupCells still
-         pages by whole rows of 4. A margin-based gap would drift the row
-         width past 100% and break that grouping as gap/product count grow. */
       width: 25%;
       padding-right: var(--rec-carousel-gap-desktop, 0px); } }
 
