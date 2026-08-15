@@ -211,7 +211,7 @@
       "type": "spacer",
       "settings": {
         "spacer_mobile": 30,
-        "spacer_desktop": 50,
+        "spacer_desktop": 70,
         "border_separator": false,
         "border_separator_full": false
       }
@@ -264,7 +264,7 @@
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 30,
-        "spacer_desktop": 50,
+        "spacer_desktop": 70,
         "border_separator": false,
         "border_separator_full": false
       }
