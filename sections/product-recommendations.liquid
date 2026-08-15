@@ -13,48 +13,104 @@
 	assign product_limit = section.settings.product_limit | default: 4
 
 	assign small_heading = section.settings.small_heading
+	assign small_heading_color = section.settings.small_heading_color
+	assign small_heading_align_d = section.settings.small_heading_align_desktop
+	assign small_heading_align_m = section.settings.small_heading_align_mobile
 	assign small_heading_font_d = section.settings.small_heading_font_desktop
 	assign small_heading_font_m = section.settings.small_heading_font_mobile
+	assign small_heading_font_picker_d = section.settings.small_heading_font_desktop_picker
+	assign small_heading_font_picker_m = section.settings.small_heading_font_mobile_picker
 	assign small_heading_size_d = section.settings.small_heading_size_desktop
 	assign small_heading_size_m = section.settings.small_heading_size_mobile
 	assign small_heading_case_d = section.settings.small_heading_case_desktop
 	assign small_heading_case_m = section.settings.small_heading_case_mobile
 
+	assign heading_color = section.settings.heading_color
+	assign heading_align_d = section.settings.heading_align_desktop
+	assign heading_align_m = section.settings.heading_align_mobile
 	assign heading_font_d = section.settings.heading_font_desktop
 	assign heading_font_m = section.settings.heading_font_mobile
+	assign heading_font_picker_d = section.settings.heading_font_desktop_picker
+	assign heading_font_picker_m = section.settings.heading_font_mobile_picker
 	assign heading_size_d = section.settings.heading_size_desktop
 	assign heading_size_m = section.settings.heading_size_mobile
 	assign heading_case_d = section.settings.heading_case_desktop
 	assign heading_case_m = section.settings.heading_case_mobile
+
+	assign description_color = section.settings.description_color
+	assign description_align_d = section.settings.description_align_desktop
+	assign description_align_m = section.settings.description_align_mobile
+	assign description_font_d = section.settings.description_font_desktop
+	assign description_font_m = section.settings.description_font_mobile
+	assign description_font_picker_d = section.settings.description_font_desktop_picker
+	assign description_font_picker_m = section.settings.description_font_mobile_picker
+	assign description_case_d = section.settings.description_case_desktop
+	assign description_case_m = section.settings.description_case_mobile
 -%}
+{%- capture custom_font_faces -%}
+	{%- if small_heading_font_d == 'custom' and small_heading_font_picker_d -%}{{ small_heading_font_picker_d | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if small_heading_font_m == 'custom' and small_heading_font_picker_m -%}{{ small_heading_font_picker_m | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if heading_font_d == 'custom' and heading_font_picker_d -%}{{ heading_font_picker_d | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if heading_font_m == 'custom' and heading_font_picker_m -%}{{ heading_font_picker_m | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if description_font_d == 'custom' and description_font_picker_d -%}{{ description_font_picker_d | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if description_font_m == 'custom' and description_font_picker_m -%}{{ description_font_picker_m | font_face: font_display: 'swap' }}{%- endif -%}
+{%- endcapture -%}
 {%- capture small_heading_classes -%}
-	{%- if small_heading_font_d == 'heading' %} rec-kicker--font-desktop{% elsif small_heading_font_d == 'body' %} rec-kicker--font-desktop{% endif -%}
-	{%- if small_heading_font_m == 'heading' %} rec-kicker--font-mobile{% elsif small_heading_font_m == 'body' %} rec-kicker--font-mobile{% endif -%}
+	{%- if small_heading_font_d == 'heading' or small_heading_font_d == 'body' or small_heading_font_d == 'custom' %} rec-kicker--font-desktop{% endif -%}
+	{%- if small_heading_font_m == 'heading' or small_heading_font_m == 'body' or small_heading_font_m == 'custom' %} rec-kicker--font-mobile{% endif -%}
 	{%- if small_heading_size_d > 0 %} rec-kicker--size-desktop{% endif -%}
 	{%- if small_heading_size_m > 0 %} rec-kicker--size-mobile{% endif -%}
-	{%- if small_heading_case_d == 'uppercase' %} rec-kicker--case-upper-desktop{% elsif small_heading_case_d == 'none' %} rec-kicker--case-normal-desktop{% endif -%}
-	{%- if small_heading_case_m == 'uppercase' %} rec-kicker--case-upper-mobile{% elsif small_heading_case_m == 'none' %} rec-kicker--case-normal-mobile{% endif -%}
+	{%- if small_heading_case_d == 'uppercase' %} rec-kicker--case-upper-desktop{% elsif small_heading_case_d == 'lowercase' %} rec-kicker--case-lower-desktop{% elsif small_heading_case_d == 'capitalize' %} rec-kicker--case-capitalize-desktop{% elsif small_heading_case_d == 'none' %} rec-kicker--case-normal-desktop{% endif -%}
+	{%- if small_heading_case_m == 'uppercase' %} rec-kicker--case-upper-mobile{% elsif small_heading_case_m == 'lowercase' %} rec-kicker--case-lower-mobile{% elsif small_heading_case_m == 'capitalize' %} rec-kicker--case-capitalize-mobile{% elsif small_heading_case_m == 'none' %} rec-kicker--case-normal-mobile{% endif -%}
+	{%- if small_heading_align_d != blank %} rec-kicker--align-desktop{% endif -%}
+	{%- if small_heading_align_m != blank %} rec-kicker--align-mobile{% endif -%}
 {%- endcapture -%}
 {%- capture small_heading_style -%}
-	{%- if small_heading_font_d == 'heading' -%}--rec-kicker-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_d == 'body' -%}--rec-kicker-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
-	{%- if small_heading_font_m == 'heading' -%}--rec-kicker-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_m == 'body' -%}--rec-kicker-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if small_heading_font_d == 'heading' -%}--rec-kicker-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_d == 'body' -%}--rec-kicker-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif small_heading_font_d == 'custom' and small_heading_font_picker_d -%}--rec-kicker-font-desktop: {{ small_heading_font_picker_d.family }}, {{ small_heading_font_picker_d.fallback_families }};{%- endif -%}
+	{%- if small_heading_font_m == 'heading' -%}--rec-kicker-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif small_heading_font_m == 'body' -%}--rec-kicker-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif small_heading_font_m == 'custom' and small_heading_font_picker_m -%}--rec-kicker-font-mobile: {{ small_heading_font_picker_m.family }}, {{ small_heading_font_picker_m.fallback_families }};{%- endif -%}
 	{%- if small_heading_size_d > 0 -%}--rec-kicker-size-desktop: {{ small_heading_size_d }}px;{%- endif -%}
 	{%- if small_heading_size_m > 0 -%}--rec-kicker-size-mobile: {{ small_heading_size_m }}px;{%- endif -%}
+	{%- if small_heading_align_d != blank -%}--rec-kicker-align-desktop: {{ small_heading_align_d }};{%- endif -%}
+	{%- if small_heading_align_m != blank -%}--rec-kicker-align-mobile: {{ small_heading_align_m }};{%- endif -%}
+	{%- if small_heading_color != blank -%}color: {{ small_heading_color }}; opacity: 1;{%- endif -%}
 {%- endcapture -%}
 {%- capture heading_classes -%}
-	{%- if heading_font_d == 'heading' %} rec-heading--font-desktop{% elsif heading_font_d == 'body' %} rec-heading--font-desktop{% endif -%}
-	{%- if heading_font_m == 'heading' %} rec-heading--font-mobile{% elsif heading_font_m == 'body' %} rec-heading--font-mobile{% endif -%}
+	{%- if heading_font_d == 'heading' or heading_font_d == 'body' or heading_font_d == 'custom' %} rec-heading--font-desktop{% endif -%}
+	{%- if heading_font_m == 'heading' or heading_font_m == 'body' or heading_font_m == 'custom' %} rec-heading--font-mobile{% endif -%}
 	{%- if heading_size_d > 0 %} rec-heading--size-desktop{% endif -%}
 	{%- if heading_size_m > 0 %} rec-heading--size-mobile{% endif -%}
-	{%- if heading_case_d == 'uppercase' %} rec-heading--case-upper-desktop{% elsif heading_case_d == 'none' %} rec-heading--case-normal-desktop{% endif -%}
-	{%- if heading_case_m == 'uppercase' %} rec-heading--case-upper-mobile{% elsif heading_case_m == 'none' %} rec-heading--case-normal-mobile{% endif -%}
+	{%- if heading_case_d == 'uppercase' %} rec-heading--case-upper-desktop{% elsif heading_case_d == 'lowercase' %} rec-heading--case-lower-desktop{% elsif heading_case_d == 'capitalize' %} rec-heading--case-capitalize-desktop{% elsif heading_case_d == 'none' %} rec-heading--case-normal-desktop{% endif -%}
+	{%- if heading_case_m == 'uppercase' %} rec-heading--case-upper-mobile{% elsif heading_case_m == 'lowercase' %} rec-heading--case-lower-mobile{% elsif heading_case_m == 'capitalize' %} rec-heading--case-capitalize-mobile{% elsif heading_case_m == 'none' %} rec-heading--case-normal-mobile{% endif -%}
+	{%- if heading_align_d != blank %} rec-heading--align-desktop{% endif -%}
+	{%- if heading_align_m != blank %} rec-heading--align-mobile{% endif -%}
 {%- endcapture -%}
 {%- capture heading_style -%}
-	{%- if heading_font_d == 'heading' -%}--rec-heading-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_d == 'body' -%}--rec-heading-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
-	{%- if heading_font_m == 'heading' -%}--rec-heading-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_m == 'body' -%}--rec-heading-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- endif -%}
+	{%- if heading_font_d == 'heading' -%}--rec-heading-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_d == 'body' -%}--rec-heading-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif heading_font_d == 'custom' and heading_font_picker_d -%}--rec-heading-font-desktop: {{ heading_font_picker_d.family }}, {{ heading_font_picker_d.fallback_families }};{%- endif -%}
+	{%- if heading_font_m == 'heading' -%}--rec-heading-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif heading_font_m == 'body' -%}--rec-heading-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif heading_font_m == 'custom' and heading_font_picker_m -%}--rec-heading-font-mobile: {{ heading_font_picker_m.family }}, {{ heading_font_picker_m.fallback_families }};{%- endif -%}
 	{%- if heading_size_d > 0 -%}--rec-heading-size-desktop: {{ heading_size_d }}px;{%- endif -%}
 	{%- if heading_size_m > 0 -%}--rec-heading-size-mobile: {{ heading_size_m }}px;{%- endif -%}
+	{%- if heading_align_d != blank -%}--rec-heading-align-desktop: {{ heading_align_d }};{%- endif -%}
+	{%- if heading_align_m != blank -%}--rec-heading-align-mobile: {{ heading_align_m }};{%- endif -%}
+	{%- if heading_color != blank -%}color: {{ heading_color }};{%- endif -%}
 {%- endcapture -%}
+{%- capture description_classes -%}
+	{%- if description_font_d == 'heading' or description_font_d == 'body' or description_font_d == 'custom' %} rec-description--font-desktop{% endif -%}
+	{%- if description_font_m == 'heading' or description_font_m == 'body' or description_font_m == 'custom' %} rec-description--font-mobile{% endif -%}
+	{%- if description_case_d == 'uppercase' %} rec-description--case-upper-desktop{% elsif description_case_d == 'lowercase' %} rec-description--case-lower-desktop{% elsif description_case_d == 'capitalize' %} rec-description--case-capitalize-desktop{% elsif description_case_d == 'none' %} rec-description--case-normal-desktop{% endif -%}
+	{%- if description_case_m == 'uppercase' %} rec-description--case-upper-mobile{% elsif description_case_m == 'lowercase' %} rec-description--case-lower-mobile{% elsif description_case_m == 'capitalize' %} rec-description--case-capitalize-mobile{% elsif description_case_m == 'none' %} rec-description--case-normal-mobile{% endif -%}
+	{%- if description_align_d != blank %} rec-description--align-desktop{% endif -%}
+	{%- if description_align_m != blank %} rec-description--align-mobile{% endif -%}
+{%- endcapture -%}
+{%- capture description_style -%}
+	{%- if description_font_d == 'heading' -%}--rec-description-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif description_font_d == 'body' -%}--rec-description-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif description_font_d == 'custom' and description_font_picker_d -%}--rec-description-font-desktop: {{ description_font_picker_d.family }}, {{ description_font_picker_d.fallback_families }};{%- endif -%}
+	{%- if description_font_m == 'heading' -%}--rec-description-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif description_font_m == 'body' -%}--rec-description-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif description_font_m == 'custom' and description_font_picker_m -%}--rec-description-font-mobile: {{ description_font_picker_m.family }}, {{ description_font_picker_m.fallback_families }};{%- endif -%}
+	{%- if description_align_d != blank -%}--rec-description-align-desktop: {{ description_align_d }};{%- endif -%}
+	{%- if description_align_m != blank -%}--rec-description-align-mobile: {{ description_align_m }};{%- endif -%}
+	{%- if description_color != blank -%}color: {{ description_color }};{%- endif -%}
+{%- endcapture -%}
+{%- if custom_font_faces != blank -%}
+<style>{{ custom_font_faces }}</style>
+{%- endif -%}
 <div class="row full-width-row">
 	<div class="small-12 columns">
 		<product-recommendations class="product-recommendations product-recommendations--cart {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product_id }}&limit={{ product_limit }}">
@@ -72,7 +128,7 @@
 							<h2 class="product-recommendations--main-heading{{ heading_classes }}"{% if heading_style != blank %} style="{{ heading_style | strip_newlines | strip }}"{% endif %}>{{ section_heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</h2>
 						{%- endif -%}
 						{%- if section_description != blank -%}
-							<div class="rte">{{ section_description }}</div>
+							<div class="rte product-recommendations--description{{ description_classes }}"{% if description_style != blank %} style="{{ description_style | strip_newlines | strip }}"{% endif %}>{{ section_description }}</div>
 						{%- endif -%}
 					</div>
 					{%- if is_carousel -%}
@@ -160,15 +216,53 @@
 			"info": "Optional label shown above the heading. Leave blank to hide."
 		},
 		{
+			"type": "color",
+			"id": "small_heading_color",
+			"label": "Color"
+		},
+		{
+			"type": "select",
+			"id": "small_heading_align_desktop",
+			"label": "Alignment (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "small_heading_align_mobile",
+			"label": "Alignment (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
 			"type": "select",
 			"id": "small_heading_font_desktop",
 			"label": "Font (desktop)",
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "heading", "label": "Heading font" },
-				{ "value": "body", "label": "Body font" }
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
 			],
 			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "small_heading_font_desktop_picker",
+			"label": "Custom font (desktop)",
+			"info": "Used when \"Font (desktop)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.small_heading_font_desktop == 'custom' }}"
 		},
 		{
 			"type": "select",
@@ -177,9 +271,18 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "heading", "label": "Heading font" },
-				{ "value": "body", "label": "Body font" }
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
 			],
 			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "small_heading_font_mobile_picker",
+			"label": "Custom font (mobile)",
+			"info": "Used when \"Font (mobile)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.small_heading_font_mobile == 'custom' }}"
 		},
 		{
 			"type": "range",
@@ -210,6 +313,8 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
 				{ "value": "none", "label": "As typed" }
 			],
 			"default": ""
@@ -221,6 +326,8 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
 				{ "value": "none", "label": "As typed" }
 			],
 			"default": ""
@@ -230,15 +337,53 @@
 			"content": "Heading typography"
 		},
 		{
+			"type": "color",
+			"id": "heading_color",
+			"label": "Color"
+		},
+		{
+			"type": "select",
+			"id": "heading_align_desktop",
+			"label": "Alignment (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "heading_align_mobile",
+			"label": "Alignment (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
 			"type": "select",
 			"id": "heading_font_desktop",
 			"label": "Font (desktop)",
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "heading", "label": "Heading font" },
-				{ "value": "body", "label": "Body font" }
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
 			],
 			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "heading_font_desktop_picker",
+			"label": "Custom font (desktop)",
+			"info": "Used when \"Font (desktop)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.heading_font_desktop == 'custom' }}"
 		},
 		{
 			"type": "select",
@@ -247,9 +392,18 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "heading", "label": "Heading font" },
-				{ "value": "body", "label": "Body font" }
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
 			],
 			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "heading_font_mobile_picker",
+			"label": "Custom font (mobile)",
+			"info": "Used when \"Font (mobile)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.heading_font_mobile == 'custom' }}"
 		},
 		{
 			"type": "range",
@@ -280,6 +434,8 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
 				{ "value": "none", "label": "As typed" }
 			],
 			"default": ""
@@ -291,6 +447,107 @@
 			"options": [
 				{ "value": "", "label": "Theme default" },
 				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
+		},
+		{
+			"type": "header",
+			"content": "Description typography"
+		},
+		{
+			"type": "color",
+			"id": "description_color",
+			"label": "Color"
+		},
+		{
+			"type": "select",
+			"id": "description_align_desktop",
+			"label": "Alignment (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "description_align_mobile",
+			"label": "Alignment (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "description_font_desktop",
+			"label": "Font (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
+			],
+			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "description_font_desktop_picker",
+			"label": "Custom font (desktop)",
+			"info": "Used when \"Font (desktop)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.description_font_desktop == 'custom' }}"
+		},
+		{
+			"type": "select",
+			"id": "description_font_mobile",
+			"label": "Font (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "heading", "label": "Heading font" },
+				{ "value": "body", "label": "Body font" },
+				{ "value": "custom", "label": "Custom font…" }
+			],
+			"default": ""
+		},
+		{
+			"type": "font_picker",
+			"id": "description_font_mobile_picker",
+			"label": "Custom font (mobile)",
+			"info": "Used when \"Font (mobile)\" above is set to Custom font.",
+			"default": "archivo_narrow_n4",
+			"visible_if": "{{ section.settings.description_font_mobile == 'custom' }}"
+		},
+		{
+			"type": "select",
+			"id": "description_case_desktop",
+			"label": "Letter case (desktop)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
+				{ "value": "none", "label": "As typed" }
+			],
+			"default": ""
+		},
+		{
+			"type": "select",
+			"id": "description_case_mobile",
+			"label": "Letter case (mobile)",
+			"options": [
+				{ "value": "", "label": "Theme default" },
+				{ "value": "uppercase", "label": "UPPERCASE" },
+				{ "value": "lowercase", "label": "lowercase" },
+				{ "value": "capitalize", "label": "Capitalize" },
 				{ "value": "none", "label": "As typed" }
 			],
 			"default": ""

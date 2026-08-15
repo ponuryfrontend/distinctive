@@ -526,6 +526,8 @@
     margin-bottom: 6px; }
   .product-recommendations--main-heading {
     margin-bottom: 0; }
+  .product-recommendations--description {
+    margin-top: 10px; }
 
 .product-recommendations--pager {
   display: none;
@@ -557,21 +559,45 @@
   .rec-kicker--font-desktop { font-family: var(--rec-kicker-font-desktop); }
   .rec-kicker--size-desktop { font-size: var(--rec-kicker-size-desktop); }
   .rec-kicker--case-upper-desktop { text-transform: uppercase; }
+  .rec-kicker--case-lower-desktop { text-transform: lowercase; }
+  .rec-kicker--case-capitalize-desktop { text-transform: capitalize; }
   .rec-kicker--case-normal-desktop { text-transform: none; }
+  .rec-kicker--align-desktop { text-align: var(--rec-kicker-align-desktop); }
   .rec-heading--font-desktop { font-family: var(--rec-heading-font-desktop); }
   .rec-heading--size-desktop { font-size: var(--rec-heading-size-desktop); }
   .rec-heading--case-upper-desktop { text-transform: uppercase; }
+  .rec-heading--case-lower-desktop { text-transform: lowercase; }
+  .rec-heading--case-capitalize-desktop { text-transform: capitalize; }
   .rec-heading--case-normal-desktop { text-transform: none; }
+  .rec-heading--align-desktop { text-align: var(--rec-heading-align-desktop); }
+  .rec-description--font-desktop { font-family: var(--rec-description-font-desktop); }
+  .rec-description--case-upper-desktop { text-transform: uppercase; }
+  .rec-description--case-lower-desktop { text-transform: lowercase; }
+  .rec-description--case-capitalize-desktop { text-transform: capitalize; }
+  .rec-description--case-normal-desktop { text-transform: none; }
+  .rec-description--align-desktop { text-align: var(--rec-description-align-desktop); }
 }
 @media only screen and (max-width: 767px) {
   .rec-kicker--font-mobile { font-family: var(--rec-kicker-font-mobile); }
   .rec-kicker--size-mobile { font-size: var(--rec-kicker-size-mobile); }
   .rec-kicker--case-upper-mobile { text-transform: uppercase; }
+  .rec-kicker--case-lower-mobile { text-transform: lowercase; }
+  .rec-kicker--case-capitalize-mobile { text-transform: capitalize; }
   .rec-kicker--case-normal-mobile { text-transform: none; }
+  .rec-kicker--align-mobile { text-align: var(--rec-kicker-align-mobile); }
   .rec-heading--font-mobile { font-family: var(--rec-heading-font-mobile); }
   .rec-heading--size-mobile { font-size: var(--rec-heading-size-mobile); }
   .rec-heading--case-upper-mobile { text-transform: uppercase; }
+  .rec-heading--case-lower-mobile { text-transform: lowercase; }
+  .rec-heading--case-capitalize-mobile { text-transform: capitalize; }
   .rec-heading--case-normal-mobile { text-transform: none; }
+  .rec-heading--align-mobile { text-align: var(--rec-heading-align-mobile); }
+  .rec-description--font-mobile { font-family: var(--rec-description-font-mobile); }
+  .rec-description--case-upper-mobile { text-transform: uppercase; }
+  .rec-description--case-lower-mobile { text-transform: lowercase; }
+  .rec-description--case-capitalize-mobile { text-transform: capitalize; }
+  .rec-description--case-normal-mobile { text-transform: none; }
+  .rec-description--align-mobile { text-align: var(--rec-description-align-mobile); }
 }
 
 /* Product recommendations — carousel variant (more than 4 products). Slide
