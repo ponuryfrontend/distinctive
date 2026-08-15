@@ -24,7 +24,7 @@
             "subheading": "SAY YESS",
             "heading": "TO OUR COLLECTION",
             "heading_size": "h1-large",
-            "content": "",
+            "content": "TO OUR COLLECTION",
             "description_size": "medium",
             "content_position": "bottom-center",
             "text_alignment": "center",
@@ -80,7 +80,7 @@
         "slide_ye8yLD"
       ],
       "settings": {
-        "desktop_height": "desktop-height-750",
+        "desktop_height": "desktop-height-650",
         "mobile_height": "mobile-height-full",
         "change_header": true,
         "autoplay": true,
