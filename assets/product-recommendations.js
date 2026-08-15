@@ -91,17 +91,29 @@ class ProductRecommendations extends HTMLElement {
 		// Shopify's own reference theme, Dawn, uses for its product
 		// recommendations.)
 		if ('IntersectionObserver' in window) {
-			// `this` itself is `display: none` by default in several contexts
-			// (see .product-recommendations in product.css / cart.css — it
-			// only switches to `display: block` once fetchProducts() below
-			// adds the "--loaded" class) — a display: none element has no
-			// layout box, so it can never be reported as intersecting. Observing
-			// `this` directly would deadlock: fetchProducts() never runs
-			// because the observer never fires because the element is
-			// invisible waiting for fetchProducts() to reveal it. Observe the
-			// surrounding section wrapper instead, which keeps its normal
-			// layout regardless of this element's own visibility.
-			const target = this.closest('.shopify-section') || this.parentElement || this;
+			// Which element to watch depends on context, so pick dynamically
+			// rather than hard-coding one:
+			// - In some contexts `this` is `display: none` by default (see
+			//   .product-recommendations in product.css / cart.css — it only
+			//   switches to `display: block` once fetchProducts() below adds
+			//   the "--loaded" class). A display: none element has no layout
+			//   box, so it can never be reported as intersecting — observing
+			//   it directly would deadlock forever. There we need to watch a
+			//   visible ancestor instead.
+			// - In other contexts (e.g. .complementary-products in
+			//   product-grid.css, a block sitting deep inside the whole
+			//   product page's own big section) `this` is a normal, laid-out
+			//   element from the start — the MOST accurate thing to observe.
+			//   Watching an ancestor there backfires: that ancestor spans the
+			//   entire product section, which is already visible the moment
+			//   the page loads (e.g. the title above it), so the observer
+			//   would fire immediately and defeat the whole point of
+			//   deferring the fetch.
+			// Only fall back to an ancestor when `this` genuinely can't be
+			// observed on its own.
+			const target = getComputedStyle(this).display === 'none'
+				? (this.closest('.shopify-section') || this.parentElement || this)
+				: this;
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (!entry.isIntersecting) return;
