@@ -138,7 +138,7 @@
           "settings": {
             "heading": "Materiały i pielęgnacja",
             "heading_font_size_desktop": 13,
-            "heading_font_size_mobile": 0,
+            "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
             "open": false,
             "content": "",
@@ -150,8 +150,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Wymiary",
-            "heading_font_size_desktop": 0,
-            "heading_font_size_mobile": 0,
+            "heading_font_size_desktop": 13,
+            "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
             "open": false,
             "content": "",
@@ -163,8 +163,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Płatności i dostawy",
-            "heading_font_size_desktop": 0,
-            "heading_font_size_mobile": 0,
+            "heading_font_size_desktop": 13,
+            "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
             "open": false,
             "content": "",
