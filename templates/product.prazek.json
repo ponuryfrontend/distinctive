@@ -50,6 +50,7 @@
         },
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR": {
           "type": "shopify://apps/complimus-eu-omnibus-price/blocks/omnibus-price/befd495a-705f-454e-9a70-d1d491f84538",
+          "disabled": true,
           "settings": {
             "hide_if_not_on_sale": false,
             "hide_if_equal_to_compare_at_price": false,
@@ -60,7 +61,7 @@
             "field": "price",
             "update_variant_details_dynamically": true,
             "font_size": 12,
-            "text_color": "#301C18",
+            "text_color": "#301c18",
             "price_adjustment": 0,
             "round_up_to": "0",
             "add_after_rounding": 0,
