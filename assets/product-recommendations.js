@@ -75,45 +75,45 @@ class ProductRecommendations extends HTMLElement {
 			});
 	}
 	connectedCallback() {
-		// Fetching immediately on connect (i.e. as soon as this element exists
-		// in the DOM, typically right at page load) means the response —
-		// including its images — often arrives while this block is still far
-		// below the fold. Everything downstream (lazysizes, the GSAP
-		// ScrollTrigger reveal animation) is built to react to scroll
-		// position, so content that shows up long before anyone has scrolled
-		// near it ends up stuck until some unrelated later scroll/resize
-		// event happens to wake those systems back up.
-		// Deferring the fetch itself until this element is actually near the
-		// viewport sidesteps all of that: by the time the images arrive,
-		// the section is already visible, so the normal scroll-driven
-		// lazy-load and entrance-animation logic just works, same as any
-		// other product grid on the page. (This is the same approach
-		// Shopify's own reference theme, Dawn, uses for its product
-		// recommendations.)
+		// Two different situations share this same element, and they need
+		// two different fetch-timing strategies:
+		//
+		// - Standalone sections (e.g. sections/product-recommendations.liquid)
+		//   default to `display: none` in CSS (see .product-recommendations
+		//   in product.css / cart.css — it only switches to `display: block`
+		//   once fetchProducts() below adds the "--loaded" class) and
+		//   typically sit well below the fold. For these, fetching
+		//   immediately on connect means the response often arrives long
+		//   before anyone has scrolled near it, and everything downstream
+		//   (lazysizes, GSAP ScrollTrigger) reacts to scroll position — so
+		//   content that shows up that early can end up stuck until some
+		//   unrelated later scroll/resize event wakes those systems back up.
+		//   Deferring the fetch with an IntersectionObserver until the
+		//   section is actually near the viewport avoids that (same approach
+		//   Shopify's own reference theme, Dawn, uses).
+		//
+		// - .complementary-products (product-grid.css) is deliberately kept
+		//   `display: block` from the start — it's part of the sticky PDP
+		//   info panel (title/price/variant picker/etc, see
+		//   .thb-product-detail .product-information in product.css), not a
+		//   separate below-the-fold section. That panel is usually taller
+		//   than the viewport, so this block near its bottom can stay
+		//   geometrically off-screen — and therefore un-intersected — for
+		//   the entire time the panel is stuck, however long that takes
+		//   depending on the image gallery's own height. Waiting for an
+		//   intersection here just reproduces the "arrives suspiciously late"
+		//   symptom through a different mechanism. Fetch it immediately
+		//   instead, same as before IntersectionObserver was introduced;
+		//   fetchProducts() below already handles showing it correctly
+		//   whenever it does scroll into view (lazysizes' load-then-unveil,
+		//   ScrollTrigger.refresh()).
+		if (getComputedStyle(this).display !== 'none') {
+			this.fetchProducts();
+			return;
+		}
+
 		if ('IntersectionObserver' in window) {
-			// Which element to watch depends on context, so pick dynamically
-			// rather than hard-coding one:
-			// - In some contexts `this` is `display: none` by default (see
-			//   .product-recommendations in product.css / cart.css — it only
-			//   switches to `display: block` once fetchProducts() below adds
-			//   the "--loaded" class). A display: none element has no layout
-			//   box, so it can never be reported as intersecting — observing
-			//   it directly would deadlock forever. There we need to watch a
-			//   visible ancestor instead.
-			// - In other contexts (e.g. .complementary-products in
-			//   product-grid.css, a block sitting deep inside the whole
-			//   product page's own big section) `this` is a normal, laid-out
-			//   element from the start — the MOST accurate thing to observe.
-			//   Watching an ancestor there backfires: that ancestor spans the
-			//   entire product section, which is already visible the moment
-			//   the page loads (e.g. the title above it), so the observer
-			//   would fire immediately and defeat the whole point of
-			//   deferring the fetch.
-			// Only fall back to an ancestor when `this` genuinely can't be
-			// observed on its own.
-			const target = getComputedStyle(this).display === 'none'
-				? (this.closest('.shopify-section') || this.parentElement || this)
-				: this;
+			const target = this.closest('.shopify-section') || this.parentElement || this;
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (!entry.isIntersecting) return;
