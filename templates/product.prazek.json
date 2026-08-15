@@ -124,6 +124,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Opis",
+            "heading_font_size": 0,
+            "heading_case": "uppercase",
             "open": false,
             "content": "",
             "page": "",
@@ -134,6 +136,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Materiały i pielęgnacja",
+            "heading_font_size": 0,
+            "heading_case": "uppercase",
             "open": false,
             "content": "",
             "page": "",
@@ -144,6 +148,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Wymiary",
+            "heading_font_size": 0,
+            "heading_case": "uppercase",
             "open": false,
             "content": "",
             "page": "",
@@ -154,6 +160,8 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Płatności i dostawy",
+            "heading_font_size": 0,
+            "heading_case": "uppercase",
             "open": false,
             "content": "",
             "page": "",
@@ -164,7 +172,18 @@
           "type": "complementary",
           "settings": {
             "block_heading": "Dodaj do zestawu z:",
-            "product_list_limit": 8
+            "product_list_limit": 8,
+            "carousel_gap_desktop": 6,
+            "carousel_gap_mobile": 4,
+            "heading_color": "",
+            "heading_font_size": 0,
+            "heading_case": "",
+            "heading_font": "",
+            "heading_font_picker": "archivo_narrow_n4",
+            "margin_top_desktop": 40,
+            "margin_bottom_desktop": 40,
+            "margin_top_mobile": 28,
+            "margin_bottom_mobile": 28
           }
         },
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW": {
