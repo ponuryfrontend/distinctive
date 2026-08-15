@@ -613,4 +613,10 @@
   width: 82%; }
   @media only screen and (min-width: 768px) {
     .products.carousel.product-recommendations--carousel .carousel__slide {
-      width: 25%; } }
+      /* Gap between images is padding, not margin — with border-box sizing
+         (the theme's global default) each slide stays exactly 25% wide no
+         matter the gap value, so 4 always fill one row and groupCells still
+         pages by whole rows of 4. A margin-based gap would drift the row
+         width past 100% and break that grouping as gap/product count grow. */
+      width: 25%;
+      padding-right: var(--rec-carousel-gap-desktop, 0px); } }
