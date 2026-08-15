@@ -2601,6 +2601,16 @@ input[type="submit"] {
       overflow: hidden;
       white-space: nowrap;
       transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1); }
+    /* Pre-order add-to-cart button — the hover/focus wipe below reveals
+       :after in place of :before, so swapping its own content to a
+       different string (instead of repeating data-content) turns that
+       color-wipe into a text swap too: "Pre-order" at rest, the regular
+       "Add to cart" wording while hovered/focused. See
+       snippets/product-add-to-cart.liquid and
+       snippets/product-add-to-cart-sticky.liquid. */
+    .button.button--preorder-hover-swap > span:after,
+    input[type="submit"].button--preorder-hover-swap > span:after {
+      content: attr(data-content-hover); }
   @media screen and (hover: hover) {
     .button:hover, .button:focus, .button.loading,
     [loading="true"] .button,

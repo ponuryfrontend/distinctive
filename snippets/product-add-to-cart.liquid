@@ -58,18 +58,20 @@
 				</div>
 				{%- endif -%}
 				{%- liquid
+					assign button_hover_content = blank
 					if product.selected_or_first_available_variant.available == false
 						assign button_content = 'products.product.sold_out' | t
 					else
 						if product_template == 'pre-order'
 							assign button_content = 'products.product.pre_order' | t
+							assign button_hover_content = 'products.product.add_to_cart' | t
 						else
 							assign button_content = 'products.product.add_to_cart' | t
 						endif
 					endif
 				-%}
-		    <button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button{% if block.settings.outline_button %} outline{% endif %} {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %} aria-label="{%- if product.selected_or_first_available_variant.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}">
-					<span class="single-add-to-cart-button--text" data-content="{{ button_content }}">
+		    <button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button{% if block.settings.outline_button %} outline{% endif %}{% if button_hover_content != blank %} button--preorder-hover-swap{% endif %} {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %} aria-label="{%- if product.selected_or_first_available_variant.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}">
+					<span class="single-add-to-cart-button--text" data-content="{{ button_content }}"{% if button_hover_content != blank %} data-content-hover="{{ button_hover_content }}"{% endif %}>
 					</span>
 					<span class="loading-overlay">
 						{% render 'svg-icons' with 'thb-loading' %}
