@@ -60,7 +60,7 @@
             "field": "price",
             "update_variant_details_dynamically": true,
             "font_size": 12,
-            "text_color": "#000000",
+            "text_color": "#301C18",
             "price_adjustment": 0,
             "round_up_to": "0",
             "add_after_rounding": 0,
