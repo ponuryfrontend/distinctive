@@ -14,6 +14,7 @@
       "blocks": {
         "slide_Ff6Hif": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/dresy-banner-desktop.jpg",
             "mobile_image": "shopify://shop_images/dresy-banner-mobile.jpg",
@@ -66,12 +67,12 @@
             "heading_font_size_desktop": 30,
             "heading_font_size_mobile": 18,
             "content": "Nudyess mówi tak, za każdym razem.",
-            "description_size": "medium",
+            "description_size": "large",
             "description_font_size_desktop": 14,
             "description_font_size_mobile": 12,
             "content_position": "middle-center",
             "text_alignment": "center",
-            "content_size": "medium",
+            "content_size": "large",
             "color_text": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
