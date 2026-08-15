@@ -483,8 +483,17 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     max-width: 100%; }
+  /* On mobile, cards for products with more than one image switch to a
+     swipeable horizontal strip (see JS below) sized by aspect-ratio instead
+     of padding-bottom. Unlike the other three modes just below (which are
+     already a fixed ratio here), "adapt" was reading --aspect-ratio — the
+     true per-photo ratio set inline in snippets/product-card.liquid — so
+     mobile tiles varied in height from card to card while desktop's
+     .aspect-ratio--adapt rule above (padding-bottom: 125%, i.e. 4/5) stays
+     fixed. Pinning this to the same 4/5 makes mobile match desktop: every
+     tile the same size regardless of each product's own photo shape. */
   .product-card .product-featured-image-link.aspect-ratio--adapt.has-multiple-images {
-    aspect-ratio: var(--aspect-ratio, 4/5); }
+    aspect-ratio: 4/5; }
   .product-card .product-featured-image-link.aspect-ratio--portrait.has-multiple-images {
     aspect-ratio: 4/5; }
   .product-card .product-featured-image-link.aspect-ratio--square.has-multiple-images {
