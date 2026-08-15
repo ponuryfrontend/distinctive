@@ -1,47 +1,49 @@
 {{ 'breadcrumbs.css' | asset_url | stylesheet_tag }}
+<scroll-shadow>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <a href="{{ routes.root_url }}">{{ 'sections.breadcrumbs.home' | t }}</a>
   {% if collection.url %}
-		<i>/</i>
+		<i aria-hidden="true">•</i>
 		<a href="{{ routes.all_products_collection_url }}">{{ 'sections.breadcrumbs.shop' | t }}</a>
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ collection.title }}
   {% endif %}
 	{% if template contains 'cart' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ 'sections.breadcrumbs.cart' | t }}
   {% endif %}
   {% if template contains 'product' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ product.title }}
   {% endif %}
   {% if template contains 'blog' %}
 		{% if current_tags %}
-			<i>/</i>
+			<i aria-hidden="true">•</i>
 	    <a href="{{ blog.url }}">{{ blog.title }}</a>
-			<i>/</i>
+			<i aria-hidden="true">•</i>
 			{{ current_tags }}
 		{% else %}
-			<i>/</i>
+			<i aria-hidden="true">•</i>
 			{{ blog.title }}
 		{% endif %}
   {% endif %}
 	{% if template contains 'article' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     <a href="{{ blog.url }}" title="{{ blog.title | escape }}">{{ blog.title }}</a>
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ article.title }}
   {% endif %}
   {% if template contains 'page' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ page.title }}
   {% endif %}
 	{% if template contains 'search' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ 'sections.breadcrumbs.search' | t }}
   {% endif %}
 	{% if template contains 'customers' %}
-    <i>/</i>
+    <i aria-hidden="true">•</i>
     {{ 'sections.breadcrumbs.my_account' | t }}
   {% endif %}
 </nav>
+</scroll-shadow>

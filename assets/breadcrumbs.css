@@ -13,6 +13,7 @@
   white-space: nowrap;
   max-width: 100vw;
   text-align: left;
+  text-transform: uppercase;
   scrollbar-width: none; }
   @media only screen and (min-width: 768px) {
     .breadcrumbs {
@@ -21,9 +22,8 @@
   .breadcrumbs::-webkit-scrollbar {
     display: none; }
   .breadcrumbs i {
-    opacity: 0.2;
+    opacity: 0.5;
     display: inline-block;
     margin: 0 8px; }
   .breadcrumbs a {
-    text-decoration: underline;
-    text-underline-offset: 3px; }
+    text-decoration: none; }
