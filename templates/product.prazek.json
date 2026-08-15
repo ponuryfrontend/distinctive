@@ -32,6 +32,16 @@
           "type": "title",
           "settings": {
             "uppercase": false,
+            "title_font_size_desktop": 14,
+            "title_font_size_mobile": 12,
+            "title_font_desktop": "heading",
+            "title_font_desktop_picker": "instrument_sans_i4",
+            "title_font_mobile": "",
+            "title_font_mobile_picker": "archivo_narrow_n4",
+            "title_margin_top_desktop": 12,
+            "title_margin_bottom_desktop": 0,
+            "title_margin_top_mobile": 12,
+            "title_margin_bottom_mobile": 0,
             "show_products_rating": false,
             "show_custom_badges": false
           }
