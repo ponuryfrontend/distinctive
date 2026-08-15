@@ -526,7 +526,6 @@ if (!customElements.get('product-slider')) {
         this.setupVerticalGallery();
       } else {
         this.flkty = new Flickity(this, this.options);
-        this.lockGalleryTouch();
         this.selectedIndex = this.flkty.selectedIndex;
       }
 
@@ -550,38 +549,11 @@ if (!customElements.get('product-slider')) {
       this.setOptions();
 
       this.flkty = new Flickity(this, this.options);
-      this.lockGalleryTouch();
 
       // Setup Events
       this.setupEvents();
 
       this.selectedIndex = this.flkty.selectedIndex;
-    }
-    lockGalleryTouch() {
-      // Flickity's drag module hard-codes touch-action: pan-y on its
-      // viewport (see flickity/js/drag in vendor.min.js —
-      // proto._touchActionValue = 'pan-y', applied as an inline style on
-      // this.flkty.viewport every time handles are (re)bound). That value
-      // tells the browser it's free to natively scroll the page vertically
-      // for the touch as soon as it reads any vertical component in the
-      // very first move samples — a decision the browser/compositor makes
-      // immediately, before Flickity's own JS (which only checks
-      // horizontal distance against dragThreshold, ignoring the vertical
-      // component entirely) has a chance to call preventDefault(). On a
-      // gallery that's nearly full-viewport height on mobile, a swipe
-      // that's meant to browse photos rarely comes in perfectly
-      // horizontal, so this reliably produces the "swipe photos, page
-      // also nudges up/down a little" instability.
-      // Overriding to 'none' hands the whole gesture to Flickity — no
-      // native scroll can start while a finger is down on the gallery, so
-      // an imprecise diagonal swipe still only ever moves the carousel.
-      // Must be set after each `new Flickity(...)` call (not once in CSS)
-      // because Flickity reapplies its own inline value on every
-      // (re)activation, including reInit() below when switching variant
-      // image sets.
-      if (this.flkty?.viewport) {
-        this.flkty.viewport.style.touchAction = 'none';
-      }
     }
     getActiveSlides() {
       return Array.from(this.querySelectorAll('.product-images__slide.is-active'));
