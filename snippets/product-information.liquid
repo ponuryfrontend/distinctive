@@ -27,6 +27,8 @@
         assign title_font_m = block.settings.title_font_mobile
         assign title_font_picker_d = block.settings.title_font_desktop_picker
         assign title_font_picker_m = block.settings.title_font_mobile_picker
+        assign title_case_d = block.settings.title_case_desktop
+        assign title_case_m = block.settings.title_case_mobile
         assign title_margin_top_d = block.settings.title_margin_top_desktop
         assign title_margin_bottom_d = block.settings.title_margin_bottom_desktop
         assign title_margin_top_m = block.settings.title_margin_top_mobile
@@ -37,6 +39,8 @@
         {%- if title_size_m > 0 %} product-title--size-mobile{% endif -%}
         {%- if title_font_d == 'heading' or title_font_d == 'body' or title_font_d == 'custom' %} product-title--font-desktop{% endif -%}
         {%- if title_font_m == 'heading' or title_font_m == 'body' or title_font_m == 'custom' %} product-title--font-mobile{% endif -%}
+        {%- if title_case_d == 'uppercase' %} product-title--case-upper-desktop{% elsif title_case_d == 'lowercase' %} product-title--case-lower-desktop{% elsif title_case_d == 'capitalize' %} product-title--case-capitalize-desktop{% elsif title_case_d == 'none' %} product-title--case-normal-desktop{% endif -%}
+        {%- if title_case_m == 'uppercase' %} product-title--case-upper-mobile{% elsif title_case_m == 'lowercase' %} product-title--case-lower-mobile{% elsif title_case_m == 'capitalize' %} product-title--case-capitalize-mobile{% elsif title_case_m == 'none' %} product-title--case-normal-mobile{% endif -%}
       {%- endcapture -%}
       {%- capture title_style -%}
         {%- if title_size_d > 0 -%}--product-title-size-desktop: {{ title_size_d }}px;{%- endif -%}

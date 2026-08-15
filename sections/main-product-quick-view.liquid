@@ -244,6 +244,34 @@
           "visible_if": "{{ block.settings.title_font_mobile == 'custom' }}"
         },
         {
+          "type": "select",
+          "id": "title_case_desktop",
+          "label": "Letter case (desktop)",
+          "options": [
+            { "value": "", "label": "Theme default" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" },
+            { "value": "none", "label": "As typed" }
+          ],
+          "info": "Overrides \"Make title uppercase\" above when set.",
+          "default": ""
+        },
+        {
+          "type": "select",
+          "id": "title_case_mobile",
+          "label": "Letter case (mobile)",
+          "options": [
+            { "value": "", "label": "Theme default" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" },
+            { "value": "none", "label": "As typed" }
+          ],
+          "info": "Overrides \"Make title uppercase\" above when set.",
+          "default": ""
+        },
+        {
           "type": "header",
           "content": "Spacing"
         },

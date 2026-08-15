@@ -525,6 +525,14 @@
     font-size: var(--product-title-size-desktop); }
   .thb-product-detail .product-title--font-desktop {
     font-family: var(--product-title-font-desktop); }
+  .thb-product-detail .product-title.product-title--case-upper-desktop {
+    text-transform: uppercase; }
+  .thb-product-detail .product-title.product-title--case-lower-desktop {
+    text-transform: lowercase; }
+  .thb-product-detail .product-title.product-title--case-capitalize-desktop {
+    text-transform: capitalize; }
+  .thb-product-detail .product-title.product-title--case-normal-desktop {
+    text-transform: none; }
   .thb-product-detail .product-title-container--margin-top-desktop {
     margin-top: var(--product-title-margin-top-desktop); }
   .thb-product-detail .product-title-container--margin-bottom-desktop {
@@ -534,6 +542,14 @@
     font-size: var(--product-title-size-mobile); }
   .thb-product-detail .product-title--font-mobile {
     font-family: var(--product-title-font-mobile); }
+  .thb-product-detail .product-title.product-title--case-upper-mobile {
+    text-transform: uppercase; }
+  .thb-product-detail .product-title.product-title--case-lower-mobile {
+    text-transform: lowercase; }
+  .thb-product-detail .product-title.product-title--case-capitalize-mobile {
+    text-transform: capitalize; }
+  .thb-product-detail .product-title.product-title--case-normal-mobile {
+    text-transform: none; }
   .thb-product-detail .product-title-container--margin-top-mobile {
     margin-top: var(--product-title-margin-top-mobile); }
   .thb-product-detail .product-title-container--margin-bottom-mobile {
