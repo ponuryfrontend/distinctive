@@ -21,6 +21,18 @@ class ProductRecommendations extends HTMLElement {
 				this.classList.add('product-recommendations--loaded');
 				this.setupEvents();
 
+				// The product images just inserted above are lazysizes' usual
+				// <img class="lazyload" data-src="..."> — but lazysizes only scans
+				// for new candidates on its own triggers (scroll, resize, DOM
+				// mutations it's watching). Injecting a big chunk of markup via
+				// innerHTML doesn't reliably fire one of those on its own, so
+				// without an explicit checkElems() call these images silently sit
+				// unloaded until something else on the page happens to trigger a
+				// recheck later (e.g. another lazyload section coming into view).
+				if (typeof lazySizes !== 'undefined') {
+					lazySizes.loader.checkElems();
+				}
+
 				setTimeout(() => {
 					window.dispatchEvent(new Event('resize'));
 
