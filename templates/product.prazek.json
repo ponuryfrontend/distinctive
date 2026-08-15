@@ -12,6 +12,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "breadcrumbs_j8LCJz": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
         "ed7d166d-5568-4e1a-9c05-eeffaad02629": {
           "type": "label",
           "settings": {}
@@ -170,6 +174,7 @@
         }
       },
       "block_order": [
+        "breadcrumbs_j8LCJz",
         "ed7d166d-5568-4e1a-9c05-eeffaad02629",
         "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
@@ -207,11 +212,6 @@
         "border_separator_full": false
       }
     },
-    "breadcrumbs_L8earC": {
-      "type": "breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
-    },
     "recommendations": {
       "type": "product-recommendations",
       "settings": {
@@ -240,7 +240,6 @@
   "order": [
     "main",
     "cf419534-b576-4781-b418-495982d63b57",
-    "breadcrumbs_L8earC",
     "recommendations",
     "product_seo_text_section_J9iqUG"
   ]
