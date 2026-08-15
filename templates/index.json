@@ -80,14 +80,14 @@
         "slide_ye8yLD"
       ],
       "settings": {
-        "desktop_height": "desktop-height-full",
+        "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-full",
         "change_header": true,
         "autoplay": true,
         "autoplay_length": 5,
-        "transition": "fade",
+        "transition": "slide",
         "dot_style": "titles",
-        "dot_alignment": "left",
+        "dot_alignment": "center",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
