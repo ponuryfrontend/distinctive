@@ -263,7 +263,7 @@
         "mobile_swipe": false,
         "product_limit": 10,
         "carousel_gap_desktop": 6,
-        "carousel_gap_mobile": 6,
+        "carousel_gap_mobile": 4,
         "small_heading": "MOŻE SPODOBA CI SIĘ TAKŻE",
         "small_heading_color": "#301c18",
         "small_heading_align_desktop": "center",
