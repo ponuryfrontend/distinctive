@@ -91,14 +91,25 @@ class ProductRecommendations extends HTMLElement {
 		// Shopify's own reference theme, Dawn, uses for its product
 		// recommendations.)
 		if ('IntersectionObserver' in window) {
+			// `this` itself is `display: none` by default in several contexts
+			// (see .product-recommendations in product.css / cart.css — it
+			// only switches to `display: block` once fetchProducts() below
+			// adds the "--loaded" class) — a display: none element has no
+			// layout box, so it can never be reported as intersecting. Observing
+			// `this` directly would deadlock: fetchProducts() never runs
+			// because the observer never fires because the element is
+			// invisible waiting for fetchProducts() to reveal it. Observe the
+			// surrounding section wrapper instead, which keeps its normal
+			// layout regardless of this element's own visibility.
+			const target = this.closest('.shopify-section') || this.parentElement || this;
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (!entry.isIntersecting) return;
-					observer.unobserve(this);
+					observer.unobserve(target);
 					this.fetchProducts();
 				});
 			}, { rootMargin: '0px 0px 400px 0px' });
-			observer.observe(this);
+			observer.observe(target);
 		} else {
 			this.fetchProducts();
 		}
