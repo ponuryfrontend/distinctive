@@ -20,9 +20,51 @@
     {%- when 'custom_liquid' -%}
       {{ block.settings.custom_liquid }}
     {%- when 'title' -%}
-      <div class="product-title-container" {{ block.shopify_attributes }}>
+      {%- liquid
+        assign title_size_d = block.settings.title_font_size_desktop
+        assign title_size_m = block.settings.title_font_size_mobile
+        assign title_font_d = block.settings.title_font_desktop
+        assign title_font_m = block.settings.title_font_mobile
+        assign title_font_picker_d = block.settings.title_font_desktop_picker
+        assign title_font_picker_m = block.settings.title_font_mobile_picker
+        assign title_margin_top_d = block.settings.title_margin_top_desktop
+        assign title_margin_bottom_d = block.settings.title_margin_bottom_desktop
+        assign title_margin_top_m = block.settings.title_margin_top_mobile
+        assign title_margin_bottom_m = block.settings.title_margin_bottom_mobile
+      -%}
+      {%- capture title_classes -%}
+        {%- if title_size_d > 0 %} product-title--size-desktop{% endif -%}
+        {%- if title_size_m > 0 %} product-title--size-mobile{% endif -%}
+        {%- if title_font_d == 'heading' or title_font_d == 'body' or title_font_d == 'custom' %} product-title--font-desktop{% endif -%}
+        {%- if title_font_m == 'heading' or title_font_m == 'body' or title_font_m == 'custom' %} product-title--font-mobile{% endif -%}
+      {%- endcapture -%}
+      {%- capture title_style -%}
+        {%- if title_size_d > 0 -%}--product-title-size-desktop: {{ title_size_d }}px;{%- endif -%}
+        {%- if title_size_m > 0 -%}--product-title-size-mobile: {{ title_size_m }}px;{%- endif -%}
+        {%- if title_font_d == 'heading' -%}--product-title-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif title_font_d == 'body' -%}--product-title-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif title_font_d == 'custom' and title_font_picker_d -%}--product-title-font-desktop: {{ title_font_picker_d.family }}, {{ title_font_picker_d.fallback_families }};{%- endif -%}
+        {%- if title_font_m == 'heading' -%}--product-title-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};{%- elsif title_font_m == 'body' -%}--product-title-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};{%- elsif title_font_m == 'custom' and title_font_picker_m -%}--product-title-font-mobile: {{ title_font_picker_m.family }}, {{ title_font_picker_m.fallback_families }};{%- endif -%}
+      {%- endcapture -%}
+      {%- capture title_container_classes -%}
+        {%- if title_margin_top_d > 0 %} product-title-container--margin-top-desktop{% endif -%}
+        {%- if title_margin_bottom_d > 0 %} product-title-container--margin-bottom-desktop{% endif -%}
+        {%- if title_margin_top_m > 0 %} product-title-container--margin-top-mobile{% endif -%}
+        {%- if title_margin_bottom_m > 0 %} product-title-container--margin-bottom-mobile{% endif -%}
+      {%- endcapture -%}
+      {%- capture title_container_style -%}
+        {%- if title_margin_top_d > 0 -%}--product-title-margin-top-desktop: {{ title_margin_top_d }}px;{%- endif -%}
+        {%- if title_margin_bottom_d > 0 -%}--product-title-margin-bottom-desktop: {{ title_margin_bottom_d }}px;{%- endif -%}
+        {%- if title_margin_top_m > 0 -%}--product-title-margin-top-mobile: {{ title_margin_top_m }}px;{%- endif -%}
+        {%- if title_margin_bottom_m > 0 -%}--product-title-margin-bottom-mobile: {{ title_margin_bottom_m }}px;{%- endif -%}
+      {%- endcapture -%}
+      {%- if title_font_d == 'custom' and title_font_picker_d -%}
+        <style>{{ title_font_picker_d | font_face: font_display: 'swap' }}</style>
+      {%- endif -%}
+      {%- if title_font_m == 'custom' and title_font_picker_m -%}
+        <style>{{ title_font_picker_m | font_face: font_display: 'swap' }}</style>
+      {%- endif -%}
+      <div class="product-title-container{{ title_container_classes }}"{% if title_container_style != blank %} style="{{ title_container_style | strip_newlines | strip }}"{% endif %} {{ block.shopify_attributes }}>
         {%- assign title_placeholder = 'onboarding.product_title' | t -%}
-        <h1 class="product-title uppercase--{{ block.settings.uppercase }}">{{ product.title | default: title_placeholder }}</h1>
+        <h1 class="product-title uppercase--{{ block.settings.uppercase }}{{ title_classes }}"{% if title_style != blank %} style="{{ title_style | strip_newlines | strip }}"{% endif %}>{{ product.title | default: title_placeholder }}</h1>
         <div class="product-price-container">
           <div class="no-js-hidden" id="price-{{ section.id }}">
             {% render 'product-price', product: product, use_variant: true, show_badges: true, show_custom_badges: block.settings.show_custom_badges %}

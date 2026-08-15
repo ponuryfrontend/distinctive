@@ -517,6 +517,28 @@
   .thb-product-detail .product-title a {
     color: var(--color-body); }
 
+/* "Title" block — same overrides as assets/product.css (see
+   snippets/product-information.liquid), duplicated here since this section
+   only loads featured-product.css, not product.css. */
+@media only screen and (min-width: 768px) {
+  .thb-product-detail .product-title--size-desktop {
+    font-size: var(--product-title-size-desktop); }
+  .thb-product-detail .product-title--font-desktop {
+    font-family: var(--product-title-font-desktop); }
+  .thb-product-detail .product-title-container--margin-top-desktop {
+    margin-top: var(--product-title-margin-top-desktop); }
+  .thb-product-detail .product-title-container--margin-bottom-desktop {
+    margin-bottom: var(--product-title-margin-bottom-desktop); } }
+@media only screen and (max-width: 767px) {
+  .thb-product-detail .product-title--size-mobile {
+    font-size: var(--product-title-size-mobile); }
+  .thb-product-detail .product-title--font-mobile {
+    font-family: var(--product-title-font-mobile); }
+  .thb-product-detail .product-title-container--margin-top-mobile {
+    margin-top: var(--product-title-margin-top-mobile); }
+  .thb-product-detail .product-title-container--margin-bottom-mobile {
+    margin-bottom: var(--product-title-margin-bottom-mobile); } }
+
 .thb-product-detail .product-information {
   padding: 15px;
   background: var(--bg-body);

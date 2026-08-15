@@ -826,6 +826,29 @@
   .thb-product-detail .product-title a {
     color: var(--color-body); }
 
+/* "Title" block — font size / font family / container top-bottom margin,
+   per-block overrides from the title block settings (see
+   snippets/product-information.liquid). 0 keeps the theme default in every
+   case, so the section looks the same until a merchant opts in. */
+@media only screen and (min-width: 768px) {
+  .thb-product-detail .product-title--size-desktop {
+    font-size: var(--product-title-size-desktop); }
+  .thb-product-detail .product-title--font-desktop {
+    font-family: var(--product-title-font-desktop); }
+  .thb-product-detail .product-title-container--margin-top-desktop {
+    margin-top: var(--product-title-margin-top-desktop); }
+  .thb-product-detail .product-title-container--margin-bottom-desktop {
+    margin-bottom: var(--product-title-margin-bottom-desktop); } }
+@media only screen and (max-width: 767px) {
+  .thb-product-detail .product-title--size-mobile {
+    font-size: var(--product-title-size-mobile); }
+  .thb-product-detail .product-title--font-mobile {
+    font-family: var(--product-title-font-mobile); }
+  .thb-product-detail .product-title-container--margin-top-mobile {
+    margin-top: var(--product-title-margin-top-mobile); }
+  .thb-product-detail .product-title-container--margin-bottom-mobile {
+    margin-bottom: var(--product-title-margin-bottom-mobile); } }
+
 .thb-product-detail .product-information {
   padding: 15px;
   background: var(--bg-body);

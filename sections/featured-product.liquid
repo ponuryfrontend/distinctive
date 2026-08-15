@@ -271,6 +271,120 @@
 					"label": "Make title uppercase"
 				},
 				{
+					"type": "header",
+					"content": "Typography"
+				},
+				{
+					"type": "range",
+					"id": "title_font_size_desktop",
+					"min": 0,
+					"max": 60,
+					"step": 1,
+					"unit": "px",
+					"label": "Font size (desktop)",
+					"info": "0 uses the theme default size.",
+					"default": 0
+				},
+				{
+					"type": "range",
+					"id": "title_font_size_mobile",
+					"min": 0,
+					"max": 60,
+					"step": 1,
+					"unit": "px",
+					"label": "Font size (mobile)",
+					"info": "0 uses the theme default size.",
+					"default": 0
+				},
+				{
+					"type": "select",
+					"id": "title_font_desktop",
+					"label": "Font (desktop)",
+					"options": [
+						{ "value": "", "label": "Theme default" },
+						{ "value": "heading", "label": "Heading font" },
+						{ "value": "body", "label": "Body font" },
+						{ "value": "custom", "label": "Custom font…" }
+					],
+					"default": ""
+				},
+				{
+					"type": "font_picker",
+					"id": "title_font_desktop_picker",
+					"label": "Custom font (desktop)",
+					"info": "Used when \"Font (desktop)\" above is set to Custom font.",
+					"default": "archivo_narrow_n4",
+					"visible_if": "{{ block.settings.title_font_desktop == 'custom' }}"
+				},
+				{
+					"type": "select",
+					"id": "title_font_mobile",
+					"label": "Font (mobile)",
+					"options": [
+						{ "value": "", "label": "Theme default" },
+						{ "value": "heading", "label": "Heading font" },
+						{ "value": "body", "label": "Body font" },
+						{ "value": "custom", "label": "Custom font…" }
+					],
+					"default": ""
+				},
+				{
+					"type": "font_picker",
+					"id": "title_font_mobile_picker",
+					"label": "Custom font (mobile)",
+					"info": "Used when \"Font (mobile)\" above is set to Custom font.",
+					"default": "archivo_narrow_n4",
+					"visible_if": "{{ block.settings.title_font_mobile == 'custom' }}"
+				},
+				{
+					"type": "header",
+					"content": "Spacing"
+				},
+				{
+					"type": "range",
+					"id": "title_margin_top_desktop",
+					"min": 0,
+					"max": 120,
+					"step": 4,
+					"unit": "px",
+					"label": "Top margin (desktop)",
+					"info": "0 uses the theme default spacing.",
+					"default": 0
+				},
+				{
+					"type": "range",
+					"id": "title_margin_bottom_desktop",
+					"min": 0,
+					"max": 120,
+					"step": 4,
+					"unit": "px",
+					"label": "Bottom margin (desktop)",
+					"info": "0 uses the theme default spacing.",
+					"default": 0
+				},
+				{
+					"type": "range",
+					"id": "title_margin_top_mobile",
+					"min": 0,
+					"max": 120,
+					"step": 4,
+					"unit": "px",
+					"label": "Top margin (mobile)",
+					"info": "0 uses the theme default spacing.",
+					"default": 0
+				},
+				{
+					"type": "range",
+					"id": "title_margin_bottom_mobile",
+					"min": 0,
+					"max": 120,
+					"step": 4,
+					"unit": "px",
+					"label": "Bottom margin (mobile)",
+					"info": "0 uses the theme default spacing.",
+					"default": 0
+				},
+				{
 					"type": "checkbox",
 					"id": "show_products_rating",
 					"default": true,
