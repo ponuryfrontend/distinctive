@@ -394,7 +394,7 @@
         "description_font_mobile_picker": "archivo_narrow_n4",
         "description_case_desktop": "",
         "description_case_mobile": "",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
