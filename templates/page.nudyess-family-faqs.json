@@ -162,7 +162,7 @@
           "type": "button",
           "settings": {
             "link_label": "Wymień punkty",
-            "link": "shopify://pages/reward-old",
+            "link": "shopify://pages/reward",
             "button_outline": false
           }
         }
