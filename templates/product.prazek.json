@@ -263,7 +263,6 @@
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/IMG_1354.jpg",
-            "aspect_ratio": "vertical",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -273,7 +272,6 @@
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/IMG_2544.jpg",
-            "aspect_ratio": "vertical",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -283,7 +281,6 @@
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/IMG_1673.jpg",
-            "aspect_ratio": "vertical",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -293,7 +290,6 @@
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/IMG_2651.jpg",
-            "aspect_ratio": "vertical",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -303,7 +299,6 @@
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/IMG_0123.jpg",
-            "aspect_ratio": "vertical",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -352,10 +347,10 @@
         "gap_mobile": 4,
         "background_color_desktop": "",
         "background_color_mobile": "",
-        "margin_top_desktop": 32,
-        "margin_bottom_desktop": 32,
+        "margin_top_desktop": 64,
+        "margin_bottom_desktop": 64,
         "margin_top_mobile": 0,
-        "margin_bottom_mobile": 40
+        "margin_bottom_mobile": 56
       }
     },
     "recommendations": {
