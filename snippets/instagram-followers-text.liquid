@@ -1,0 +1,79 @@
+{%- comment -%}
+	Renders one typography-configurable text element (small heading / heading
+	/ description) for sections/instagram-followers.liquid. Extracted because
+	this same ~15-line block of conditionals was previously duplicated 3x
+	inline in the section, which is what pushed it over theme-check's
+	LiquidComplexity limit — calling this once per element instead counts the
+	branching once here rather than three times in the caller.
+
+	Params:
+		tag          - 'h2' or 'div' (defaults to 'div')
+		base_class   - wrapper class, e.g. 'instagram-followers--kicker'
+		content      - HTML/text to place inside the tag (already processed —
+		               e.g. heading's `|body-font|` replace happens in the caller)
+		css_prefix   - CSS custom-property prefix, e.g. 'if-kicker'
+		font_d, font_m               - 'heading' / 'body' / 'custom' / blank
+		font_picker_d, font_picker_m - font_picker values, used when font is 'custom'
+		size_d, size_m               - px, 0 = theme default
+		case_d, case_m               - 'uppercase' / 'lowercase' / 'capitalize' / 'none' / blank
+		color                        - color value
+{%- endcomment -%}
+{%- liquid
+	assign classes = ''
+	if font_d == 'heading' or font_d == 'body' or font_d == 'custom'
+		assign classes = classes | append: ' if-font-family-desktop'
+	endif
+	if font_m == 'heading' or font_m == 'body' or font_m == 'custom'
+		assign classes = classes | append: ' if-font-family-mobile'
+	endif
+	if size_d > 0
+		assign classes = classes | append: ' if-font-size-desktop'
+	endif
+	if size_m > 0
+		assign classes = classes | append: ' if-font-size-mobile'
+	endif
+	assign case_desktop_class = ''
+	case case_d
+		when 'uppercase'
+			assign case_desktop_class = ' if-case-upper-desktop'
+		when 'lowercase'
+			assign case_desktop_class = ' if-case-lower-desktop'
+		when 'capitalize'
+			assign case_desktop_class = ' if-case-capitalize-desktop'
+		when 'none'
+			assign case_desktop_class = ' if-case-normal-desktop'
+	endcase
+	assign classes = classes | append: case_desktop_class
+	assign case_mobile_class = ''
+	case case_m
+		when 'uppercase'
+			assign case_mobile_class = ' if-case-upper-mobile'
+		when 'lowercase'
+			assign case_mobile_class = ' if-case-lower-mobile'
+		when 'capitalize'
+			assign case_mobile_class = ' if-case-capitalize-mobile'
+		when 'none'
+			assign case_mobile_class = ' if-case-normal-mobile'
+	endcase
+	assign classes = classes | append: case_mobile_class
+-%}
+{%- capture style -%}
+	{%- if font_d == 'heading' -%}--{{ css_prefix }}-font-desktop: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+	{%- elsif font_d == 'body' -%}--{{ css_prefix }}-font-desktop: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+	{%- elsif font_d == 'custom' and font_picker_d -%}--{{ css_prefix }}-font-desktop: {{ font_picker_d.family }}, {{ font_picker_d.fallback_families }};
+	{%- endif -%}
+	{%- if font_m == 'heading' -%}--{{ css_prefix }}-font-mobile: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+	{%- elsif font_m == 'body' -%}--{{ css_prefix }}-font-mobile: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+	{%- elsif font_m == 'custom' and font_picker_m -%}--{{ css_prefix }}-font-mobile: {{ font_picker_m.family }}, {{ font_picker_m.fallback_families }};
+	{%- endif -%}
+	{%- if size_d > 0 -%}--{{ css_prefix }}-size-desktop: {{ size_d }}px;{%- endif -%}
+	{%- if size_m > 0 -%}--{{ css_prefix }}-size-mobile: {{ size_m }}px;{%- endif -%}
+	{%- if color != blank -%}color: {{ color }};{%- endif -%}
+{%- endcapture -%}
+{%- if font_d == 'custom' and font_picker_d -%}<style>{{ font_picker_d | font_face: font_display: 'swap' }}</style>{%- endif -%}
+{%- if font_m == 'custom' and font_picker_m -%}<style>{{ font_picker_m | font_face: font_display: 'swap' }}</style>{%- endif -%}
+{%- if tag == 'h2' -%}
+<h2 class="{{ base_class }}{{ classes }}"{% if style != blank %} style="{{ style | strip_newlines | strip }}"{% endif %}>{{ content }}</h2>
+{%- else -%}
+<div class="{{ base_class }}{{ classes }}"{% if style != blank %} style="{{ style | strip_newlines | strip }}"{% endif %}>{{ content }}</div>
+{%- endif -%}

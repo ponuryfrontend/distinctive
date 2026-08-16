@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/* "Instagram Followers" section — a small curated media strip (up to 5
+   images/videos on desktop, first 3 on mobile) with a centered heading
+   block and CTA underneath, modeled on a reference design (La Mania's
+   Instagram section). See sections/instagram-followers.liquid. */
+
+.instagram-followers {
+  background: var(--if-bg-desktop, transparent);
+  margin-top: var(--if-margin-top-desktop, 60px);
+  margin-bottom: var(--if-margin-bottom-desktop, 60px); }
+  @media only screen and (max-width: 767px) {
+    .instagram-followers {
+      background: var(--if-bg-mobile, transparent);
+      margin-top: var(--if-margin-top-mobile, 32px);
+      margin-bottom: var(--if-margin-bottom-mobile, 32px); } }
+
+/* Grid — flex row, equal-width tiles. Each tile's own height comes from
+   its aspect-ratio modifier class further down, so with align-items:
+   flex-end mixed vertical/horizontal tiles naturally stagger like the
+   reference design instead of needing an explicit alternating pattern. */
+.instagram-followers--grid {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--if-gap-desktop, 6px);
+  margin-bottom: 40px; }
+  @media only screen and (max-width: 767px) {
+    .instagram-followers--grid {
+      gap: var(--if-gap-mobile, 6px);
+      margin-bottom: 24px; } }
+
+.instagram-followers--item {
+  flex: 1 1 0;
+  min-width: 0; }
+  /* Only the first 3 tiles show on mobile, per the reference design —
+     this is a fixed 3, not "3 at a time" swipeable, so anything past
+     that is simply not rendered on small screens. */
+  @media only screen and (max-width: 767px) {
+    .instagram-followers--item:nth-child(n+4) {
+      display: none; } }
+
+.instagram-followers--item-media {
+  position: relative;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  background: rgba(var(--color-body-rgb), 0.05); }
+  .instagram-followers--item-media img,
+  .instagram-followers--item-media video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .instagram-followers--item-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; }
+  .instagram-followers--item-media .thb-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .instagram-followers--item-media .thb-placeholder svg {
+      width: 100%;
+      height: 100%; }
+
+.instagram-followers--item--vertical .instagram-followers--item-media {
+  padding-bottom: 125%; }
+.instagram-followers--item--horizontal .instagram-followers--item-media {
+  padding-bottom: 75%; }
+/* Mobile always shows a single, consistent tile shape regardless of each
+   block's own vertical/horizontal choice — that choice only drives the
+   staggered desktop layout; the reference design's mobile view is an
+   even, uniform 3-tile row. */
+@media only screen and (max-width: 767px) {
+  .instagram-followers--item--vertical .instagram-followers--item-media,
+  .instagram-followers--item--horizontal .instagram-followers--item-media {
+    padding-bottom: 125%; } }
+
+/* Heading block — always centered (mobile and desktop), per spec. */
+.instagram-followers--header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 30px; }
+  @media only screen and (max-width: 767px) {
+    .instagram-followers--header {
+      margin-bottom: 20px; } }
+
+.instagram-followers--kicker {
+  margin-bottom: 8px; }
+.instagram-followers--heading {
+  margin-bottom: 10px; }
+.instagram-followers--description {
+  margin-bottom: 0; }
+  .instagram-followers--description:last-child {
+    margin-bottom: 0; }
+
+@media only screen and (min-width: 768px) {
+  .instagram-followers--kicker.if-font-size-desktop { font-size: var(--if-kicker-size-desktop); }
+  .instagram-followers--kicker.if-font-family-desktop { font-family: var(--if-kicker-font-desktop); }
+  .instagram-followers--kicker.if-case-upper-desktop { text-transform: uppercase; }
+  .instagram-followers--kicker.if-case-lower-desktop { text-transform: lowercase; }
+  .instagram-followers--kicker.if-case-capitalize-desktop { text-transform: capitalize; }
+  .instagram-followers--kicker.if-case-normal-desktop { text-transform: none; }
+
+  .instagram-followers--heading.if-font-size-desktop { font-size: var(--if-heading-size-desktop); }
+  .instagram-followers--heading.if-font-family-desktop { font-family: var(--if-heading-font-desktop); }
+  .instagram-followers--heading.if-case-upper-desktop { text-transform: uppercase; }
+  .instagram-followers--heading.if-case-lower-desktop { text-transform: lowercase; }
+  .instagram-followers--heading.if-case-capitalize-desktop { text-transform: capitalize; }
+  .instagram-followers--heading.if-case-normal-desktop { text-transform: none; }
+
+  .instagram-followers--description.if-font-size-desktop { font-size: var(--if-description-size-desktop); }
+  .instagram-followers--description.if-font-family-desktop { font-family: var(--if-description-font-desktop); }
+  .instagram-followers--description.if-case-upper-desktop { text-transform: uppercase; }
+  .instagram-followers--description.if-case-lower-desktop { text-transform: lowercase; }
+  .instagram-followers--description.if-case-capitalize-desktop { text-transform: capitalize; }
+  .instagram-followers--description.if-case-normal-desktop { text-transform: none; }
+}
+@media only screen and (max-width: 767px) {
+  .instagram-followers--kicker.if-font-size-mobile { font-size: var(--if-kicker-size-mobile); }
+  .instagram-followers--kicker.if-font-family-mobile { font-family: var(--if-kicker-font-mobile); }
+  .instagram-followers--kicker.if-case-upper-mobile { text-transform: uppercase; }
+  .instagram-followers--kicker.if-case-lower-mobile { text-transform: lowercase; }
+  .instagram-followers--kicker.if-case-capitalize-mobile { text-transform: capitalize; }
+  .instagram-followers--kicker.if-case-normal-mobile { text-transform: none; }
+
+  .instagram-followers--heading.if-font-size-mobile { font-size: var(--if-heading-size-mobile); }
+  .instagram-followers--heading.if-font-family-mobile { font-family: var(--if-heading-font-mobile); }
+  .instagram-followers--heading.if-case-upper-mobile { text-transform: uppercase; }
+  .instagram-followers--heading.if-case-lower-mobile { text-transform: lowercase; }
+  .instagram-followers--heading.if-case-capitalize-mobile { text-transform: capitalize; }
+  .instagram-followers--heading.if-case-normal-mobile { text-transform: none; }
+
+  .instagram-followers--description.if-font-size-mobile { font-size: var(--if-description-size-mobile); }
+  .instagram-followers--description.if-font-family-mobile { font-family: var(--if-description-font-mobile); }
+  .instagram-followers--description.if-case-upper-mobile { text-transform: uppercase; }
+  .instagram-followers--description.if-case-lower-mobile { text-transform: lowercase; }
+  .instagram-followers--description.if-case-capitalize-mobile { text-transform: capitalize; }
+  .instagram-followers--description.if-case-normal-mobile { text-transform: none; }
+}
+
+/* Button — reuses the theme's existing .text-button / .button(.outline)
+   classes (same animated hover treatment as everywhere else in the theme)
+   rather than inventing new ones; only the colors are made editable here.
+   .button's own border defaults to matching its background
+   (var(--solid-button-background)) — this override lets the merchant pick
+   a different border color specifically, per the "background, border,
+   content" requirement. */
+.instagram-followers--button-wrap {
+  display: inline-block; }
+.instagram-followers .button {
+  border-color: var(--if-button-border-color, var(--solid-button-background, var(--color-accent))); }

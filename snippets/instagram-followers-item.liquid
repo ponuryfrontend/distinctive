@@ -1,0 +1,30 @@
+{%- comment -%}
+	Renders one "Instagram Followers" tile (image or video, optional link).
+	Pulled out of sections/instagram-followers.liquid into its own snippet
+	purely to keep that file under theme-check's LiquidComplexity limit —
+	this block of per-block conditional logic was self-contained (only
+	reads `block`) and pushed the section over 120.
+	Expects: block (the "item" block being rendered)
+{%- endcomment -%}
+{%- liquid
+	assign ratio_class = 'instagram-followers--item--vertical'
+	if block.settings.aspect_ratio == 'horizontal'
+		assign ratio_class = 'instagram-followers--item--horizontal'
+	endif
+-%}
+<div class="instagram-followers--item {{ ratio_class }}" {{ block.shopify_attributes }}>
+	<div class="instagram-followers--item-media">
+		{%- if block.settings.media_type == 'video' and block.settings.video -%}
+			{{ block.settings.video | video_tag: autoplay: true, loop: true, controls: false, muted: true, image_size: '750x' }}
+		{%- elsif block.settings.media_type == 'image' and block.settings.image -%}
+			{%- render 'responsive-image', image: block.settings.image, sizes: '187x0,375x0,562x0,750x0' -%}
+		{%- else -%}
+			<div class="thb-placeholder">
+				{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+			</div>
+		{%- endif -%}
+		{%- if block.settings.link != blank -%}
+			<a href="{{ block.settings.link }}" class="instagram-followers--item-link"{% if block.settings.image.alt != blank %} aria-label="{{ block.settings.image.alt | escape }}"{% endif %}{% if block.settings.link_new_tab %} target="_blank" rel="noopener"{% endif %}></a>
+		{%- endif -%}
+	</div>
+</div>
