@@ -352,9 +352,9 @@
         "text_width": "full",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#eeeeee",
-        "color_text": "#151515",
-        "color_links": "#151515",
+        "color_bg": "#301C18",
+        "color_text": "#EAE6E0",
+        "color_links": "#EAE6E0",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
