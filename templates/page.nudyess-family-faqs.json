@@ -153,7 +153,7 @@
         "text_zKdCHb": {
           "type": "text",
           "settings": {
-            "text": "<p>Zaloguj się i wymień swoje punkty na pierwszą nagrodę. </p>",
+            "text": "<p>Zaloguj się na konto Klienta i zrealizuj swoje punkty na pierwszą nagrodę. </p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
