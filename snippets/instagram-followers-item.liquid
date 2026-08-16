@@ -4,15 +4,48 @@
 	purely to keep that file under theme-check's LiquidComplexity limit —
 	this block of per-block conditional logic was self-contained (only
 	reads `block`) and pushed the section over 120.
-	Expects: block (the "item" block being rendered)
+	Expects: block (the "item" block being rendered), index0 (0-based
+	position in section.blocks), total (section.blocks.size)
 {%- endcomment -%}
 {%- liquid
-	assign ratio_class = 'instagram-followers--item--vertical'
-	if block.settings.aspect_ratio == 'horizontal'
-		assign ratio_class = 'instagram-followers--item--horizontal'
+	comment
+		Vertical stagger, reverse-engineered from the reference site's own
+		shipped CSS/JS: every tile is nudged straight down by 48px times its
+		distance from the row's center tile — the center tile stays put
+		(offset 0), tiles further from center sit progressively lower. With
+		an odd tile count the center is a real tile (offset 0); with an even
+		count "center" falls between two tiles and neither reaches offset 0 —
+		same symmetric curve either way. Liquid has no built-in abs() for a
+		possibly-negative float, so it's done by hand via the ternary-esque
+		if/else below.
+	endcomment
+	assign center = total | minus: 1 | divided_by: 2.0
+	assign distance = index0 | minus: center
+	if distance < 0
+		assign distance = distance | times: -1
+	endif
+	assign item_offset = distance | times: 48
+
+	comment
+		Mobile shows only a centered window of (up to) 3 tiles — for the
+		reference site's fixed 5 tiles that's always tiles 2/3/4, but this
+		section allows 1-5, so the window is computed rather than hardcoded:
+		with 3 or fewer tiles configured, show all of them.
+	endcomment
+	assign hide_mobile = false
+	if total > 3
+		assign window_start = total | minus: 3 | divided_by: 2
+		assign window_end = window_start | plus: 2
+		if index0 < window_start or index0 > window_end
+			assign hide_mobile = true
+		endif
+	endif
+	assign item_classes = ''
+	if hide_mobile
+		assign item_classes = ' instagram-followers--item--hide-mobile'
 	endif
 -%}
-<div class="instagram-followers--item {{ ratio_class }}" {{ block.shopify_attributes }}>
+<div class="instagram-followers--item{{ item_classes }}" style="--if-item-offset: {{ item_offset }}px;" {{ block.shopify_attributes }}>
 	<div class="instagram-followers--item-media">
 		{%- if block.settings.media_type == 'video' and block.settings.video -%}
 			{{ block.settings.video | video_tag: autoplay: true, loop: true, controls: false, muted: true, image_size: '750x' }}

@@ -15,34 +15,55 @@
       margin-top: var(--if-margin-top-mobile, 32px);
       margin-bottom: var(--if-margin-bottom-mobile, 32px); } }
 
-/* Grid — flex row, equal-width tiles. Each tile's own height comes from
-   its aspect-ratio modifier class further down, so with align-items:
-   flex-end mixed vertical/horizontal tiles naturally stagger like the
-   reference design instead of needing an explicit alternating pattern. */
+/* Grid — matches the reference site's actual mechanism (inspected
+   directly from its shipped CSS/JS): a CSS grid, one row, every tile the
+   same fixed size — the staggered look is NOT different tile heights,
+   it's each tile individually nudged down with `transform: translateY()`
+   by an amount based on its distance from the row's center tile (see
+   --if-item-offset, set per item in snippets/instagram-followers-item.liquid).
+   align-items: start keeps that offset purely visual (translateY doesn't
+   participate in layout, so without this a grid row would otherwise
+   stretch every tile to match its row's own height).
+   Extra bottom margin/padding gives the tallest possible offset (see the
+   item snippet) room to sit below the row without visually colliding with
+   whatever comes next. --if-block-count (set inline, from
+   section.blocks.size) sizes the desktop column count to however many
+   tiles are actually configured, capped the same way the reference caps
+   each column's own width. */
 .instagram-followers--grid {
-  display: flex;
-  align-items: flex-end;
-  gap: var(--if-gap-desktop, 6px);
-  margin-bottom: 40px; }
-  @media only screen and (max-width: 767px) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: var(--if-gap-mobile, 6px);
+  margin-bottom: 24px;
+  padding-bottom: 96px; }
+  @media only screen and (min-width: 768px) {
     .instagram-followers--grid {
-      gap: var(--if-gap-mobile, 6px);
-      margin-bottom: 24px; } }
+      grid-template-columns: repeat(var(--if-block-count, 5), minmax(0, 270px));
+      justify-content: center;
+      gap: var(--if-gap-desktop, 6px);
+      margin-bottom: 40px; } }
 
 .instagram-followers--item {
-  flex: 1 1 0;
-  min-width: 0; }
-  /* Only the first 3 tiles show on mobile, per the reference design —
-     this is a fixed 3, not "3 at a time" swipeable, so anything past
-     that is simply not rendered on small screens. */
+  min-width: 0;
+  transform: translateY(var(--if-item-offset, 0px)); }
+  /* Reference design shows only a centered window of 3 tiles on mobile
+     (for its fixed 5 tiles that's always tiles 2/3/4) — .instagram-
+     followers--item--hide-mobile is computed per tile in
+     snippets/instagram-followers-item.liquid to reproduce that window for
+     any configured tile count (1-5), not just a hardcoded 5. */
   @media only screen and (max-width: 767px) {
-    .instagram-followers--item:nth-child(n+4) {
+    .instagram-followers--item--hide-mobile {
       display: none; } }
 
+/* Fixed 3:4 portrait for every tile — matches the reference site's own
+   `aspect-ratio: .75` exactly (width:height 0.75:1 = 133.333% padding-
+   bottom). No per-tile choice anymore: every tile is vertical only. */
 .instagram-followers--item-media {
   position: relative;
   display: block;
   height: 0;
+  padding-bottom: 133.333%;
   overflow: hidden;
   background: rgba(var(--color-body-rgb), 0.05); }
   .instagram-followers--item-media img,
@@ -72,19 +93,6 @@
     .instagram-followers--item-media .thb-placeholder svg {
       width: 100%;
       height: 100%; }
-
-.instagram-followers--item--vertical .instagram-followers--item-media {
-  padding-bottom: 125%; }
-.instagram-followers--item--horizontal .instagram-followers--item-media {
-  padding-bottom: 75%; }
-/* Mobile always shows a single, consistent tile shape regardless of each
-   block's own vertical/horizontal choice — that choice only drives the
-   staggered desktop layout; the reference design's mobile view is an
-   even, uniform 3-tile row. */
-@media only screen and (max-width: 767px) {
-  .instagram-followers--item--vertical .instagram-followers--item-media,
-  .instagram-followers--item--horizontal .instagram-followers--item-media {
-    padding-bottom: 125%; } }
 
 /* Heading block — always centered (mobile and desktop), per spec. */
 .instagram-followers--header {
