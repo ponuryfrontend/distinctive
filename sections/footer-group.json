@@ -40,7 +40,7 @@
         "heading_ggexq8": {
           "type": "heading",
           "settings": {
-            "text": "Bądź na bieżąco i odbierz 10% rabatu na pierwsze zakupy!",
+            "text": "Bądź na bieżąco z nowościami i promocjami!",
             "size": "h3"
           }
         },
@@ -65,9 +65,9 @@
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#FAF8F6",
-        "color_text": "#301C18",
-        "color_links": "#301C18",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
+        "color_links": "#301c18",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
