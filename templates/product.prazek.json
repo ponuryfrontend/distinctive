@@ -258,39 +258,13 @@
     "instagram_followers_VHYP4c": {
       "type": "instagram-followers",
       "blocks": {
-        "item_hbNxG7": {
-          "type": "item",
-          "settings": {
-            "media_type": "image",
-            "aspect_ratio": "vertical",
-            "link": "",
-            "link_new_tab": true
-          }
-        },
-        "item_qa8wDM": {
-          "type": "item",
-          "settings": {
-            "media_type": "image",
-            "aspect_ratio": "horizontal",
-            "link": "",
-            "link_new_tab": true
-          }
-        },
         "item_Bwci9Q": {
           "type": "item",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/IMG_1354.jpg",
             "aspect_ratio": "vertical",
-            "link": "",
-            "link_new_tab": true
-          }
-        },
-        "item_JCkTEX": {
-          "type": "item",
-          "settings": {
-            "media_type": "image",
-            "aspect_ratio": "horizontal",
-            "link": "",
+            "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
         },
@@ -298,18 +272,49 @@
           "type": "item",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/IMG_2544.jpg",
             "aspect_ratio": "vertical",
-            "link": "",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_hbNxG7": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IMG_1673.jpg",
+            "aspect_ratio": "vertical",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_qa8wDM": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IMG_2651.jpg",
+            "aspect_ratio": "vertical",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_JCkTEX": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IMG_0123.jpg",
+            "aspect_ratio": "vertical",
+            "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
         }
       },
       "block_order": [
+        "item_Bwci9Q",
+        "item_9zKDfX",
         "item_hbNxG7",
         "item_qa8wDM",
-        "item_Bwci9Q",
-        "item_JCkTEX",
-        "item_9zKDfX"
+        "item_JCkTEX"
       ],
       "name": "Instagram Followers",
       "settings": {
@@ -326,8 +331,8 @@
         "heading_color": "",
         "heading_font": "",
         "heading_font_picker": "archivo_narrow_n4",
-        "heading_size_desktop": 0,
-        "heading_size_mobile": 0,
+        "heading_size_desktop": 34,
+        "heading_size_mobile": 28,
         "heading_case_desktop": "",
         "heading_case_mobile": "",
         "description_color": "",
@@ -350,7 +355,7 @@
         "margin_top_desktop": 32,
         "margin_bottom_desktop": 32,
         "margin_top_mobile": 0,
-        "margin_bottom_mobile": 32
+        "margin_bottom_mobile": 40
       }
     },
     "recommendations": {
