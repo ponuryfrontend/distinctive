@@ -172,13 +172,15 @@
     font-weight: 400;
     font-size: 0.8125rem;
     margin: 12px 0;
-    color: rgba(var(--color-body-rgb), 0.65); }
+    color: rgba(var(--color-body-rgb), 0.65);
+    text-transform: uppercase };
     .product-form__input .form__label__value {
       font-weight: 400;
       text-transform: none;
       margin-right: 20px;
       padding-left: 2px;
-      color: var(--color-body); }
+      color: var(--color-body);
+      text-transform: uppercase };
     .product-form__input .form__label .product-popup-modal__opener {
       display: inline-flex;
       margin-left: auto; }
