@@ -159,8 +159,8 @@
 }
 .sg__heading {
 	margin: 0 0 1.4rem;
-	font-size: 1.5rem;
-	font-weight: 400;
+	font-size: 0.9375rem;
+	font-weight: var(--font-body-medium-weight, 500);
 	letter-spacing: inherit;
 	text-transform: uppercase;
 }
@@ -170,8 +170,8 @@
 
 .sg__model-note {
 	margin: 0 0 2rem;
-	font-size: 1rem;
-	line-height: 1.7;
+	font-size: 0.9375rem;
+	line-height: 1.6;
 	color: var(--sg-ink-soft);
 }
 .sg__model-note ul {
@@ -248,11 +248,11 @@
 }
 .sg__measure td {
 	padding: 0.78rem 0;
-	font-size: 1rem;
+	font-size: 0.9375rem;
 }
 .sg__measure-label {
 	color: var(--sg-ink-soft);
-	font-size: 1rem;
+	font-size: 0.9375rem;
 }
 .sg__measure td:last-child {
 	font-variant-numeric: tabular-nums;
@@ -319,7 +319,7 @@
 
 .sg__tolerance {
 	margin: 0;
-	font-size: 0.96rem;
+	font-size: 0.8125rem;
 	color: var(--sg-ink-faint);
 }
 
@@ -340,19 +340,22 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 1.2rem 0;
-	margin-bottom: 2em;
+	padding: 18px 0;
+	margin-bottom: 0;
 	background: none;
 	border: none;
 	font: inherit;
-	font-size: 1.5rem;
-	font-weight: 400;
+	font-size: 0.9375rem;
+	font-weight: var(--font-body-medium-weight, 500);
+	line-height: 1.5;
 	text-transform: uppercase;
 	color: var(--sg-ink);
 	cursor: pointer;
 }
 .sg__accordion-icon {
 	flex: none;
+	width: 14px;
+	height: 14px;
 }
 .sg__acc-v {
 	transition: transform 0.3s var(--sg-ease);
@@ -378,7 +381,7 @@
 
 .sg__brand-intro {
 	margin: 0 0 1.2rem;
-	font-size: 1rem;
+	font-size: 0.9375rem;
 	color: var(--sg-ink-soft);
 }
 .sg__brand-table-wrap {
@@ -394,12 +397,12 @@
 .sg__brand-table th,
 .sg__brand-table td {
 	padding: 0.7rem 0.4rem;
-	font-size: 1rem;
+	font-size: 0.9375rem;
 	text-align: center;
 	font-variant-numeric: tabular-nums;
 }
 .sg__brand-table thead th {
-	font-weight: 500;
+	font-weight: var(--font-body-medium-weight, 500);
 	letter-spacing: 0.02em;
 	color: var(--sg-ink);
 	border-bottom: 1px solid var(--sg-line-strong);
@@ -416,7 +419,7 @@
 }
 .sg__brand-foot {
 	margin: 1.1rem 0 1.2rem;
-	font-size: 1rem;
+	font-size: 0.8125rem;
 	color: var(--sg-ink-faint);
 }
 
