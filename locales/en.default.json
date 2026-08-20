@@ -1329,5 +1329,22 @@
         "many": "{{formattedBalance}} store credit and in {{count}} other currencies"
       }
     }
+  },
+  "size_guide": {
+    "trigger": "Size guide",
+    "close": "Close",
+    "title": "Size guide",
+    "bust": "Bust",
+    "waist": "Waist",
+    "hips": "Hips",
+    "sleeve": "Sleeve length",
+    "length": "Total length",
+    "product_measurements": "Product measurements",
+    "size_selection": "Size selection",
+    "unit": "Unit",
+    "tolerance": "Measurements may vary by ±1–2 cm due to manual measuring.",
+    "our_size_chart": "Our size chart",
+    "brand_intro": "Find your size using your body measurements.",
+    "measurements_in_cm": "All measurements are in centimeters unless otherwise noted."
   }
 }

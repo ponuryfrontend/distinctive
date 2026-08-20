@@ -167,9 +167,9 @@
             "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
             "open": false,
-            "content": "<p>Modelka ma na sobie rozmiar XS/S.<br/>Wymiary: Wzrost: 175 cm, Biust: 86 cm, Talia: 62 cm, Biodra: 88 cm.</p>",
+            "content": "",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "{%- if product.metafields.custom.size_guide_model_note != blank -%}{{ product.metafields.custom.size_guide_model_note | metafield_tag }}{%- endif -%}\n{%- render 'size-guide', product: product, label: 'Sprawdź, jaki rozmiar wybrać!', trigger: 'link' -%}"
           }
         },
         "collapsible_tab_iJTc83": {

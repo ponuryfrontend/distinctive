@@ -1,0 +1,271 @@
+{%- comment -%}
+  ============================================================================
+  SIZE GUIDE / „SPRAWDŹ ROZMIAR"  —  snippet wielokrotnego użytku
+  ============================================================================
+  Wzorowany na The Odder Side, dostosowany do realnych typów i wariantów sklepu.
+
+  POMIARY (zamknięty zestaw, każdy typ używa swojego podzbioru):
+    bust → Biust | waist → Talia | hips → Biodra
+    sleeve → Długość rękawa | length → Długość całkowita
+
+  ROZMIARY: za rozmiar uznawane są tylko wartości z whitelisty (liczby + zakresy):
+    32 34 36 38 40 42 44  oraz  36/38 38/40 40/42 42/46
+  Pozostałe wartości wariantów (kolory, ceny, „One size", „Made-to-measure",
+  „Default Title", rozmiary w cm itp.) są ignorowane.
+  Zakładki rozmiarów w sekcji „Wymiary produktu" budują się z DOSTĘPNYCH
+  rozmiarów produktu (czytanych z jego wariantów i przefiltrowanych whitelistą).
+
+  Grafika sylwetki — automatycznie wg `product.type`.
+  Akcesoria (broszka, czapka, gumka, kapelusz, opaska) → nic nie renderuje.
+
+  METAFIELDY (patrz README):
+    product.metafields.custom.size_guide_measurements  (JSON) — wartości pomiarów per rozmiar
+    product.metafields.custom.size_guide_model_note     (rich text, opc.)
+    product.metafields.custom.size_guide_silhouette     (single line, opc. — wymusza grafikę)
+    shop.metafields.size_guide.brand_chart               (JSON, opc. — globalna rozmiarówka;
+                                                            NIE ma jeszcze definicji w sklepie —
+                                                            bez niej sekcja używa domyślnej tabeli)
+
+  WYWOŁANIE:  {%- render 'size-guide', product: product -%}
+  ============================================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign p = product | default: product
+  assign sg_label_default = 'size_guide.trigger' | t
+  assign sg_label = label | default: sg_label_default
+  assign sg_trigger = trigger | default: 'link'
+
+  # --- 1. Sylwetka wg typu produktu ----------------------------------------
+  assign silhouette = ''
+  assign custom_svg = ''
+  assign mf_silhouette = p.metafields.custom.size_guide_silhouette.value
+  if mf_silhouette != blank
+    assign mf_lower = mf_silhouette | downcase | strip
+    if mf_lower contains '<svg'
+      assign custom_svg = mf_silhouette
+      assign silhouette = 'custom'
+    else
+      assign silhouette = mf_lower
+    endif
+  endif
+
+  if silhouette == blank
+    assign t = p.type | downcase | strip
+    if t contains 'broszk' or t contains 'czapk' or t contains 'gumk' or t contains 'kapelusz' or t contains 'opask'
+      assign silhouette = 'none'
+    elsif t contains 'spódnic' or t contains 'spodnic'
+      assign silhouette = 'skirt'
+    elsif t contains 'spodni' or t contains 'trouser' or t contains 'pant'
+      assign silhouette = 'trousers'
+    elsif t contains 'szort' or t contains 'short'
+      assign silhouette = 'shorts'
+    elsif t contains 'płaszcz' or t contains 'plaszcz' or t contains 'coat'
+      assign silhouette = 'coat'
+    elsif t contains 'sukien' or t contains 'dress'
+      assign silhouette = 'dress'
+    elsif t contains 'kombinezon' or t contains 'jumpsuit'
+      assign silhouette = 'jumpsuit'
+    elsif t contains 'koszul' or t contains 'shirt'
+      assign silhouette = 'shirt'
+    elsif t contains 'żakiet' or t contains 'zakiet' or t contains 'marynar' or t contains 'kurtk' or t contains 'bomber' or t contains 'jacket' or t contains 'blazer'
+      assign silhouette = 'jacket'
+    elsif t contains 'bluzk' or t contains 'top' or t contains 'tank'
+      assign silhouette = 'top'
+    endif
+  endif
+
+  if silhouette == blank
+    for tag in p.tags
+      assign tg = tag | downcase
+      if tg contains 'silhouette:'
+        assign silhouette = tg | remove: 'silhouette:' | strip
+      endif
+    endfor
+  endif
+
+  if silhouette == blank
+    assign silhouette = 'top'
+  endif
+
+  # --- 2. Dostępne rozmiary z wariantów (filtrowane whitelistą) -------------
+  # Whitelist akceptowanych rozmiarów (liczby + zakresy). Aby dodać nowy
+  # rozmiar w przyszłości, dopisz go tutaj.
+  assign accepted_sizes = '32,34,36,38,40,42,44,46,36/38,38/40,40/42,42/46' | split: ','
+
+  # Zbierz wartości opcji produktu otoczone separatorami, by uniknąć kolizji
+  assign offered = '||'
+  for option in p.options_with_values
+    for val in option.values
+      assign v = val | strip
+      if accepted_sizes contains v
+        assign needle = '|' | append: v | append: '|'
+        unless offered contains needle
+          assign offered = offered | append: v | append: '|'
+        endunless
+      endif
+    endfor
+  endfor
+
+  # Uporządkuj zgodnie z kolejnością whitelisty
+  assign available_sizes = ''
+  for sz in accepted_sizes
+    assign needle = '|' | append: sz | append: '|'
+    if offered contains needle
+      assign available_sizes = available_sizes | append: sz | append: ','
+    endif
+  endfor
+  assign available_list = available_sizes | split: ','
+  # --- 3. Wymiary produktu (metafield JSON) --------------------------------
+  assign measurements = p.metafields.custom.size_guide_measurements.value
+  assign has_product_measurements = false
+  if measurements != blank
+    assign has_product_measurements = true
+  endif
+
+  assign uid = p.id | default: 'sg'
+-%}
+
+{%- if silhouette == 'none' -%}
+  {%- comment -%} akcesoria → brak rozmiarówki {%- endcomment -%}
+{%- else -%}
+
+{%- unless sg_assets_loaded -%}
+  {%- assign sg_assets_loaded = true -%}
+  {{ 'size-guide.css' | asset_url | stylesheet_tag: preload: true }}
+  <script src="{{ 'size-guide.js' | asset_url }}" defer></script>
+{%- endunless -%}
+
+<div class="sg" data-size-guide data-uid="{{ uid }}">
+  {%- if sg_trigger != 'none' -%}
+  <button type="button" class="sg__trigger{% if sg_trigger == 'link' %} sg__trigger--link{% endif %}" data-sg-open aria-haspopup="dialog" aria-expanded="false">
+    {%- if sg_trigger == 'button' -%}
+    <svg class="sg__trigger-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="1.25" y="3.5" width="13.5" height="9" rx="0.5" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M4.3 3.5v2.2M6.6 3.5v3.3M8.8 3.5v2.2M11 3.5v3.3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+    </svg>
+    {%- endif -%}
+    <span>{{ sg_label }}</span>
+  </button>
+  {%- endif -%}
+
+  <div class="sg__overlay" data-sg-overlay hidden>
+    <div class="sg__panel" role="dialog" aria-modal="true" aria-labelledby="sg-title-{{ uid }}" tabindex="-1" data-sg-panel>
+
+      <button type="button" class="sg__close" data-sg-close aria-label="{{ 'size_guide.close' | t }}">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="sg__scroll">
+        <h2 class="sg__title" id="sg-title-{{ uid }}">{{ 'size_guide.title' | t }}</h2>
+
+        {%- if p.metafields.custom.size_guide_model_note != blank -%}
+          <div class="sg__model-note">{{ p.metafields.custom.size_guide_model_note | metafield_tag }}</div>
+        {%- endif -%}
+
+        {%- comment -%} ── POZIOM 1: WYMIARY PRODUKTU ─────────────────── {%- endcomment -%}
+        {%- if has_product_measurements -%}
+          {%- capture sg_labels_json -%}{"bust":{{ 'size_guide.bust' | t | json }},"waist":{{ 'size_guide.waist' | t | json }},"hips":{{ 'size_guide.hips' | t | json }},"sleeve":{{ 'size_guide.sleeve' | t | json }},"length":{{ 'size_guide.length' | t | json }}}{%- endcapture -%}
+          <section class="sg__section sg__product" data-sg-product
+                   data-measurements='{{ measurements | json | escape }}'
+                   data-sizes='{{ available_list | json | escape }}'
+                   data-silhouette="{{ silhouette | escape }}"
+                   data-labels='{{ sg_labels_json | escape }}'>
+            <div class="sg__product-grid">
+              <div class="sg__product-data">
+                <h3 class="sg__heading">{{ 'size_guide.product_measurements' | t }}</h3>
+                <div class="sg__sizes" data-sg-sizes role="tablist" aria-label="{{ 'size_guide.size_selection' | t }}"></div>
+
+                <table class="sg__measure" data-sg-measure>
+                  <tbody></tbody>
+                </table>
+
+                <div class="sg__units" role="radiogroup" aria-label="{{ 'size_guide.unit' | t }}">
+                  <label class="sg__unit">
+                    <input type="radio" name="sg-unit-{{ uid }}" value="cm" checked data-sg-unit tabindex="-1">
+                    <span class="sg__unit-dot" aria-hidden="true"></span> cm
+                  </label>
+                  <label class="sg__unit">
+                    <input type="radio" name="sg-unit-{{ uid }}" value="inch" data-sg-unit tabindex="-1">
+                    <span class="sg__unit-dot" aria-hidden="true"></span> inch
+                  </label>
+                </div>
+
+                <p class="sg__tolerance">{{ 'size_guide.tolerance' | t }}</p>
+              </div>
+
+              <div class="sg__product-figure" data-sg-figure>
+                {%- render 'size-guide-silhouettes', silhouette: silhouette, custom_svg: custom_svg -%}
+              </div>
+            </div>
+          </section>
+        {%- endif -%}
+
+        {%- comment -%} ── POZIOM 2: ROZMIARÓWKA CIAŁA ─────────────────── {%- endcomment -%}
+        <section class="sg__section sg__brand">
+          <button type="button" class="sg__accordion" data-sg-accordion aria-expanded="{% if has_product_measurements %}false{% else %}true{% endif %}">
+            <span>{{ 'size_guide.our_size_chart' | t }}</span>
+            <svg class="sg__accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M10 4v12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="sg__acc-v"/>
+            </svg>
+          </button>
+
+          <div class="sg__accordion-body{% unless has_product_measurements %} is-open{% endunless %}" data-sg-accordion-body>
+            <div class="sg__accordion-body-inner">
+              <p class="sg__brand-intro">{{ 'size_guide.brand_intro' | t }}</p>
+
+              <div class="sg__brand-table-wrap">
+                <table class="sg__brand-table" data-sg-brand-table>
+                  {%- assign brand_chart = shop.metafields.size_guide.brand_chart.value -%}
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      {%- if brand_chart.columns -%}
+                        {%- for col in brand_chart.columns -%}<th scope="col">{{ col }}</th>{%- endfor -%}
+                      {%- else -%}
+                        <th scope="col">XS/S</th>
+                        <th scope="col">M/L</th>
+                      {%- endif -%}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {%- if brand_chart.rows -%}
+                      {%- for row in brand_chart.rows -%}
+                        <tr>
+                          <th scope="row">{{ row.label }}</th>
+                          {%- for v in row.values -%}<td>{{ v }}</td>{%- endfor -%}
+                        </tr>
+                      {%- endfor -%}
+                    {%- else -%}
+                      <tr><th scope="row">{{ 'size_guide.bust' | t }}</th><td>83-95</td><td>96-110</td></tr>
+                      <tr><th scope="row">{{ 'size_guide.waist' | t }}</th><td>60-72</td><td>73-85</td></tr>
+                      <tr><th scope="row">{{ 'size_guide.hips' | t }}</th><td>87-98</td><td>99-112</td></tr>
+                    {%- endif -%}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="sg__units" role="radiogroup" aria-label="{{ 'size_guide.unit' | t }}">
+                <label class="sg__unit">
+                  <input type="radio" name="sg-brand-unit-{{ uid }}" value="cm" checked data-sg-brand-unit tabindex="-1">
+                  <span class="sg__unit-dot" aria-hidden="true"></span> cm
+                </label>
+                <label class="sg__unit">
+                  <input type="radio" name="sg-brand-unit-{{ uid }}" value="inch" data-sg-brand-unit tabindex="-1">
+                  <span class="sg__unit-dot" aria-hidden="true"></span> inch
+                </label>
+              </div>
+
+              <p class="sg__brand-foot" data-sg-brand-foot>{{ 'size_guide.measurements_in_cm' | t }}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}

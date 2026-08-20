@@ -1,0 +1,496 @@
+/* ==========================================================================
+   SIZE GUIDE  —  style
+   --------------------------------------------------------------------------
+   Estetyka: minimalistyczna, edytorialna. Czysta typografia, dużo światła,
+   subtelne włosowe linie. Wszystkie kolory/wymiary jako zmienne CSS —
+   łatwo dopasować do motywu sklepu (nadpisz w :root motywu).
+   Prefiks .sg / .sg-svg izoluje style od reszty theme'u.
+   ========================================================================== */
+
+/* Zmienne na :root — overlay jest przenoszony do <body> przez JS,
+   więc musi mieć dostęp do zmiennych poza drzewem .sg */
+:root {
+	--sg-bg: #ffffff;
+	--sg-ink: #000000;
+	--sg-ink-soft: #000000;
+	--sg-ink-faint: #b6b6ae;
+	--sg-line: #e7e6e0;
+	--sg-line-strong: #1a1a18;
+	--sg-accent: #1a1a18;
+	--sg-font: inherit;
+	--sg-track: 0.06em;
+	--sg-panel-w: 560px;
+	--sg-radius: 0px;
+	--sg-pad: clamp(20px, 4vw, 44px);
+	--sg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sg {
+	font-family: inherit;
+	color: var(--sg-ink);
+	margin-left: auto;
+}
+
+/* ── Trigger ─────────────────────────────────────────────────────────── */
+.sg__trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0;
+	background: none;
+	border: none;
+	font: inherit;
+	font-size: 0.82rem;
+	letter-spacing: var(--sg-track);
+	color: var(--sg-ink);
+	cursor: pointer;
+	border-bottom: 1px solid var(--sg-line-strong);
+	padding-bottom: 2px;
+	transition: opacity 0.2s var(--sg-ease);
+}
+.sg__trigger:hover {
+	opacity: 0.55;
+}
+.sg__trigger-icon {
+	flex: none;
+}
+
+/* wariant „link" — dopasowany do np. „Znajdź swój rozmiar" */
+.sg__trigger--link {
+	border-bottom: none;
+	padding-bottom: 0;
+	font-size: 1.2rem;
+	letter-spacing: inherit;
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+}
+.sg__trigger--link:hover {
+	opacity: 0.55;
+}
+
+/* ── Overlay + panel (slide-in z prawej, jak w referencji) ───────────── */
+/* z-index hardcoded — overlay jest przenoszony do <body> przez JS,
+   więc nie może polegać na zmiennej CSS dziedziczonej z .sg */
+.sg__overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	display: flex;
+	justify-content: flex-end;
+	background: rgba(28, 27, 24, 0.42);
+	opacity: 0;
+	transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
+}
+.sg__overlay[hidden] {
+	display: none;
+}
+.sg__overlay.is-open {
+	opacity: 1;
+}
+
+.sg__panel {
+	position: relative;
+	width: 100%;
+	max-width: var(--sg-panel-w);
+	height: 100%;
+	background: var(--sg-bg);
+	border-radius: var(--sg-radius);
+	transform: translateX(100%);
+	transition: transform 0.42s var(--sg-ease);
+	outline: none;
+	overflow: hidden;
+	box-shadow: -24px 0 60px -30px rgba(0, 0, 0, 0.3);
+}
+.sg__overlay.is-open .sg__panel {
+	transform: translateX(0);
+}
+
+.sg__scroll {
+	height: 100%;
+	overflow-y: auto;
+	padding: clamp(48px, 6vh, 72px) var(--sg-pad) var(--sg-pad);
+	-webkit-overflow-scrolling: touch;
+}
+
+/* ── Close ───────────────────────────────────────────────────────────── */
+.sg__close {
+	position: absolute;
+	top: clamp(16px, 3vh, 28px);
+	right: 20px;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	background: none;
+	border: none;
+	color: var(--sg-ink);
+	cursor: pointer;
+	transition:
+		transform 0.3s var(--sg-ease),
+		opacity 0.2s;
+}
+.sg__close:hover {
+	transform: rotate(90deg);
+	opacity: 0.6;
+}
+
+/* ── Nagłówki ────────────────────────────────────────────────────────── */
+.sg__title,
+.sg__heading {
+	margin: 0 0 1.4rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	letter-spacing: inherit;
+	text-transform: uppercase;
+}
+.sg__heading {
+	color: var(--sg-ink);
+}
+
+.sg__model-note {
+	margin: 0 0 2rem;
+	font-size: 1rem;
+	line-height: 1.7;
+	color: var(--sg-ink-soft);
+}
+.sg__model-note ul {
+	margin: 0;
+	padding-left: 1.1em;
+}
+.sg__model-note li {
+	margin-bottom: 0.3em;
+}
+
+.sg__section {
+	margin-bottom: 2.4rem;
+}
+
+/* ── Poziom 1: wymiary produktu ──────────────────────────────────────── */
+.sg__product-grid {
+	display: grid;
+	grid-template-columns: 1fr 220px;
+	gap: clamp(16px, 3vw, 28px);
+	align-items: start;
+}
+
+/* zakładki rozmiarów */
+.sg__sizes {
+	display: flex;
+	gap: 1.4rem;
+	margin-bottom: 1.6rem;
+	flex-wrap: wrap;
+}
+.sg__size {
+	background: none;
+	border: none;
+	padding: 0 0 4px;
+	font: inherit;
+	font-size: 1.2rem;
+	letter-spacing: 0.08em;
+	color: var(--sg-ink-faint);
+	cursor: pointer;
+	position: relative;
+	transition: color 0.2s var(--sg-ease);
+}
+.sg__size::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 100%;
+	bottom: 0;
+	height: 1px;
+	background: var(--sg-line-strong);
+	transition: right 0.3s var(--sg-ease);
+}
+.sg__size:hover {
+	color: var(--sg-ink-soft);
+}
+.sg__size.is-active {
+	color: var(--sg-ink);
+}
+.sg__size.is-active::after {
+	right: 0;
+}
+
+/* tabela pomiarów aktywnego rozmiaru */
+.sg__measure {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.6rem;
+}
+.sg__measure tr {
+	border-bottom: 1px solid var(--sg-line);
+	transition: background 0.2s var(--sg-ease);
+}
+.sg__measure tr:first-child {
+	border-top: 1px solid var(--sg-line);
+}
+.sg__measure td {
+	padding: 0.78rem 0;
+	font-size: 1rem;
+}
+.sg__measure-label {
+	color: var(--sg-ink-soft);
+	font-size: 1rem;
+}
+.sg__measure td:last-child {
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.02em;
+}
+.sg__measure tr.is-highlight {
+	background: color-mix(in srgb, var(--sg-accent) 6%, transparent);
+}
+.sg__measure tr.is-highlight .sg__measure-label {
+	color: var(--sg-ink);
+}
+
+/* jednostki cm / inch */
+.sg__units {
+	display: flex;
+	gap: 1.6rem;
+	margin: 1rem 0;
+}
+.sg__unit {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.86rem;
+	color: var(--sg-ink-soft);
+	cursor: pointer;
+}
+.sg__unit input {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+.sg__unit-dot {
+	width: 18px;
+	height: 18px;
+	border: 1px solid var(--sg-ink-soft);
+	border-radius: 50%;
+	display: inline-grid;
+	place-items: center;
+	transition: border-color 0.2s;
+}
+.sg__unit-dot::after {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--sg-ink);
+	transform: scale(0);
+	transition: transform 0.2s var(--sg-ease);
+}
+.sg__unit input:checked + .sg__unit-dot {
+	border-color: var(--sg-ink);
+}
+.sg__unit input:checked + .sg__unit-dot::after {
+	transform: scale(1);
+}
+.sg__unit:has(input:checked) {
+	color: var(--sg-ink);
+}
+
+.sg__tolerance {
+	margin: 0;
+	font-size: 0.96rem;
+	color: var(--sg-ink-faint);
+}
+
+/* figura / svg */
+.sg__product-figure {
+	align-self: start;
+}
+
+/* ── Poziom 2: rozmiarówka ciała (akordeon) ──────────────────────────── */
+.sg__brand {
+	border-top: 1px solid var(--sg-line);
+	padding-top: 0.4rem;
+	margin-bottom: 0;
+}
+.sg__accordion {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.2rem 0;
+	margin-bottom: 2em;
+	background: none;
+	border: none;
+	font: inherit;
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: var(--sg-ink);
+	cursor: pointer;
+}
+.sg__accordion-icon {
+	flex: none;
+}
+.sg__acc-v {
+	transition: transform 0.3s var(--sg-ease);
+	transform-origin: center;
+}
+.sg__accordion[aria-expanded='true'] .sg__acc-v {
+	transform: scaleY(0);
+}
+
+/* grid trick: 0fr → 1fr animuje naturalną wysokość bez magicznych wartości */
+.sg__accordion-body {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.38s var(--sg-ease);
+}
+.sg__accordion-body.is-open {
+	grid-template-rows: 1fr;
+}
+.sg__accordion-body-inner {
+	overflow: hidden;
+	min-height: 0;
+}
+
+.sg__brand-intro {
+	margin: 0 0 1.2rem;
+	font-size: 1rem;
+	color: var(--sg-ink-soft);
+}
+.sg__brand-table-wrap {
+	margin-bottom: 1.6rem;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.sg__brand-table {
+	width: 100%;
+	min-width: 440px;
+	border-collapse: collapse;
+}
+.sg__brand-table th,
+.sg__brand-table td {
+	padding: 0.7rem 0.4rem;
+	font-size: 1rem;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+.sg__brand-table thead th {
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	color: var(--sg-ink);
+	border-bottom: 1px solid var(--sg-line-strong);
+	padding-bottom: 0.9rem;
+}
+.sg__brand-table tbody tr {
+	border-bottom: 1px solid var(--sg-line);
+}
+.sg__brand-table th[scope='row'] {
+	text-align: left;
+	font-weight: 400;
+	color: var(--sg-ink-soft);
+	white-space: nowrap;
+}
+.sg__brand-foot {
+	margin: 1.1rem 0 1.2rem;
+	font-size: 1rem;
+	color: var(--sg-ink-faint);
+}
+
+/* ── SVG sylwetki ────────────────────────────────────────────────────── */
+.sg-svg {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
+.sg-svg__art,
+.sg-svg svg {
+	width: 100%;
+	max-width: 220px;
+	height: auto;
+	display: block;
+}
+.sg-svg__garment {
+	color: var(--sg-ink);
+	opacity: 0.85;
+}
+.sg-svg__dims {
+	color: var(--sg-ink-faint);
+}
+.sg-svg__dim line {
+	stroke: currentColor;
+	transition: stroke 0.25s var(--sg-ease);
+}
+.sg-svg__dim text {
+	font-size: 8.5px;
+	fill: var(--sg-ink-soft);
+	letter-spacing: 0.02em;
+	transition:
+		fill 0.25s var(--sg-ease),
+		font-weight 0.25s;
+}
+/* aktywny pomiar — podświetlony przez JS (klasa is-active na <g>) */
+.sg-svg__dim.is-active line {
+	stroke: var(--sg-accent);
+	stroke-width: 1.6;
+}
+.sg-svg__dim.is-active text {
+	fill: var(--sg-accent);
+	font-weight: 700;
+}
+
+/* ── body lock przy otwartym panelu ──────────────────────────────────── */
+body.sg-lock {
+	overflow: hidden;
+}
+
+/* ── Responsywność ───────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+	/* nadpisanie na :root — panel jest w <body>, nie dziedziczy ze .sg */
+	:root {
+		--sg-panel-w: 100%;
+	}
+	.sg__product-grid {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+	.sg__product-figure {
+		order: -1;
+		display: flex;
+		justify-content: center;
+	}
+	.sg-svg {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 12px;
+	}
+	.sg-svg__art,
+	.sg-svg svg {
+		flex: 1 1 140px;
+		max-width: 220px;
+	}
+}
+
+/* ── Redukcja ruchu ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+	.sg__overlay,
+	.sg__panel,
+	.sg__close,
+	.sg__size::after,
+	.sg__accordion-body,
+	.sg__acc-v,
+	.sg-svg__dim line,
+	.sg-svg__dim text {
+		transition: none !important;
+	}
+}
