@@ -1299,5 +1299,22 @@
         "many": "{{formattedBalance}} Store-Guthaben und in {{count}} weiteren Währungen"
       }
     }
+  },
+  "size_guide": {
+    "trigger": "Größentabelle",
+    "close": "Schließen",
+    "title": "Größentabelle",
+    "bust": "Brustumfang",
+    "waist": "Taille",
+    "hips": "Hüfte",
+    "sleeve": "Ärmellänge",
+    "length": "Gesamtlänge",
+    "product_measurements": "Produktmaße",
+    "size_selection": "Größenauswahl",
+    "unit": "Einheit",
+    "tolerance": "Die Maße können aufgrund manueller Messung um ±1–2 cm abweichen.",
+    "our_size_chart": "Unsere Größentabelle",
+    "brand_intro": "Finde deine Größe anhand deiner Körpermaße.",
+    "measurements_in_cm": "Alle Maße sind in Zentimetern angegeben, sofern nicht anders angegeben."
   }
 }

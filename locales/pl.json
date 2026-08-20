@@ -571,5 +571,22 @@
         }
       }
     }
+  },
+  "size_guide": {
+    "trigger": "Sprawdź rozmiar",
+    "close": "Zamknij",
+    "title": "Rozmiarówka",
+    "bust": "Biust",
+    "waist": "Talia",
+    "hips": "Biodra",
+    "sleeve": "Długość rękawa",
+    "length": "Długość całkowita",
+    "product_measurements": "Wymiary produktu",
+    "size_selection": "Wybór rozmiaru",
+    "unit": "Jednostka",
+    "tolerance": "Wymiary mogą się różnić o ±1–2 cm ze względu na ręczny pomiar.",
+    "our_size_chart": "Nasza rozmiarówka",
+    "brand_intro": "Znajdź swój rozmiar na podstawie wymiarów ciała.",
+    "measurements_in_cm": "Wszystkie wymiary podane są w centymetrach, chyba że zaznaczono inaczej."
   }
 }
