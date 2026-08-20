@@ -55,11 +55,14 @@
 	flex: none;
 }
 
-/* wariant „link" — podkreślenie liczy .text-button (jak reszta linków w motywie) */
+/* wariant „link" — wygląd (rozmiar, podkreślenie) liczy .text-button z app.css,
+   żeby link wyglądał identycznie jak inne linki tekstowe w sklepie. size-guide.css
+   ładuje się PO app.css, więc font-size musi być jawnie dopasowany do .text-button
+   (0.8125rem) — inaczej wygrałby z powodu kolejności, mimo tej samej specyficzności. */
 .sg__trigger--link {
 	border-bottom: none;
 	padding-bottom: 0;
-	font-size: 1.2rem;
+	font-size: 0.8125rem;
 	letter-spacing: inherit;
 	color: inherit;
 }
