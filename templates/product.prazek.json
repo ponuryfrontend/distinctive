@@ -99,9 +99,9 @@
             "color_picker_use_variants": false,
             "variant_is_disabled": false,
             "sizing_guide_variant": "Rozmiar",
-            "sizing_guide_text": "Dobierz swój rozmiar",
+            "sizing_guide_text": "",
             "sizing_guide_icon": "ruler",
-            "sizing_guide_page": "tabela-rozmiarow"
+            "sizing_guide_page": ""
           }
         },
         "3184ed78-b74d-40cc-a072-56e6212c92ea": {
