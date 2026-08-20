@@ -162,7 +162,7 @@
 }
 .sg__heading {
 	margin: 0 0 1.4rem;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 	font-weight: var(--font-body-medium-weight, 500);
 	letter-spacing: inherit;
 	text-transform: uppercase;
@@ -173,7 +173,7 @@
 
 .sg__model-note {
 	margin: 0 0 2rem;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 	line-height: 1.6;
 	color: var(--sg-ink-soft);
 }
@@ -251,11 +251,11 @@
 }
 .sg__measure td {
 	padding: 0.78rem 0;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 }
 .sg__measure-label {
 	color: var(--sg-ink-soft);
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 }
 .sg__measure td:last-child {
 	font-variant-numeric: tabular-nums;
@@ -279,7 +279,7 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	font-size: 0.86rem;
+	font-size: 0.8125rem;
 	color: var(--sg-ink-soft);
 	cursor: pointer;
 }
@@ -322,7 +322,7 @@
 
 .sg__tolerance {
 	margin: 0;
-	font-size: 0.8125rem;
+	font-size: 0.75rem;
 	color: var(--sg-ink-faint);
 }
 
@@ -343,12 +343,12 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 18px 0;
+	padding: 16px 0;
 	margin-bottom: 0;
 	background: none;
 	border: none;
 	font: inherit;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 	font-weight: var(--font-body-medium-weight, 500);
 	line-height: 1.5;
 	text-transform: uppercase;
@@ -384,7 +384,7 @@
 
 .sg__brand-intro {
 	margin: 0 0 1.2rem;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 	color: var(--sg-ink-soft);
 }
 .sg__brand-table-wrap {
@@ -400,7 +400,7 @@
 .sg__brand-table th,
 .sg__brand-table td {
 	padding: 0.7rem 0.4rem;
-	font-size: 0.9375rem;
+	font-size: 0.8125rem;
 	text-align: center;
 	font-variant-numeric: tabular-nums;
 }
@@ -422,7 +422,7 @@
 }
 .sg__brand-foot {
 	margin: 1.1rem 0 1.2rem;
-	font-size: 0.8125rem;
+	font-size: 0.75rem;
 	color: var(--sg-ink-faint);
 }
 
