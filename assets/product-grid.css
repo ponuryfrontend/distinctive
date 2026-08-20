@@ -607,6 +607,17 @@
     white-space: nowrap;
     padding: 0 6px; }
 
+@media only screen and (min-width: 1068px) {
+  .product-recommendations--header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; }
+    .product-recommendations--header-content {
+      grid-column: 2; }
+    .product-recommendations--pager {
+      grid-column: 3;
+      justify-self: end; }
+}
+
 @media only screen and (min-width: 768px) {
   .rec-kicker--font-desktop { font-family: var(--rec-kicker-font-desktop); }
   .rec-kicker--size-desktop { font-size: var(--rec-kicker-size-desktop); }
