@@ -161,6 +161,7 @@
         },
         "collapsible_tab_Ca3CWD": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Wymiary",
             "heading_font_size_desktop": 13,
