@@ -161,14 +161,13 @@
         },
         "collapsible_tab_Ca3CWD": {
           "type": "collapsible_tab",
-          "disabled": true,
           "settings": {
             "heading": "Wymiary",
             "heading_font_size_desktop": 13,
             "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
             "open": false,
-            "content": "",
+            "content": "<p>Modelka ma na sobie rozmiar XS/S.<br/>Wymiary: Wzrost: 175 cm, Biust: 86 cm, Talia: 62 cm, Biodra: 88 cm.</p>",
             "page": "",
             "custom_liquid": ""
           }
