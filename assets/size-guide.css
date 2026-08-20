@@ -84,6 +84,10 @@
 	transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1);
 	-webkit-backdrop-filter: blur(3px);
 	backdrop-filter: blur(3px);
+	/* touch-action nie dziedziczy się na .sg__panel (liczy się element,
+	   na którym zaczyna się dotyk) — backdrop blokuje przeciąganie/scroll,
+	   sam panel przewija się normalnie dzięki własnemu overflow-y: auto */
+	touch-action: none;
 }
 .sg__overlay[hidden] {
 	display: none;
@@ -105,6 +109,9 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+	/* dodatkowe zabezpieczenie: scroll wewnątrz panelu nie "przebija" do tła
+	   po dojechaniu do góry/dołu (nawet gdyby lock na <body> zawiódł) */
+	overscroll-behavior: contain;
 }
 .sg__overlay.is-open .sg__panel {
 	transform: translateX(0);
@@ -470,8 +477,15 @@
 	font-weight: 700;
 }
 
-/* ── body lock przy otwartym panelu ──────────────────────────────────── */
+/* ── body lock przy otwartym panelu (mobile/tablet/desktop) ────────────
+   position:fixed zamiast samego overflow:hidden — na iOS Safari samo
+   overflow:hidden na <body> NIE blokuje scrolla tła. `top`/`padding-right`
+   (kompensacja znikającego scrollbara) są ustawiane dynamicznie przez JS. */
 body.sg-lock {
+	position: fixed;
+	left: 0;
+	right: 0;
+	width: 100%;
 	overflow: hidden;
 }
 

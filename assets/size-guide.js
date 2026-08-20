@@ -1,6 +1,36 @@
 (function () {
   'use strict';
 
+  var scrollLock = (function () {
+    var count = 0;
+    var savedY = 0;
+
+    function lock() {
+      if (count === 0) {
+        savedY = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.top = (-savedY) + 'px';
+        if (scrollbarWidth > 0) {
+          document.body.style.paddingRight = scrollbarWidth + 'px';
+        }
+        document.body.classList.add('sg-lock');
+      }
+      count++;
+    }
+
+    function unlock() {
+      count = Math.max(0, count - 1);
+      if (count === 0) {
+        document.body.classList.remove('sg-lock');
+        document.body.style.top = '';
+        document.body.style.paddingRight = '';
+        window.scrollTo(0, savedY);
+      }
+    }
+
+    return { lock: lock, unlock: unlock };
+  })();
+
   var CM_TO_INCH = 0.393700787;
   var ORDER  = ['bust', 'waist', 'hips', 'sleeve', 'length'];
   var LABELS = {
@@ -240,7 +270,11 @@
         { e.preventDefault(); f[0].focus(); }
     }
 
+    var isOpen = false;
+
     function open() {
+      if (isOpen) return;
+      isOpen = true;
       // Lazy: init content first (while overlay is still inside root), then move to <body>
       if (!contentReady) {
         contentReady = true;
@@ -249,7 +283,7 @@
       }
       lastFocused = document.activeElement;
       overlay.hidden = false;
-      document.body.classList.add('sg-lock');
+      scrollLock.lock();
       void overlay.offsetWidth;
       overlay.classList.add('is-open');
       openBtn && openBtn.setAttribute('aria-expanded', 'true');
@@ -258,10 +292,12 @@
     }
 
     function close() {
+      if (!isOpen) return;
+      isOpen = false;
       overlay.classList.remove('is-open');
       openBtn && openBtn.setAttribute('aria-expanded', 'false');
       document.removeEventListener('keydown', onKey);
-      document.body.classList.remove('sg-lock');
+      scrollLock.unlock();
       var done = function () { overlay.hidden = true; overlay.removeEventListener('transitionend', done); };
       overlay.addEventListener('transitionend', done);
       setTimeout(function () { if (!overlay.classList.contains('is-open')) overlay.hidden = true; }, 500);
