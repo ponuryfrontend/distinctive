@@ -169,10 +169,9 @@
 }
 .sg__heading {
 	margin: 0 0 1.4rem;
-	font-size: 0.8125rem;
-	font-weight: var(--font-body-medium-weight, 500);
+	font-size: 1.375rem;
+	line-height: 1;
 	letter-spacing: inherit;
-	text-transform: uppercase;
 }
 .sg__heading {
 	color: var(--sg-ink);
@@ -213,40 +212,34 @@
 /* zakładki rozmiarów */
 .sg__sizes {
 	display: flex;
-	gap: 1.4rem;
-	margin-bottom: 1.6rem;
 	flex-wrap: wrap;
+	margin-bottom: 1.6rem;
 }
+/* wzorowane 1:1 na .variations .product-form__input--block (przyciski
+   wariantów na stronie produktu), żeby wybór rozmiaru wyglądał identycznie */
 .sg__size {
-	background: none;
-	border: none;
-	padding: 0 0 4px;
+	min-width: 60px;
+	height: 42px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 15px;
 	font: inherit;
-	font-size: 1.2rem;
-	letter-spacing: 0.08em;
-	color: var(--sg-ink-faint);
+	font-size: 0.9375rem;
+	letter-spacing: inherit;
+	color: var(--sg-ink);
 	cursor: pointer;
-	position: relative;
-	transition: color 0.2s var(--sg-ease);
-}
-.sg__size::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	right: 100%;
-	bottom: 0;
-	height: 1px;
-	background: var(--sg-line-strong);
-	transition: right 0.3s var(--sg-ease);
-}
-.sg__size:hover {
-	color: var(--sg-ink-soft);
+	background: rgba(var(--color-body-rgb), 0.05);
+	border: none;
+	margin-right: 6px;
+	margin-bottom: 6px;
+	border-radius: var(--input-border-radius, 3px);
+	box-shadow: 0 0 0 1px transparent inset;
+	transition: background 0.2s var(--sg-ease), box-shadow 0.2s var(--sg-ease);
 }
 .sg__size.is-active {
-	color: var(--sg-ink);
-}
-.sg__size.is-active::after {
-	right: 0;
+	background-color: var(--sg-bg);
+	box-shadow: 0 0 0 1px var(--color-body) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 /* tabela pomiarów aktywnego rozmiaru */
