@@ -151,7 +151,7 @@
                    data-sizes='{{ available_list | json | escape }}'
                    data-silhouette="{{ silhouette | escape }}"
                    data-labels='{{ sg_labels_json | escape }}'>
-            <div class="sg__product-grid{% if silhouette == blank %} sg__product-grid--no-figure{% endif %}">
+            <div class="sg__product-grid">
               <div class="sg__product-data">
                 <h3 class="sg__heading h5">{{ 'size_guide.product_measurements' | t }}</h3>
                 <div class="sg__sizes" data-sg-sizes role="tablist" aria-label="{{ 'size_guide.size_selection' | t }}"></div>

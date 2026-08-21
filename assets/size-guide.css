@@ -196,17 +196,13 @@
 }
 
 /* ── Poziom 1: wymiary produktu ──────────────────────────────────────── */
+/* Dane (zakładki rozmiarów, tabela, jednostki) nad grafiką — grafika na
+   pełną szerokość sekcji, w poziomym pasie pod spodem (nie w wąskiej
+   kolumnie z boku). Marginesy sekcji dziedziczy z .sg__scroll, nie ma
+   własnych ani nie wychodzi poza nie. */
 .sg__product-grid {
-	display: grid;
-	grid-template-columns: 1fr 220px;
-	gap: clamp(16px, 3vw, 28px);
-	align-items: start;
-}
-/* brak rozpoznanej sylwetki (nieznany typ produktu, bez ręcznego
-   nadpisania metafieldem) → grafika się nie renderuje, tabela wymiarów
-   zajmuje całą szerokość zamiast zostawiać pustą kolumnę */
-.sg__product-grid--no-figure {
-	grid-template-columns: 1fr;
+	display: flex;
+	flex-direction: column;
 }
 
 /* zakładki rozmiarów */
@@ -332,9 +328,14 @@
 	color: var(--sg-ink-faint);
 }
 
-/* figura / svg */
+/* figura / svg — poziomy pas na pełną szerokość sekcji pod tabelą wymiarów */
 .sg__product-figure {
-	align-self: start;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: clamp(20px, 4vw, 28px);
+	padding-top: clamp(20px, 4vw, 28px);
+	border-top: 1px solid var(--sg-line);
 }
 
 /* ── Poziom 2: rozmiarówka ciała (akordeon) ──────────────────────────── */
@@ -443,7 +444,7 @@
 .sg-svg__art,
 .sg-svg svg {
 	width: 100%;
-	max-width: 220px;
+	max-width: 320px;
 	height: auto;
 	display: block;
 }
@@ -494,25 +495,9 @@ body.sg-lock {
 	:root {
 		--sg-panel-w: 100%;
 	}
-	.sg__product-grid {
-		grid-template-columns: 1fr;
-		gap: 28px;
-	}
-	.sg__product-figure {
-		order: -1;
-		display: flex;
-		justify-content: center;
-	}
-	.sg-svg {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 12px;
-	}
 	.sg-svg__art,
 	.sg-svg svg {
-		flex: 1 1 140px;
-		max-width: 220px;
+		max-width: 260px;
 	}
 }
 
