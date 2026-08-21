@@ -334,7 +334,6 @@
 	display: flex;
 	justify-content: center;
 	margin-top: clamp(20px, 4vw, 28px);
-	padding-top: clamp(20px, 4vw, 28px);
 	border-top: 1px solid var(--sg-line);
 }
 
