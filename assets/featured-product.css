@@ -625,6 +625,8 @@
   text-transform: capitalize; }
 .product__accordion--case-normal summary {
   text-transform: none; }
+.product__accordion summary {
+  font-weight: 700; }
 
   .thb-product-detail .product-information--line {
     margin-left: -15px;

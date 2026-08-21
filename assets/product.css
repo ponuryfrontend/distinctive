@@ -1387,6 +1387,8 @@
   text-transform: capitalize; }
 .product__accordion--case-normal summary {
   text-transform: none; }
+.product__accordion summary {
+  font-weight: 700; }
 
 .share-article {
   display: block;
