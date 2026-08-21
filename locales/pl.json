@@ -581,6 +581,8 @@
     "hips": "Biodra",
     "sleeve": "Długość rękawa",
     "length": "Długość całkowita",
+    "outer_leg": "Nogawka zewnętrzna",
+    "inner_leg": "Nogawka wewnętrzna",
     "product_measurements": "Wymiary produktu",
     "size_selection": "Wybór rozmiaru",
     "unit": "Jednostka",

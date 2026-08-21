@@ -1309,6 +1309,8 @@
     "hips": "Hüfte",
     "sleeve": "Ärmellänge",
     "length": "Gesamtlänge",
+    "outer_leg": "Außenbeinlänge",
+    "inner_leg": "Innenbeinlänge",
     "product_measurements": "Produktmaße",
     "size_selection": "Größenauswahl",
     "unit": "Einheit",

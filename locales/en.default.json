@@ -1339,6 +1339,8 @@
     "hips": "Hips",
     "sleeve": "Sleeve length",
     "length": "Total length",
+    "outer_leg": "Outer leg length",
+    "inner_leg": "Inner leg length",
     "product_measurements": "Product measurements",
     "size_selection": "Size selection",
     "unit": "Unit",

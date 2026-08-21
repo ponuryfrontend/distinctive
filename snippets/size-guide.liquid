@@ -145,7 +145,7 @@
 
         {%- comment -%} ── POZIOM 1: WYMIARY PRODUKTU ─────────────────── {%- endcomment -%}
         {%- if has_product_measurements -%}
-          {%- capture sg_labels_json -%}{"bust":{{ 'size_guide.bust' | t | json }},"waist":{{ 'size_guide.waist' | t | json }},"hips":{{ 'size_guide.hips' | t | json }},"sleeve":{{ 'size_guide.sleeve' | t | json }},"length":{{ 'size_guide.length' | t | json }}}{%- endcapture -%}
+          {%- capture sg_labels_json -%}{"bust":{{ 'size_guide.bust' | t | json }},"waist":{{ 'size_guide.waist' | t | json }},"hips":{{ 'size_guide.hips' | t | json }},"sleeve":{{ 'size_guide.sleeve' | t | json }},"length":{{ 'size_guide.length' | t | json }},"outer_leg":{{ 'size_guide.outer_leg' | t | json }},"inner_leg":{{ 'size_guide.inner_leg' | t | json }}}{%- endcapture -%}
           <section class="sg__section sg__product" data-sg-product
                    data-measurements='{{ measurements | json | escape }}'
                    data-sizes='{{ available_list | json | escape }}'

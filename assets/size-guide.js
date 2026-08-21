@@ -37,13 +37,15 @@
   })();
 
   var CM_TO_INCH = 0.393700787;
-  var ORDER  = ['bust', 'waist', 'hips', 'sleeve', 'length'];
+  var ORDER  = ['bust', 'waist', 'hips', 'sleeve', 'length', 'outer_leg', 'inner_leg'];
   var LABELS = {
-    bust:   'Biust',
-    waist:  'Talia',
-    hips:   'Biodra',
-    sleeve: 'Długość rękawa',
-    length: 'Długość całkowita'
+    bust:      'Biust',
+    waist:     'Talia',
+    hips:      'Biodra',
+    sleeve:    'Długość rękawa',
+    length:    'Długość całkowita',
+    outer_leg: 'Nogawka zewnętrzna',
+    inner_leg: 'Nogawka wewnętrzna'
   };
 
   function fmt(v, unit) {
