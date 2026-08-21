@@ -1,31 +1,6 @@
 {%- comment -%}
   ============================================================================
-  SIZE GUIDE / „SPRAWDŹ ROZMIAR"  —  snippet wielokrotnego użytku
-  ============================================================================
-
-  POMIARY (zamknięty zestaw, każdy typ używa swojego podzbioru):
-    bust → Biust | waist → Talia | hips → Biodra
-    sleeve → Długość rękawa | length → Długość całkowita
-
-  ROZMIARY: za rozmiar uznawane są tylko wartości z whitelisty (liczby + zakresy):
-    32 34 36 38 40 42 44  oraz  36/38 38/40 40/42 42/46
-  Pozostałe wartości wariantów (kolory, ceny, „One size", „Made-to-measure",
-  „Default Title", rozmiary w cm itp.) są ignorowane.
-  Zakładki rozmiarów w sekcji „Wymiary produktu" budują się z DOSTĘPNYCH
-  rozmiarów produktu (czytanych z jego wariantów i przefiltrowanych whitelistą).
-
-  Grafika sylwetki — automatycznie wg `product.type`.
-  Akcesoria (broszka, czapka, gumka, kapelusz, opaska) → nic nie renderuje.
-
-  METAFIELDY (patrz README):
-    product.metafields.custom.size_guide_measurements  (JSON) — wartości pomiarów per rozmiar
-    product.metafields.custom.size_guide_model_note     (rich text, opc.)
-    product.metafields.custom.size_guide_silhouette     (single line, opc. — wymusza grafikę)
-    shop.metafields.size_guide.brand_chart               (JSON, opc. — globalna rozmiarówka;
-                                                            NIE ma jeszcze definicji w sklepie —
-                                                            bez niej sekcja używa domyślnej tabeli)
-
-  WYWOŁANIE:  {%- render 'size-guide', product: product -%}
+  SIZE GUIDE / „SPRAWDŹ ROZMIAR"
   ============================================================================
 {%- endcomment -%}
 
@@ -90,7 +65,7 @@
   # --- 2. Dostępne rozmiary z wariantów (filtrowane whitelistą) -------------
   # Whitelist akceptowanych rozmiarów (liczby + zakresy). Aby dodać nowy
   # rozmiar w przyszłości, dopisz go tutaj.
-  assign accepted_sizes = '32,34,36,38,40,42,44,46,36/38,38/40,40/42,42/46' | split: ','
+  assign accepted_sizes = 'XS/S,M/L,One Size,XL PLUS' | split: ','
 
   # Zbierz wartości opcji produktu otoczone separatorami, by uniknąć kolizji
   assign offered = '||'
