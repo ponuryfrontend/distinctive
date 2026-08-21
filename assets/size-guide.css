@@ -400,8 +400,8 @@
 }
 .sg__brand-table {
 	width: 100%;
-	min-width: 440px;
 	border-collapse: collapse;
+	table-layout: fixed;
 }
 .sg__brand-table th,
 .sg__brand-table td {
