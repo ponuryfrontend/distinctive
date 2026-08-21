@@ -24,7 +24,12 @@
         document.body.classList.remove('sg-lock');
         document.body.style.top = '';
         document.body.style.paddingRight = '';
-        window.scrollTo(0, savedY);
+        // behavior:'instant' jest tu konieczne — motyw ma globalnie
+        // `html { scroll-behavior: smooth; }`, więc zwykłe scrollTo(x, y)
+        // animowałoby przewinięcie od góry strony (tam, gdzie chwilowo
+        // "ląduje" scroll w momencie zdjęcia position:fixed) z powrotem
+        // do zapamiętanej pozycji — czyli widoczny, niechciany "skok".
+        window.scrollTo({ top: savedY, left: 0, behavior: 'instant' });
       }
     }
 

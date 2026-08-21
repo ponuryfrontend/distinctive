@@ -58,9 +58,12 @@
     endfor
   endif
 
-  if silhouette == blank
-    assign silhouette = 'top'
-  endif
+  # Uwaga: BRAK domyślnego "assign silhouette = 'top'" tutaj celowo.
+  # Jeśli typ produktu/tag nie pasuje do żadnej znanej kategorii i nie ma
+  # ręcznie ustawionego custom.size_guide_silhouette, `silhouette` zostaje
+  # puste — grafika sylwetki po prostu się nie wyświetli (zamiast zgadywać
+  # niepasujący kształt). Reszta panelu (tabela wymiarów, rozmiarówka marki)
+  # działa normalnie niezależnie od tego.
 
   # --- 2. Dostępne rozmiary z wariantów (filtrowane whitelistą) -------------
   # Whitelist akceptowanych rozmiarów (liczby + zakresy). Aby dodać nowy
@@ -148,7 +151,7 @@
                    data-sizes='{{ available_list | json | escape }}'
                    data-silhouette="{{ silhouette | escape }}"
                    data-labels='{{ sg_labels_json | escape }}'>
-            <div class="sg__product-grid">
+            <div class="sg__product-grid{% if silhouette == blank %} sg__product-grid--no-figure{% endif %}">
               <div class="sg__product-data">
                 <h3 class="sg__heading">{{ 'size_guide.product_measurements' | t }}</h3>
                 <div class="sg__sizes" data-sg-sizes role="tablist" aria-label="{{ 'size_guide.size_selection' | t }}"></div>
@@ -171,9 +174,11 @@
                 <p class="sg__tolerance">{{ 'size_guide.tolerance' | t }}</p>
               </div>
 
+              {%- unless silhouette == blank -%}
               <div class="sg__product-figure" data-sg-figure>
                 {%- render 'size-guide-silhouettes', silhouette: silhouette, custom_svg: custom_svg -%}
               </div>
+              {%- endunless -%}
             </div>
           </section>
         {%- endif -%}

@@ -203,6 +203,12 @@
 	gap: clamp(16px, 3vw, 28px);
 	align-items: start;
 }
+/* brak rozpoznanej sylwetki (nieznany typ produktu, bez ręcznego
+   nadpisania metafieldem) → grafika się nie renderuje, tabela wymiarów
+   zajmuje całą szerokość zamiast zostawiać pustą kolumnę */
+.sg__product-grid--no-figure {
+	grid-template-columns: 1fr;
+}
 
 /* zakładki rozmiarów */
 .sg__sizes {
