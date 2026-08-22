@@ -204,6 +204,7 @@
         },
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW": {
           "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "disabled": true,
           "settings": {
             "min_images_for_slider_visibility": 6,
             "reviews_per_page": 5,
@@ -432,7 +433,6 @@
       "block_order": [
         "growave_loyalty_wishlist_block_product_review_widget_DmbaQh"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "disable_top_spacing": false,
