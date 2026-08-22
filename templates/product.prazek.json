@@ -426,7 +426,7 @@
           "settings": {
             "min_images_for_slider_visibility": 2,
             "reviews_per_page": 3,
-            "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n  font-family: 'Instrument Serif';\n    font-style: italic;\n    font-size: 28px;\n    color: inherit;\n    text-transform: capitalize;\n    font-weight: 500;\n}"
+            "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n    font-family: 'Instrument Serif';\n    font-style: italic;\n    font-size: 28px;\n    font-weight: 500;\n    color: inherit;\n    text-transform: capitalize;\n}\n\n.gw-empty-state.svelte-5zggxu{\nbackground-color: #D9D2C9;\n}"
           }
         }
       },
