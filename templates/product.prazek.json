@@ -426,13 +426,14 @@
           "settings": {
             "min_images_for_slider_visibility": 2,
             "reviews_per_page": 3,
-            "custom_css": ""
+            "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n  font-family: 'Instrument Serif';\n    font-style: italic;\n    font-size: 28px;\n    color: inherit;\n    text-transform: capitalize;\n    font-weight: 500;\n}"
           }
         }
       },
       "block_order": [
         "growave_loyalty_wishlist_block_product_review_widget_DmbaQh"
       ],
+      "custom_css": [],
       "settings": {
         "full_width": true,
         "disable_top_spacing": true,
