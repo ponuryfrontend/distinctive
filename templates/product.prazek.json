@@ -117,7 +117,7 @@
           "settings": {
             "icon_only": false,
             "option_button_class": "",
-            "custom_css": "",
+            "custom_css": ".gw-wl-add-to-wishlist-product-page-widget .gw-btn.gw-button.gw-btn--block {background: #301C18 !important;\n}",
             "shadow_root_options": "null"
           }
         },
