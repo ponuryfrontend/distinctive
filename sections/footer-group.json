@@ -25,14 +25,14 @@
         "heading_ggexq8": {
           "type": "heading",
           "settings": {
-            "text": "Pierwsze YESS? -10%.",
+            "text": "Pierwsze YESS? -5%.",
             "size": "h3"
           }
         },
         "text_Fcy7EH": {
           "type": "text",
           "settings": {
-            "text": "<p>Dołącz do YESS LIST. Na początek dostajesz 10% na pierwsze zakupy, a później wcześniejszy dostęp do tego, co nowe, wraca i jest warte Twojej uwagi.</p>",
+            "text": "<p>Dołącz do YESS LIST. Na początek dostajesz 5% na pierwsze zakupy, a później wcześniejszy dostęp do tego, co nowe, wraca i jest warte Twojej uwagi.</p>",
             "custom_liquid": "<div class=\"klaviyo-form-VwF78E\"></div>",
             "size": "text-size-regular"
           }
