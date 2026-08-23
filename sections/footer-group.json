@@ -22,40 +22,23 @@
     "rich_text_zXKXzF": {
       "type": "rich-text",
       "blocks": {
-        "text_TbELtz": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
-          }
-        },
-        "subheading_4RqkEJ": {
-          "type": "subheading",
-          "settings": {
-            "text": "Zapisz się do naszego newslettera!"
-          }
-        },
         "heading_ggexq8": {
           "type": "heading",
           "settings": {
-            "text": "Bądź na bieżąco z nowościami i promocjami!",
+            "text": "Pierwsze YESS? -10%.",
             "size": "h3"
           }
         },
         "text_Fcy7EH": {
           "type": "text",
           "settings": {
-            "text": "",
+            "text": "<p>Dołącz do yess list. Na początek dostajesz 10% na pierwsze zakupy, a później wcześniejszy dostęp do tego, co nowe, wraca i jest warte Twojej uwagi.</p>",
             "custom_liquid": "<div class=\"klaviyo-form-VwF78E\"></div>",
             "size": "text-size-regular"
           }
         }
       },
       "block_order": [
-        "text_TbELtz",
-        "subheading_4RqkEJ",
         "heading_ggexq8",
         "text_Fcy7EH"
       ],
