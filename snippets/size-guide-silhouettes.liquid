@@ -7,7 +7,7 @@
 
   PARAMETRY:
     silhouette : 'top' | 'shirt' | 'jacket' | 'coat' | 'dress' | 'jumpsuit'
-                 | 'trousers' | 'shorts' | 'skirt' | 'custom'
+                 | 'trousers' | 'leggings' | 'shorts' | 'skirt' | 'custom'
     custom_svg : surowy markup <svg> z metafieldu (używany gdy silhouette == 'custom')
 
   Każda grupa `.sg-svg__dim[data-point="…"]` odpowiada kluczowi pomiaru
@@ -49,6 +49,31 @@
 <path d="M240.59 44.3311L236.258 51.83L244.918 51.8321L240.59 44.3311ZM240.5 408.5L244.832 401.001L236.172 400.999L240.5 408.5ZM240.588 51.0811L239.838 51.0809L239.752 401.749L240.502 401.75L241.252 401.75L241.338 51.0812L240.588 51.0811Z" fill="#301C18"/>
 <path d="M355 28L362.5 32.3301V23.6699L355 28ZM447 28L439.5 23.6699V32.3301L447 28ZM361.75 28V28.75H440.25V28V27.25H361.75V28Z" fill="#301C18"/>
 <path d="M353 85L360.5 89.3301V80.6699L353 85ZM450 85L442.5 80.6699V89.3301L450 85ZM359.75 85V85.75H443.25V85V84.25H359.75V85Z" fill="#301C18"/>
+</svg>
+
+  {%- elsif s == 'leggings' -%}
+
+    <svg width="600" height="440" viewBox="0 0 600 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M135.887 30C181.81 39.0699 190.791 39.5931 239.887 30" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M359.887 32C405.81 41.0699 414.791 41.5931 463.887 32" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M135.888 30C130.888 65 125.388 74.5 121.886 113.982C118.111 156.548 127.341 338.584 131.887 405.5" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M359.888 32C354.888 67 349.388 76.5 345.886 115.982C342.111 158.548 351.341 340.584 355.887 407.5" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M177 131C182.139 153.422 181.453 177.198 181.772 186.159C182.873 217.101 175.802 394.041 171.887 406" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M181.887 152C184.644 153 185.739 153 188.19 153C190.692 153 192.017 152.667 194.887 152" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M231.387 36L227.057 43.5L235.717 43.5L231.387 36ZM231.387 405.5L235.717 398L227.057 398L231.387 405.5ZM231.387 42.75L230.637 42.75L230.637 398.75L231.387 398.75L232.137 398.75L232.137 42.75L231.387 42.75Z" fill="#301C18"/>
+<path d="M131.887 406C148.714 407.811 165.565 406.755 171.887 406" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M355.887 408C372.714 409.811 389.565 408.755 395.887 408" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M203.887 406C220.714 407.811 237.565 406.755 243.887 406" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M427.887 408C444.714 409.811 461.565 408.755 467.887 408" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M240.888 30C245.888 65 251.388 74.5 254.889 113.982C258.665 156.548 249.435 338.584 244.889 405.5" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M464.888 32C469.888 67 475.388 76.5 478.889 115.982C482.665 158.548 473.435 340.584 468.889 407.5" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M198.774 131C193.635 153.422 194.321 177.198 194.002 186.159C192.901 217.101 199.971 394.041 203.887 406" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M412 129.5C412.826 152.5 419.282 239 419.282 239C419.282 239 424.364 396.041 428 408" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M412 130C411.174 153 404.718 239.5 404.718 239.5C404.718 239.5 399.636 396.041 396 408" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M412 129.5C416.391 139.316 421.278 145.142 426.646 148.141C432.013 151.141 444.7 152.687 455.434 148.141C466.169 143.595 471.536 135.871 473 129" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M412 129.5C407.609 139.316 402.722 145.142 397.354 148.141C391.987 151.141 379.3 152.687 368.566 148.141C357.831 143.595 352.464 135.871 351 129" stroke="#301C18" stroke-width="3" stroke-linecap="round"/>
+<path d="M363 99L370.5 103.33V94.6699L363 99ZM460 99L452.5 94.6699V103.33L460 99ZM369.75 99V99.75H453.25V99V98.25H369.75V99Z" fill="#301C18"/>
+<path d="M368 48L375.5 52.3301V43.6699L368 48ZM460 48L452.5 43.6699V52.3301L460 48ZM374.75 48V48.75H453.25V48V47.25H374.75V48Z" fill="#301C18"/>
 </svg>
 
   {%- elsif s == 'shorts' -%}
