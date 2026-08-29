@@ -97,19 +97,11 @@
 		<div class="click-capture--product"></div>
 	</div>
 
-	{{ 'vendor.min.js' | asset_url | script_tag }}
-	{{ 'animations.min.js' | asset_url | script_tag }}
-	<script>
-		gsap.defaults({
-			ease: Power4.easeOut
-		});
-		gsap.config({
-			nullTargetWarn: false
-		});
-		gsap.registerPlugin(ScrollTrigger);
-	</script>
-	{{ 'app.js' | asset_url | script_tag }}
-	{{ 'slideshow.js' | asset_url | script_tag }}
+	<script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'gsap-config.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'slideshow.js' | asset_url }}" defer="defer"></script>
 	{%- liquid
 		assign add_product_js = false
 		if settings.enable_quick_view or settings.enable_quick_add
@@ -126,11 +118,11 @@
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if settings.free_shipping -%}
-		{{ 'free-shipping.js' | asset_url | script_tag }}
+		<script src="{{ 'free-shipping.js' | asset_url }}" defer="defer"></script>
 		{{ 'free-shipping.css' | asset_url | stylesheet_tag }}
 	{%- endif -%}
 	{%- if request.design_mode -%}
-		{{ 'theme-editor.js' | asset_url | script_tag }}
+		<script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 		{% render 'customer-data' %}
 	{%- endif -%}
 	{%- if settings.cart_recommendations -%}

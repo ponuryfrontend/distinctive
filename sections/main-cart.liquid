@@ -8,7 +8,7 @@
 	assign items_requiring_shipping = cart.items | where: 'requires_shipping'
 -%}
 {{ 'cart.css' | asset_url | stylesheet_tag }}
-{{ 'cart.js' | asset_url | script_tag }}
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <div class="row full-width-row">
 	<div class="small-12 columns">
 		<theme-cart class="thb-cart-form" id="Cart" data-id="{{ section.id }}">
