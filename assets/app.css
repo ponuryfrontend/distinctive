@@ -1538,13 +1538,10 @@ h1, .h1, .h1-large, .h1-xlarge {
   font-weight: 600; }
   @media only screen and (min-width: 768px) {
     h1, .h1, .h1-large, .h1-xlarge {
-      font-size: 1rem;
-      line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 56px)); } }
+      font-size: 1rem; } }
   @media only screen and (min-width: 1068px) {
     h1, .h1, .h1-large, .h1-xlarge {
-      font-size: 1.2rem;
-      line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 60px)); } }
-
+      font-size: 1.2rem; } }
 h2, .h2 {
   font-size: .9rem;
   font-weight: 600; }
