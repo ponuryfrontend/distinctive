@@ -86,6 +86,10 @@
 	<script src="{{ 'gsap-config.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'slideshow.js' | asset_url }}" defer="defer"></script>
+	<!-- Manychat -->
+	<script src="//widget.manychat.com/1229806_ff7ad.js" async></script>
+	<script src="https://mccdn.me/assets/js/widget.js" async></script>
+
 </head>
 <body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} product-card-columns-{{ settings.product_card_columns }} product-card-spacing-{{ settings.product_card_spacing }} product-title-uppercase-{{ settings.product_title_uppercase }}{% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}{% if request.design_mode %} shopify-design-mode{% endif %}">
 	<a class="screen-reader-shortcut" href="#main-content">{{ 'accessibility.skip_to_text' | t }}</a>
