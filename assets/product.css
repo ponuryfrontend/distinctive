@@ -205,7 +205,12 @@
   margin-bottom: 5px; }
 
 .variations {
-  margin-bottom: 10px; }
+  margin-top: var(--variant-picker-margin-top-mobile, 0px);
+  margin-bottom: var(--variant-picker-margin-bottom-mobile, 10px); }
+  @media only screen and (min-width: 768px) {
+    .variations {
+      margin-top: var(--variant-picker-margin-top-desktop, 0px);
+      margin-bottom: var(--variant-picker-margin-bottom-desktop, 10px); } }
   .variations input[type="radio"] {
     clip: rect(0, 0, 0, 0);
     overflow: hidden;
