@@ -59,13 +59,22 @@
             "hide_date": true,
             "field": "price",
             "update_variant_details_dynamically": true,
-            "font_size": 12,
+            "font_size": 10,
             "text_color": "#301c18",
             "price_adjustment": 0,
             "round_up_to": "0",
             "add_after_rounding": 0,
             "exclude_tag": "",
             "exclude_market": ""
+          }
+        },
+        "color_swatches_G8PL4C": {
+          "type": "color_swatches",
+          "settings": {
+            "color_swatches_margin_top_desktop": 16,
+            "color_swatches_margin_bottom_desktop": 20,
+            "color_swatches_margin_top_mobile": 16,
+            "color_swatches_margin_bottom_mobile": 20
           }
         },
         "siblings_6ytCwm": {
@@ -76,17 +85,6 @@
             "sibling_color": "{{ product.metafields.theme.sibling_color.value }}",
             "color_picker_size": "regular",
             "margin_bottom": 20
-          }
-        },
-        "inventory_level_iwYp9t": {
-          "type": "inventory_level",
-          "settings": {
-            "show_inventory_notice": "low",
-            "show_inventory_count": "low",
-            "inventory_notice_pulse": true,
-            "inventory_notice_bar": false,
-            "inventory_notice_threshold": 2,
-            "inventory_notice_base": 30
           }
         },
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b": {
@@ -101,6 +99,17 @@
             "sizing_guide_text": "",
             "sizing_guide_icon": "ruler",
             "sizing_guide_page": ""
+          }
+        },
+        "inventory_level_iwYp9t": {
+          "type": "inventory_level",
+          "settings": {
+            "show_inventory_notice": "low",
+            "show_inventory_count": "low",
+            "inventory_notice_pulse": true,
+            "inventory_notice_bar": false,
+            "inventory_notice_threshold": 2,
+            "inventory_notice_base": 30
           }
         },
         "3184ed78-b74d-40cc-a072-56e6212c92ea": {
@@ -227,9 +236,10 @@
         "ed7d166d-5568-4e1a-9c05-eeffaad02629",
         "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
+        "color_swatches_G8PL4C",
         "siblings_6ytCwm",
-        "inventory_level_iwYp9t",
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
+        "inventory_level_iwYp9t",
         "3184ed78-b74d-40cc-a072-56e6212c92ea",
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6",
