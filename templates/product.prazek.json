@@ -71,9 +71,9 @@
         "color_swatches_G8PL4C": {
           "type": "color_swatches",
           "settings": {
-            "color_swatches_margin_top_desktop": 16,
+            "color_swatches_margin_top_desktop": 0,
             "color_swatches_margin_bottom_desktop": 20,
-            "color_swatches_margin_top_mobile": 16,
+            "color_swatches_margin_top_mobile": 0,
             "color_swatches_margin_bottom_mobile": 20
           }
         },
