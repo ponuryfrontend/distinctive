@@ -1,4 +1,5 @@
 {%- assign side_panels = false -%}
+{%- assign color_swatch_blocks = section.blocks | where: 'type', 'color_swatches' -%}
 <div id="ProductInfo-{{ section.id }}" class="product-information--inner">
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
   {%- assign outline_button = false -%}
@@ -83,7 +84,9 @@
             asynchronously — for a beat the swatches rendered unstyled before
             snapping into their real layout, reading as a delayed jump.
           {%- endcomment -%}
-          {% render 'product-color-swatches', product: product %}
+          {%- if color_swatch_blocks.size == 0 -%}
+            {% render 'product-color-swatches', product: product %}
+          {%- endif -%}
           {%- if section.settings.show_taxes_included != blank -%}
             {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
               <div class="product__tax caption">
@@ -110,6 +113,30 @@
           {%- endform -%}
         {%- endif -%}
       </div>
+    {%- when 'color_swatches' -%}
+      {%- liquid
+        assign swatches_margin_top_d = block.settings.color_swatches_margin_top_desktop | default: 16
+        assign swatches_margin_bottom_d = block.settings.color_swatches_margin_bottom_desktop | default: 20
+        assign swatches_margin_top_m = block.settings.color_swatches_margin_top_mobile | default: 16
+        assign swatches_margin_bottom_m = block.settings.color_swatches_margin_bottom_mobile | default: 20
+      -%}
+      {%- capture swatches_style -%}
+        --product-color-swatches-margin-top-desktop: {{ swatches_margin_top_d }}px;
+        --product-color-swatches-margin-bottom-desktop: {{ swatches_margin_bottom_d }}px;
+        --product-color-swatches-margin-top-mobile: {{ swatches_margin_top_m }}px;
+        --product-color-swatches-margin-bottom-mobile: {{ swatches_margin_bottom_m }}px;
+      {%- endcapture -%}
+      {%- capture color_swatches_html -%}{% render 'product-color-swatches', product: product %}{%- endcapture -%}
+      {%- assign color_swatches_html_check = color_swatches_html | strip -%}
+      {%- comment -%}
+        The snippet renders nothing for products outside a color group, so only
+        emit the wrapper (and its margins) when it actually produced swatches.
+      {%- endcomment -%}
+      {%- if color_swatches_html_check != blank -%}
+        <div class="product-color-swatches-block" style="{{ swatches_style | strip_newlines | strip }}" {{ block.shopify_attributes }}>
+          {{ color_swatches_html }}
+        </div>
+      {%- endif -%}
     {%- when 'description' -%}
       <div class="product-short-description rte" {{ block.shopify_attributes }}>{{ product.description }}</div>
     {%- when 'inventory_level' -%}

@@ -128,3 +128,15 @@ a.color-swatch:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+.product-color-swatches-block .product-form__input--color-swatches {
+  margin-top: var(--product-color-swatches-margin-top-mobile, 16px);
+  margin-bottom: var(--product-color-swatches-margin-bottom-mobile, 20px);
+}
+
+@media only screen and (min-width: 768px) {
+  .product-color-swatches-block .product-form__input--color-swatches {
+    margin-top: var(--product-color-swatches-margin-top-desktop, 16px);
+    margin-bottom: var(--product-color-swatches-margin-bottom-desktop, 20px);
+  }
+}
