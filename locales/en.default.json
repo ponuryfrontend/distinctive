@@ -706,7 +706,11 @@
           "many": "Ships within %{count} weeks"
         },
         "split_shipping_merchandise_quantity_label_inline_primary": "Quantity: %{quantity}",
-        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}"
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_shipment_count_notice_one_time_purchase": {
+          "few": "Your order will arrive in %{count} shipments",
+          "many": "Your order will arrive in %{count} shipments"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
