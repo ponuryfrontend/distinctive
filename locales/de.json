@@ -961,6 +961,10 @@
         "unbranded_description_with_fulfillment_weeks": {
           "few": "Versand innerhalb von %{count} Wochen",
           "many": "Versand innerhalb von %{count} Wochen"
+        },
+        "split_shipping_shipment_count_notice_one_time_purchase": {
+          "few": "Die Bestellung wird in %{count} Lieferungen ankommen",
+          "many": "Die Bestellung wird in %{count} Lieferungen ankommen"
         }
       },
       "payment": {
