@@ -982,7 +982,8 @@
   margin-bottom: 15px; }
 
 .thb-product-detail .product-price-container .price {
-  font-size: .8rem;
+  font-size: .85rem;
+  font-weight: 800;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
