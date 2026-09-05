@@ -278,11 +278,11 @@
     "instagram_followers_VHYP4c": {
       "type": "instagram-followers",
       "blocks": {
-        "item_hbNxG7": {
+        "item_Bwci9Q": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/IMG_1673.jpg",
+            "image": "shopify://shop_images/czarna-prazkowana-sukienka-dopasiowana-do-sylwetki-na-ramiaczkach.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -291,16 +291,16 @@
           "type": "item",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/IMG_2544.jpg",
+            "image": "shopify://shop_images/prazkowana-sukienka-midi-z-dekoltem-v.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
         },
-        "item_Bwci9Q": {
+        "item_hbNxG7": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/czarna-prazkowana-sukienka-dopasiowana-do-sylwetki-na-ramiaczkach.jpg",
+            "image": "shopify://shop_images/czarny-zestaw-z-prazkowanej-bawelny-top-na-ramiaczkach-ze-spodniami.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -325,9 +325,9 @@
         }
       },
       "block_order": [
-        "item_hbNxG7",
-        "item_9zKDfX",
         "item_Bwci9Q",
+        "item_9zKDfX",
+        "item_hbNxG7",
         "item_qa8wDM",
         "item_JCkTEX"
       ],
