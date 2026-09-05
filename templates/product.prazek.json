@@ -278,11 +278,11 @@
     "instagram_followers_VHYP4c": {
       "type": "instagram-followers",
       "blocks": {
-        "item_Bwci9Q": {
+        "item_hbNxG7": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/IMG_1354.jpg",
+            "image": "shopify://shop_images/IMG_1673.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -296,11 +296,11 @@
             "link_new_tab": true
           }
         },
-        "item_hbNxG7": {
+        "item_Bwci9Q": {
           "type": "item",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/IMG_1673.jpg",
+            "image": "shopify://shop_images/czarna-prazkowana-sukienka-dopasiowana-do-sylwetki-na-ramiaczkach.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -325,9 +325,9 @@
         }
       },
       "block_order": [
-        "item_Bwci9Q",
-        "item_9zKDfX",
         "item_hbNxG7",
+        "item_9zKDfX",
+        "item_Bwci9Q",
         "item_qa8wDM",
         "item_JCkTEX"
       ],
