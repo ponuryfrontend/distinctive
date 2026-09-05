@@ -287,20 +287,20 @@
             "link_new_tab": true
           }
         },
-        "item_JCkTEX": {
-          "type": "item",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IMG_0123.jpg",
-            "link": "https://www.instagram.com/nudyess/",
-            "link_new_tab": true
-          }
-        },
         "item_hbNxG7": {
           "type": "item",
           "settings": {
             "media_type": "image",
             "image": "shopify://shop_images/czarny-zestaw-z-prazkowanej-bawelny-top-na-ramiaczkach-ze-spodniami.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_JCkTEX": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IMG_0123.jpg",
             "link": "https://www.instagram.com/nudyess/",
             "link_new_tab": true
           }
@@ -326,8 +326,8 @@
       },
       "block_order": [
         "item_Bwci9Q",
-        "item_JCkTEX",
         "item_hbNxG7",
+        "item_JCkTEX",
         "item_qa8wDM",
         "item_9zKDfX"
       ],
