@@ -1391,6 +1391,10 @@
         height: 1px; }
     .accordion summary::-webkit-details-marker {
       display: none; }
+    .accordion summary h2 {
+      margin: 0;
+      font: inherit;
+      color: inherit; }
   .accordion .accordion__content {
     padding: 0 0 15px 0;
     font-size: 0.9375rem; }

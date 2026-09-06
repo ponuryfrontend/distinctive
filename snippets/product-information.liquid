@@ -298,7 +298,7 @@
       <collapsible-row class="product__accordion accordion{{ tab_heading_classes }}"{% if tab_heading_style != blank %} style="{{ tab_heading_style | strip_newlines | strip }}"{% endif %} {{ block.shopify_attributes }}>
         <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
           <summary>
-            {{ block.settings.heading | default: block.settings.page.title }}
+            <h2>{{ block.settings.heading | default: block.settings.page.title }}</h2>
             <span></span>
           </summary>
           <div class="collapsible__content accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
@@ -453,7 +453,7 @@
       <collapsible-row class="product__accordion accordion" {{ block.shopify_attributes }}>
         <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
           <summary>
-            {{- 'sections.cart.shipping_estimator.estimate_shipping' | t -}}
+            <h2>{{- 'sections.cart.shipping_estimator.estimate_shipping' | t -}}</h2>
             <span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
           </summary>
           <div class="collapsible__content accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">

@@ -611,6 +611,10 @@
 /* "Collapsible row" heading size / letter case — same rules as assets/product.css
    (see snippets/product-information.liquid), duplicated here since this
    section only loads featured-product.css, not product.css. */
+.accordion summary h2 {
+  margin: 0;
+  font: inherit;
+  color: inherit; }
 @media only screen and (min-width: 768px) {
   .product__accordion--size-desktop summary {
     font-size: var(--accordion-heading-size-desktop); } }
