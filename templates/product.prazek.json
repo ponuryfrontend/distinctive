@@ -428,20 +428,6 @@
         "border_separator_full": false
       }
     },
-    "product_seo_text_section_J9iqUG": {
-      "type": "product-seo-text-section",
-      "name": "SEO Text (produkt)",
-      "settings": {
-        "visible_height": 80,
-        "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#faf8f6",
-        "color_text": "#301c18",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "17867838500379beae": {
       "type": "apps",
       "blocks": {
@@ -463,6 +449,20 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
+    },
+    "product_seo_text_section_J9iqUG": {
+      "type": "product-seo-text-section",
+      "name": "SEO Text (produkt)",
+      "settings": {
+        "visible_height": 80,
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -471,7 +471,7 @@
     "instagram_followers_VHYP4c",
     "recommendations",
     "spacer_TXaymg",
-    "product_seo_text_section_J9iqUG",
-    "17867838500379beae"
+    "17867838500379beae",
+    "product_seo_text_section_J9iqUG"
   ]
 }
