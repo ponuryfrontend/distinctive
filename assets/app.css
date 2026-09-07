@@ -1569,10 +1569,14 @@ h3, .h3 {
 h4, .h4 {
   font-size: .9rem;
   font-weight: 600; }
+  @media only screen and (min-width: 768px) {
+    h4, .h4 {
+      font-size: calc(var(--font-heading-scale) * 30px);
+      line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 38px)); } }
   @media only screen and (min-width: 1068px) {
     h4, .h4 {
-      font-size: calc(var(--font-heading-scale) * 28px);
-      line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); } }
+      font-size: calc(var(--font-heading-scale) * 34px);
+      line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 42px)); } }
 
 h5, .h5 {
   font-size: .9rem;
