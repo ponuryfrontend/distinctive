@@ -78,8 +78,9 @@
   color: inherit;
 }
 
-/* H3 (FAQ, podsekcje) — mniejszy, jak opis sekcji */
-.section-seo-text .seo-accordion__content h3 {
+/* H3, H4 (FAQ, podsekcje) — mniejszy, jak opis sekcji */
+.section-seo-text .seo-accordion__content h3,
+.section-seo-text .seo-accordion__content h4 {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 8px;
@@ -88,7 +89,8 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .section-seo-text .seo-accordion__content h3 {
+  .section-seo-text .seo-accordion__content h3,
+  .section-seo-text .seo-accordion__content h4 {
     font-size: 1.1rem;
   }
 }
