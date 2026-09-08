@@ -83,6 +83,8 @@
 	{%- if wordmark_color != blank %}--cf-wordmark-color: {{ wordmark_color }};{% endif -%}
 	--cf-bottom-size-mobile: {{ section.settings.bottom_size_mobile }}px;
 	--cf-bottom-size-desktop: {{ section.settings.bottom_size_desktop }}px;
+	--cf-social-size-mobile: {{ section.settings.social_size_mobile }}px;
+	--cf-social-size-desktop: {{ section.settings.social_size_desktop }}px;
 ">
 	<div class="row full-width-row">
 		<div class="small-12 columns">
@@ -213,6 +215,7 @@
 	"name": "Custom Footer",
 	"tag": "section",
 	"class": "section-custom-footer",
+	"max_blocks": 20,
 	"settings": [
 		{
 			"type": "header",
@@ -545,7 +548,7 @@
 			"type": "text",
 			"id": "copyright_text",
 			"label": "Copyright text",
-			"default": "NUDYESS. Wszystkie prawa zastrzeżone.",
+			"default": "NUDYESS",
 			"info": "The current year is added automatically in front of this text."
 		},
 		{
@@ -593,6 +596,26 @@
 			"default": "Social media"
 		},
 		{
+			"type": "range",
+			"id": "social_size_mobile",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Social link size (mobile)",
+			"default": 15
+		},
+		{
+			"type": "range",
+			"id": "social_size_desktop",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Social link size (desktop)",
+			"default": 13
+		},
+		{
 			"type": "checkbox",
 			"id": "show_language_switcher",
 			"label": "Enable language switcher",
@@ -631,7 +654,7 @@
 		{
 			"type": "social_link",
 			"name": "Social link",
-			"limit": 10,
+			"limit": 15,
 			"settings": [
 				{
 					"type": "text",
@@ -655,7 +678,11 @@
 				{ "type": "menu" },
 				{ "type": "menu" },
 				{ "type": "menu" },
-				{ "type": "social_link" }
+				{ "type": "social_link", "settings": { "label": "Instagram" } },
+				{ "type": "social_link", "settings": { "label": "Facebook" } },
+				{ "type": "social_link", "settings": { "label": "TikTok" } },
+				{ "type": "social_link", "settings": { "label": "YouTube" } },
+				{ "type": "social_link", "settings": { "label": "Pinterest" } }
 			]
 		}
 	]

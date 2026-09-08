@@ -279,6 +279,10 @@
   display: block;
 }
 
+.custom-footer__menu--social .custom-footer__menu-list {
+  font-size: var(--cf-social-size-mobile, 15px);
+}
+
 .custom-footer__menu--social .custom-footer__menu-list a {
   display: inline-block;
 }
@@ -375,6 +379,7 @@
   display: none;
   margin: 0;
   padding: 0;
+  font-size: var(--cf-social-size-desktop, 13px);
 }
 
 @media only screen and (min-width: 768px) {
