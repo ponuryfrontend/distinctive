@@ -150,7 +150,7 @@
         "margin_top_desktop": 60,
         "margin_bottom_desktop": 60,
         "brand_column_width": 22,
-        "column_gap_desktop": 50,
+        "column_gap_desktop": 30,
         "alignment_mobile": "left",
         "alignment_desktop": "left",
         "logo": "shopify://shop_images/Black_Logo_Nudyess.svg",
