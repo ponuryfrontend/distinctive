@@ -266,11 +266,89 @@
         "enable_video_looping": true
       }
     },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Dopełnij stylizację",
+        "description": "",
+        "mobile_swipe": false,
+        "product_limit": 10,
+        "carousel_gap_desktop": 6,
+        "carousel_gap_mobile": 4,
+        "small_heading": "MOŻE SPODOBA CI SIĘ TAKŻE",
+        "small_heading_color": "#301c18",
+        "small_heading_align_desktop": "center",
+        "small_heading_align_mobile": "left",
+        "small_heading_font_desktop": "",
+        "small_heading_font_desktop_picker": "archivo_narrow_n4",
+        "small_heading_font_mobile": "",
+        "small_heading_font_mobile_picker": "archivo_narrow_n4",
+        "small_heading_size_desktop": 12,
+        "small_heading_size_mobile": 12,
+        "small_heading_case_desktop": "",
+        "small_heading_case_mobile": "",
+        "heading_color": "#301c18",
+        "heading_align_desktop": "center",
+        "heading_align_mobile": "left",
+        "heading_font_desktop": "",
+        "heading_font_desktop_picker": "archivo_narrow_n4",
+        "heading_font_mobile": "",
+        "heading_font_mobile_picker": "archivo_narrow_n4",
+        "heading_size_desktop": 34,
+        "heading_size_mobile": 28,
+        "heading_case_desktop": "",
+        "heading_case_mobile": "",
+        "description_color": "",
+        "description_align_desktop": "",
+        "description_align_mobile": "",
+        "description_font_desktop": "",
+        "description_font_desktop_picker": "archivo_narrow_n4",
+        "description_font_mobile": "",
+        "description_font_mobile_picker": "archivo_narrow_n4",
+        "description_case_desktop": "",
+        "description_case_mobile": "",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "cf419534-b576-4781-b418-495982d63b57": {
       "type": "spacer",
       "settings": {
         "spacer_mobile": 10,
         "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "17867838500379beae": {
+      "type": "apps",
+      "blocks": {
+        "growave_loyalty_wishlist_block_product_review_widget_DmbaQh": {
+          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "min_images_for_slider_visibility": 2,
+            "reviews_per_page": 3,
+            "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n    font-family: 'Instrument Serif';\n    font-style: italic;\n    font-size: 28px;\n    font-weight: 500 !important;\n    color: inherit;\n    text-transform: capitalize !important;\n}\n\n.gw-empty-state.svelte-5zggxu{\nbackground-color: #D9D2C9 !important;\n}"
+          }
+        }
+      },
+      "block_order": [
+        "growave_loyalty_wishlist_block_product_review_widget_DmbaQh"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "spacer_TXaymg": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 70,
         "border_separator": false,
         "border_separator_full": false
       }
@@ -367,87 +445,10 @@
         "gap_mobile": 4,
         "background_color_desktop": "",
         "background_color_mobile": "",
-        "margin_top_desktop": 88,
-        "margin_bottom_desktop": 32,
+        "margin_top_desktop": 12,
+        "margin_bottom_desktop": 52,
         "margin_top_mobile": 0,
         "margin_bottom_mobile": 16
-      }
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "Dopełnij stylizację",
-        "description": "",
-        "mobile_swipe": false,
-        "product_limit": 10,
-        "carousel_gap_desktop": 6,
-        "carousel_gap_mobile": 4,
-        "small_heading": "MOŻE SPODOBA CI SIĘ TAKŻE",
-        "small_heading_color": "#301c18",
-        "small_heading_align_desktop": "center",
-        "small_heading_align_mobile": "left",
-        "small_heading_font_desktop": "",
-        "small_heading_font_desktop_picker": "archivo_narrow_n4",
-        "small_heading_font_mobile": "",
-        "small_heading_font_mobile_picker": "archivo_narrow_n4",
-        "small_heading_size_desktop": 12,
-        "small_heading_size_mobile": 12,
-        "small_heading_case_desktop": "",
-        "small_heading_case_mobile": "",
-        "heading_color": "#301c18",
-        "heading_align_desktop": "center",
-        "heading_align_mobile": "left",
-        "heading_font_desktop": "",
-        "heading_font_desktop_picker": "archivo_narrow_n4",
-        "heading_font_mobile": "",
-        "heading_font_mobile_picker": "archivo_narrow_n4",
-        "heading_size_desktop": 34,
-        "heading_size_mobile": 28,
-        "heading_case_desktop": "",
-        "heading_case_mobile": "",
-        "description_color": "",
-        "description_align_desktop": "",
-        "description_align_mobile": "",
-        "description_font_desktop": "",
-        "description_font_desktop_picker": "archivo_narrow_n4",
-        "description_font_mobile": "",
-        "description_font_mobile_picker": "archivo_narrow_n4",
-        "description_case_desktop": "",
-        "description_case_mobile": "",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_TXaymg": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 30,
-        "spacer_desktop": 70,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "17867838500379beae": {
-      "type": "apps",
-      "blocks": {
-        "growave_loyalty_wishlist_block_product_review_widget_DmbaQh": {
-          "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-          "settings": {
-            "min_images_for_slider_visibility": 2,
-            "reviews_per_page": 3,
-            "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n    font-family: 'Instrument Serif';\n    font-style: italic;\n    font-size: 28px;\n    font-weight: 500 !important;\n    color: inherit;\n    text-transform: capitalize !important;\n}\n\n.gw-empty-state.svelte-5zggxu{\nbackground-color: #D9D2C9 !important;\n}"
-          }
-        }
-      },
-      "block_order": [
-        "growave_loyalty_wishlist_block_product_review_widget_DmbaQh"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full_width": false,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
       }
     },
     "product_seo_text_section_J9iqUG": {
@@ -467,11 +468,11 @@
   },
   "order": [
     "main",
-    "cf419534-b576-4781-b418-495982d63b57",
-    "instagram_followers_VHYP4c",
     "recommendations",
-    "spacer_TXaymg",
+    "cf419534-b576-4781-b418-495982d63b57",
     "17867838500379beae",
+    "spacer_TXaymg",
+    "instagram_followers_VHYP4c",
     "product_seo_text_section_J9iqUG"
   ]
 }
