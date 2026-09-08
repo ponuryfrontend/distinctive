@@ -21,6 +21,7 @@
     },
     "newsletter_su_form_qGkfKa": {
       "type": "newsletter-su-form",
+      "disabled": true,
       "name": "Newsleter SU Form",
       "settings": {
         "color_background": "#301c18",
@@ -76,7 +77,6 @@
         "heading_ggexq8",
         "text_Fcy7EH"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "full_width": true,
