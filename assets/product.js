@@ -1101,9 +1101,10 @@ if (!customElements.get('product-add-to-cart-sticky')) {
           threshold: [0, 1]
         }),
         form = document.getElementById(`product-form-${this.dataset.section}`),
-        footer = document.getElementById('footer');
+        footer = document.getElementById('footer') || document.querySelector('.custom-footer');
       _this.formPassed = false;
-      observer.observe(form);
+      if (form) observer.observe(form);
+      if (footer) observer.observe(footer);
     }
   }
 
