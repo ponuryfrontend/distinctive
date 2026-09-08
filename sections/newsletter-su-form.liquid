@@ -55,13 +55,13 @@
 	--nsu-flex-align-desktop: {{ flex_align_desktop }};
 	--nsu-content-width-mobile: {{ section.settings.content_width_mobile }}px;
 	--nsu-content-width-desktop: {{ section.settings.content_width_desktop }}px;
-	--nsu-heading-font: {{ heading_font_picked.family }}, {{ heading_font_picked.fallback_families }};
+	--nsu-heading-font: {{ heading_font_picked.family | escape }}, {{ heading_font_picked.fallback_families | escape }};
 	--nsu-heading-weight: {{ heading_font_picked.weight | default: 400 }};
 	--nsu-heading-style: {{ heading_font_picked.style | default: 'normal' }};
 	--nsu-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
 	--nsu-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
 	--nsu-heading-spacing: {{ section.settings.heading_spacing }}px;
-	--nsu-text-font: {{ text_font_picked.family }}, {{ text_font_picked.fallback_families }};
+	--nsu-text-font: {{ text_font_picked.family | escape }}, {{ text_font_picked.fallback_families | escape }};
 	--nsu-text-weight: {{ text_font_picked.weight | default: 400 }};
 	--nsu-text-style: {{ text_font_picked.style | default: 'normal' }};
 	--nsu-text-size-mobile: {{ section.settings.text_size_mobile }}px;

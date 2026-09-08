@@ -85,7 +85,7 @@
 	--cf-logo-width-desktop: {{ section.settings.logo_width_desktop }}px;
 	--cf-logo-text-size-mobile: {{ section.settings.logo_text_size_mobile }}px;
 	--cf-logo-text-size-desktop: {{ section.settings.logo_text_size_desktop }}px;
-	--cf-description-font: {{ description_font_picked.family }}, {{ description_font_picked.fallback_families }};
+	--cf-description-font: {{ description_font_picked.family | escape }}, {{ description_font_picked.fallback_families | escape }};
 	--cf-description-weight: {{ description_font_picked.weight | default: 400 }};
 	--cf-description-style: {{ description_font_picked.style | default: 'normal' }};
 	--cf-description-size-mobile: {{ section.settings.description_size_mobile }}px;
