@@ -188,8 +188,8 @@
         "show_social_desktop": true,
         "show_social_mobile": true,
         "social_mobile_heading": "Social media",
-        "social_size_mobile": 15,
-        "social_size_desktop": 13,
+        "social_size_mobile": 12,
+        "social_size_desktop": 14,
         "show_language_switcher": true,
         "show_currency_switcher": true
       }
