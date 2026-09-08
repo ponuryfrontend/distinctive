@@ -43,6 +43,28 @@
 	if section.settings.show_social_mobile and has_social
 		assign show_social_accordion = true
 	endif
+
+	assign text_align_mobile = 'start'
+	assign flex_align_mobile = 'flex-start'
+	case section.settings.alignment_mobile
+		when 'center'
+			assign text_align_mobile = 'center'
+			assign flex_align_mobile = 'center'
+		when 'right'
+			assign text_align_mobile = 'end'
+			assign flex_align_mobile = 'flex-end'
+	endcase
+
+	assign text_align_desktop = 'start'
+	assign flex_align_desktop = 'flex-start'
+	case section.settings.alignment_desktop
+		when 'center'
+			assign text_align_desktop = 'center'
+			assign flex_align_desktop = 'center'
+		when 'right'
+			assign text_align_desktop = 'end'
+			assign flex_align_desktop = 'flex-end'
+	endcase
 -%}
 {%- capture description_font_family -%}
 	{%- case description_font -%}
@@ -63,8 +85,10 @@
 	--cf-margin-bottom-desktop: {{ section.settings.margin_bottom_desktop }}px;
 	--cf-grid-desktop: {{ grid_desktop }};
 	--cf-column-gap: {{ section.settings.column_gap_desktop }}px;
-	--cf-align-mobile: {{ section.settings.alignment_mobile }};
-	--cf-align-desktop: {{ section.settings.alignment_desktop }};
+	--cf-align-mobile: {{ text_align_mobile }};
+	--cf-align-desktop: {{ text_align_desktop }};
+	--cf-flex-align-mobile: {{ flex_align_mobile }};
+	--cf-flex-align-desktop: {{ flex_align_desktop }};
 	--cf-logo-width-mobile: {{ section.settings.logo_width_mobile }}px;
 	--cf-logo-width-desktop: {{ section.settings.logo_width_desktop }}px;
 	--cf-logo-text-size-mobile: {{ section.settings.logo_text_size_mobile }}px;
@@ -72,6 +96,8 @@
 	--cf-description-font: {{ description_font_family | strip }};
 	--cf-description-size-mobile: {{ section.settings.description_size_mobile }}px;
 	--cf-description-size-desktop: {{ section.settings.description_size_desktop }}px;
+	--cf-description-width-mobile: {{ section.settings.description_width_mobile }}px;
+	--cf-description-width-desktop: {{ section.settings.description_width_desktop }}px;
 	--cf-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
 	--cf-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
 	--cf-link-size-mobile: {{ section.settings.link_size_mobile }}px;
@@ -402,6 +428,26 @@
 			"unit": "px",
 			"label": "Description size (desktop)",
 			"default": 15
+		},
+		{
+			"type": "range",
+			"id": "description_width_mobile",
+			"min": 160,
+			"max": 900,
+			"step": 10,
+			"unit": "px",
+			"label": "Description width (mobile)",
+			"default": 420
+		},
+		{
+			"type": "range",
+			"id": "description_width_desktop",
+			"min": 160,
+			"max": 900,
+			"step": 10,
+			"unit": "px",
+			"label": "Description width (desktop)",
+			"default": 420
 		},
 		{
 			"type": "header",

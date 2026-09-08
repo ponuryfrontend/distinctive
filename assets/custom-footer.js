@@ -46,6 +46,81 @@
     toggleSubMenu(arrow);
   });
 
+  /*
+   * The theme locks scrolling with `body.overflow-hidden`, which is `position: fixed`,
+   * so opening a modal jumps the page to the top. Offset the body by the current scroll
+   * position while the localization modal is open and put the page back when it closes.
+   */
+  const SCROLL_KEY = 'customFooterScrollPosition';
+  let scrollBeforeModal = 0;
+
+  document.addEventListener(
+    'click',
+    (e) => {
+      if (e.target.closest('.custom-footer__localization button')) {
+        scrollBeforeModal = window.scrollY;
+      }
+    },
+    true
+  );
+
+  function keepScrollPosition(opener) {
+    const modal = document.querySelector(opener.getAttribute('data-modal'));
+    if (!modal) return;
+    const position = scrollBeforeModal;
+
+    const apply = () => {
+      if (!document.body.classList.contains('overflow-hidden')) return false;
+
+      document.body.style.top = `-${position}px`;
+
+      modal.querySelectorAll('form').forEach((form) => {
+        form.addEventListener(
+          'submit',
+          () => {
+            try {
+              sessionStorage.setItem(SCROLL_KEY, position);
+            } catch (error) {
+              // Private browsing modes can block sessionStorage.
+            }
+          },
+          { once: true }
+        );
+      });
+
+      const observer = new MutationObserver(() => {
+        if (modal.hasAttribute('open')) return;
+        observer.disconnect();
+        document.body.style.top = '';
+        window.scrollTo(0, position);
+      });
+      observer.observe(modal, { attributes: true, attributeFilter: ['open'] });
+
+      return true;
+    };
+
+    // The theme adds the scroll lock in its own click handler, which runs first.
+    // The timeout is only a safety net in case that order ever changes.
+    if (!apply()) setTimeout(apply, 0);
+  }
+
+  document.addEventListener('click', (e) => {
+    const opener = e.target.closest('.custom-footer__localization modal-opener');
+    if (opener) keepScrollPosition(opener);
+  });
+
+  function restoreScrollAfterReload() {
+    let position = null;
+    try {
+      position = sessionStorage.getItem(SCROLL_KEY);
+      sessionStorage.removeItem(SCROLL_KEY);
+    } catch (error) {
+      return;
+    }
+    if (position === null) return;
+    requestAnimationFrame(() => window.scrollTo(0, parseInt(position, 10) || 0));
+  }
+
   function syncState() {
     document.querySelectorAll('.custom-footer__toggle').forEach((button) => {
       button.setAttribute('aria-expanded', desktopQuery.matches ? 'true' : 'false');
@@ -59,5 +134,11 @@
     document.addEventListener('DOMContentLoaded', syncState);
   } else {
     syncState();
+  }
+
+  if (document.readyState === 'complete') {
+    restoreScrollAfterReload();
+  } else {
+    window.addEventListener('load', restoreScrollAfterReload, { once: true });
   }
 })();

@@ -37,13 +37,17 @@
 }
 
 .custom-footer__brand {
-  text-align: var(--cf-align-mobile, left);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--cf-flex-align-mobile, flex-start);
+  text-align: var(--cf-align-mobile, start);
   margin-bottom: 30px;
 }
 
 @media only screen and (min-width: 768px) {
   .custom-footer__brand {
-    text-align: var(--cf-align-desktop, left);
+    align-items: var(--cf-flex-align-desktop, flex-start);
+    text-align: var(--cf-align-desktop, start);
     margin-bottom: 0;
   }
 }
@@ -84,11 +88,11 @@
 }
 
 .custom-footer__description {
-  display: inline-block;
+  display: block;
   font-family: var(--cf-description-font);
   font-size: var(--cf-description-size-mobile, 15px);
   line-height: 1.6;
-  max-width: 420px;
+  max-width: var(--cf-description-width-mobile, 420px);
   text-align: inherit;
 }
 
@@ -101,6 +105,7 @@
 @media only screen and (min-width: 768px) {
   .custom-footer__description {
     font-size: var(--cf-description-size-desktop, 15px);
+    max-width: var(--cf-description-width-desktop, 420px);
   }
 }
 
