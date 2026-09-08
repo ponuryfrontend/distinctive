@@ -100,28 +100,35 @@
           "type": "social_link",
           "settings": {
             "label": "Instagram",
-            "link": ""
+            "link": "https://www.instagram.com/nudyess/"
           }
         },
         "social_link_ptkeR4": {
           "type": "social_link",
           "settings": {
             "label": "Facebook",
-            "link": ""
+            "link": "https://www.facebook.com/NUDYESS/"
           }
         },
         "social_link_HUfaby": {
           "type": "social_link",
           "settings": {
             "label": "TikTok",
-            "link": ""
+            "link": "https://www.tiktok.com/@nudyess"
           }
         },
         "social_link_JdzTRG": {
           "type": "social_link",
           "settings": {
             "label": "Pinterest",
-            "link": ""
+            "link": "https://www.pinterest.com/nudyess/"
+          }
+        },
+        "social_link_fFHnN6": {
+          "type": "social_link",
+          "settings": {
+            "label": "YouTube",
+            "link": "https://m.youtube.com/@nudyess"
           }
         }
       },
@@ -133,9 +140,9 @@
         "social_link_WzT6qX",
         "social_link_ptkeR4",
         "social_link_HUfaby",
-        "social_link_JdzTRG"
+        "social_link_JdzTRG",
+        "social_link_fFHnN6"
       ],
-      "disabled": true,
       "name": "Custom Footer",
       "settings": {
         "margin_top_mobile": 40,
@@ -240,6 +247,7 @@
         "67e585b6-14b6-43e2-b5fa-dbc829dee86a",
         "menu_BeYWjP"
       ],
+      "disabled": true,
       "settings": {
         "copyright_text": "All rights reserved.",
         "show_language_switcher": true,
