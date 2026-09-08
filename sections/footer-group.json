@@ -164,6 +164,8 @@
         "description_font_picker": "instrument_serif_i4",
         "description_size_mobile": 12,
         "description_size_desktop": 14,
+        "description_width_mobile": 360,
+        "description_width_desktop": 280,
         "heading_size_mobile": 12,
         "heading_size_desktop": 14,
         "heading_uppercase": false,
