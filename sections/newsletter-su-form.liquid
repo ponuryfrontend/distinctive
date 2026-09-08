@@ -3,10 +3,8 @@
 	assign text = section.settings.text
 	assign custom_liquid = section.settings.custom_liquid
 
-	assign heading_font = section.settings.heading_font
-	assign heading_font_picker = section.settings.heading_font_picker
-	assign text_font = section.settings.text_font
-	assign text_font_picker = section.settings.text_font_picker
+	assign heading_font_picked = section.settings.heading_font_picker
+	assign text_font_picked = section.settings.text_font_picker
 
 	assign text_align_mobile = 'start'
 	assign flex_align_mobile = 'flex-start'
@@ -30,23 +28,9 @@
 			assign flex_align_desktop = 'flex-end'
 	endcase
 -%}
-{%- capture heading_font_family -%}
-	{%- case heading_font -%}
-		{%- when 'body' -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
-		{%- when 'custom' -%}{%- if heading_font_picker -%}{{ heading_font_picker.family }}, {{ heading_font_picker.fallback_families }}{%- endif -%}
-		{%- else -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
-	{%- endcase -%}
-{%- endcapture -%}
-{%- capture text_font_family -%}
-	{%- case text_font -%}
-		{%- when 'heading' -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
-		{%- when 'custom' -%}{%- if text_font_picker -%}{{ text_font_picker.family }}, {{ text_font_picker.fallback_families }}{%- endif -%}
-		{%- else -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
-	{%- endcase -%}
-{%- endcapture -%}
 {%- capture custom_font_faces -%}
-	{%- if heading_font == 'custom' and heading_font_picker -%}{{ heading_font_picker | font_face: font_display: 'swap' }}{%- endif -%}
-	{%- if text_font == 'custom' and text_font_picker -%}{{ text_font_picker | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if heading_font_picked -%}{{ heading_font_picked | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if text_font_picked -%}{{ text_font_picked | font_face: font_display: 'swap' }}{%- endif -%}
 {%- endcapture -%}
 <link rel="stylesheet" href="{{ 'newsletter-su-form.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'newsletter-su-form.css' | asset_url | stylesheet_tag }}</noscript>
@@ -71,11 +55,15 @@
 	--nsu-flex-align-desktop: {{ flex_align_desktop }};
 	--nsu-content-width-mobile: {{ section.settings.content_width_mobile }}px;
 	--nsu-content-width-desktop: {{ section.settings.content_width_desktop }}px;
-	--nsu-heading-font: {{ heading_font_family | strip }};
+	--nsu-heading-font: {{ heading_font_picked.family }}, {{ heading_font_picked.fallback_families }};
+	--nsu-heading-weight: {{ heading_font_picked.weight | default: 400 }};
+	--nsu-heading-style: {{ heading_font_picked.style | default: 'normal' }};
 	--nsu-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
 	--nsu-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
 	--nsu-heading-spacing: {{ section.settings.heading_spacing }}px;
-	--nsu-text-font: {{ text_font_family | strip }};
+	--nsu-text-font: {{ text_font_picked.family }}, {{ text_font_picked.fallback_families }};
+	--nsu-text-weight: {{ text_font_picked.weight | default: 400 }};
+	--nsu-text-style: {{ text_font_picked.style | default: 'normal' }};
 	--nsu-text-size-mobile: {{ section.settings.text_size_mobile }}px;
 	--nsu-text-size-desktop: {{ section.settings.text_size_desktop }}px;
 	--nsu-text-width-mobile: {{ section.settings.text_width_mobile }}px;
@@ -273,23 +261,10 @@
 			"default": "Dołącz do Nudyess Family"
 		},
 		{
-			"type": "select",
-			"id": "heading_font",
-			"label": "Heading font",
-			"options": [
-				{ "value": "heading", "label": "Theme heading font" },
-				{ "value": "body", "label": "Theme body font" },
-				{ "value": "custom", "label": "Custom font" }
-			],
-			"default": "heading"
-		},
-		{
 			"type": "font_picker",
 			"id": "heading_font_picker",
-			"label": "Custom heading font",
-			"default": "archivo_narrow_n4",
-			"info": "Used when \"Heading font\" above is set to Custom font.",
-			"visible_if": "{{ section.settings.heading_font == 'custom' }}"
+			"label": "Heading font",
+			"default": "instrument_serif_i4"
 		},
 		{
 			"type": "range",
@@ -332,23 +307,10 @@
 			"default": "<p>Wcześniejszy dostęp do nowości, urodzinowy prezent i punkty za każde zakupy — wszystko po to, by powiedzieć ci tak jeszcze częściej.</p>"
 		},
 		{
-			"type": "select",
-			"id": "text_font",
-			"label": "Description font",
-			"options": [
-				{ "value": "body", "label": "Theme body font" },
-				{ "value": "heading", "label": "Theme heading font" },
-				{ "value": "custom", "label": "Custom font" }
-			],
-			"default": "body"
-		},
-		{
 			"type": "font_picker",
 			"id": "text_font_picker",
-			"label": "Custom description font",
-			"default": "archivo_narrow_n4",
-			"info": "Used when \"Description font\" above is set to Custom font.",
-			"visible_if": "{{ section.settings.text_font == 'custom' }}"
+			"label": "Description font",
+			"default": "figtree_n5"
 		},
 		{
 			"type": "range",

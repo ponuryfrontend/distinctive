@@ -90,6 +90,8 @@
 .custom-footer__description {
   display: block;
   font-family: var(--cf-description-font);
+  font-weight: var(--cf-description-weight, 400);
+  font-style: var(--cf-description-style, normal);
   font-size: var(--cf-description-size-mobile, 15px);
   line-height: 1.6;
   max-width: var(--cf-description-width-mobile, 420px);
@@ -99,6 +101,8 @@
 .custom-footer__description p {
   font-size: inherit;
   font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
   margin-bottom: 0;
 }
 

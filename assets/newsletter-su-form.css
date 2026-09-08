@@ -44,6 +44,8 @@
 
 .newsletter-su__heading {
   font-family: var(--nsu-heading-font);
+  font-weight: var(--nsu-heading-weight, 400);
+  font-style: var(--nsu-heading-style, normal);
   font-size: var(--nsu-heading-size-mobile, 28px);
   line-height: 1.2;
   color: var(--nsu-heading-color, var(--color-heading));
@@ -58,6 +60,8 @@
 
 .newsletter-su__text {
   font-family: var(--nsu-text-font);
+  font-weight: var(--nsu-text-weight, 400);
+  font-style: var(--nsu-text-style, normal);
   font-size: var(--nsu-text-size-mobile, 15px);
   line-height: 1.6;
   max-width: var(--nsu-text-width-mobile, 520px);
@@ -77,6 +81,8 @@
 
 .newsletter-su__text p {
   font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;

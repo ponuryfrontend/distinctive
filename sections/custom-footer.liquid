@@ -5,8 +5,7 @@
 	assign logo = section.settings.logo
 	assign logo_text = section.settings.logo_text
 	assign description = section.settings.description
-	assign description_font = section.settings.description_font
-	assign description_font_picker = section.settings.description_font_picker
+	assign description_font_picked = section.settings.description_font_picker
 
 	assign heading_uppercase = section.settings.heading_uppercase
 	assign bottom_uppercase = section.settings.bottom_uppercase
@@ -66,17 +65,10 @@
 			assign flex_align_desktop = 'flex-end'
 	endcase
 -%}
-{%- capture description_font_family -%}
-	{%- case description_font -%}
-		{%- when 'heading' -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
-		{%- when 'custom' -%}{%- if description_font_picker -%}{{ description_font_picker.family }}, {{ description_font_picker.fallback_families }}{%- endif -%}
-		{%- else -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
-	{%- endcase -%}
-{%- endcapture -%}
 <link rel="stylesheet" href="{{ 'custom-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'custom-footer.css' | asset_url | stylesheet_tag }}</noscript>
-{%- if description_font == 'custom' and description_font_picker -%}
-<style>{{ description_font_picker | font_face: font_display: 'swap' }}</style>
+{%- if description_font_picked -%}
+<style>{{ description_font_picked | font_face: font_display: 'swap' }}</style>
 {%- endif -%}
 <footer class="custom-footer" id="CustomFooter-{{ section.id }}" style="
 	--cf-margin-top-mobile: {{ section.settings.margin_top_mobile }}px;
@@ -93,7 +85,9 @@
 	--cf-logo-width-desktop: {{ section.settings.logo_width_desktop }}px;
 	--cf-logo-text-size-mobile: {{ section.settings.logo_text_size_mobile }}px;
 	--cf-logo-text-size-desktop: {{ section.settings.logo_text_size_desktop }}px;
-	--cf-description-font: {{ description_font_family | strip }};
+	--cf-description-font: {{ description_font_picked.family }}, {{ description_font_picked.fallback_families }};
+	--cf-description-weight: {{ description_font_picked.weight | default: 400 }};
+	--cf-description-style: {{ description_font_picked.style | default: 'normal' }};
 	--cf-description-size-mobile: {{ section.settings.description_size_mobile }}px;
 	--cf-description-size-desktop: {{ section.settings.description_size_desktop }}px;
 	--cf-description-width-mobile: {{ section.settings.description_width_mobile }}px;
@@ -392,23 +386,10 @@
 			"default": "<p>Polska marka odzieżowa. Dopasowane sukienki uszyte z naturalnych tkanin, z myślą o kobietach, które mówią sobie tak.</p>"
 		},
 		{
-			"type": "select",
-			"id": "description_font",
-			"label": "Description font",
-			"options": [
-				{ "value": "body", "label": "Theme body font" },
-				{ "value": "heading", "label": "Theme heading font" },
-				{ "value": "custom", "label": "Custom font" }
-			],
-			"default": "body"
-		},
-		{
 			"type": "font_picker",
 			"id": "description_font_picker",
-			"label": "Custom description font",
-			"default": "archivo_narrow_n4",
-			"info": "Used when \"Description font\" above is set to Custom font.",
-			"visible_if": "{{ section.settings.description_font == 'custom' }}"
+			"label": "Description font",
+			"default": "figtree_n5"
 		},
 		{
 			"type": "range",
