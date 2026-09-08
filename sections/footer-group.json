@@ -102,6 +102,27 @@
             "label": "Instagram",
             "link": ""
           }
+        },
+        "social_link_ptkeR4": {
+          "type": "social_link",
+          "settings": {
+            "label": "Facebook",
+            "link": ""
+          }
+        },
+        "social_link_HUfaby": {
+          "type": "social_link",
+          "settings": {
+            "label": "TikTok",
+            "link": ""
+          }
+        },
+        "social_link_JdzTRG": {
+          "type": "social_link",
+          "settings": {
+            "label": "Pinterest",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -109,7 +130,10 @@
         "menu_VnnC6J",
         "menu_Tpiy9k",
         "menu_mgFQzk",
-        "social_link_WzT6qX"
+        "social_link_WzT6qX",
+        "social_link_ptkeR4",
+        "social_link_HUfaby",
+        "social_link_JdzTRG"
       ],
       "disabled": true,
       "name": "Custom Footer",
@@ -130,16 +154,16 @@
         "logo_text_size_desktop": 24,
         "description": "<p>Polska marka odzieżowa. Dopasowane sukienki uszyte z naturalnych tkanin, z myślą o kobietach, które mówią sobie tak.</p>",
         "description_font": "body",
-        "description_font_picker": "archivo_narrow_n4",
+        "description_font_picker": "abril_fatface_n4",
         "description_size_mobile": 12,
         "description_size_desktop": 14,
-        "heading_size_mobile": 10,
+        "heading_size_mobile": 12,
         "heading_size_desktop": 14,
         "heading_uppercase": false,
         "link_size_mobile": 12,
         "link_size_desktop": 14,
         "wordmark_svg": "",
-        "wordmark_file": "",
+        "wordmark_file": "nudyess-wordmark.svg",
         "wordmark_color": "",
         "wordmark_width_mobile": 100,
         "wordmark_width_desktop": 100,
