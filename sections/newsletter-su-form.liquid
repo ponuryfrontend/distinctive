@@ -1,0 +1,419 @@
+{%- liquid
+	assign heading = section.settings.heading
+	assign text = section.settings.text
+	assign custom_liquid = section.settings.custom_liquid
+
+	assign heading_font = section.settings.heading_font
+	assign heading_font_picker = section.settings.heading_font_picker
+	assign text_font = section.settings.text_font
+	assign text_font_picker = section.settings.text_font_picker
+
+	assign text_align_mobile = 'start'
+	assign flex_align_mobile = 'flex-start'
+	case section.settings.alignment_mobile
+		when 'center'
+			assign text_align_mobile = 'center'
+			assign flex_align_mobile = 'center'
+		when 'right'
+			assign text_align_mobile = 'end'
+			assign flex_align_mobile = 'flex-end'
+	endcase
+
+	assign text_align_desktop = 'start'
+	assign flex_align_desktop = 'flex-start'
+	case section.settings.alignment_desktop
+		when 'center'
+			assign text_align_desktop = 'center'
+			assign flex_align_desktop = 'center'
+		when 'right'
+			assign text_align_desktop = 'end'
+			assign flex_align_desktop = 'flex-end'
+	endcase
+-%}
+{%- capture heading_font_family -%}
+	{%- case heading_font -%}
+		{%- when 'body' -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
+		{%- when 'custom' -%}{%- if heading_font_picker -%}{{ heading_font_picker.family }}, {{ heading_font_picker.fallback_families }}{%- endif -%}
+		{%- else -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
+	{%- endcase -%}
+{%- endcapture -%}
+{%- capture text_font_family -%}
+	{%- case text_font -%}
+		{%- when 'heading' -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
+		{%- when 'custom' -%}{%- if text_font_picker -%}{{ text_font_picker.family }}, {{ text_font_picker.fallback_families }}{%- endif -%}
+		{%- else -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
+	{%- endcase -%}
+{%- endcapture -%}
+{%- capture custom_font_faces -%}
+	{%- if heading_font == 'custom' and heading_font_picker -%}{{ heading_font_picker | font_face: font_display: 'swap' }}{%- endif -%}
+	{%- if text_font == 'custom' and text_font_picker -%}{{ text_font_picker | font_face: font_display: 'swap' }}{%- endif -%}
+{%- endcapture -%}
+<link rel="stylesheet" href="{{ 'newsletter-su-form.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'newsletter-su-form.css' | asset_url | stylesheet_tag }}</noscript>
+{%- if custom_font_faces != blank -%}
+<style>{{ custom_font_faces }}</style>
+{%- endif -%}
+<div class="newsletter-su" style="
+	--nsu-bg: {{ section.settings.color_background }};
+	--nsu-heading-color: {{ section.settings.color_heading }};
+	--nsu-text-color: {{ section.settings.color_text }};
+	--nsu-margin-top-mobile: {{ section.settings.margin_top_mobile }}px;
+	--nsu-margin-bottom-mobile: {{ section.settings.margin_bottom_mobile }}px;
+	--nsu-margin-top-desktop: {{ section.settings.margin_top_desktop }}px;
+	--nsu-margin-bottom-desktop: {{ section.settings.margin_bottom_desktop }}px;
+	--nsu-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+	--nsu-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+	--nsu-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+	--nsu-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+	--nsu-align-mobile: {{ text_align_mobile }};
+	--nsu-align-desktop: {{ text_align_desktop }};
+	--nsu-flex-align-mobile: {{ flex_align_mobile }};
+	--nsu-flex-align-desktop: {{ flex_align_desktop }};
+	--nsu-content-width-mobile: {{ section.settings.content_width_mobile }}px;
+	--nsu-content-width-desktop: {{ section.settings.content_width_desktop }}px;
+	--nsu-heading-font: {{ heading_font_family | strip }};
+	--nsu-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+	--nsu-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+	--nsu-heading-spacing: {{ section.settings.heading_spacing }}px;
+	--nsu-text-font: {{ text_font_family | strip }};
+	--nsu-text-size-mobile: {{ section.settings.text_size_mobile }}px;
+	--nsu-text-size-desktop: {{ section.settings.text_size_desktop }}px;
+	--nsu-text-width-mobile: {{ section.settings.text_width_mobile }}px;
+	--nsu-text-width-desktop: {{ section.settings.text_width_desktop }}px;
+	--nsu-text-spacing: {{ section.settings.text_spacing }}px;
+">
+	<div class="row full-width-row">
+		<div class="small-12 columns newsletter-su__columns">
+			<div class="newsletter-su__inner">
+				{%- if heading != blank -%}
+					<h2 class="newsletter-su__heading">{{ heading }}</h2>
+				{%- endif -%}
+				{%- if text != blank -%}
+					<div class="rte newsletter-su__text">{{ text }}</div>
+				{%- endif -%}
+				{%- if custom_liquid != blank -%}
+					<div class="newsletter-su__form">{{ custom_liquid }}</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+{% schema %}
+{
+	"name": "Newsleter SU Form",
+	"tag": "section",
+	"class": "section-newsletter-su-form",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Colors"
+		},
+		{
+			"type": "color",
+			"id": "color_background",
+			"label": "Background",
+			"default": "#301c18"
+		},
+		{
+			"type": "color",
+			"id": "color_heading",
+			"label": "Heading",
+			"default": "#ffffff"
+		},
+		{
+			"type": "color",
+			"id": "color_text",
+			"label": "Text and form",
+			"default": "#e6dcd5"
+		},
+		{
+			"type": "header",
+			"content": "Layout"
+		},
+		{
+			"type": "select",
+			"id": "alignment_mobile",
+			"label": "Alignment (mobile)",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "center"
+		},
+		{
+			"type": "select",
+			"id": "alignment_desktop",
+			"label": "Alignment (desktop)",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "center"
+		},
+		{
+			"type": "range",
+			"id": "content_width_mobile",
+			"min": 200,
+			"max": 1600,
+			"step": 10,
+			"unit": "px",
+			"label": "Content width (mobile)",
+			"default": 600
+		},
+		{
+			"type": "range",
+			"id": "content_width_desktop",
+			"min": 200,
+			"max": 1600,
+			"step": 10,
+			"unit": "px",
+			"label": "Content width (desktop)",
+			"default": 700
+		},
+		{
+			"type": "header",
+			"content": "Inside spacing",
+			"info": "Space between the content and the edges of the colored background."
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top spacing (mobile)",
+			"default": 60
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom spacing (mobile)",
+			"default": 60
+		},
+		{
+			"type": "range",
+			"id": "padding_top_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top spacing (desktop)",
+			"default": 100
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom spacing (desktop)",
+			"default": 100
+		},
+		{
+			"type": "header",
+			"content": "Outside margin",
+			"info": "Space between this section and the sections above and below it."
+		},
+		{
+			"type": "range",
+			"id": "margin_top_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top margin (mobile)",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom margin (mobile)",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_top_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top margin (desktop)",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom margin (desktop)",
+			"default": 0
+		},
+		{
+			"type": "header",
+			"content": "Heading"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Heading",
+			"default": "Dołącz do Nudyess Family"
+		},
+		{
+			"type": "select",
+			"id": "heading_font",
+			"label": "Heading font",
+			"options": [
+				{ "value": "heading", "label": "Theme heading font" },
+				{ "value": "body", "label": "Theme body font" },
+				{ "value": "custom", "label": "Custom font" }
+			],
+			"default": "heading"
+		},
+		{
+			"type": "font_picker",
+			"id": "heading_font_picker",
+			"label": "Custom heading font",
+			"default": "archivo_narrow_n4",
+			"info": "Used only when the heading font is set to Custom font."
+		},
+		{
+			"type": "range",
+			"id": "heading_size_mobile",
+			"min": 14,
+			"max": 80,
+			"step": 1,
+			"unit": "px",
+			"label": "Heading size (mobile)",
+			"default": 28
+		},
+		{
+			"type": "range",
+			"id": "heading_size_desktop",
+			"min": 14,
+			"max": 120,
+			"step": 1,
+			"unit": "px",
+			"label": "Heading size (desktop)",
+			"default": 44
+		},
+		{
+			"type": "range",
+			"id": "heading_spacing",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"unit": "px",
+			"label": "Space below heading",
+			"default": 20
+		},
+		{
+			"type": "header",
+			"content": "Description"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"label": "Description",
+			"default": "<p>Wcześniejszy dostęp do nowości, urodzinowy prezent i punkty za każde zakupy — wszystko po to, by powiedzieć ci tak jeszcze częściej.</p>"
+		},
+		{
+			"type": "select",
+			"id": "text_font",
+			"label": "Description font",
+			"options": [
+				{ "value": "body", "label": "Theme body font" },
+				{ "value": "heading", "label": "Theme heading font" },
+				{ "value": "custom", "label": "Custom font" }
+			],
+			"default": "body"
+		},
+		{
+			"type": "font_picker",
+			"id": "text_font_picker",
+			"label": "Custom description font",
+			"default": "archivo_narrow_n4",
+			"info": "Used only when the description font is set to Custom font."
+		},
+		{
+			"type": "range",
+			"id": "text_size_mobile",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Description size (mobile)",
+			"default": 15
+		},
+		{
+			"type": "range",
+			"id": "text_size_desktop",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Description size (desktop)",
+			"default": 17
+		},
+		{
+			"type": "range",
+			"id": "text_width_mobile",
+			"min": 160,
+			"max": 1200,
+			"step": 10,
+			"unit": "px",
+			"label": "Description width (mobile)",
+			"default": 520
+		},
+		{
+			"type": "range",
+			"id": "text_width_desktop",
+			"min": 160,
+			"max": 1200,
+			"step": 10,
+			"unit": "px",
+			"label": "Description width (desktop)",
+			"default": 640
+		},
+		{
+			"type": "range",
+			"id": "text_spacing",
+			"min": 0,
+			"max": 120,
+			"step": 2,
+			"unit": "px",
+			"label": "Space below description",
+			"default": 40
+		},
+		{
+			"type": "header",
+			"content": "Form"
+		},
+		{
+			"type": "liquid",
+			"id": "custom_liquid",
+			"label": "Form code",
+			"info": "Paste the signup form embed, app snippet or other Liquid code.",
+			"default": "<div class=\"klaviyo-form-VwF78E\"></div>"
+		}
+	],
+	"presets": [
+		{
+			"name": "Newsleter SU Form"
+		}
+	]
+}
+{% endschema %}

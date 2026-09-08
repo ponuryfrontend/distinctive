@@ -1,0 +1,98 @@
+.newsletter-su {
+  background: var(--nsu-bg, var(--bg-body));
+  color: var(--nsu-text-color, var(--color-body));
+  margin-top: var(--nsu-margin-top-mobile, 0);
+  margin-bottom: var(--nsu-margin-bottom-mobile, 0);
+  padding-top: var(--nsu-padding-top-mobile, 60px);
+  padding-bottom: var(--nsu-padding-bottom-mobile, 60px);
+}
+
+@media only screen and (min-width: 768px) {
+  .newsletter-su {
+    margin-top: var(--nsu-margin-top-desktop, 0);
+    margin-bottom: var(--nsu-margin-bottom-desktop, 0);
+    padding-top: var(--nsu-padding-top-desktop, 100px);
+    padding-bottom: var(--nsu-padding-bottom-desktop, 100px);
+  }
+}
+
+.newsletter-su__columns {
+  display: flex;
+  justify-content: var(--nsu-flex-align-mobile, center);
+}
+
+.newsletter-su__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--nsu-flex-align-mobile, center);
+  text-align: var(--nsu-align-mobile, center);
+  width: 100%;
+  max-width: var(--nsu-content-width-mobile, 600px);
+}
+
+@media only screen and (min-width: 768px) {
+  .newsletter-su__columns {
+    justify-content: var(--nsu-flex-align-desktop, center);
+  }
+
+  .newsletter-su__inner {
+    align-items: var(--nsu-flex-align-desktop, center);
+    text-align: var(--nsu-align-desktop, center);
+    max-width: var(--nsu-content-width-desktop, 700px);
+  }
+}
+
+.newsletter-su__heading {
+  font-family: var(--nsu-heading-font);
+  font-size: var(--nsu-heading-size-mobile, 28px);
+  line-height: 1.2;
+  color: var(--nsu-heading-color, var(--color-heading));
+  margin: 0 0 var(--nsu-heading-spacing, 20px);
+}
+
+@media only screen and (min-width: 768px) {
+  .newsletter-su__heading {
+    font-size: var(--nsu-heading-size-desktop, 44px);
+  }
+}
+
+.newsletter-su__text {
+  font-family: var(--nsu-text-font);
+  font-size: var(--nsu-text-size-mobile, 15px);
+  line-height: 1.6;
+  max-width: var(--nsu-text-width-mobile, 520px);
+  margin: 0 0 var(--nsu-text-spacing, 40px);
+}
+
+@media only screen and (min-width: 768px) {
+  .newsletter-su__text {
+    font-size: var(--nsu-text-size-desktop, 17px);
+    max-width: var(--nsu-text-width-desktop, 640px);
+  }
+}
+
+.newsletter-su__text :last-child {
+  margin-bottom: 0;
+}
+
+.newsletter-su__text p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.newsletter-su__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.newsletter-su__form {
+  width: 100%;
+}
+
+.newsletter-su__form input[type="email"],
+.newsletter-su__form input[type="text"] {
+  color: inherit;
+}
