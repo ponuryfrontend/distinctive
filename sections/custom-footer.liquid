@@ -1,0 +1,663 @@
+{%- liquid
+	assign menu_blocks = section.blocks | where: 'type', 'menu'
+	assign social_blocks = section.blocks | where: 'type', 'social_link'
+
+	assign logo = section.settings.logo
+	assign logo_text = section.settings.logo_text
+	assign description = section.settings.description
+	assign description_font = section.settings.description_font
+	assign description_font_picker = section.settings.description_font_picker
+
+	assign heading_uppercase = section.settings.heading_uppercase
+	assign bottom_uppercase = section.settings.bottom_uppercase
+
+	assign wordmark_svg = section.settings.wordmark_svg
+	assign wordmark_file = section.settings.wordmark_file
+	assign wordmark_image = section.settings.wordmark_image
+	assign wordmark_color = section.settings.wordmark_color
+
+	assign copyright_text = section.settings.copyright_text
+	assign show_language_switcher = section.settings.show_language_switcher
+	assign show_currency_switcher = section.settings.show_currency_switcher
+
+	assign menu_count = menu_blocks.size
+	if menu_count > 4
+		assign menu_count = 4
+	endif
+
+	assign brand_width = section.settings.brand_column_width
+	if menu_count > 0
+		assign grid_desktop = brand_width | append: '% repeat(' | append: menu_count | append: ', minmax(0, 1fr))'
+	else
+		assign grid_desktop = 'minmax(0, 1fr)'
+	endif
+
+	assign has_social = false
+	for block in social_blocks
+		if block.settings.link != blank or block.settings.label != blank
+			assign has_social = true
+		endif
+	endfor
+
+	assign show_social_accordion = false
+	if section.settings.show_social_mobile and has_social
+		assign show_social_accordion = true
+	endif
+-%}
+{%- capture description_font_family -%}
+	{%- case description_font -%}
+		{%- when 'heading' -%}{{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }}
+		{%- when 'custom' -%}{%- if description_font_picker -%}{{ description_font_picker.family }}, {{ description_font_picker.fallback_families }}{%- endif -%}
+		{%- else -%}{{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
+	{%- endcase -%}
+{%- endcapture -%}
+<link rel="stylesheet" href="{{ 'custom-footer.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'custom-footer.css' | asset_url | stylesheet_tag }}</noscript>
+{%- if description_font == 'custom' and description_font_picker -%}
+<style>{{ description_font_picker | font_face: font_display: 'swap' }}</style>
+{%- endif -%}
+<footer class="custom-footer" id="CustomFooter-{{ section.id }}" style="
+	--cf-margin-top-mobile: {{ section.settings.margin_top_mobile }}px;
+	--cf-margin-bottom-mobile: {{ section.settings.margin_bottom_mobile }}px;
+	--cf-margin-top-desktop: {{ section.settings.margin_top_desktop }}px;
+	--cf-margin-bottom-desktop: {{ section.settings.margin_bottom_desktop }}px;
+	--cf-grid-desktop: {{ grid_desktop }};
+	--cf-column-gap: {{ section.settings.column_gap_desktop }}px;
+	--cf-align-mobile: {{ section.settings.alignment_mobile }};
+	--cf-align-desktop: {{ section.settings.alignment_desktop }};
+	--cf-logo-width-mobile: {{ section.settings.logo_width_mobile }}px;
+	--cf-logo-width-desktop: {{ section.settings.logo_width_desktop }}px;
+	--cf-logo-text-size-mobile: {{ section.settings.logo_text_size_mobile }}px;
+	--cf-logo-text-size-desktop: {{ section.settings.logo_text_size_desktop }}px;
+	--cf-description-font: {{ description_font_family | strip }};
+	--cf-description-size-mobile: {{ section.settings.description_size_mobile }}px;
+	--cf-description-size-desktop: {{ section.settings.description_size_desktop }}px;
+	--cf-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+	--cf-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+	--cf-link-size-mobile: {{ section.settings.link_size_mobile }}px;
+	--cf-link-size-desktop: {{ section.settings.link_size_desktop }}px;
+	--cf-wordmark-width-mobile: {{ section.settings.wordmark_width_mobile }}%;
+	--cf-wordmark-width-desktop: {{ section.settings.wordmark_width_desktop }}%;
+	--cf-wordmark-spacing-mobile: {{ section.settings.wordmark_spacing_mobile }}px;
+	--cf-wordmark-spacing-desktop: {{ section.settings.wordmark_spacing_desktop }}px;
+	{%- if wordmark_color != blank %}--cf-wordmark-color: {{ wordmark_color }};{% endif -%}
+	--cf-bottom-size-mobile: {{ section.settings.bottom_size_mobile }}px;
+	--cf-bottom-size-desktop: {{ section.settings.bottom_size_desktop }}px;
+">
+	<div class="row full-width-row">
+		<div class="small-12 columns">
+			<div class="custom-footer__columns">
+				<div class="custom-footer__brand">
+					{%- if logo != blank -%}
+						<a class="custom-footer__logo" href="{{ routes.root_url }}" title="{{ shop.name | escape }}">
+							{{ logo | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '400px', widths: '200,400,600,800', alt: shop.name, class: 'custom-footer__logo-image' }}
+						</a>
+					{%- elsif logo_text != blank -%}
+						<a class="custom-footer__logo-text heading-font" href="{{ routes.root_url }}" title="{{ shop.name | escape }}">{{ logo_text }}</a>
+					{%- endif -%}
+					{%- if description != blank -%}
+						<div class="rte custom-footer__description">{{ description }}</div>
+					{%- endif -%}
+				</div>
+				{%- for block in menu_blocks limit: 4 -%}
+					<div class="custom-footer__menu{% if forloop.last and show_social_accordion == false %} custom-footer__menu--last{% endif %}" {{ block.shopify_attributes }}>
+						<button
+							class="custom-footer__toggle h5{% if heading_uppercase %} custom-footer__toggle--uppercase{% endif %}"
+							type="button"
+							aria-expanded="false"
+							aria-controls="CustomFooterMenu-{{ section.id }}-{{ block.id }}"
+						>
+							{{ block.settings.title }}
+							<span class="custom-footer__toggle-icon" aria-hidden="true"></span>
+						</button>
+						{%- if block.settings.menu != blank -%}
+							<ul class="custom-footer__menu-list" id="CustomFooterMenu-{{ section.id }}-{{ block.id }}">
+								{%- for link in block.settings.menu.links -%}
+									{%- assign has_sub_menu = false -%}
+									{%- if link.links.size > 0 -%}
+										{%- assign has_sub_menu = true -%}
+									{%- endif -%}
+									<li class="{% if has_sub_menu %}menu-item-has-children{% endif %}{% if link.active %} active{% endif %}">
+										<a href="{{ link.url }}" title="{{ link.title | escape }}"{%- if link.active %} aria-current="page"{% endif -%}>{{ link.title }}</a>{% if has_sub_menu %}<span class="custom-footer__arrow" tabindex="0" role="button" aria-expanded="false">{%- render 'svg-icons' with 'thb-dropdown-bottom' -%}</span>{% endif %}
+										{%- if has_sub_menu -%}
+											<ul class="custom-footer__sub-menu" tabindex="-1">
+												{%- for l in link.links -%}
+													{%- assign has_third_level = false -%}
+													{%- if l.links.size > 0 -%}
+														{%- assign has_third_level = true -%}
+													{%- endif -%}
+													<li class="{% if has_third_level %}menu-item-has-children{% endif %}{% if l.active %} active{% endif %}">
+														<a href="{{ l.url }}" title="{{ l.title | escape }}">{{ l.title }}</a>{% if has_third_level %}<span class="custom-footer__arrow" tabindex="0" role="button" aria-expanded="false">{%- render 'svg-icons' with 'thb-dropdown-bottom' -%}</span>{% endif %}
+														{%- if has_third_level -%}
+															<ul class="custom-footer__sub-menu" tabindex="-1">
+																{%- for sub_link in l.links -%}
+																	<li class="{% if sub_link.active %}active{% endif %}">
+																		<a href="{{ sub_link.url }}" title="{{ sub_link.title | escape }}">{{ sub_link.title }}</a>
+																	</li>
+																{%- endfor -%}
+															</ul>
+														{%- endif -%}
+													</li>
+												{%- endfor -%}
+											</ul>
+										{%- endif -%}
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endif -%}
+					</div>
+				{%- endfor -%}
+			</div>
+			{%- if show_social_accordion -%}
+				<div class="custom-footer__menu custom-footer__menu--social custom-footer__menu--last">
+					<button
+						class="custom-footer__toggle h5{% if heading_uppercase %} custom-footer__toggle--uppercase{% endif %}"
+						type="button"
+						aria-expanded="false"
+						aria-controls="CustomFooterSocial-{{ section.id }}"
+					>
+						{{ section.settings.social_mobile_heading }}
+						<span class="custom-footer__toggle-icon" aria-hidden="true"></span>
+					</button>
+					<ul class="custom-footer__menu-list" id="CustomFooterSocial-{{ section.id }}">
+						{%- for block in social_blocks -%}
+							{%- if block.settings.label != blank -%}
+								<li {{ block.shopify_attributes }}><a href="{{ block.settings.link | default: '#' }}" title="{{ block.settings.label | escape }}"{% if block.settings.link != blank %} target="_blank" rel="noreferrer"{% endif %}>{{ block.settings.label }}</a></li>
+							{%- endif -%}
+						{%- endfor -%}
+					</ul>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+	{%- if wordmark_svg != blank or wordmark_file != blank or wordmark_image != blank -%}
+		<div class="row full-width-row{% if section.settings.wordmark_full_bleed %}-full{% endif %} custom-footer__wordmark-row{% if section.settings.show_wordmark_top_border %} custom-footer__row--bordered{% endif %}">
+			<div class="small-12 columns">
+				<div class="custom-footer__wordmark{% if wordmark_color != blank %} custom-footer__wordmark--recolor{% endif %}">
+					{%- if wordmark_svg != blank -%}
+						{{ wordmark_svg }}
+					{%- elsif wordmark_file != blank -%}
+						{% # theme-check-disable ImgWidthAndHeight %}
+						<img src="{{ wordmark_file | file_url }}" alt="{{ shop.name | escape }}" loading="lazy">
+						{% # theme-check-enable ImgWidthAndHeight %}
+					{%- else -%}
+						{{ wordmark_image | image_url: width: 3000 | image_tag: loading: 'lazy', sizes: '100vw', widths: '600,900,1200,1800,2400,3000', alt: shop.name }}
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	{%- endif -%}
+	<div class="row full-width-row custom-footer__bottom-row{% if section.settings.show_bottom_border %} custom-footer__row--bordered{% endif %}">
+		<div class="small-12 columns">
+			<div class="custom-footer__bottom{% if bottom_uppercase %} custom-footer__bottom--uppercase{% endif %}">
+				<p class="custom-footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ copyright_text }}</p>
+				{%- if section.settings.show_social_desktop and has_social -%}
+					<ul class="custom-footer__social">
+						{%- for block in social_blocks -%}
+							{%- if block.settings.label != blank -%}
+								<li {{ block.shopify_attributes }}><a href="{{ block.settings.link | default: '#' }}" title="{{ block.settings.label | escape }}"{% if block.settings.link != blank %} target="_blank" rel="noreferrer"{% endif %}>{{ block.settings.label }}</a></li>
+							{%- endif -%}
+						{%- endfor -%}
+					</ul>
+				{%- endif -%}
+				<div class="custom-footer__localization">
+					{%- render 'localization', id: 'CustomFooterLocalization', show_language_switcher: show_language_switcher, show_currency_switcher: show_currency_switcher -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<script src="{{ 'custom-footer.js' | asset_url }}" defer></script>
+{% schema %}
+{
+	"name": "Custom Footer",
+	"tag": "section",
+	"class": "section-custom-footer",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section spacing"
+		},
+		{
+			"type": "range",
+			"id": "margin_top_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top margin (mobile)",
+			"default": 40
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom margin (mobile)",
+			"default": 40
+		},
+		{
+			"type": "range",
+			"id": "margin_top_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Top margin (desktop)",
+			"default": 60
+		},
+		{
+			"type": "range",
+			"id": "margin_bottom_desktop",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Bottom margin (desktop)",
+			"default": 60
+		},
+		{
+			"type": "range",
+			"id": "brand_column_width",
+			"min": 15,
+			"max": 45,
+			"step": 1,
+			"unit": "%",
+			"label": "Logo column width (desktop)",
+			"default": 28
+		},
+		{
+			"type": "range",
+			"id": "column_gap_desktop",
+			"min": 10,
+			"max": 120,
+			"step": 5,
+			"unit": "px",
+			"label": "Column gap (desktop)",
+			"default": 40
+		},
+		{
+			"type": "select",
+			"id": "alignment_mobile",
+			"label": "Logo and text alignment (mobile)",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "left"
+		},
+		{
+			"type": "select",
+			"id": "alignment_desktop",
+			"label": "Logo and text alignment (desktop)",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "left"
+		},
+		{
+			"type": "header",
+			"content": "Logo and description"
+		},
+		{
+			"type": "image_picker",
+			"id": "logo",
+			"label": "Logo",
+			"info": "Leave empty to use the text logo below."
+		},
+		{
+			"type": "range",
+			"id": "logo_width_mobile",
+			"min": 60,
+			"max": 400,
+			"step": 5,
+			"unit": "px",
+			"label": "Logo width (mobile)",
+			"default": 140
+		},
+		{
+			"type": "range",
+			"id": "logo_width_desktop",
+			"min": 60,
+			"max": 400,
+			"step": 5,
+			"unit": "px",
+			"label": "Logo width (desktop)",
+			"default": 170
+		},
+		{
+			"type": "text",
+			"id": "logo_text",
+			"label": "Text logo",
+			"default": "NUDYESS"
+		},
+		{
+			"type": "range",
+			"id": "logo_text_size_mobile",
+			"min": 12,
+			"max": 60,
+			"step": 1,
+			"unit": "px",
+			"label": "Text logo size (mobile)",
+			"default": 20
+		},
+		{
+			"type": "range",
+			"id": "logo_text_size_desktop",
+			"min": 12,
+			"max": 60,
+			"step": 1,
+			"unit": "px",
+			"label": "Text logo size (desktop)",
+			"default": 24
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"label": "Description",
+			"default": "<p>Polska marka odzieżowa. Dopasowane sukienki uszyte z naturalnych tkanin, z myślą o kobietach, które mówią sobie tak.</p>"
+		},
+		{
+			"type": "select",
+			"id": "description_font",
+			"label": "Description font",
+			"options": [
+				{ "value": "body", "label": "Theme body font" },
+				{ "value": "heading", "label": "Theme heading font" },
+				{ "value": "custom", "label": "Custom font" }
+			],
+			"default": "body"
+		},
+		{
+			"type": "font_picker",
+			"id": "description_font_picker",
+			"label": "Custom description font",
+			"default": "archivo_narrow_n4",
+			"info": "Used only when the description font is set to Custom font."
+		},
+		{
+			"type": "range",
+			"id": "description_size_mobile",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Description size (mobile)",
+			"default": 15
+		},
+		{
+			"type": "range",
+			"id": "description_size_desktop",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Description size (desktop)",
+			"default": 15
+		},
+		{
+			"type": "header",
+			"content": "Menu typography"
+		},
+		{
+			"type": "range",
+			"id": "heading_size_mobile",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Menu heading size (mobile)",
+			"default": 16
+		},
+		{
+			"type": "range",
+			"id": "heading_size_desktop",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Menu heading size (desktop)",
+			"default": 13
+		},
+		{
+			"type": "checkbox",
+			"id": "heading_uppercase",
+			"label": "Uppercase menu headings",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "link_size_mobile",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Menu link size (mobile)",
+			"default": 15
+		},
+		{
+			"type": "range",
+			"id": "link_size_desktop",
+			"min": 10,
+			"max": 40,
+			"step": 1,
+			"unit": "px",
+			"label": "Menu link size (desktop)",
+			"default": 15
+		},
+		{
+			"type": "header",
+			"content": "Wordmark"
+		},
+		{
+			"type": "textarea",
+			"id": "wordmark_svg",
+			"label": "Inline SVG code",
+			"info": "Paste the full <svg> markup. This has priority over the options below."
+		},
+		{
+			"type": "text",
+			"id": "wordmark_file",
+			"label": "SVG file name",
+			"info": "Name of an SVG uploaded in Content > Files, e.g. nudyess-wordmark.svg"
+		},
+		{
+			"type": "image_picker",
+			"id": "wordmark_image",
+			"label": "Image",
+			"info": "Fallback for PNG/JPG wordmarks."
+		},
+		{
+			"type": "color",
+			"id": "wordmark_color",
+			"label": "Wordmark color",
+			"info": "Recolors an inline SVG. Leave empty to keep the colors of the file."
+		},
+		{
+			"type": "range",
+			"id": "wordmark_width_mobile",
+			"min": 30,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "Wordmark width (mobile)",
+			"default": 100
+		},
+		{
+			"type": "range",
+			"id": "wordmark_width_desktop",
+			"min": 30,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "Wordmark width (desktop)",
+			"default": 100
+		},
+		{
+			"type": "range",
+			"id": "wordmark_spacing_mobile",
+			"min": 0,
+			"max": 160,
+			"step": 5,
+			"unit": "px",
+			"label": "Space above wordmark (mobile)",
+			"default": 40
+		},
+		{
+			"type": "range",
+			"id": "wordmark_spacing_desktop",
+			"min": 0,
+			"max": 160,
+			"step": 5,
+			"unit": "px",
+			"label": "Space above wordmark (desktop)",
+			"default": 60
+		},
+		{
+			"type": "checkbox",
+			"id": "wordmark_full_bleed",
+			"label": "Stretch wordmark edge to edge",
+			"default": false,
+			"info": "Removes the horizontal page padding around the wordmark."
+		},
+		{
+			"type": "checkbox",
+			"id": "show_wordmark_top_border",
+			"label": "Show border above wordmark",
+			"default": false
+		},
+		{
+			"type": "header",
+			"content": "Bottom bar"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_bottom_border",
+			"label": "Show border above bottom bar",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "copyright_text",
+			"label": "Copyright text",
+			"default": "NUDYESS. Wszystkie prawa zastrzeżone.",
+			"info": "The current year is added automatically in front of this text."
+		},
+		{
+			"type": "range",
+			"id": "bottom_size_mobile",
+			"min": 8,
+			"max": 24,
+			"step": 1,
+			"unit": "px",
+			"label": "Bottom bar font size (mobile)",
+			"default": 12
+		},
+		{
+			"type": "range",
+			"id": "bottom_size_desktop",
+			"min": 8,
+			"max": 24,
+			"step": 1,
+			"unit": "px",
+			"label": "Bottom bar font size (desktop)",
+			"default": 13
+		},
+		{
+			"type": "checkbox",
+			"id": "bottom_uppercase",
+			"label": "Uppercase bottom bar",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "show_social_desktop",
+			"label": "Show social links in the bottom bar (desktop)",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_social_mobile",
+			"label": "Show social links as the last accordion (mobile)",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "social_mobile_heading",
+			"label": "Social accordion heading (mobile)",
+			"default": "Social media"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_language_switcher",
+			"label": "Enable language switcher",
+			"default": true,
+			"info": "To add a language, go to your [language settings](/admin/settings/languages)."
+		},
+		{
+			"type": "checkbox",
+			"id": "show_currency_switcher",
+			"label": "Enable currency switcher",
+			"default": true,
+			"info": "To add a country/region, go to your [payment settings](/admin/settings/payments)."
+		}
+	],
+	"blocks": [
+		{
+			"type": "menu",
+			"name": "Menu",
+			"limit": 4,
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+					"default": "Menu"
+				},
+				{
+					"type": "link_list",
+					"id": "menu",
+					"label": "Menu",
+					"default": "footer",
+					"info": "Select navigation to display"
+				}
+			]
+		},
+		{
+			"type": "social_link",
+			"name": "Social link",
+			"limit": 10,
+			"settings": [
+				{
+					"type": "text",
+					"id": "label",
+					"label": "Label",
+					"default": "Instagram"
+				},
+				{
+					"type": "url",
+					"id": "link",
+					"label": "Link"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Custom Footer",
+			"blocks": [
+				{ "type": "menu" },
+				{ "type": "menu" },
+				{ "type": "menu" },
+				{ "type": "menu" },
+				{ "type": "social_link" }
+			]
+		}
+	]
+}
+{% endschema %}
