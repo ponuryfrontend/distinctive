@@ -19,6 +19,43 @@
         "heading": "Add heading for your signup form"
       }
     },
+    "newsletter_su_form_qGkfKa": {
+      "type": "newsletter-su-form",
+      "disabled": true,
+      "name": "Newsleter SU Form",
+      "settings": {
+        "color_background": "#301c18",
+        "color_heading": "#EAE6E0",
+        "color_text": "#e6dcd5",
+        "alignment_mobile": "center",
+        "alignment_desktop": "center",
+        "content_width_mobile": 280,
+        "content_width_desktop": 700,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "margin_top_desktop": 0,
+        "margin_bottom_desktop": 0,
+        "heading": "Pierwsze YESS? -5%",
+        "heading_font": "heading",
+        "heading_font_picker": "instrument_serif_i4",
+        "heading_size_mobile": 14,
+        "heading_size_desktop": 44,
+        "heading_spacing": 20,
+        "text": "<p>Dołącz do YESS LIST. Na początek dostajesz 5% na pierwsze zakupy, a później wcześniejszy dostęp do tego, co nowe, wraca i jest warte Twojej uwagi.</p>",
+        "text_font": "body",
+        "text_font_picker": "instrument_serif_i4",
+        "text_size_mobile": 12,
+        "text_size_desktop": 17,
+        "text_width_mobile": 160,
+        "text_width_desktop": 680,
+        "text_spacing": 32,
+        "custom_liquid": "<div class=\"klaviyo-form-XZmR8H\"></div>"
+      }
+    },
     "rich_text_zXKXzF": {
       "type": "rich-text",
       "blocks": {
@@ -299,6 +336,7 @@
   },
   "order": [
     "footer-email-bar",
+    "newsletter_su_form_qGkfKa",
     "rich_text_zXKXzF",
     "spacer_y3AXfr",
     "custom_footer_UUBbx9",
