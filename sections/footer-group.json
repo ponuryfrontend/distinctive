@@ -65,6 +65,100 @@
         "border_separator_full": false
       }
     },
+    "custom_footer_UUBbx9": {
+      "type": "custom-footer",
+      "blocks": {
+        "menu_ckrgdY": {
+          "type": "menu",
+          "settings": {
+            "title": "Pomoc",
+            "menu": "footer-3"
+          }
+        },
+        "menu_VnnC6J": {
+          "type": "menu",
+          "settings": {
+            "title": "Nudyess Family",
+            "menu": "menu-stopki-3"
+          }
+        },
+        "menu_Tpiy9k": {
+          "type": "menu",
+          "settings": {
+            "title": "Informacje prawne",
+            "menu": "footer"
+          }
+        },
+        "menu_mgFQzk": {
+          "type": "menu",
+          "settings": {
+            "title": "O nas",
+            "menu": "footer-2"
+          }
+        },
+        "social_link_WzT6qX": {
+          "type": "social_link",
+          "settings": {
+            "label": "Instagram",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_ckrgdY",
+        "menu_VnnC6J",
+        "menu_Tpiy9k",
+        "menu_mgFQzk",
+        "social_link_WzT6qX"
+      ],
+      "disabled": true,
+      "name": "Custom Footer",
+      "settings": {
+        "margin_top_mobile": 40,
+        "margin_bottom_mobile": 40,
+        "margin_top_desktop": 60,
+        "margin_bottom_desktop": 60,
+        "brand_column_width": 28,
+        "column_gap_desktop": 40,
+        "alignment_mobile": "left",
+        "alignment_desktop": "left",
+        "logo": "shopify://shop_images/Black_Logo_Nudyess.svg",
+        "logo_width_mobile": 100,
+        "logo_width_desktop": 120,
+        "logo_text": "",
+        "logo_text_size_mobile": 20,
+        "logo_text_size_desktop": 24,
+        "description": "<p>Polska marka odzieżowa. Dopasowane sukienki uszyte z naturalnych tkanin, z myślą o kobietach, które mówią sobie tak.</p>",
+        "description_font": "body",
+        "description_font_picker": "archivo_narrow_n4",
+        "description_size_mobile": 12,
+        "description_size_desktop": 14,
+        "heading_size_mobile": 16,
+        "heading_size_desktop": 13,
+        "heading_uppercase": true,
+        "link_size_mobile": 15,
+        "link_size_desktop": 15,
+        "wordmark_svg": "",
+        "wordmark_file": "",
+        "wordmark_color": "",
+        "wordmark_width_mobile": 100,
+        "wordmark_width_desktop": 100,
+        "wordmark_spacing_mobile": 40,
+        "wordmark_spacing_desktop": 60,
+        "wordmark_full_bleed": false,
+        "show_wordmark_top_border": false,
+        "show_bottom_border": true,
+        "copyright_text": "NUDYESS. Wszystkie prawa zastrzeżone.",
+        "bottom_size_mobile": 12,
+        "bottom_size_desktop": 13,
+        "bottom_uppercase": false,
+        "show_social_desktop": true,
+        "show_social_mobile": true,
+        "social_mobile_heading": "Social media",
+        "show_language_switcher": true,
+        "show_currency_switcher": true
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -171,6 +265,7 @@
     "footer-email-bar",
     "rich_text_zXKXzF",
     "spacer_y3AXfr",
+    "custom_footer_UUBbx9",
     "footer",
     "footer-information-bar",
     "custom_liquid_htJbTL"
