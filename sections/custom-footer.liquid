@@ -407,7 +407,8 @@
 			"id": "description_font_picker",
 			"label": "Custom description font",
 			"default": "archivo_narrow_n4",
-			"info": "Used only when the description font is set to Custom font."
+			"info": "Used when \"Description font\" above is set to Custom font.",
+			"visible_if": "{{ section.settings.description_font == 'custom' }}"
 		},
 		{
 			"type": "range",
