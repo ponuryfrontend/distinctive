@@ -466,6 +466,104 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "instagram_followers_Hm4KpR": {
+      "type": "instagram-followers",
+      "blocks": {
+        "item_qa8wDM": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/czekoladowy-prazkowany-crop-top-krotki-na-ramiaczkach-z-kontastowym-przodem-w-kolorze-ecru.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_Bwci9Q": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/czarna-prazkowana-sukienka-dopasiowana-do-sylwetki-na-ramiaczkach.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_hbNxG7": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/czarny-zestaw-z-prazkowanej-bawelny-top-na-ramiaczkach-ze-spodniami.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_9zKDfX": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/prazkowana-sukienka-midi-z-dekoltem-v.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        },
+        "item_JCkTEX": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/spodnie-z-gladkiej-bawelny-z-szerokimi-nogakami-i-z-czarnym-topem-na-ramiaczkach-z-kontrastowym-kremowym-przeszyciem.jpg",
+            "link": "https://www.instagram.com/nudyess/",
+            "link_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "item_qa8wDM",
+        "item_Bwci9Q",
+        "item_hbNxG7",
+        "item_9zKDfX",
+        "item_JCkTEX"
+      ],
+      "name": "Instagram Followers",
+      "settings": {
+        "small_heading": "less no. more yess.",
+        "heading": "Jedno YESS prowadzi do kolejnego.",
+        "description": "<p>Na naszym Instagramie robimy miejsce na więcej „YESS” - dla Twojego stylu, Twojego ciała i tego, w czym czujesz się po prostu sobą.</p>",
+        "small_heading_color": "",
+        "small_heading_font": "",
+        "small_heading_font_picker": "archivo_narrow_n4",
+        "small_heading_size_desktop": 10,
+        "small_heading_size_mobile": 8,
+        "small_heading_case_desktop": "uppercase",
+        "small_heading_case_mobile": "uppercase",
+        "heading_color": "",
+        "heading_font": "",
+        "heading_font_picker": "archivo_narrow_n4",
+        "heading_size_desktop": 34,
+        "heading_size_mobile": 24,
+        "heading_case_desktop": "",
+        "heading_case_mobile": "",
+        "description_color": "",
+        "description_font": "",
+        "description_font_picker": "archivo_narrow_n4",
+        "description_size_desktop": 0,
+        "description_size_mobile": 0,
+        "description_case_desktop": "",
+        "description_case_mobile": "",
+        "button_label": "Dołącz do nas",
+        "button_link": "https://www.instagram.com/nudyess/",
+        "button_style": "text_link",
+        "button_text_color": "",
+        "button_bg_color": "",
+        "button_border_color": "",
+        "gap_desktop": 6,
+        "gap_mobile": 4,
+        "background_color_desktop": "",
+        "background_color_mobile": "",
+        "margin_top_desktop": 12,
+        "margin_bottom_desktop": 52,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 16
+      }
     }
   },
   "order": [
@@ -479,6 +577,7 @@
     "rich_text_cA9aUw",
     "multicolumn_BJybVe",
     "text_with_icons_mBRPhG",
-    "spacer_nnHL6P"
+    "spacer_nnHL6P",
+    "instagram_followers_Hm4KpR"
   ]
 }
