@@ -60,28 +60,36 @@
           "type": "menu",
           "settings": {
             "title": "Pomoc",
-            "menu": "footer-3"
+            "menu": "footer-3",
+            "heading_font": "figtree_n7",
+            "link_font": "figtree_n5"
           }
         },
         "menu_VnnC6J": {
           "type": "menu",
           "settings": {
             "title": "Nudyess Family",
-            "menu": "menu-stopki-3"
+            "menu": "menu-stopki-3",
+            "heading_font": "figtree_n7",
+            "link_font": "figtree_n5"
           }
         },
         "menu_Tpiy9k": {
           "type": "menu",
           "settings": {
             "title": "Informacje prawne",
-            "menu": "footer"
+            "menu": "footer",
+            "heading_font": "figtree_n7",
+            "link_font": "figtree_n5"
           }
         },
         "menu_mgFQzk": {
           "type": "menu",
           "settings": {
             "title": "O nas",
-            "menu": "footer-2"
+            "menu": "footer-2",
+            "heading_font": "figtree_n7",
+            "link_font": "figtree_n5"
           }
         },
         "social_link_WzT6qX": {
