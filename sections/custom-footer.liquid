@@ -84,6 +84,20 @@
 		{%- endunless -%}
 	{%- endif -%}
 {%- endfor -%}
+{%- if show_social_accordion -%}
+	{%- if section.settings.social_heading_font -%}
+		{%- capture font_face_css -%}{{ section.settings.social_heading_font | font_face: font_display: 'swap' }}{%- endcapture -%}
+		{%- unless custom_font_faces contains font_face_css -%}
+			{%- assign custom_font_faces = custom_font_faces | append: font_face_css -%}
+		{%- endunless -%}
+	{%- endif -%}
+	{%- if section.settings.social_link_font -%}
+		{%- capture font_face_css -%}{{ section.settings.social_link_font | font_face: font_display: 'swap' }}{%- endcapture -%}
+		{%- unless custom_font_faces contains font_face_css -%}
+			{%- assign custom_font_faces = custom_font_faces | append: font_face_css -%}
+		{%- endunless -%}
+	{%- endif -%}
+{%- endif -%}
 {%- if custom_font_faces != blank -%}
 <style>{{ custom_font_faces }}</style>
 {%- endif -%}
@@ -199,7 +213,17 @@
 				{%- endfor -%}
 			</div>
 			{%- if show_social_accordion -%}
-				<div class="custom-footer__menu custom-footer__menu--social custom-footer__menu--last">
+				{%- liquid
+					assign heading_font_picked = section.settings.social_heading_font
+					assign link_font_picked = section.settings.social_link_font
+				-%}
+				<div
+					class="custom-footer__menu custom-footer__menu--social custom-footer__menu--last{% if heading_font_picked %} custom-footer__menu--heading-font{% endif %}{% if link_font_picked %} custom-footer__menu--link-font{% endif %}"
+					style="
+						{%- if heading_font_picked -%}--cf-menu-heading-font: {{ heading_font_picked.family | escape }}, {{ heading_font_picked.fallback_families | escape }}; --cf-menu-heading-weight: {{ heading_font_picked.weight | default: 400 }}; --cf-menu-heading-style: {{ heading_font_picked.style | default: 'normal' }};{%- endif -%}
+						{%- if link_font_picked %} --cf-menu-link-font: {{ link_font_picked.family | escape }}, {{ link_font_picked.fallback_families | escape }}; --cf-menu-link-weight: {{ link_font_picked.weight | default: 400 }}; --cf-menu-link-style: {{ link_font_picked.style | default: 'normal' }};{%- endif -%}
+					"
+				>
 					<button
 						class="custom-footer__toggle h5{% if heading_uppercase %} custom-footer__toggle--uppercase{% endif %}"
 						type="button"
@@ -650,6 +674,18 @@
 			"id": "social_mobile_heading",
 			"label": "Social accordion heading (mobile)",
 			"default": "Social media"
+		},
+		{
+			"type": "font_picker",
+			"id": "social_heading_font",
+			"label": "Social accordion heading font (mobile)",
+			"default": "instrument_serif_i4"
+		},
+		{
+			"type": "font_picker",
+			"id": "social_link_font",
+			"label": "Social accordion links font (mobile)",
+			"default": "figtree_n5"
 		},
 		{
 			"type": "range",
