@@ -53,53 +53,6 @@
         "custom_liquid": "<div class=\"klaviyo-form-XZmR8H\"></div>"
       }
     },
-    "rich_text_zXKXzF": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_ggexq8": {
-          "type": "heading",
-          "settings": {
-            "text": "Pierwsze YESS? -5%.",
-            "size": "h3"
-          }
-        },
-        "text_Fcy7EH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Dołącz do YESS LIST. Na początek dostajesz 5% na pierwsze zakupy, a później wcześniejszy dostęp do tego, co nowe, wraca i jest warte Twojej uwagi.</p>",
-            "custom_liquid": "<div class=\"klaviyo-form-VwF78E\"></div>",
-            "size": "text-size-regular"
-          }
-        }
-      },
-      "block_order": [
-        "heading_ggexq8",
-        "text_Fcy7EH"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "full_width": true,
-        "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#faf8f6",
-        "color_text": "#301c18",
-        "color_links": "#301c18",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_y3AXfr": {
-      "type": "spacer",
-      "disabled": true,
-      "settings": {
-        "spacer_mobile": 20,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "custom_footer_UUBbx9": {
       "type": "custom-footer",
       "blocks": {
@@ -334,8 +287,6 @@
   "order": [
     "footer-email-bar",
     "newsletter_su_form_qGkfKa",
-    "rich_text_zXKXzF",
-    "spacer_y3AXfr",
     "custom_footer_UUBbx9",
     "footer",
     "footer-information-bar",
