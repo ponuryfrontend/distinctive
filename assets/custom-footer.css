@@ -241,6 +241,19 @@
   line-height: 1.4;
 }
 
+.custom-footer__menu--heading-font > .custom-footer__toggle {
+  font-family: var(--cf-menu-heading-font);
+  font-weight: var(--cf-menu-heading-weight, 400);
+  font-style: var(--cf-menu-heading-style, normal);
+}
+
+.custom-footer__menu--link-font > .custom-footer__menu-list,
+.custom-footer__menu--link-font > .custom-footer__menu-list a {
+  font-family: var(--cf-menu-link-font);
+  font-weight: var(--cf-menu-link-weight, 400);
+  font-style: var(--cf-menu-link-style, normal);
+}
+
 .custom-footer__menu-list li.menu-item-has-children > a {
   display: inline-flex;
   vertical-align: middle;

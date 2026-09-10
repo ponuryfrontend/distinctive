@@ -67,8 +67,25 @@
 -%}
 <link rel="stylesheet" href="{{ 'custom-footer.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'custom-footer.css' | asset_url | stylesheet_tag }}</noscript>
-{%- if description_font_picked -%}
-<style>{{ description_font_picked | font_face: font_display: 'swap' }}</style>
+{%- capture custom_font_faces -%}
+	{%- if description_font_picked -%}{{ description_font_picked | font_face: font_display: 'swap' }}{%- endif -%}
+{%- endcapture -%}
+{%- for block in menu_blocks limit: 4 -%}
+	{%- if block.settings.heading_font -%}
+		{%- capture font_face_css -%}{{ block.settings.heading_font | font_face: font_display: 'swap' }}{%- endcapture -%}
+		{%- unless custom_font_faces contains font_face_css -%}
+			{%- assign custom_font_faces = custom_font_faces | append: font_face_css -%}
+		{%- endunless -%}
+	{%- endif -%}
+	{%- if block.settings.link_font -%}
+		{%- capture font_face_css -%}{{ block.settings.link_font | font_face: font_display: 'swap' }}{%- endcapture -%}
+		{%- unless custom_font_faces contains font_face_css -%}
+			{%- assign custom_font_faces = custom_font_faces | append: font_face_css -%}
+		{%- endunless -%}
+	{%- endif -%}
+{%- endfor -%}
+{%- if custom_font_faces != blank -%}
+<style>{{ custom_font_faces }}</style>
 {%- endif -%}
 <footer class="custom-footer" id="CustomFooter-{{ section.id }}" style="
 	--cf-margin-top-mobile: {{ section.settings.margin_top_mobile }}px;
@@ -122,7 +139,18 @@
 					{%- endif -%}
 				</div>
 				{%- for block in menu_blocks limit: 4 -%}
-					<div class="custom-footer__menu{% if forloop.last and show_social_accordion == false %} custom-footer__menu--last{% endif %}" {{ block.shopify_attributes }}>
+					{%- liquid
+						assign heading_font_picked = block.settings.heading_font
+						assign link_font_picked = block.settings.link_font
+					-%}
+					<div
+						class="custom-footer__menu{% if heading_font_picked %} custom-footer__menu--heading-font{% endif %}{% if link_font_picked %} custom-footer__menu--link-font{% endif %}{% if forloop.last and show_social_accordion == false %} custom-footer__menu--last{% endif %}"
+						style="
+							{%- if heading_font_picked -%}--cf-menu-heading-font: {{ heading_font_picked.family | escape }}, {{ heading_font_picked.fallback_families | escape }}; --cf-menu-heading-weight: {{ heading_font_picked.weight | default: 400 }}; --cf-menu-heading-style: {{ heading_font_picked.style | default: 'normal' }};{%- endif -%}
+							{%- if link_font_picked %} --cf-menu-link-font: {{ link_font_picked.family | escape }}, {{ link_font_picked.fallback_families | escape }}; --cf-menu-link-weight: {{ link_font_picked.weight | default: 400 }}; --cf-menu-link-style: {{ link_font_picked.style | default: 'normal' }};{%- endif -%}
+						"
+						{{ block.shopify_attributes }}
+					>
 						<button
 							class="custom-footer__toggle h5{% if heading_uppercase %} custom-footer__toggle--uppercase{% endif %}"
 							type="button"
@@ -676,6 +704,19 @@
 					"label": "Menu",
 					"default": "footer",
 					"info": "Select navigation to display"
+				},
+				{
+					"type": "font_picker",
+					"id": "heading_font",
+					"label": "Heading font",
+					"default": "instrument_serif_i4"
+				},
+				{
+					"type": "font_picker",
+					"id": "link_font",
+					"label": "Links font",
+					"info": "Applies to all links in this menu, including subcategories.",
+					"default": "figtree_n5"
 				}
 			]
 		},
