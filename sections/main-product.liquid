@@ -184,6 +184,56 @@
   endfor
 -%}
 
+{%- liquid
+  assign schema_gender = blank
+  assign schema_age_min = blank
+  assign schema_age_max = blank
+
+  if product.metafields.shopify['target-gender'] != blank
+    for gender_entry in product.metafields.shopify['target-gender'].value
+      assign gender_label = gender_entry.label.value | strip | downcase
+
+      if gender_label == 'kobieta' or gender_label == 'female' or gender_label == 'woman' or gender_label == 'women'
+        assign schema_gender = 'https://schema.org/Female'
+      elsif gender_label == 'mężczyzna' or gender_label == 'mezczyzna' or gender_label == 'male' or gender_label == 'man' or gender_label == 'men'
+        assign schema_gender = 'https://schema.org/Male'
+      elsif gender_label == 'unisex'
+        assign schema_gender = 'Unisex'
+      endif
+
+      if schema_gender != blank
+        break
+      endif
+    endfor
+  endif
+
+  if product.metafields.shopify['age-group'] != blank
+    for age_entry in product.metafields.shopify['age-group'].value
+      assign age_label = age_entry.label.value | strip | downcase
+
+      if age_label == 'dorośli' or age_label == 'dorosli' or age_label == 'adult' or age_label == 'adults'
+        assign schema_age_min = 13
+      elsif age_label == 'dzieci' or age_label == 'kids' or age_label == 'children'
+        assign schema_age_min = 5
+        assign schema_age_max = 13
+      elsif age_label == 'małe dzieci' or age_label == 'male dzieci' or age_label == 'toddlers' or age_label == 'toddler'
+        assign schema_age_min = 1
+        assign schema_age_max = 5
+      elsif age_label == 'niemowlęta' or age_label == 'niemowleta' or age_label == 'infants' or age_label == 'infant'
+        assign schema_age_min = 0.25
+        assign schema_age_max = 1
+      elsif age_label == 'noworodki' or age_label == 'newborns' or age_label == 'newborn'
+        assign schema_age_min = 0
+        assign schema_age_max = 0.25
+      endif
+
+      if schema_age_min != blank
+        break
+      endif
+    endfor
+  endif
+-%}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -233,6 +283,19 @@
         "@type": "Brand",
         "name": {{ product.vendor | default: shop.name | json }}
       }
+
+      {% if schema_gender != blank or schema_age_min != blank %},
+      "audience": {
+        "@type": "PeopleAudience"{% if schema_gender != blank %},
+        "suggestedGender": {{ schema_gender | json }}{% endif %}{% if schema_age_min != blank %},
+        "suggestedAge": {
+          "@type": "QuantitativeValue",
+          "minValue": {{ schema_age_min | json }}{% if schema_age_max != blank %},
+          "maxValue": {{ schema_age_max | json }}{% endif %},
+          "unitCode": "ANN"
+        }{% endif %}
+      }
+      {% endif %}
 
       {% if product.images.size > 0 %},
       "image": [
@@ -579,6 +642,19 @@
         "@type": "Brand",
         "name": {{ product.vendor | default: shop.name | json }}
       }
+
+      {% if schema_gender != blank or schema_age_min != blank %},
+      "audience": {
+        "@type": "PeopleAudience"{% if schema_gender != blank %},
+        "suggestedGender": {{ schema_gender | json }}{% endif %}{% if schema_age_min != blank %},
+        "suggestedAge": {
+          "@type": "QuantitativeValue",
+          "minValue": {{ schema_age_min | json }}{% if schema_age_max != blank %},
+          "maxValue": {{ schema_age_max | json }}{% endif %},
+          "unitCode": "ANN"
+        }{% endif %}
+      }
+      {% endif %}
 
       {% if product.images.size > 0 %},
       "image": [
