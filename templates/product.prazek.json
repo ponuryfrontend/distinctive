@@ -189,7 +189,7 @@
             "open": false,
             "content": "",
             "page": "",
-            "custom_liquid": "{%- if product.metafields.custom.size_guide_model_note != blank -%}{{ product.metafields.custom.size_guide_model_note | metafield_tag }}{%- endif -%}\n{%- render 'size-guide', product: product, label: 'Sprawdź, jaki rozmiar wybrać!', trigger: 'link' -%}"
+            "custom_liquid": "{%- if product.metafields.custom.size_guide_model_note != blank -%}{{ product.metafields.custom.size_guide_model_note | metafield_tag }}{%- endif -%}\n{%- render 'size-guide', product: product, label: 'Dobierz prawidłowy rozmiar!', trigger: 'link' -%}"
           }
         },
         "collapsible_tab_iJTc83": {
@@ -320,17 +320,6 @@
         "border_separator_full": false
       }
     },
-    "spacer_TXaymg": {
-      "type": "spacer",
-      "disabled": true,
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 30,
-        "spacer_desktop": 70,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "instagram_followers_VHYP4c": {
       "type": "instagram-followers",
       "blocks": {
@@ -427,6 +416,17 @@
         "margin_bottom_desktop": 52,
         "margin_top_mobile": 0,
         "margin_bottom_mobile": 16
+      }
+    },
+    "spacer_TXaymg": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 70,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "17867838500379beae": {
