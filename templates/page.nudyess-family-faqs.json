@@ -16,6 +16,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "show_page_title": true,
         "disable_top_spacing": true,
@@ -79,7 +80,7 @@
         "content_position": "bottom-center",
         "text_alignment": "center",
         "overlay_opacity": 15,
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     },
@@ -125,8 +126,8 @@
         "layout": "image_first",
         "content_position": "text-center",
         "column_spacing": "none",
-        "color_bg": "#FAF8F6",
-        "color_text": "#301C18",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -352,9 +353,9 @@
         "text_width": "full",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#301C18",
-        "color_text": "#EAE6E0",
-        "color_links": "#EAE6E0",
+        "color_bg": "#301c18",
+        "color_text": "#eae6e0",
+        "color_links": "#eae6e0",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -399,9 +400,9 @@
         "icon_size": "medium",
         "heading_size": "large",
         "mobile_swipe": false,
-        "color_bg": "#EAE6E0",
-        "color_heading": "#301C18",
-        "color_text": "#301C18",
+        "color_bg": "#eae6e0",
+        "color_heading": "#301c18",
+        "color_text": "#301c18",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -447,9 +448,9 @@
         "icon_size": "medium",
         "heading_size": "large",
         "mobile_swipe": false,
-        "color_bg": "#EAE6E0",
-        "color_heading": "#301C18",
-        "color_text": "#301C18",
+        "color_bg": "#eae6e0",
+        "color_heading": "#301c18",
+        "color_text": "#301c18",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
