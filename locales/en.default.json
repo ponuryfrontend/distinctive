@@ -486,6 +486,9 @@
             "shop_cash_unsupported_currency": "Shop Cash does not support this currency.",
             "shop_cash_not_available": "Shop Cash is not supported for this checkout.",
             "shop_cash_not_found": "Shop Cash not found."
+          },
+          "merchandise": {
+            "selling_plan_not_supported": "Subscriptions are not supported."
           }
         }
       },
