@@ -28,22 +28,30 @@
   function animatePanel(panel, open) {
     if (!panel) return;
 
-    const startHeight = panel.offsetHeight;
-
-    if (panel.customFooterAnimation) {
-      panel.customFooterAnimation.cancel();
-      panel.customFooterAnimation = null;
-    }
-
     if (reducedMotionQuery.matches || typeof panel.animate !== 'function') {
       resetPanel(panel);
       return;
     }
 
+    // The caller has already flipped the attribute (or class) that CSS uses to show
+    // the panel, so it has to be forced visible before anything can be measured.
     panel.style.display = 'block';
     panel.style.overflow = 'hidden';
 
-    const endHeight = open ? panel.scrollHeight : 0;
+    let startHeight = null;
+    if (panel.customFooterAnimation) {
+      // Pick up where the interrupted animation left off.
+      startHeight = panel.offsetHeight;
+      panel.customFooterAnimation.cancel();
+      panel.customFooterAnimation = null;
+    }
+
+    panel.style.height = '';
+    const fullHeight = panel.scrollHeight;
+    if (startHeight === null) {
+      startHeight = open ? 0 : fullHeight;
+    }
+    const endHeight = open ? fullHeight : 0;
     const animation = panel.animate(
       { height: [`${startHeight}px`, `${endHeight}px`] },
       { duration: open ? OPEN_DURATION : CLOSE_DURATION, easing: open ? 'ease-out' : 'ease' }
