@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -157,17 +166,13 @@
             "custom_liquid": "{{ product.description }}"
           }
         },
-        "collapsible_tab_MrtDzH": {
-          "type": "collapsible_tab",
+        "material_and_care_zbiGxY": {
+          "type": "material_and_care",
           "settings": {
-            "heading": "Informacje o składzie i pielęgnacji",
             "heading_font_size_desktop": 13,
             "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
-            "open": false,
-            "content": "",
-            "page": "",
-            "custom_liquid": "<p style=\"text-align: justify;\"><strong>Skład: </strong></p>\n<p style=\"text-align: justify;\"><span style=\"font-weight: 100;\">50% wełna, 50% poliester</span></p>\n<p style=\"text-align: justify;\"><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\"><span style=\"font-weight: 400;\"><img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/50-welna50-poliester.svg?v=1733330623\" width=\"100%\" height=\"auto\" alt=\"pielęgnacja\" /></span><span style=\"font-weight: 400;\"></span></p>\n<p style=\"text-align: justify;\"><span style=\"font-weight: 400;\">Prać w pralce, najlepiej w programie prania ręcznego lub delikatnego prania, lub ręcznie w temperaturze max. 30 st.&nbsp;<span>Nie wybielać, nie suszyć w suszarce bębnowej.&nbsp;Nadmiar wody usuń poprzez naciskanie balaclavy, a następnie wysusz ręcznikiem. Po tym uł&oacute;ż go na płasko na suchym materiale na suszarce czy stole, nie na wieszaku. P</span></span><span style=\"font-weight: 400;\">rasować żelazkiem przez bawełnianą ściereczkę w bardzo niskiej temperaturze. Nie czyścić chemicznie.</span></p>\n<p></p>"
+            "open": false
           }
         },
         "collapsible_tab_Ca3CWD": {
@@ -240,7 +245,7 @@
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
-        "collapsible_tab_MrtDzH",
+        "material_and_care_zbiGxY",
         "collapsible_tab_Ca3CWD",
         "collapsible_tab_iJTc83",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
