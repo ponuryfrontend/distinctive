@@ -166,6 +166,16 @@
             "custom_liquid": "{{ product.description }}"
           }
         },
+        "material_and_care_tpzdqE": {
+          "type": "material_and_care",
+          "disabled": true,
+          "settings": {
+            "heading_font_size_desktop": 13,
+            "heading_font_size_mobile": 13,
+            "heading_case": "uppercase",
+            "open": false
+          }
+        },
         "collapsible_tab_MrtDzH": {
           "type": "collapsible_tab",
           "settings": {
@@ -249,6 +259,7 @@
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
+        "material_and_care_tpzdqE",
         "collapsible_tab_MrtDzH",
         "collapsible_tab_Ca3CWD",
         "collapsible_tab_iJTc83",
