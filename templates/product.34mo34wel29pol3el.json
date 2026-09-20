@@ -166,17 +166,13 @@
             "custom_liquid": "{{ product.description }}"
           }
         },
-        "collapsible_tab_MrtDzH": {
-          "type": "collapsible_tab",
+        "material_and_care_mxNRwK": {
+          "type": "material_and_care",
           "settings": {
-            "heading": "Informacje o składzie i pielęgnacji",
             "heading_font_size_desktop": 13,
             "heading_font_size_mobile": 13,
             "heading_case": "uppercase",
-            "open": false,
-            "content": "",
-            "page": "",
-            "custom_liquid": "<p style=\"text-align: justify;\"><strong>Skład: </strong></p>\n<p style=\"text-align: justify;\"><span style=\"font-weight: 100;\">34% moher, 34% wełna, 29% poliamid, 3% elastan</span></p>\n<p style=\"text-align: justify;\"><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\"><span>Moher, podobnie jak wiele innych rodzaj&oacute;w wełny, wymaga szczeg&oacute;lnej uwagi i pielęgnacji. Jeśli pragniesz cieszyć się swoim zakupem i nosić sweter z moheru przez długi czas, pielęgnowanie tej wyjątkowej tkaniny powinno stać się dla Ciebie priorytetem. Ważne jest nie tylko odpowiednie pranie, ale r&oacute;wnież właściwe przechowywanie ubrań wykonanych z moheru.</span><span style=\"font-weight: 400;\">&nbsp;<img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/pranie-34mo34wel29pol3el-2.svg?v=1726312149\" width=\"100%\" height=\"auto\" alt=\"pielęgnacja\" /></span><span style=\"font-weight: 400;\">Prać wyłącznie ręcznie.&nbsp;Moherowe swetry nienawidzą zbyt ciepłej, ale też zbyt zimnej wody<span>. Powinna być chłodna, przyjemna dla Twoich rąk.&nbsp;Używać możliwie najdelikatniejszych środk&oacute;w piorących. Delikatnie myj wł&oacute;kna swetra, wygniatając, a nie pocierając. Nie wybielać, nie suszyć w suszarce bębnowej.&nbsp;Nadmiar wody usuń poprzez naciskanie swetra, a następnie wysusz go ręcznikiem. Po tym uł&oacute;ż go na płasko na suchym materiale na suszarce czy stole, nie na wieszaku. Moher nie wymaga prasowania, jeśli zajdzie taka potrzeba to p</span></span><span style=\"font-weight: 400;\">rasować żelazkiem przez bawełnianą ściereczkę w bardzo niskiej temperaturze. Nie czyścić chemicznie.</span></p>\n<p style=\"text-align: justify;\"><strong>Made in Italy.</strong></p>\n<p></p>"
+            "open": false
           }
         },
         "collapsible_tab_Ca3CWD": {
@@ -249,7 +245,7 @@
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6",
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
-        "collapsible_tab_MrtDzH",
+        "material_and_care_mxNRwK",
         "collapsible_tab_Ca3CWD",
         "collapsible_tab_iJTc83",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
