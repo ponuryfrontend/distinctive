@@ -39,8 +39,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 28px;
+  width: 32px;
+  height: 20px;
 }
 
 .material-care__icon img {
@@ -72,6 +72,7 @@
   }
 
   .material-care__icon {
-    flex: 0 0 40px;
+    flex: 0 0 32px;
+    height: 20px;
   }
 }
