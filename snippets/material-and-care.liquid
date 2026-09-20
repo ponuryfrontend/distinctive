@@ -26,16 +26,31 @@
 		<ul class="material-care__list">
 			{%- for care_item in care_items -%}
 				{%- liquid
+					comment
+						SVG files are returned as a generic_file object, which exposes url but no src.
+						Other formats come back as an image object, which exposes src instead.
+					endcomment
 					assign care_icon = care_item.icon.value
 					assign care_label = care_item.description.value | default: care_item.name.value
-					assign care_icon_url = care_icon.src | default: care_icon.url
+					assign care_icon_url = care_icon.url
+					if care_icon_url == blank
+						assign care_icon_url = care_icon.src
+					endif
+					if care_icon_url == blank and care_icon != blank
+						capture care_icon_url
+							echo care_icon
+						endcapture
+					endif
+					unless care_icon_url contains '/'
+						assign care_icon_url = ''
+					endunless
 				-%}
 				{%- if care_icon_url != blank or care_label != blank -%}
 					<li class="material-care__item">
 						<span class="material-care__icon">
 							{%- if care_icon_url != blank -%}
 								{% # theme-check-disable ImgWidthAndHeight %}
-								<img src="{{ care_icon_url }}" alt="{{ care_label | escape }}" loading="lazy">
+								<img src="{{ care_icon_url }}" alt="" loading="lazy"{% if care_icon.width > 0 and care_icon.height > 0 %} width="{{ care_icon.width }}" height="{{ care_icon.height }}"{% endif %}>
 								{% # theme-check-enable ImgWidthAndHeight %}
 							{%- endif -%}
 						</span>
