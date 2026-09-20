@@ -27,20 +27,20 @@
 			{%- for care_item in care_items -%}
 				{%- liquid
 					comment
-						SVG files are returned as a generic_file object, which exposes url but no src.
-						Other formats come back as an image object, which exposes src instead.
+						SVG icons return a path relative to the Files page ('files/icon.svg')
+						instead of a full CDN URL, so anything that isn't already absolute is
+						rebuilt from the file name with file_url.
 					endcomment
 					assign care_icon = care_item.icon.value
 					assign care_label = care_item.description.value | default: care_item.name.value
-					assign care_icon_url = care_icon.url
-					if care_icon_url == blank
-						assign care_icon_url = care_icon.src
-					endif
-					if care_icon_url == blank and care_icon != blank
-						capture care_icon_url
-							echo care_icon
-						endcapture
-					endif
+					assign care_icon_url = care_icon.src | default: care_icon.url
+					unless care_icon_url contains '//'
+						assign care_icon_file = care_icon_url | split: '/' | last
+						assign care_icon_url = ''
+						if care_icon_file contains '.'
+							assign care_icon_url = care_icon_file | file_url
+						endif
+					endunless
 					unless care_icon_url contains '/'
 						assign care_icon_url = ''
 					endunless
