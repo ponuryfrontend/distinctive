@@ -8,11 +8,65 @@
   window.customFooterInitialized = true;
 
   const desktopQuery = window.matchMedia('(min-width: 768px)');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /*
+   * Height animation matching the product page accordions (see `collapsible-row`
+   * in app.js): 400ms ease-out when opening, 250ms ease when closing. The panel
+   * is hidden with `display: none` in CSS, so it is forced visible inline while
+   * the animation runs and handed back to CSS once it finishes.
+   */
+  const OPEN_DURATION = 400;
+  const CLOSE_DURATION = 250;
+
+  function resetPanel(panel) {
+    panel.style.display = '';
+    panel.style.height = '';
+    panel.style.overflow = '';
+  }
+
+  function animatePanel(panel, open) {
+    if (!panel) return;
+
+    const startHeight = panel.offsetHeight;
+
+    if (panel.customFooterAnimation) {
+      panel.customFooterAnimation.cancel();
+      panel.customFooterAnimation = null;
+    }
+
+    if (reducedMotionQuery.matches || typeof panel.animate !== 'function') {
+      resetPanel(panel);
+      return;
+    }
+
+    panel.style.display = 'block';
+    panel.style.overflow = 'hidden';
+
+    const endHeight = open ? panel.scrollHeight : 0;
+    const animation = panel.animate(
+      { height: [`${startHeight}px`, `${endHeight}px`] },
+      { duration: open ? OPEN_DURATION : CLOSE_DURATION, easing: open ? 'ease-out' : 'ease' }
+    );
+
+    panel.customFooterAnimation = animation;
+    animation.onfinish = () => {
+      panel.customFooterAnimation = null;
+      resetPanel(panel);
+    };
+    animation.oncancel = () => {
+      panel.customFooterAnimation = null;
+    };
+  }
 
   function toggleAccordion(button) {
     if (desktopQuery.matches) return;
     const expanded = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    const panel = button.nextElementSibling;
+    if (panel && panel.classList.contains('custom-footer__menu-list')) {
+      animatePanel(panel, !expanded);
+    }
   }
 
   function toggleSubMenu(arrow) {
@@ -20,6 +74,7 @@
     if (!submenu) return;
     const active = submenu.classList.toggle('active');
     arrow.setAttribute('aria-expanded', active ? 'true' : 'false');
+    animatePanel(submenu, active);
     if (!active) arrow.blur();
   }
 
@@ -124,6 +179,15 @@
   function syncState() {
     document.querySelectorAll('.custom-footer__toggle').forEach((button) => {
       button.setAttribute('aria-expanded', desktopQuery.matches ? 'true' : 'false');
+    });
+
+    // Drop leftover inline styles from an animation interrupted by a resize.
+    document.querySelectorAll('.custom-footer__menu-list, .custom-footer__sub-menu').forEach((panel) => {
+      if (panel.customFooterAnimation) {
+        panel.customFooterAnimation.cancel();
+        panel.customFooterAnimation = null;
+      }
+      resetPanel(panel);
     });
   }
 
