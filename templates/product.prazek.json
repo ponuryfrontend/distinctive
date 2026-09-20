@@ -168,7 +168,6 @@
         },
         "material_and_care_tpzdqE": {
           "type": "material_and_care",
-          "disabled": true,
           "settings": {
             "heading_font_size_desktop": 13,
             "heading_font_size_mobile": 13,
@@ -178,6 +177,7 @@
         },
         "collapsible_tab_MrtDzH": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Materiały i pielęgnacja",
             "heading_font_size_desktop": 13,
