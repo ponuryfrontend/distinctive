@@ -309,6 +309,36 @@
         </details>
       </collapsible-row>
       {%- endif -%}
+    {%- when 'material_and_care' -%}
+      {%- assign material_and_care = product.metafields.custom.material_and_care.value -%}
+      {%- if material_and_care != blank -%}
+      {{- 'material-and-care.css' | asset_url | stylesheet_tag -}}
+      {%- liquid
+        assign mc_heading_size_d = block.settings.heading_font_size_desktop
+        assign mc_heading_size_m = block.settings.heading_font_size_mobile
+        assign mc_heading_case = block.settings.heading_case
+      -%}
+      {%- capture mc_heading_classes -%}
+        {%- if mc_heading_size_d > 0 %} product__accordion--size-desktop{% endif -%}
+        {%- if mc_heading_size_m > 0 %} product__accordion--size-mobile{% endif -%}
+        {%- if mc_heading_case == 'uppercase' %} product__accordion--case-upper{% elsif mc_heading_case == 'lowercase' %} product__accordion--case-lower{% elsif mc_heading_case == 'capitalize' %} product__accordion--case-capitalize{% elsif mc_heading_case == 'none' %} product__accordion--case-normal{% endif -%}
+      {%- endcapture -%}
+      {%- capture mc_heading_style -%}
+        {%- if mc_heading_size_d > 0 -%}--accordion-heading-size-desktop: {{ mc_heading_size_d }}px;{%- endif -%}
+        {%- if mc_heading_size_m > 0 -%}--accordion-heading-size-mobile: {{ mc_heading_size_m }}px;{%- endif -%}
+      {%- endcapture -%}
+      <collapsible-row class="product__accordion accordion{{ mc_heading_classes }}"{% if mc_heading_style != blank %} style="{{ mc_heading_style | strip_newlines | strip }}"{% endif %} {{ block.shopify_attributes }}>
+        <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
+          <summary>
+            <h2>{{ 'products.product.material_and_care.title' | t }}</h2>
+            <span></span>
+          </summary>
+          <div class="collapsible__content accordion__content rte material-care" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+            {%- render 'material-and-care', product: product -%}
+          </div>
+        </details>
+      </collapsible-row>
+      {%- endif -%}
     {%- when 'complementary' -%}
       {{- 'product-grid.css' | asset_url | stylesheet_tag -}}
       {%- liquid

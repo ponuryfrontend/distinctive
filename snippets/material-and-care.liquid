@@ -1,0 +1,48 @@
+{%- comment -%}
+	Renders the composition and care content of the "Material & Care" block.
+
+	Accepts:
+	- product: {Object} Product object.
+
+	Usage:
+	{% render 'material-and-care', product: product %}
+{%- endcomment -%}
+{%- liquid
+	assign material_and_care = product.metafields.custom.material_and_care.value
+	assign material = material_and_care.material.value
+	assign description = material_and_care.description
+	assign care_items = material_and_care.care.value
+-%}
+{%- if material != blank -%}
+	<h4 class="material-care__subheading">{{ 'products.product.material_and_care.material' | t }}</h4>
+	<p class="material-care__material">{{ material }}</p>
+{%- endif -%}
+{%- if description != blank or care_items.size > 0 -%}
+	<h4 class="material-care__subheading">{{ 'products.product.material_and_care.care' | t }}</h4>
+	{%- if description != blank -%}
+		<div class="material-care__description">{{ description | metafield_tag }}</div>
+	{%- endif -%}
+	{%- if care_items.size > 0 -%}
+		<ul class="material-care__list">
+			{%- for care_item in care_items -%}
+				{%- liquid
+					assign care_icon = care_item.icon.value
+					assign care_label = care_item.description.value | default: care_item.name.value
+					assign care_icon_url = care_icon.src | default: care_icon.url
+				-%}
+				{%- if care_icon_url != blank or care_label != blank -%}
+					<li class="material-care__item">
+						<span class="material-care__icon">
+							{%- if care_icon_url != blank -%}
+								{% # theme-check-disable ImgWidthAndHeight %}
+								<img src="{{ care_icon_url }}" alt="{{ care_label | escape }}" loading="lazy">
+								{% # theme-check-enable ImgWidthAndHeight %}
+							{%- endif -%}
+						</span>
+						<span class="material-care__label">{{ care_label }}</span>
+					</li>
+				{%- endif -%}
+			{%- endfor -%}
+		</ul>
+	{%- endif -%}
+{%- endif -%}

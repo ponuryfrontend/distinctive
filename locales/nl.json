@@ -99,6 +99,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Materiaal en onderhoud",
+        "material": "Samenstelling:",
+        "care": "Onderhoud:"
+      },
       "quick_view": "Snelle kijk",
       "out_of_stock": "Niet op voorraad",
       "on_sale": "Verkoop",

@@ -108,6 +108,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Material und Pflege",
+        "material": "Zusammensetzung:",
+        "care": "Pflege:"
+      },
       "quick_view": "Schnellansicht",
       "out_of_stock": "Ausverkauft",
       "on_sale": "Sale",

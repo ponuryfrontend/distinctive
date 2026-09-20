@@ -229,6 +229,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Materiały i pielęgnacja",
+        "material": "Skład:",
+        "care": "Pielęgnacja:"
+      },
       "quick_view": "Szybki podgląd",
       "out_of_stock": "Brak na magazynie",
       "on_sale": "Sale",

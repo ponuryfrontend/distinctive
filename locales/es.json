@@ -99,6 +99,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Materiales y cuidado",
+        "material": "Composición:",
+        "care": "Cuidado:"
+      },
       "quick_view": "Vista rápida",
       "out_of_stock": "Agotado",
       "on_sale": "Oferta",

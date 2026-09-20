@@ -108,6 +108,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Material & Care",
+        "material": "Composition:",
+        "care": "Care:"
+      },
       "quick_view": "Quick view",
       "out_of_stock": "Out of stock",
       "on_sale": "Sale",

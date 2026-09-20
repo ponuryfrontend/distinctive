@@ -101,6 +101,11 @@
   },
   "products": {
     "product": {
+      "material_and_care": {
+        "title": "Matières et entretien",
+        "material": "Composition :",
+        "care": "Entretien :"
+      },
       "quick_view": "Aperçu rapide",
       "out_of_stock": "En rupture de stock",
       "on_sale": "Vente",
