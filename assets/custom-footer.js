@@ -22,38 +22,64 @@
   function resetPanel(panel) {
     panel.style.display = '';
     panel.style.height = '';
+    panel.style.paddingBottom = '';
     panel.style.overflow = '';
+    panel.style.boxSizing = '';
+  }
+
+  function panelHeight(panel) {
+    return panel.getBoundingClientRect().height;
+  }
+
+  function panelPadding(panel) {
+    return parseFloat(window.getComputedStyle(panel).paddingBottom) || 0;
   }
 
   function animatePanel(panel, open) {
     if (!panel) return;
 
-    if (reducedMotionQuery.matches || typeof panel.animate !== 'function') {
+    if (desktopQuery.matches || reducedMotionQuery.matches || typeof panel.animate !== 'function') {
       resetPanel(panel);
       return;
     }
 
     // The caller has already flipped the attribute (or class) that CSS uses to show
     // the panel, so it has to be forced visible before anything can be measured.
+    // box-sizing is pinned so the animated height always means the full box,
+    // padding included, no matter what the theme sets.
     panel.style.display = 'block';
     panel.style.overflow = 'hidden';
+    panel.style.boxSizing = 'border-box';
 
     let startHeight = null;
+    let startPadding = 0;
     if (panel.customFooterAnimation) {
       // Pick up where the interrupted animation left off.
-      startHeight = panel.offsetHeight;
+      startHeight = panelHeight(panel);
+      startPadding = panelPadding(panel);
       panel.customFooterAnimation.cancel();
       panel.customFooterAnimation = null;
     }
 
     panel.style.height = '';
-    const fullHeight = panel.scrollHeight;
+    panel.style.paddingBottom = '';
+    const fullHeight = panelHeight(panel);
+    const fullPadding = panelPadding(panel);
+
     if (startHeight === null) {
       startHeight = open ? 0 : fullHeight;
+      startPadding = open ? 0 : fullPadding;
     }
     const endHeight = open ? fullHeight : 0;
+    const endPadding = open ? fullPadding : 0;
+
+    // The bottom padding is animated alongside the height, otherwise it keeps the
+    // collapsed panel 26px tall and makes the last frame jump.
     const animation = panel.animate(
-      { height: [`${startHeight}px`, `${endHeight}px`] },
+      [
+        { height: `${startHeight}px`, paddingBottom: `${startPadding}px` },
+        { height: `${endHeight}px`, paddingBottom: `${endPadding}px` }
+      ],
       { duration: open ? OPEN_DURATION : CLOSE_DURATION, easing: open ? 'ease-out' : 'ease' }
     );
 
