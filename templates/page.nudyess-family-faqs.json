@@ -617,7 +617,7 @@
           "settings": {
             "heading": "Od jakiej kwoty zamówienia mogę odliczyć otrzymany bon zakupowy?",
             "open": false,
-            "content": "<p>Minimalna kwota zamówienia musi wynosić co najmniej 199 PLN, aby można było wykorzystać otrzymany bon zakupowy.</p>",
+            "content": "<p>Bon można wykorzystać przy Zamówieniu o wartości co najmniej: 99 PLN – w przypadku Bonu rabatowego 10 PLN, 199 PLN – w przypadku Bonu rabatowego 20 PLN, 299 PLN – w przypadku Bonu rabatowego 30 PLN. W jednym Zamówieniu można wykorzystać tylko jeden Bon.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -647,7 +647,7 @@
           "settings": {
             "heading": "Czy w przypadku zwrotu towaru otrzymam nowy bon rabatowy w zamian za już wykorzystany ?",
             "open": false,
-            "content": "",
+            "content": "<p>Bony zakupowe są jednorazowego użytktu i nie są zwracane w formie nowego bonu na zakupy, w przypadku zwrotu zamówienia czy pojedynczego produktu. </p>",
             "page": "",
             "custom_liquid": ""
           }
