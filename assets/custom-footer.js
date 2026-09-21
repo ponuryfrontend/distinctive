@@ -8,7 +8,6 @@
   window.customFooterInitialized = true;
 
   const desktopQuery = window.matchMedia('(min-width: 768px)');
-  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /*
    * Height animation matching the product page accordions (see `collapsible-row`
@@ -38,7 +37,7 @@
   function animatePanel(panel, open) {
     if (!panel) return;
 
-    if (desktopQuery.matches || reducedMotionQuery.matches || typeof panel.animate !== 'function') {
+    if (desktopQuery.matches || typeof panel.animate !== 'function') {
       resetPanel(panel);
       return;
     }
