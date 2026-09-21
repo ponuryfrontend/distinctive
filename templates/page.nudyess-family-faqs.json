@@ -384,8 +384,8 @@
           "settings": {
             "icon": "none",
             "image": "shopify://shop_images/shopping-bag-svgrepo-com.svg",
-            "heading": "Wydaj 1.500 PLN a otrzymasz 1.700 PKT",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+            "heading": "Wydaj 1.500 PLN a otrzymasz 2.000 PKT",
+            "text": ""
           }
         }
       },
@@ -433,7 +433,7 @@
             "icon": "none",
             "image": "shopify://shop_images/cake-with-candles-svgrepo-com.svg",
             "heading": "Podaj datę swoich urodzin",
-            "text": "<p>Wpisz datę urodzin, a otrzymasz w tym dniu 1.500 punktów.</p>"
+            "text": "<p>Wpisz datę urodzin, a otrzymasz w tym dniu 1.000 punktów.</p>"
           }
         }
       },
@@ -499,7 +499,7 @@
             "icon": "none",
             "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
             "heading": "Bon rabatowy 10 PLN",
-            "text": "<p>Zbierz 500 punktów.</p>"
+            "text": "<p>Zbierz 500 punktów. Od 99 PLN.</p>"
           }
         },
         "icon_U6KeHy": {
@@ -508,7 +508,7 @@
             "icon": "ruler",
             "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
             "heading": "Bon rabatowy 20 PLN",
-            "text": "<p>Zbierz 1.000 punktów.</p>"
+            "text": "<p>Zbierz 1.000 punktów. Od 199 PLN.</p>"
           }
         },
         "icon_bMdgVx": {
@@ -517,7 +517,7 @@
             "icon": "ruler",
             "image": "shopify://shop_images/gift-svgrepo-com_1.svg",
             "heading": "Bon rabatowy 30 PLN",
-            "text": "<p>Zbierz 1.500 punktów.</p>"
+            "text": "<p>Zbierz 1.500 punktów. Od 299 PLN.</p>"
           }
         }
       },
