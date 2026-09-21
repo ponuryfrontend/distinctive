@@ -1010,6 +1010,14 @@
             "few": "Du erhältst Cashback in %{count} Tagen",
             "many": "Du erhältst Cashback in %{count} Tagen"
           }
+        },
+        "pending_payment": {
+          "oxxo": {
+            "days_left": {
+              "few": "%{count} Tage",
+              "many": "%{count} Tage"
+            }
+          }
         }
       },
       "shipping_errors": {
