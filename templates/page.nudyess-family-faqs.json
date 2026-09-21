@@ -597,7 +597,7 @@
           "settings": {
             "heading": "Czy uzyskane punkty mają termin ważności ?",
             "open": false,
-            "content": "<p>Nie. Naliczone punkty nie mają terminu ważności i nie wygasają. Można wymienić je w każdym momencie na określone punktacją nagrody.</p>",
+            "content": "<p>Punkty gromadzone są na Saldzie Konta Uczestnika. Każdy Punkt jest ważny przez 12 miesięcy od momentu uzyskania go przez Uczestnika. Po upływie tego okresu Punkty tracą ważność.</p>",
             "page": "",
             "custom_liquid": ""
           }
