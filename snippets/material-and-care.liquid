@@ -13,6 +13,12 @@
 	assign description = material_and_care.description
 	assign care_items = material_and_care.care.value
 -%}
+{%- comment -%}
+	The stylesheet is loaded from inside the accordion content on purpose. A <link>
+	placed between two accordions would break the `.accordion + .accordion` rule
+	that pulls the rows together and leave a double gap above this block.
+{%- endcomment -%}
+{{- 'material-and-care.css' | asset_url | stylesheet_tag -}}
 {%- if material != blank -%}
 	<h4 class="material-care__subheading">{{ 'products.product.material_and_care.material' | t }}</h4>
 	<p class="material-care__material">{{ material }}</p>
