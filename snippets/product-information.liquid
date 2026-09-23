@@ -316,7 +316,7 @@
         product that doesn't have the flag turned on yet.
       {%- endcomment -%}
       {%- if product.metafields.custom.pre_order_block.value == true or request.design_mode -%}
-        {%- render 'pre-order', block: block, product: product -%}
+        {%- render 'pre-order', block: block, product: product, section_id: section.id -%}
       {%- endif -%}
     {%- when 'material_and_care' -%}
       {%- assign material_and_care = product.metafields.custom.material_and_care.value -%}

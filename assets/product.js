@@ -191,7 +191,7 @@ if (!customElements.get('variant-selects')) {
     }
 
     getSectionsToRender() {
-      return [`price-${this.dataset.section}`, `price-${this.dataset.section}--sticky`, `product-image-${this.dataset.section}--sticky`, `inventory-${this.dataset.section}`, `sku-${this.dataset.section}`, `quantity-${this.dataset.section}`];
+      return [`price-${this.dataset.section}`, `price-${this.dataset.section}--sticky`, `product-image-${this.dataset.section}--sticky`, `inventory-${this.dataset.section}`, `sku-${this.dataset.section}`, `quantity-${this.dataset.section}`, `pre-order-note-${this.dataset.section}`];
     }
 
     getSelectedValueIds() {

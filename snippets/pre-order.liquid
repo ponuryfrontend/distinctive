@@ -6,15 +6,31 @@
 	- block: {Object} The pre_order block.
 	- product: {Object} Product object. The block only renders when its
 	  custom.pre_order_block metafield is true.
+	- section_id: {String} Section id, so product.js can refresh the regular price
+	  in the note when the variant changes.
 
 	Usage:
-	{% render 'pre-order', block: block, product: product %}
+	{% render 'pre-order', block: block, product: product, section_id: section.id %}
 
 	The countdown is rendered server side so it is correct before any script runs,
 	then pre-order.js keeps it ticking. The markup stays useful without JavaScript.
 {%- endcomment -%}
 {%- liquid
 	assign end_at = block.settings.end_at | strip
+
+	assign regular_price_text = ''
+	if block.settings.show_regular_price
+		assign variant = product.selected_or_first_available_variant
+		assign regular_price = variant.price
+		if variant.compare_at_price > variant.price
+			assign regular_price = variant.compare_at_price
+		endif
+		if settings.currency_code_enabled
+			assign regular_price_text = regular_price | money_with_currency
+		else
+			assign regular_price_text = regular_price | money
+		endif
+	endif
 
 	assign now_ts = 'now' | date: '%s' | times: 1
 	assign end_ts = end_at | date: '%s' | times: 1
@@ -226,8 +242,14 @@
 				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-minutes>{{ minutes_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.minutes' | t }}</span></span>
 				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-seconds>{{ seconds_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.seconds' | t }}</span></span>
 			</pre-order-countdown>
-			{%- if block.settings.note != blank -%}
-				<p class="pre-order__note">{{ block.settings.note }}</p>
+			{%- if block.settings.note != blank or regular_price_text != blank -%}
+				<p class="pre-order__note" id="pre-order-note-{{ section_id }}">
+					{{- block.settings.note -}}
+					{%- if block.settings.note != blank and regular_price_text != blank %} {% endif -%}
+					{%- if regular_price_text != blank -%}
+						<span class="pre-order__price">{{ regular_price_text }}</span>
+					{%- endif -%}
+				</p>
 			{%- endif -%}
 		</div>
 	</div>
