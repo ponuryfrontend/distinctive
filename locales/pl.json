@@ -234,6 +234,12 @@
         "material": "Skład:",
         "care": "Pielęgnacja:"
       },
+      "pre_order_countdown": {
+        "days": "d",
+        "hours": "h",
+        "minutes": "m",
+        "seconds": "s"
+      },
       "quick_view": "Szybki podgląd",
       "out_of_stock": "Brak na magazynie",
       "on_sale": "Sale",

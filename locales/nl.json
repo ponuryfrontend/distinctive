@@ -113,6 +113,12 @@
         "material": "Samenstelling:",
         "care": "Onderhoud:"
       },
+      "pre_order_countdown": {
+        "days": "d",
+        "hours": "u",
+        "minutes": "min",
+        "seconds": "s"
+      },
       "quick_view": "Snelle kijk",
       "out_of_stock": "Niet op voorraad",
       "on_sale": "Verkoop",

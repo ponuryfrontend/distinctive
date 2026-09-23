@@ -1,0 +1,186 @@
+{%- comment -%}
+	Renders the "Pre Order" block: discount badge plus a countdown to the end of
+	the pre-order window.
+
+	Accepts:
+	- block: {Object} The pre_order block.
+	- product: {Object} Product object. The block only renders when its
+	  custom.pre_order_block metafield is true.
+
+	Usage:
+	{% render 'pre-order', block: block, product: product %}
+
+	The countdown is rendered server side so it is correct before any script runs,
+	then pre-order.js keeps it ticking. The markup stays useful without JavaScript.
+{%- endcomment -%}
+{%- liquid
+	assign end_at = block.settings.end_at | strip
+
+	assign now_ts = 'now' | date: '%s' | times: 1
+	assign end_ts = end_at | date: '%s' | times: 1
+
+	assign remaining = 0
+	if end_ts > now_ts
+		assign remaining = end_ts | minus: now_ts
+	endif
+
+	assign days = remaining | divided_by: 86400
+	assign hours = remaining | modulo: 86400 | divided_by: 3600
+	assign minutes = remaining | modulo: 3600 | divided_by: 60
+	assign seconds = remaining | modulo: 60
+
+	assign days_text = days
+	if days < 10
+		assign days_text = days | prepend: '0'
+	endif
+	assign hours_text = hours
+	if hours < 10
+		assign hours_text = hours | prepend: '0'
+	endif
+	assign minutes_text = minutes
+	if minutes < 10
+		assign minutes_text = minutes | prepend: '0'
+	endif
+	assign seconds_text = seconds
+	if seconds < 10
+		assign seconds_text = seconds | prepend: '0'
+	endif
+-%}
+{%- style -%}
+	.pre-order {
+		margin-top: var(--po-margin-top-mobile);
+		margin-bottom: var(--po-margin-bottom-mobile);
+	}
+	.pre-order__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+		align-items: stretch;
+		background: transparent;
+		border: 1px solid var(--po-border);
+	}
+	.pre-order__discount {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		padding: clamp(14px, 3vw, 22px) clamp(8px, 2vw, 18px);
+		text-align: center;
+		min-width: 0;
+	}
+	.pre-order__value {
+		font-size: clamp(1.9rem, 8vw, 3.25rem);
+		font-weight: 700;
+		line-height: 1;
+		color: var(--po-value);
+		word-break: break-word;
+	}
+	.pre-order__caption {
+		font-size: clamp(0.6rem, 2.2vw, 0.875rem);
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--po-caption);
+	}
+	.pre-order__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: clamp(6px, 1.5vw, 10px);
+		padding: clamp(14px, 3vw, 22px) clamp(10px, 2.5vw, 24px);
+		border-left: 1px solid var(--po-border);
+		min-width: 0;
+	}
+	[dir="rtl"] .pre-order__info {
+		border-left: 0;
+		border-right: 1px solid var(--po-border);
+	}
+	.pre-order__label {
+		margin: 0;
+		font-size: clamp(0.65rem, 2.4vw, 0.9375rem);
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--po-label);
+	}
+	.pre-order__countdown {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: clamp(6px, 2vw, 16px);
+		color: var(--po-countdown);
+		font-variant-numeric: tabular-nums;
+	}
+	.pre-order__part {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 2px;
+	}
+	.pre-order__number {
+		font-size: clamp(1.5rem, 6.5vw, 2.75rem);
+		font-weight: 700;
+		line-height: 1.1;
+	}
+	.pre-order__unit {
+		font-size: clamp(0.6rem, 2vw, 1rem);
+		font-weight: 400;
+		line-height: 1;
+		color: var(--po-label);
+	}
+	.pre-order__note {
+		margin: 0;
+		font-size: clamp(0.65rem, 2.3vw, 0.9375rem);
+		line-height: 1.4;
+		color: var(--po-note);
+	}
+	@media only screen and (min-width: 768px) {
+		.pre-order {
+			margin-top: var(--po-margin-top-desktop);
+			margin-bottom: var(--po-margin-bottom-desktop);
+		}
+	}
+{%- endstyle -%}
+<div
+	class="pre-order"
+	style="
+		--po-border: {{ block.settings.border_color }};
+		--po-value: {{ block.settings.value_color }};
+		--po-caption: {{ block.settings.caption_color }};
+		--po-label: {{ block.settings.label_color }};
+		--po-countdown: {{ block.settings.countdown_color }};
+		--po-note: {{ block.settings.note_color }};
+		--po-margin-top-mobile: {{ block.settings.margin_top_mobile }}px;
+		--po-margin-bottom-mobile: {{ block.settings.margin_bottom_mobile }}px;
+		--po-margin-top-desktop: {{ block.settings.margin_top_desktop }}px;
+		--po-margin-bottom-desktop: {{ block.settings.margin_bottom_desktop }}px;
+	"
+	{{ block.shopify_attributes }}
+>
+	<div class="pre-order__inner">
+		<div class="pre-order__discount">
+			{%- if block.settings.discount_value != blank -%}
+				<span class="pre-order__value">{{ block.settings.discount_value }}</span>
+			{%- endif -%}
+			{%- if block.settings.discount_caption != blank -%}
+				<span class="pre-order__caption">{{ block.settings.discount_caption }}</span>
+			{%- endif -%}
+		</div>
+		<div class="pre-order__info">
+			{%- if block.settings.countdown_label != blank -%}
+				<p class="pre-order__label">{{ block.settings.countdown_label }}</p>
+			{%- endif -%}
+			<pre-order-countdown class="pre-order__countdown" data-end="{{ end_ts }}" role="timer">
+				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-days>{{ days_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.days' | t }}</span></span>
+				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-hours>{{ hours_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.hours' | t }}</span></span>
+				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-minutes>{{ minutes_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.minutes' | t }}</span></span>
+				<span class="pre-order__part"><span class="pre-order__number" data-pre-order-seconds>{{ seconds_text }}</span><span class="pre-order__unit">{{ 'products.product.pre_order_countdown.seconds' | t }}</span></span>
+			</pre-order-countdown>
+			{%- if block.settings.note != blank -%}
+				<p class="pre-order__note">{{ block.settings.note }}</p>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+<script src="{{ 'pre-order.js' | asset_url }}" defer></script>

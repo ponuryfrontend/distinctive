@@ -309,6 +309,15 @@
         </details>
       </collapsible-row>
       {%- endif -%}
+    {%- when 'pre_order' -%}
+      {%- comment -%}
+        Storefront: only on products whose custom.pre_order_block metafield is true.
+        Theme editor: always rendered, otherwise the block couldn't be set up on a
+        product that doesn't have the flag turned on yet.
+      {%- endcomment -%}
+      {%- if product.metafields.custom.pre_order_block.value == true or request.design_mode -%}
+        {%- render 'pre-order', block: block, product: product -%}
+      {%- endif -%}
     {%- when 'material_and_care' -%}
       {%- assign material_and_care = product.metafields.custom.material_and_care.value -%}
       {%- if material_and_care != blank -%}

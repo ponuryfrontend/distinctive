@@ -113,6 +113,12 @@
         "material": "Zusammensetzung:",
         "care": "Pflege:"
       },
+      "pre_order_countdown": {
+        "days": "T",
+        "hours": "Std",
+        "minutes": "Min",
+        "seconds": "Sek"
+      },
       "quick_view": "Schnellansicht",
       "out_of_stock": "Ausverkauft",
       "on_sale": "Sale",

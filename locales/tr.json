@@ -114,6 +114,12 @@
         "material": "Kompozisyon:",
         "care": "Bakım:"
       },
+      "pre_order_countdown": {
+        "days": "g",
+        "hours": "sa",
+        "minutes": "dk",
+        "seconds": "sn"
+      },
       "quick_view": "Hızlı görünüm",
       "out_of_stock": "Stokta yok",
       "on_sale": "Satışta",

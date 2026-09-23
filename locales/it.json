@@ -114,6 +114,12 @@
         "material": "Composizione:",
         "care": "Cura:"
       },
+      "pre_order_countdown": {
+        "days": "g",
+        "hours": "h",
+        "minutes": "min",
+        "seconds": "s"
+      },
       "quick_view": "Occhiata veloce",
       "out_of_stock": "Esaurito",
       "on_sale": "In offerta",

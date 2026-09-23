@@ -115,6 +115,12 @@
         "material": "Composition :",
         "care": "Entretien :"
       },
+      "pre_order_countdown": {
+        "days": "j",
+        "hours": "h",
+        "minutes": "min",
+        "seconds": "s"
+      },
       "quick_view": "Aperçu rapide",
       "out_of_stock": "En rupture de stock",
       "on_sale": "Vente",

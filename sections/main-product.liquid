@@ -2014,6 +2014,132 @@
       ]
     },
 		{
+      "type": "pre_order",
+      "name": "Pre Order",
+      "limit": 1,
+      "settings": [
+				{
+					"type": "paragraph",
+					"content": "Shown only on products where the Pre Order Block metafield (custom.pre_order_block) is set to true."
+				},
+				{
+					"type": "text",
+					"id": "discount_value",
+					"label": "Discount",
+					"default": "-15%"
+				},
+				{
+					"type": "text",
+					"id": "discount_caption",
+					"label": "Text under the discount",
+					"default": "PRZEDSPRZEDAŻ"
+				},
+				{
+					"type": "text",
+					"id": "countdown_label",
+					"label": "Countdown heading",
+					"default": "DO KOŃCA ZOSTAŁO"
+				},
+				{
+					"type": "text",
+					"id": "end_at",
+					"label": "Pre-order ends at",
+					"default": "2026-12-31 23:59",
+					"info": "Format: YYYY-MM-DD HH:MM, in your store's timezone."
+				},
+				{
+					"type": "text",
+					"id": "note",
+					"label": "Text under the countdown",
+					"default": "Potem cena regularna 249.00 PLN"
+				},
+				{
+					"type": "header",
+					"content": "Colors"
+				},
+				{
+					"type": "color",
+					"id": "border_color",
+					"label": "Border",
+					"default": "#301c18"
+				},
+				{
+					"type": "color",
+					"id": "value_color",
+					"label": "Discount",
+					"default": "#7a2622"
+				},
+				{
+					"type": "color",
+					"id": "caption_color",
+					"label": "Text under the discount",
+					"default": "#1a1a1a"
+				},
+				{
+					"type": "color",
+					"id": "label_color",
+					"label": "Countdown heading and units",
+					"default": "#8a8580"
+				},
+				{
+					"type": "color",
+					"id": "countdown_color",
+					"label": "Countdown numbers",
+					"default": "#1a1a1a"
+				},
+				{
+					"type": "color",
+					"id": "note_color",
+					"label": "Text under the countdown",
+					"default": "#6f6a66"
+				},
+				{
+					"type": "header",
+					"content": "Spacing"
+				},
+				{
+					"type": "range",
+					"id": "margin_top_mobile",
+					"min": 0,
+					"max": 80,
+					"step": 2,
+					"unit": "px",
+					"label": "Top margin (mobile)",
+					"default": 16
+				},
+				{
+					"type": "range",
+					"id": "margin_bottom_mobile",
+					"min": 0,
+					"max": 80,
+					"step": 2,
+					"unit": "px",
+					"label": "Bottom margin (mobile)",
+					"default": 16
+				},
+				{
+					"type": "range",
+					"id": "margin_top_desktop",
+					"min": 0,
+					"max": 80,
+					"step": 2,
+					"unit": "px",
+					"label": "Top margin (desktop)",
+					"default": 20
+				},
+				{
+					"type": "range",
+					"id": "margin_bottom_desktop",
+					"min": 0,
+					"max": 80,
+					"step": 2,
+					"unit": "px",
+					"label": "Bottom margin (desktop)",
+					"default": 20
+				}
+      ]
+    },
+		{
       "type": "material_and_care",
       "name": "Material & Care",
       "limit": 1,
