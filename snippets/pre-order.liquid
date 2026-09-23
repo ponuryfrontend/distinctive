@@ -244,8 +244,13 @@
 			</pre-order-countdown>
 			{%- if block.settings.note != blank or regular_price_text != blank -%}
 				<p class="pre-order__note" id="pre-order-note-{{ section_id }}">
-					{{- block.settings.note -}}
-					{%- if block.settings.note != blank and regular_price_text != blank %} {% endif -%}
+					{%- liquid
+						assign note_text = block.settings.note | strip
+						if note_text != blank and regular_price_text != blank
+							assign note_text = note_text | append: ' '
+						endif
+					-%}
+					{{- note_text -}}
 					{%- if regular_price_text != blank -%}
 						<span class="pre-order__price">{{ regular_price_text }}</span>
 					{%- endif -%}
