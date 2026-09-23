@@ -46,6 +46,16 @@
 		assign seconds_text = seconds | prepend: '0'
 	endif
 -%}
+{%- liquid
+	assign discount_flex = block.settings.discount_alignment | default: 'center'
+	if discount_flex != 'center'
+		assign discount_flex = discount_flex | prepend: 'flex-'
+	endif
+	assign info_flex = block.settings.info_alignment | default: 'start'
+	if info_flex != 'center'
+		assign info_flex = info_flex | prepend: 'flex-'
+	endif
+-%}
 {%- style -%}
 	.pre-order {
 		margin-top: var(--po-margin-top-mobile);
@@ -57,26 +67,27 @@
 		align-items: stretch;
 		background: transparent;
 		border: 1px solid var(--po-border);
+		border-radius: var(--po-radius);
 	}
 	.pre-order__discount {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: var(--po-discount-flex);
 		justify-content: center;
 		gap: 4px;
 		padding: clamp(14px, 3vw, 22px) clamp(8px, 2vw, 18px);
-		text-align: center;
+		text-align: var(--po-discount-text);
 		min-width: 0;
 	}
 	.pre-order__value {
-		font-size: clamp(1.9rem, 8vw, 3.25rem);
+		font-size: var(--po-value-size-mobile);
 		font-weight: 700;
 		line-height: 1;
 		color: var(--po-value);
 		word-break: break-word;
 	}
 	.pre-order__caption {
-		font-size: clamp(0.6rem, 2.2vw, 0.875rem);
+		font-size: var(--po-caption-size-mobile);
 		font-weight: 500;
 		line-height: 1.2;
 		letter-spacing: 0.12em;
@@ -87,7 +98,9 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-items: var(--po-info-flex);
 		gap: clamp(6px, 1.5vw, 10px);
+		text-align: var(--po-info-text);
 		padding: clamp(14px, 3vw, 22px) clamp(10px, 2.5vw, 24px);
 		border-left: 1px solid var(--po-border);
 		min-width: 0;
@@ -98,7 +111,7 @@
 	}
 	.pre-order__label {
 		margin: 0;
-		font-size: clamp(0.65rem, 2.4vw, 0.9375rem);
+		font-size: var(--po-label-size-mobile);
 		font-weight: 500;
 		line-height: 1.2;
 		letter-spacing: 0.12em;
@@ -109,6 +122,7 @@
 		display: flex;
 		align-items: baseline;
 		flex-wrap: wrap;
+		justify-content: var(--po-info-flex);
 		gap: clamp(6px, 2vw, 16px);
 		color: var(--po-countdown);
 		font-variant-numeric: tabular-nums;
@@ -119,19 +133,19 @@
 		gap: 2px;
 	}
 	.pre-order__number {
-		font-size: clamp(1.5rem, 6.5vw, 2.75rem);
+		font-size: var(--po-number-size-mobile);
 		font-weight: 700;
 		line-height: 1.1;
 	}
 	.pre-order__unit {
-		font-size: clamp(0.6rem, 2vw, 1rem);
+		font-size: var(--po-unit-size-mobile);
 		font-weight: 400;
 		line-height: 1;
 		color: var(--po-label);
 	}
 	.pre-order__note {
 		margin: 0;
-		font-size: clamp(0.65rem, 2.3vw, 0.9375rem);
+		font-size: var(--po-note-size-mobile);
 		line-height: 1.4;
 		color: var(--po-note);
 	}
@@ -139,6 +153,24 @@
 		.pre-order {
 			margin-top: var(--po-margin-top-desktop);
 			margin-bottom: var(--po-margin-bottom-desktop);
+		}
+		.pre-order__value {
+			font-size: var(--po-value-size-desktop);
+		}
+		.pre-order__caption {
+			font-size: var(--po-caption-size-desktop);
+		}
+		.pre-order__label {
+			font-size: var(--po-label-size-desktop);
+		}
+		.pre-order__number {
+			font-size: var(--po-number-size-desktop);
+		}
+		.pre-order__unit {
+			font-size: var(--po-unit-size-desktop);
+		}
+		.pre-order__note {
+			font-size: var(--po-note-size-desktop);
 		}
 	}
 {%- endstyle -%}
@@ -155,6 +187,23 @@
 		--po-margin-bottom-mobile: {{ block.settings.margin_bottom_mobile }}px;
 		--po-margin-top-desktop: {{ block.settings.margin_top_desktop }}px;
 		--po-margin-bottom-desktop: {{ block.settings.margin_bottom_desktop }}px;
+		--po-discount-text: {{ block.settings.discount_alignment | default: 'center' }};
+		--po-discount-flex: {{ discount_flex }};
+		--po-info-text: {{ block.settings.info_alignment | default: 'start' }};
+		--po-info-flex: {{ info_flex }};
+		--po-radius: {{ block.settings.border_radius }}px;
+		--po-value-size-mobile: {{ block.settings.value_size_mobile }}px;
+		--po-caption-size-mobile: {{ block.settings.caption_size_mobile }}px;
+		--po-label-size-mobile: {{ block.settings.label_size_mobile }}px;
+		--po-number-size-mobile: {{ block.settings.number_size_mobile }}px;
+		--po-unit-size-mobile: {{ block.settings.unit_size_mobile }}px;
+		--po-note-size-mobile: {{ block.settings.note_size_mobile }}px;
+		--po-value-size-desktop: {{ block.settings.value_size_desktop }}px;
+		--po-caption-size-desktop: {{ block.settings.caption_size_desktop }}px;
+		--po-label-size-desktop: {{ block.settings.label_size_desktop }}px;
+		--po-number-size-desktop: {{ block.settings.number_size_desktop }}px;
+		--po-unit-size-desktop: {{ block.settings.unit_size_desktop }}px;
+		--po-note-size-desktop: {{ block.settings.note_size_desktop }}px;
 	"
 	{{ block.shopify_attributes }}
 >
