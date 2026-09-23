@@ -116,6 +116,26 @@
             "inventory_notice_base": 30
           }
         },
+        "pre_order_xF3DD4": {
+          "type": "pre_order",
+          "settings": {
+            "discount_value": "-15%",
+            "discount_caption": "PRZEDSPRZEDAŻ",
+            "countdown_label": "DO KOŃCA ZOSTAŁO",
+            "end_at": "2026-09-28 00:00",
+            "note": "Potem cena regularna 249.00 PLN",
+            "border_color": "#301c18",
+            "value_color": "#7a2622",
+            "caption_color": "#1a1a1a",
+            "label_color": "#8a8580",
+            "countdown_color": "#1a1a1a",
+            "note_color": "#6f6a66",
+            "margin_top_mobile": 30,
+            "margin_bottom_mobile": 14,
+            "margin_top_desktop": 20,
+            "margin_bottom_desktop": 20
+          }
+        },
         "3184ed78-b74d-40cc-a072-56e6212c92ea": {
           "type": "buy_buttons",
           "settings": {
@@ -254,6 +274,7 @@
         "siblings_6ytCwm",
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "inventory_level_iwYp9t",
+        "pre_order_xF3DD4",
         "3184ed78-b74d-40cc-a072-56e6212c92ea",
         "growave_loyalty_wishlist_block_product_fave_button_WNx6fm",
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6",
