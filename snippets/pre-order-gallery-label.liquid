@@ -1,0 +1,68 @@
+{%- comment -%}
+	Renders the mobile-only "-15% PRZEDSPRZEDAŻ" label over the bottom left of the
+	product gallery, built from the Pre Order block's discount and caption.
+
+	Accepts:
+	- section: {Object} The main product section.
+	- product: {Object} Product object. The label only renders when its
+	  custom.pre_order_block metafield is true.
+
+	Usage:
+	{% render 'pre-order-gallery-label', section: section, product: product %}
+{%- endcomment -%}
+{%- liquid
+	assign block = section.blocks | where: 'type', 'pre_order' | first
+	assign show_label = false
+	if block != blank and block.settings.show_gallery_label
+		if product.metafields.custom.pre_order_block.value == true or request.design_mode
+			assign show_label = true
+		endif
+	endif
+
+	assign label_text = ''
+	if show_label
+		assign label_value = block.settings.discount_value | strip
+		assign label_caption = block.settings.discount_caption | strip
+		assign label_text = label_value
+		if label_value != blank and label_caption != blank
+			assign label_text = label_text | append: ' '
+		endif
+		assign label_text = label_text | append: label_caption
+	endif
+-%}
+{%- if label_text != blank -%}
+{%- style -%}
+	.pre-order-gallery-label {
+		position: absolute;
+		left: 16px;
+		bottom: 16px;
+		z-index: 5;
+		max-width: calc(100% - 32px);
+		font-size: var(--po-gallery-label-size);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--po-gallery-label-color);
+		pointer-events: none;
+	}
+	[dir="rtl"] .pre-order-gallery-label {
+		left: auto;
+		right: 16px;
+	}
+	@media only screen and (min-width: 768px) {
+		.pre-order-gallery-label {
+			display: none;
+		}
+	}
+{%- endstyle -%}
+<span
+	class="pre-order-gallery-label"
+	style="
+		--po-gallery-label-size: {{ block.settings.gallery_label_size_mobile }}px;
+		--po-gallery-label-color: {{ block.settings.gallery_label_color }};
+	"
+>
+	{{- label_text -}}
+</span>
+{%- endif -%}

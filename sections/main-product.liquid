@@ -51,6 +51,7 @@
               {%- render 'slideshow-arrows' -%}
               {%- endif -%}
             </product-slider>
+            {%- render 'pre-order-gallery-label', section: section, product: product -%}
             {%- if product.media.size > 1 -%}
               {%- liquid
                 assign thumbnail_count = product.media.size | at_most: 4
@@ -2033,6 +2034,33 @@
 					"id": "discount_caption",
 					"label": "Text under the discount",
 					"default": "PRZEDSPRZEDAŻ"
+				},
+				{
+					"type": "header",
+					"content": "Gallery label (mobile)"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_gallery_label",
+					"label": "Show discount label on the gallery",
+					"info": "Combines the discount and the text under it (e.g. \"-15% PRZEDSPRZEDAŻ\") and shows it at the bottom left of the product photos on mobile only.",
+					"default": true
+				},
+				{
+					"type": "color",
+					"id": "gallery_label_color",
+					"label": "Label color",
+					"default": "#7a2622"
+				},
+				{
+					"type": "range",
+					"id": "gallery_label_size_mobile",
+					"min": 10,
+					"max": 40,
+					"step": 1,
+					"unit": "px",
+					"label": "Label font size (mobile)",
+					"default": 16
 				},
 				{
 					"type": "text",
