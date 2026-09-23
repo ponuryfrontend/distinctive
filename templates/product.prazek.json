@@ -143,12 +143,12 @@
             "number_size_mobile": 24,
             "unit_size_mobile": 10,
             "note_size_mobile": 11,
-            "value_size_desktop": 52,
-            "caption_size_desktop": 14,
-            "label_size_desktop": 15,
-            "number_size_desktop": 44,
-            "unit_size_desktop": 16,
-            "note_size_desktop": 15
+            "value_size_desktop": 40,
+            "caption_size_desktop": 12,
+            "label_size_desktop": 14,
+            "number_size_desktop": 20,
+            "unit_size_desktop": 12,
+            "note_size_desktop": 14
           }
         },
         "3184ed78-b74d-40cc-a072-56e6212c92ea": {
