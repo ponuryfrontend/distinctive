@@ -124,7 +124,7 @@
             "show_gallery_label": true,
             "gallery_label_color": "#7a2622",
             "gallery_label_size_mobile": 12,
-            "countdown_label": "DO KOŃCA AKCJI ZOSTAŁO",
+            "countdown_label": "DO KOŃCA AKCJI ZOSTAŁO:",
             "end_at": "2026-09-28 00:00",
             "note": "Po 30.09 cena wraca do regularnej:",
             "show_regular_price": true,
