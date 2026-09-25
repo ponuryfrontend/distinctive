@@ -130,9 +130,9 @@
             "show_regular_price": true,
             "border_color": "#301c18",
             "value_color": "#7a2622",
-            "caption_color": "#7A2622",
-            "label_color": "#301C18",
-            "countdown_color": "#301C18",
+            "caption_color": "#7a2622",
+            "label_color": "#301c18",
+            "countdown_color": "#301c18",
             "note_color": "#6f6a66",
             "margin_top_mobile": 30,
             "margin_bottom_mobile": 14,
@@ -169,7 +169,7 @@
           "settings": {
             "icon_only": false,
             "option_button_class": "",
-            "custom_css": ".gw-wl-add-to-wishlist-product-page-widget .gw-btn.gw-button.gw-btn--block {background: #301C18 !important;\n}",
+            "custom_css": "",
             "shadow_root_options": "null"
           }
         },
