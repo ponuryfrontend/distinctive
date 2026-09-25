@@ -16,11 +16,10 @@
       "blocks": {
         "text_N9tMXF": {
           "type": "text",
-          "disabled": true,
           "settings": {
             "icon": "none",
-            "text": "15% z kodem  XMASS15",
-            "link": "shopify://collections/new-now"
+            "text": "-15% W PRZEDSPRZEDAŻY BESTSELLERÓW",
+            "link": "shopify://collections/bestsellery"
           }
         },
         "39385368-40fe-4e0e-b3fd-50677f0426dc": {
@@ -57,12 +56,11 @@
         "e27f3820-429c-4074-8f4e-80e9c2fd6a01",
         "10e59a94-285d-4052-8452-4a42f5617374"
       ],
-      "disabled": true,
       "settings": {
         "announcement_bar_homepage_only": false,
         "announcement_bar_layout": "carousel",
-        "show_language_switcher": true,
-        "show_currency_switcher": true,
+        "show_language_switcher": false,
+        "show_currency_switcher": false,
         "show_social_links": true,
         "has_border": false,
         "direction": "left",
