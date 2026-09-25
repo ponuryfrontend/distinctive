@@ -59,8 +59,8 @@
       "settings": {
         "announcement_bar_homepage_only": false,
         "announcement_bar_layout": "carousel",
-        "show_language_switcher": false,
-        "show_currency_switcher": false,
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
         "show_social_links": true,
         "has_border": false,
         "direction": "left",
