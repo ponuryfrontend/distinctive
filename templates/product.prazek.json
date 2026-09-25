@@ -487,7 +487,7 @@
           "type": "shopify://apps/growave-loyalty-wishlist/blocks/block.product.reviewWidget/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
           "settings": {
             "min_images_for_slider_visibility": 2,
-            "reviews_per_page": 3,
+            "reviews_per_page": 6,
             "custom_css": ".gw-text--tone-inherit.svelte-bo4v1a {\n    font-size: 28px;\n    font-weight: 500 !important;\n    color: inherit;\n    text-transform: capitalize !important;\n}\n\n.gw-empty-state.svelte-5zggxu{\nbackground-color: #D9D2C9 !important;\n}"
           }
         }
