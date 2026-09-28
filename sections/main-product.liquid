@@ -235,6 +235,10 @@
   endif
 -%}
 
+{%- liquid
+  assign schema_material = product.metafields.custom.material_and_care.value.material.value
+  assign schema_material = schema_material | strip | newline_to_br | strip_newlines | replace: '<br />', ', '
+-%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -310,8 +314,8 @@
       "category": {{ product.type | json }}
       {% endif %}
 
-      {% if product.metafields.custom.material_composition != blank %},
-      "material": {{ product.metafields.custom.material_composition.value | strip | json }}
+      {% if schema_material != blank %},
+      "material": {{ schema_material | json }}
       {% endif %}
 
       {% if product_color != blank %},
@@ -398,8 +402,8 @@
               "name": {{ product.vendor | default: shop.name | json }}
             }
 
-            {% if product.metafields.custom.material_composition != blank %},
-            "material": {{ product.metafields.custom.material_composition.value | strip | json }}
+            {% if schema_material != blank %},
+            "material": {{ schema_material | json }}
             {% endif %}
 
             {% if variant_color != blank %},
@@ -669,8 +673,8 @@
       "category": {{ product.type | json }}
       {% endif %}
 
-      {% if product.metafields.custom.material_composition != blank %},
-      "material": {{ product.metafields.custom.material_composition.value | strip | json }}
+      {% if schema_material != blank %},
+      "material": {{ schema_material | json }}
       {% endif %}
 
       {% if product_color != blank %},
