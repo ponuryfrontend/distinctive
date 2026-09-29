@@ -28,7 +28,7 @@
 	</fieldset>
 {%- when 'button' -%}
 	<fieldset class="product-form__input product-form__input--block" data-index="option{{ forloop.index }}" data-handle="{{ handle }}">
-		<div class="form__label">{{ option.name }}: <span class="form__label__value">{{ option.selected_value }}</span>{{ sizing_link }}</div>
+		<div class="form__label">{{ option.name }}: <span class="form__label__value">{{ option.selected_value }}</span>{%- if inventory_block -%}{% render 'product-inventory-notice', product: product, section: section, block: inventory_block, inline: true %}{%- endif -%}{{ sizing_link }}</div>
 		{%- for value in option.values -%}
 			<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}"
 						name="{{ option.name | append: appended }}"

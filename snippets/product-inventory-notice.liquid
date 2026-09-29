@@ -3,7 +3,7 @@
 	assign inventory_quantity = current_variant.inventory_quantity
 	assign threshold = block.settings.inventory_notice_threshold
 -%}
-<div id="inventory-{{ section.id }}" class="product-inventory-notice--wrapper" {{ block.shopify_attributes }}>
+<div id="inventory-{{ section.id }}" class="product-inventory-notice--wrapper{% if inline %} product-inventory-notice--wrapper-inline{% endif %}" {{ block.shopify_attributes }}>
 	{% if current_variant != blank and inventory_quantity > 0 %}
 		{% if block.settings.show_inventory_notice == 'always' or inventory_quantity <= threshold %}
 				{%- liquid

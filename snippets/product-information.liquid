@@ -1,5 +1,31 @@
 {%- assign side_panels = false -%}
 {%- assign color_swatch_blocks = section.blocks | where: 'type', 'color_swatches' -%}
+{%- liquid
+  # Inventory notice renders inline in the last option label (e.g. "Rozmiar: XS/S")
+  # when that option is shown as buttons; otherwise it stays in its own block.
+  assign inventory_block = section.blocks | where: 'type', 'inventory_level' | first
+  assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first
+  assign inventory_inline = false
+
+  if inventory_block and variant_picker_block and variant_picker_block.settings.picker_type == 'button'
+    unless product.has_only_default_variant
+      assign last_option = product.options_with_values | last
+      assign last_option_name = last_option.name | downcase | escape
+      assign last_option_swatches = last_option.values | map: 'swatch' | compact | size
+      assign swatch_variant_options = settings.color_swatches_variant_option | downcase | split: ', '
+      assign inventory_inline = true
+
+      if variant_picker_block.settings.color_picker
+        if last_option_name contains 'color' or last_option_name contains 'colour' or last_option_name contains 'couleur' or last_option_name contains 'farbe'
+          assign inventory_inline = false
+        endif
+      endif
+      if swatch_variant_options contains last_option_name or last_option_swatches > 0
+        assign inventory_inline = false
+      endif
+    endunless
+  endif
+-%}
 <div id="ProductInfo-{{ section.id }}" class="product-information--inner">
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
   {%- assign outline_button = false -%}
@@ -140,7 +166,9 @@
     {%- when 'description' -%}
       <div class="product-short-description rte" {{ block.shopify_attributes }}>{{ product.description }}</div>
     {%- when 'inventory_level' -%}
-      {% render 'product-inventory-notice', product: product, section: section, block: block %}
+      {%- unless inventory_inline -%}
+        {% render 'product-inventory-notice', product: product, section: section, block: block %}
+      {%- endunless -%}
     {%- when 'variant_picker' -%}
       {%- unless product.has_only_default_variant -%}
       {%- liquid
@@ -230,7 +258,13 @@
                   {%- endcapture -%}
               {%- endif -%}
             {%- endif -%}
-            {% render 'product-option', option_type: option_type, color_picker_size: color_picker_size, color_picker_use_variants: color_picker_use_variants, product: product, option: option, forloop: forloop, product_form_id: product_form_id, sizing_link: sizing_link %}
+            {%- liquid
+              assign option_inventory_block = nil
+              if inventory_inline and forloop.last
+                assign option_inventory_block = inventory_block
+              endif
+            -%}
+            {% render 'product-option', option_type: option_type, color_picker_size: color_picker_size, color_picker_use_variants: color_picker_use_variants, product: product, option: option, forloop: forloop, product_form_id: product_form_id, sizing_link: sizing_link, inventory_block: option_inventory_block, section: section %}
           {%- endfor -%}
         </div>
         <span
