@@ -49,7 +49,7 @@
           }
         },
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR": {
-          "type": "shopify://apps/complimus-eu-omnibus-price/blocks/omnibus-price/befd495a-705f-454e-9a70-d1d491f84538",
+          "type": "shopify://apps/complimus-omnibus-eu-rules/blocks/omnibus-price/befd495a-705f-454e-9a70-d1d491f84538",
           "settings": {
             "hide_if_not_on_sale": false,
             "hide_if_equal_to_compare_at_price": false,
@@ -169,8 +169,8 @@
           "settings": {
             "icon_only": false,
             "option_button_class": "",
-            "custom_css": "",
-            "shadow_root_options": "null"
+            "custom_css": ".gw-wl-add-to-wishlist-product-page-widget .gw-btn.gw-button.gw-btn--block {\nfont-family: inherit; }",
+            "shadow_root_options": "false"
           }
         },
         "growave_loyalty_wishlist_block_product_earn_points_widget_zNWJB6": {
