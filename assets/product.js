@@ -32,6 +32,17 @@ if (!customElements.get('variant-selects')) {
       this.updateMasterId();
       this.setDisabled();
       this.setImageSet();
+      this.placeInventoryNotice();
+    }
+
+    placeInventoryNotice() {
+      if (this.sticky) return;
+      const notice = document.getElementById(`inventory-${this.dataset.section}`);
+      const blocks = this.querySelectorAll('.product-form__input--block .form__label');
+      const label = blocks[blocks.length - 1];
+      if (!notice || !label || label.contains(notice)) return;
+      notice.classList.add('product-inventory-notice--wrapper-inline');
+      label.appendChild(notice);
     }
 
     onVariantChange() {

@@ -1588,6 +1588,19 @@
     .product-inventory-notice--low .product-inventory-notice--bar span {
       background: var(--color-inventory-lowstock, #279a4b); }
 
+.product-inventory-notice--wrapper-inline {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  text-transform: none; }
+  .product-inventory-notice--wrapper-inline .product-inventory-notice {
+    margin: 0; }
+  .product-inventory-notice--wrapper-inline .product-inventory-notice--text {
+    margin: 0;
+    white-space: nowrap; }
+  .product-inventory-notice--wrapper-inline .product-inventory-notice--bar {
+    display: none; }
+
 @keyframes inventory-pulse {
   0% {
     opacity: 0.5;
