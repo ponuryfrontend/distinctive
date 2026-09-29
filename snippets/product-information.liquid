@@ -1,27 +1,38 @@
 {%- assign side_panels = false -%}
 {%- assign color_swatch_blocks = section.blocks | where: 'type', 'color_swatches' -%}
 {%- liquid
-  # Inventory notice renders inline in the last option label (e.g. "Rozmiar: XS/S")
-  # when that option is shown as buttons; otherwise it stays in its own block.
+  # Inventory notice renders inline in the label of the last option shown as buttons
+  # (e.g. "Rozmiar: XS/S"); color options are skipped. Otherwise it stays in its own block.
   assign inventory_block = section.blocks | where: 'type', 'inventory_level' | first
   assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first
   assign inventory_inline = false
+  assign inventory_option_position = 0
 
   if inventory_block and variant_picker_block and variant_picker_block.settings.picker_type == 'button'
     unless product.has_only_default_variant
-      assign last_option = product.options_with_values | last
-      assign last_option_name = last_option.name | downcase | escape
-      assign last_option_swatches = last_option.values | map: 'swatch' | compact | size
       assign swatch_variant_options = settings.color_swatches_variant_option | downcase | split: ', '
-      assign inventory_inline = true
 
-      if variant_picker_block.settings.color_picker
-        if last_option_name contains 'color' or last_option_name contains 'colour' or last_option_name contains 'couleur' or last_option_name contains 'farbe'
-          assign inventory_inline = false
+      for option in product.options_with_values
+        assign option_name = option.name | downcase | escape
+        assign option_swatches = option.values | map: 'swatch' | compact | size
+        assign option_is_color = false
+
+        if variant_picker_block.settings.color_picker
+          if option_name contains 'color' or option_name contains 'colour' or option_name contains 'couleur' or option_name contains 'farbe' or option_name contains 'kolor'
+            assign option_is_color = true
+          endif
         endif
-      endif
-      if swatch_variant_options contains last_option_name or last_option_swatches > 0
-        assign inventory_inline = false
+        if swatch_variant_options contains option_name or option_swatches > 0
+          assign option_is_color = true
+        endif
+
+        unless option_is_color
+          assign inventory_option_position = option.position
+        endunless
+      endfor
+
+      if inventory_option_position > 0
+        assign inventory_inline = true
       endif
     endunless
   endif
@@ -260,7 +271,7 @@
             {%- endif -%}
             {%- liquid
               assign option_inventory_block = nil
-              if inventory_inline and forloop.last
+              if inventory_inline and option.position == inventory_option_position and option_type == 'button'
                 assign option_inventory_block = inventory_block
               endif
             -%}
