@@ -1130,6 +1130,18 @@
             "many": "Fehler in Abschnitt {{section}} ({{count}})"
           }
         }
+      },
+      "field_errors": {
+        "custom_field": {
+          "cart_metafield_value_too_long_with_limit": {
+            "few": "Geben Sie maximal %{count} Zeichen ein.",
+            "many": "Geben Sie maximal %{count} Zeichen ein."
+          },
+          "cart_metafield_value_too_short_with_limit": {
+            "few": "Geben Sie mindestens %{count} Zeichen ein.",
+            "many": "Geben Sie mindestens %{count} Zeichen ein."
+          }
+        }
       }
     },
     "notices": {
