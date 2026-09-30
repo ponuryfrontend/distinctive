@@ -1151,6 +1151,18 @@
             "many": "Errors in the {{section}} section ({{count}})"
           }
         }
+      },
+      "field_errors": {
+        "custom_field": {
+          "cart_metafield_value_too_long_with_limit": {
+            "few": "Enter a maximum of %{count} characters.",
+            "many": "Enter a maximum of %{count} characters."
+          },
+          "cart_metafield_value_too_short_with_limit": {
+            "few": "Enter at least %{count} characters.",
+            "many": "Enter at least %{count} characters."
+          }
+        }
       }
     },
     "notices": {
