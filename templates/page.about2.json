@@ -535,7 +535,7 @@
         "column_spacing": "small",
         "color_bg": "#FAF8F6",
         "color_text": "#301C18",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
