@@ -179,8 +179,54 @@
 		</div>
 	</div>
 {% endif %}
+{%- liquid
+  assign article_schema_url = shop.url | append: article.url
+  assign article_author_key = article.author | strip | downcase
+  case article_author_key
+    when 'sandra do manh'
+      assign article_author_id = 'https://nudyess.com/#sandra-do-manh'
+    else
+      assign article_author_id = blank
+  endcase
+  if article.excerpt != blank
+    assign article_schema_description = article.excerpt | strip_html | strip_newlines | strip
+  else
+    assign article_schema_description = article.content | strip_html | strip_newlines | strip | truncatewords: 40
+  endif
+-%}
 <script type="application/ld+json">
-  {{ article | structured_data }}
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": {{ article_schema_url | append: '#article' | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ article_schema_url | json }}
+    },
+    "url": {{ article_schema_url | json }},
+    "headline": {{ article.title | strip | json }},
+    "description": {{ article_schema_description | json }},
+    "articleBody": {{ article.content | replace: '</p>', ' </p>' | strip_html | strip_newlines | strip | json }}{% if article.image %},
+    "image": {
+      "@type": "ImageObject",
+      "url": {{ article.image | image_url: width: 1920 | prepend: 'https:' | json }},
+      "width": {{ article.image.width | at_most: 1920 | json }},
+      "height": {{ article.image.height | times: 1.0 | divided_by: article.image.width | times: 1920 | at_most: article.image.height | round | json }}
+    }{% endif %},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+    "author": {% if article_author_id != blank %}{
+      "@id": {{ article_author_id | json }}
+    }{% else %}{
+      "@type": "Person",
+      "name": {{ article.author | strip | json }}
+    }{% endif %},
+    "publisher": {
+      "@id": {{ shop.url | append: '#organization' | json }}
+    }{% if article.tags.size > 0 %},
+    "keywords": {{ article.tags | join: ', ' | json }}{% endif %}
+  }
 </script>
 {%- if template.name == 'article' -%}
   {%- assign article_url = shop.url | append: article.url -%}
