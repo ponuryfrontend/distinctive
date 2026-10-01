@@ -81,7 +81,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "color_picker": true,
+            "color_picker": false,
             "color_picker_size": "small",
             "color_picker_use_variants": false,
             "variant_is_disabled": false,
@@ -204,20 +204,6 @@
             "open": false
           }
         },
-        "collapsible_tab_MrtDzH": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Materiały i pielęgnacja",
-            "heading_font_size_desktop": 13,
-            "heading_font_size_mobile": 13,
-            "heading_case": "uppercase",
-            "open": false,
-            "content": "",
-            "page": "",
-            "custom_liquid": "<p><strong>Skład:</strong></p>\n<p>95% prążkowana bawełna i 5% elastan</p>\n<p><strong>Pielęgnacja:</strong></p>\n<p style=\"text-align: justify;\">Aby m&oacute;c latami cieszyć się produktami z naszej prążkowanej dzianiny należy zawsze prać je odwr&oacute;cone na lewą stronę używając delikatnych (nawet dziecięcych) detergent&oacute;w oraz ustawiać możliwie niskie obroty pralki. Dzięki takiej pielęgnacji szwy pozostaną nienaruszone i ubrania utrzymają swoją formę, elastyczność i strukturę, a także będą przyjemne dla sk&oacute;ry nawet po wielu praniach.</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/prazek-pranie.svg?v=1719830584\" alt=\"pielegnacja\" width=\"100%\" height=\"auto\" /></p>\n<p style=\"text-align: justify;\">Prać ręcznie lub w pralce na programie prania ręcznego. Używać możliwie najdelikatniejszych środk&oacute;w piorących. Maksymalna temperatura prania&nbsp; 30&ordm; C. Wirowanie maksymalnie 600 obrot&oacute;w. Suszyć na płasko - nie suszyć w suszarce bębnowej. Prasować parowaczką lub żelazkiem w temperaturze do 110 stopni C. Nie czyścić chemicznie.</p>\n<p></p>"
-          }
-        },
         "collapsible_tab_Ca3CWD": {
           "type": "collapsible_tab",
           "settings": {
@@ -289,7 +275,6 @@
         "side_panel_PgPAFz",
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "material_and_care_tpzdqE",
-        "collapsible_tab_MrtDzH",
         "collapsible_tab_Ca3CWD",
         "collapsible_tab_iJTc83",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
