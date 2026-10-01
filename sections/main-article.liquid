@@ -181,13 +181,6 @@
 {% endif %}
 {%- liquid
   assign article_schema_url = shop.url | append: article.url
-  assign article_author_key = article.author | strip | downcase
-  case article_author_key
-    when 'sandra do manh'
-      assign article_author_id = 'https://nudyess.com/#sandra-do-manh'
-    else
-      assign article_author_id = blank
-  endcase
   if article.excerpt != blank
     assign article_schema_description = article.excerpt | strip_html | strip_newlines | strip
   else
@@ -216,12 +209,12 @@
     "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
     "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
     "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
-    "author": {% if article_author_id != blank %}{
-      "@id": {{ article_author_id | json }}
-    }{% else %}{
+    "author": {
       "@type": "Person",
-      "name": {{ article.author | strip | json }}
-    }{% endif %},
+      "@id": "https://nudyess.com/#sandra-do-manh",
+      "name": "Sandra Do Manh",
+      "url": "https://nudyess.com/pages/filozofia-marki-nudyess#sandra-do-manh"
+    },
     "publisher": {
       "@id": {{ shop.url | append: '#organization' | json }}
     }{% if article.tags.size > 0 %},
