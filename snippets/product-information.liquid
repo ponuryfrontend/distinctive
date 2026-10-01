@@ -43,22 +43,7 @@
   {%- for block in section.blocks -%}
     {%- case block.type -%}
     {%- when '@app' -%}
-      {%- liquid
-        assign reserve_rating_space = false
-        if block.id contains 'review_avg_profile'
-          assign app_review_data = product.metafields.ssw['review']
-          if app_review_data and app_review_data.type == 'json'
-            assign app_review_data = app_review_data.value
-          endif
-          if app_review_data
-            assign app_review_count = app_review_data.count | plus: 0
-            if app_review_count > 0
-              assign reserve_rating_space = true
-            endif
-          endif
-        endif
-      -%}
-      {%- if reserve_rating_space -%}
+      {%- if block.id contains 'review_avg_profile' -%}
         <div class="product-information--rating-placeholder" style="min-height: 24px;">
           {% render block %}
         </div>
