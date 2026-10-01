@@ -251,6 +251,16 @@
     }
   </script>
 {%- endif -%}
+{%- if article.metafields.custom.seo_faq != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": {{ shop.url | append: article.url | append: '#faq' | json }},
+      "mainEntity": {{ article.metafields.custom.seo_faq.value | json }}
+    }
+  </script>
+{%- endif -%}
 {% schema %}
   {
 		"name": "Blog post",
