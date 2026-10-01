@@ -36,6 +36,25 @@
         "filter_color_swatches": false
       }
     },
+    "featured_blog_edKF8x": {
+      "type": "featured-blog",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Zerknij na bloga",
+        "description": "<p>Przeczytaj o czym piszę w artykułach, które cyklicznie pojawiają się na blogu.</p>",
+        "blog": "aktualnosci",
+        "post_limit": 4,
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "portrait",
+        "show_date": true,
+        "show_excerpt": true,
+        "show_hover_letters": false,
+        "show_view_all": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "166366972953e881f5": {
       "type": "collection-list",
       "settings": {
@@ -108,8 +127,8 @@
         "text_width": "xlarge",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#FAF8F6",
-        "color_text": "#301C18",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -119,6 +138,7 @@
     "template-header",
     "breadcrumbs_KzjVBe",
     "product-grid",
+    "featured_blog_edKF8x",
     "166366972953e881f5",
     "166367228131c52c01",
     "rich_text_Hd8wBf",
