@@ -1,0 +1,260 @@
+{{- 'image-with-text.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign person_id = 'https://nudyess.com/#sandra-do-manh'
+	assign person_url = 'https://nudyess.com/pages/filozofia-marki-nudyess#sandra-do-manh'
+	assign fallback_image_url = 'https://cdn.shopify.com/s/files/1/0561/7215/0807/files/sandra_do_manh_zdjecie_z_szwalni_43045131-52bb-4848-9654-59e369303b86.jpg'
+
+	assign image = section.settings.image
+	assign color_bg = section.settings.color_bg
+	assign color_text = section.settings.color_text
+
+	if image != blank
+		assign schema_image_url = image | image_url: width: 1200 | prepend: 'https:'
+	else
+		assign schema_image_url = fallback_image_url
+	endif
+
+	assign ratio = 1
+	if image != blank
+		assign ratio = image.aspect_ratio
+	endif
+-%}
+<div id="sandra-do-manh" class="row full-width-row{% if section.settings.full_width %}-full{% endif %}">
+	<div class="small-12 columns">
+		<div class="image-with-text column-spacing--{{ section.settings.column_spacing }} grid--image-{{ section.settings.desktop_image_width }} {{ section.settings.layout }} {{ section.settings.content_position }} section-spacing{% if section.settings.disable_top_spacing %} section-spacing--disable-top{% endif %}{% if section.settings.disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --outline-button-label: {{ color_text }};--solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};">
+			<div class="image-with-text__image image-with-text__inner">
+				<div class="image-with-text__image-media aspect-ratio aspect-ratio--adapt" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+					{%- if image != blank -%}
+						{%- liquid
+							assign small_height = image.src.height | times: '690' | divided_by: image.src.width
+							assign mid_height = image.src.height | times: '1340' | divided_by: image.src.width
+							assign master_width = image.src.width | append: 'x' | append: image.src.height
+							assign width = '690x' | append: small_height | append: ',' | append: '1340x' | append: mid_height | append: ',' | append: master_width
+						-%}
+						{%- render 'responsive-image', image: image, sizes: width -%}
+					{%- else -%}
+						<img src="{{ fallback_image_url }}" alt="{{ section.settings.name | escape }}" width="1340" height="1340" loading="lazy">
+					{%- endif -%}
+				</div>
+			</div>
+			<div class="image-with-text__content image-with-text__inner">
+				<div class="image-with-text__content--inner">
+					{%- if section.settings.subheading != blank -%}
+						<p class="subheading">{{ section.settings.subheading }}</p>
+					{%- endif -%}
+					<h2 class="{{ section.settings.heading_size }}">{{ section.settings.name }}</h2>
+					{%- if section.settings.job_title != blank -%}
+						<p class="subheading">{{ section.settings.job_title }}</p>
+					{%- endif -%}
+					<div class="rte description-size--{{ section.settings.description_size }}">{{ section.settings.bio }}</div>
+					{%- if section.settings.instagram_url != blank or section.settings.linkedin_url != blank -%}
+						<div class="rte description-size--{{ section.settings.description_size }}">
+							<p>
+								{%- if section.settings.instagram_url != blank -%}
+									<a href="{{ section.settings.instagram_url }}" target="_blank" rel="me noopener">Instagram</a>
+								{%- endif -%}
+								{%- if section.settings.instagram_url != blank and section.settings.linkedin_url != blank %} · {% endif -%}
+								{%- if section.settings.linkedin_url != blank -%}
+									<a href="{{ section.settings.linkedin_url }}" target="_blank" rel="me noopener">LinkedIn</a>
+								{%- endif -%}
+							</p>
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ person_id | json }},
+  "name": {{ section.settings.name | strip | json }},
+  "jobTitle": {{ section.settings.job_title | strip | json }},
+  "description": {{ section.settings.bio | replace: '</p>', ' </p>' | strip_html | strip_newlines | strip | json }},
+  "image": {{ schema_image_url | json }},
+  "url": {{ person_url | json }},
+  "worksFor": {
+    "@id": {{ shop.url | append: '#organization' | json }}
+  }{% if section.settings.instagram_url != blank or section.settings.linkedin_url != blank %},
+  "sameAs": [
+    {%- if section.settings.instagram_url != blank -%}{{ section.settings.instagram_url | json }}{%- endif -%}
+    {%- if section.settings.instagram_url != blank and section.settings.linkedin_url != blank -%},{%- endif -%}
+    {%- if section.settings.linkedin_url != blank -%}{{ section.settings.linkedin_url | json }}{%- endif -%}
+  ]{% endif %}
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Founder profile",
+		"class": "section-image-with-text section-founder-profile",
+		"limit": 1,
+    "settings": [
+			{
+				"type": "paragraph",
+				"content": "Sekcja generuje dane strukturalne Person (@id: https://nudyess.com/#sandra-do-manh). Kotwica sekcji: #sandra-do-manh."
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image",
+				"info": "Jeśli puste, użyte zostanie zdjęcie z szwalni z plików sklepu."
+			},
+			{
+				"type": "header",
+				"content": "Content"
+			},
+			{
+				"type": "text",
+				"id": "subheading",
+				"label": "Subheading",
+				"default": "Poznaj założycielkę"
+			},
+			{
+				"type": "text",
+				"id": "name",
+				"label": "Name",
+				"default": "Sandra Do Manh"
+			},
+			{
+				"type": "select",
+				"id": "heading_size",
+				"options": [
+					{ "value": "h2", "label": "Large" },
+					{ "value": "h3", "label": "Medium" },
+					{ "value": "h4", "label": "Small" }
+				],
+				"default": "h3",
+				"label": "Name size"
+			},
+			{
+				"type": "text",
+				"id": "job_title",
+				"label": "Job title",
+				"default": "Founder & CEO Nudyess"
+			},
+			{
+				"type": "richtext",
+				"id": "bio",
+				"label": "Bio",
+				"default": "<p>Sandra Do Manh ukończyła Technikum Odzieżowe w Warszawie. Po maturze i egzaminie zawodowym rozpoczęła praktyki u projektantki Anny Krzyżanowskiej, które zapoczątkowały jej karierę w branży mody.</p><p>W swojej pracy zdobyła doświadczenie przede wszystkim w technicznej stronie produkcji odzieży, od konstrukcji po wybór tkanin i szycie. Obecnie Founder i CEO marki NUDYESS.</p>"
+			},
+			{
+				"type": "select",
+				"id": "description_size",
+				"options": [
+					{ "value": "small", "label": "Small" },
+					{ "value": "large", "label": "Large" }
+				],
+				"default": "small",
+				"label": "Bio size"
+			},
+			{
+				"type": "url",
+				"id": "instagram_url",
+				"label": "Instagram",
+				"default": "https://www.instagram.com/sandradomanh/"
+			},
+			{
+				"type": "url",
+				"id": "linkedin_url",
+				"label": "LinkedIn",
+				"default": "https://www.linkedin.com/in/sandradomanh"
+			},
+			{
+				"type": "header",
+				"content": "Layout"
+			},
+			{
+				"type": "select",
+				"id": "desktop_image_width",
+				"options": [
+					{ "value": "small", "label": "Small" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "large", "label": "Large" }
+				],
+				"default": "medium",
+				"label": "Desktop image width"
+			},
+			{
+				"type": "checkbox",
+				"id": "full_width",
+				"label": "Make section full width",
+				"default": true
+			},
+			{
+				"type": "select",
+				"id": "layout",
+				"options": [
+					{ "value": "image_first", "label": "Image first" },
+					{ "value": "text_first", "label": "Image second" }
+				],
+				"default": "text_first",
+				"label": "Desktop image placement"
+			},
+			{
+				"type": "select",
+				"id": "content_position",
+				"label": "Desktop content alignment",
+				"options": [
+					{ "value": "text-left", "label": "Left" },
+					{ "value": "text-center", "label": "Center" },
+					{ "value": "text-right", "label": "Right" }
+				],
+				"default": "text-center"
+			},
+			{
+				"type": "select",
+				"id": "column_spacing",
+				"options": [
+					{ "value": "none", "label": "None" },
+					{ "value": "small", "label": "Small" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "large", "label": "Large" }
+				],
+				"default": "small",
+				"label": "Column spacing"
+			},
+			{
+				"type": "header",
+				"content": "Colors"
+			},
+			{
+				"type": "color",
+				"id": "color_bg",
+				"label": "Background",
+				"default": "#ffffff"
+			},
+			{
+				"type": "color",
+				"id": "color_text",
+				"label": "Text",
+				"default": "#151515"
+			},
+			{
+				"type": "header",
+				"content": "Spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"presets": [
+			{
+				"name": "Founder profile"
+			}
+		]
+  }
+{% endschema %}
