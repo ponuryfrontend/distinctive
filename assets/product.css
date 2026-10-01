@@ -234,7 +234,8 @@
   .variations .product-form__input--block {
     display: flex;
     align-items: center;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    padding-bottom: 4px; }
     .variations .product-form__input--block .form__label {
       width: auto;
       flex: 0 1 auto;
