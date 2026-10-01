@@ -182,6 +182,36 @@
 <script type="application/ld+json">
   {{ article | structured_data }}
 </script>
+{%- if template.name == 'article' -%}
+  {%- assign article_url = shop.url | append: article.url -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": {{ article_url | append: '#breadcrumb' | json }},
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": {{ shop.url | append: routes.root_url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ blog.title | strip | json }},
+          "item": {{ shop.url | append: blog.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ article.title | strip | json }},
+          "item": {{ article_url | json }}
+        }
+      ]
+    }
+  </script>
+{%- endif -%}
 {% schema %}
   {
 		"name": "Blog post",
