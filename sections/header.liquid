@@ -124,7 +124,10 @@
       "@type": "OnlineStore",
       "@id": {{ shop.url | append: "#organization" | json }},
       "name": {{ shop.name | json }},
-      "url": {{ shop.url | json }}{% if section.settings.logo %},
+      "url": {{ shop.url | json }},
+      "founder": {
+        "@id": "https://nudyess.com/#sandra-do-manh"
+      }{% if section.settings.logo %},
       "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }}{% endif %},
       "sameAs": [
         {%- assign first_social = true -%}

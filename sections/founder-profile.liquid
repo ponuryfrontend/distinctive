@@ -77,7 +77,10 @@
   "image": {{ schema_image_url | json }},
   "url": {{ person_url | json }},
   "worksFor": {
-    "@id": {{ shop.url | append: '#organization' | json }}
+    "@type": "OnlineStore",
+    "@id": {{ shop.url | append: '#organization' | json }},
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }}
   }{% if section.settings.instagram_url != blank or section.settings.linkedin_url != blank %},
   "sameAs": [
     {%- if section.settings.instagram_url != blank -%}{{ section.settings.instagram_url | json }}{%- endif -%}
