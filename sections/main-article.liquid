@@ -197,6 +197,10 @@
       "@id": {{ article_schema_url | json }}
     },
     "url": {{ article_schema_url | json }},
+    "isPartOf": {
+      "@id": {{ shop.url | append: '#website' | json }}
+    },
+    "inLanguage": {{ request.locale.iso_code | json }},
     "headline": {{ article.title | strip | json }},
     "description": {{ article_schema_description | json }},
     "articleBody": {{ article.content | replace: '</p>', ' </p>' | strip_html | strip_newlines | strip | json }}{% if article.image %},
@@ -257,6 +261,9 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "@id": {{ shop.url | append: article.url | append: '#faq' | json }},
+      "isPartOf": {
+        "@id": {{ article_schema_url | append: '#article' | json }}
+      },
       "mainEntity": {{ article.metafields.custom.seo_faq.value | json }}
     }
   </script>
