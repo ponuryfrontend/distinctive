@@ -43,8 +43,18 @@
   {%- for block in section.blocks -%}
     {%- case block.type -%}
     {%- when '@app' -%}
-      {%- if block.id contains 'review_avg_profile' -%}
-        <div class="product-information--rating-placeholder" style="min-height: 24px;">
+      {%- liquid
+        assign app_block_min_height = blank
+        if block.id contains 'review_avg_profile'
+          assign app_block_min_height = '24px'
+        elsif block.id contains 'fave_button'
+          assign app_block_min_height = '42px'
+        elsif block.id contains 'earn_points_widget'
+          assign app_block_min_height = '40px'
+        endif
+      -%}
+      {%- if app_block_min_height != blank -%}
+        <div class="product-information--app-placeholder" style="min-height: {{ app_block_min_height }};">
           {% render block %}
         </div>
       {%- else -%}
