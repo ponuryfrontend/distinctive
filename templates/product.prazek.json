@@ -77,16 +77,6 @@
             "color_swatches_margin_bottom_mobile": 20
           }
         },
-        "siblings_6ytCwm": {
-          "type": "siblings",
-          "disabled": true,
-          "settings": {
-            "siblings_collection": "{{ product.metafields.theme.siblings.value }}",
-            "sibling_color": "{{ product.metafields.theme.sibling_color.value }}",
-            "color_picker_size": "regular",
-            "margin_bottom": 20
-          }
-        },
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b": {
           "type": "variant_picker",
           "settings": {
@@ -290,7 +280,6 @@
         "7a9e8be1-39f0-4a96-a5e1-73e5fb457704",
         "sniffie_omnibus_pricing_omnibus_price_pUEPYR",
         "color_swatches_G8PL4C",
-        "siblings_6ytCwm",
         "7462a6a5-d06d-4b93-8c5c-4cc6f3a1349b",
         "inventory_level_iwYp9t",
         "pre_order_xF3DD4",
