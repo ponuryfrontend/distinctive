@@ -525,7 +525,7 @@
         "blog": "aktualnosci",
         "post_limit": 4,
         "columns_desktop": 4,
-        "mobile_swipe": true,
+        "mobile_swipe": false,
         "image_ratio": "portrait",
         "show_date": true,
         "show_excerpt": true,
