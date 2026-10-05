@@ -1055,6 +1055,16 @@
         },
         "selected_pickup_option_no_longer_available": {
           "ship_to_address_link": "shipping address"
+        },
+        "stock_details": {
+          "ship_separately": {
+            "few": "The items will be shipped separately.",
+            "many": "The items will be shipped separately."
+          },
+          "remove_items": {
+            "few": "The items will be removed from the order",
+            "many": "The items will be removed from the order"
+          }
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -1228,6 +1238,12 @@
         "gift_card_resend_button": {
           "few": "Resend gift cards",
           "many": "Resend gift cards"
+        },
+        "fulfillment_tracking": {
+          "gift_card_sent_to_recipient": {
+            "few": "Gift cards have been sent to the recipients.",
+            "many": "Gift cards have been sent to the recipients."
+          }
         }
       }
     },
