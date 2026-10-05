@@ -1,7 +1,6 @@
 {{ 'article.css' | asset_url | stylesheet_tag }}
 {%- liquid
-	assign collapsible_blocks = section.blocks | where: 'type', 'collapsible_tab'
-	assign collapsible_group_open = false
+	assign collapsible_blocks = section.blocks | where: 'type', 'collapsible_content'
 -%}
 {%- if collapsible_blocks.size > 0 -%}
 	{{- 'collapsible-content.css' | asset_url | stylesheet_tag -}}
@@ -31,35 +30,33 @@
 		<div class="small-12 columns">
 			<div class="page-content-width">
 			{% for block in section.blocks %}
-				{%- if collapsible_group_open and block.type != 'collapsible_tab' -%}
+				{% if block.type == 'collapsible_content' %}
+					<div class="collapsible-content collapsible-content--no-header article-collapsible heading-uppercase-{{ block.settings.uppercase_heading }}" {{ block.shopify_attributes }}>
+						{% render 'section-header', section_heading: block.settings.heading, section_description: block.settings.description %}
+						<div class="collapsible-content__inner">
+							{%- for i in (1..12) -%}
+								{%- liquid
+									assign row_heading_key = 'row_' | append: i | append: '_heading'
+									assign row_open_key = 'row_' | append: i | append: '_open'
+									assign row_content_key = 'row_' | append: i | append: '_content'
+									assign row_heading = block.settings[row_heading_key]
+								-%}
+								{%- if row_heading != blank -%}
+								<collapsible-row class="accordion">
+									<details id="Details-{{ block.id }}-{{ i }}-{{ section.id }}" {% if block.settings[row_open_key] %}open{% endif %}>
+										<summary>
+											{{ row_heading }}
+											<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
+										</summary>
+										<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ i }}-{{ section.id }}">
+											{{ block.settings[row_content_key] }}
+										</div>
+									</details>
+								</collapsible-row>
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
 					</div>
-					{%- assign collapsible_group_open = false -%}
-				{%- endif -%}
-				{% if block.type == 'collapsible_heading' %}
-					{%- if block.settings.heading != blank -%}
-						<h2 class="article-collapsible__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</h2>
-					{%- endif -%}
-				{% endif %}
-				{% if block.type == 'collapsible_tab' %}
-					{%- unless collapsible_group_open -%}
-						<div class="article-collapsible heading-uppercase-{{ section.settings.collapsible_uppercase_heading }}">
-						{%- assign collapsible_group_open = true -%}
-					{%- endunless -%}
-					{%- if block.settings.heading != blank or block.settings.page != blank -%}
-					<collapsible-row class="accordion" {{ block.shopify_attributes }}>
-						<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
-							<summary>
-								{{ block.settings.heading | default: block.settings.page.title }}
-								<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
-							</summary>
-							<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}">
-								{{ block.settings.content }}
-								{{ block.settings.page.content }}
-								{{ block.settings.custom_liquid }}
-							</div>
-						</details>
-					</collapsible-row>
-					{%- endif -%}
 				{% endif %}
 				{% if block.type == '@app' %}
 					{% render block %}
@@ -137,9 +134,6 @@
 					{% endif %}
 				{% endif %}
 			{% endfor %}
-			{%- if collapsible_group_open -%}
-				</div>
-			{%- endif -%}
 			</div>
 		</div>
 	</div>
@@ -341,16 +335,6 @@
 				"id": "article_show_author",
 				"label": "Show author",
 				"default": true
-			},
-			{
-				"type": "header",
-				"content": "Collapsible content"
-			},
-			{
-				"type": "checkbox",
-				"id": "collapsible_uppercase_heading",
-				"default": true,
-				"label": "Make collapsible row headings uppercase"
 			}
     ],
 		"blocks": [
@@ -388,8 +372,8 @@
 	      "limit": 1
       },
 			{
-				"type": "collapsible_heading",
-				"name": "Collapsible heading",
+				"type": "collapsible_content",
+				"name": "Collapsible content",
 				"settings": [
 					{
 						"type": "text",
@@ -399,50 +383,259 @@
 						"info": "Wrap your text between | to use body font. For example: Heading |continued|"
 					},
 					{
-						"type": "select",
-						"id": "heading_size",
-						"options": [
-							{ "value": "h2", "label": "Large" },
-							{ "value": "h3", "label": "Medium" },
-							{ "value": "h4", "label": "Small" }
-						],
-						"default": "h3",
-						"label": "Heading size"
-					}
-				]
-			},
-			{
-				"type": "collapsible_tab",
-				"name": "Collapsible row",
-				"settings": [
-					{
-						"type": "text",
-						"id": "heading",
-						"default": "Collapsible row",
-						"info": "Include a heading that explains the content.",
-						"label": "Heading"
+						"type": "richtext",
+						"id": "description",
+						"label": "Description"
 					},
 					{
 						"type": "checkbox",
-						"id": "open",
+						"id": "uppercase_heading",
+						"default": true,
+						"label": "Make tab headings uppercase"
+					},
+					{
+						"type": "paragraph",
+						"content": "Rows without a heading are hidden."
+					},
+					{
+						"type": "header",
+						"content": "Row 1"
+					},
+					{
+						"type": "text",
+						"id": "row_1_heading",
+						"label": "Heading", "default": "Collapsible row"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_1_open",
 						"default": false,
 						"label": "Open by default"
 					},
 					{
 						"type": "richtext",
-						"id": "content",
+						"id": "row_1_content",
 						"label": "Row content"
 					},
 					{
-						"type": "page",
-						"id": "page",
-						"label": "Row content from page"
+						"type": "header",
+						"content": "Row 2"
 					},
 					{
-						"type": "liquid",
-						"id": "custom_liquid",
-						"label": "Custom liquid",
-						"info": "Add app snippets or other Liquid code to create advanced customizations."
+						"type": "text",
+						"id": "row_2_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_2_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_2_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 3"
+					},
+					{
+						"type": "text",
+						"id": "row_3_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_3_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_3_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 4"
+					},
+					{
+						"type": "text",
+						"id": "row_4_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_4_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_4_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 5"
+					},
+					{
+						"type": "text",
+						"id": "row_5_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_5_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_5_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 6"
+					},
+					{
+						"type": "text",
+						"id": "row_6_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_6_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_6_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 7"
+					},
+					{
+						"type": "text",
+						"id": "row_7_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_7_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_7_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 8"
+					},
+					{
+						"type": "text",
+						"id": "row_8_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_8_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_8_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 9"
+					},
+					{
+						"type": "text",
+						"id": "row_9_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_9_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_9_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 10"
+					},
+					{
+						"type": "text",
+						"id": "row_10_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_10_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_10_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 11"
+					},
+					{
+						"type": "text",
+						"id": "row_11_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_11_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_11_content",
+						"label": "Row content"
+					},
+					{
+						"type": "header",
+						"content": "Row 12"
+					},
+					{
+						"type": "text",
+						"id": "row_12_heading",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "row_12_open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "row_12_content",
+						"label": "Row content"
 					}
 				]
 			}
