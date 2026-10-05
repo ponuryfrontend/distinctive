@@ -63,6 +63,23 @@
         "disable_bottom_spacing": false
       }
     },
+    "featured_collection_jT7hqK": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "heading": "Balaclavy od Nudyess",
+        "description": "<p>Dowiedz się więcej o naszych trzech flagowych balaclavach:</p>",
+        "collection": "balaclava-damska",
+        "display_type": "grid",
+        "product_limit": 3,
+        "columns_desktop": 3,
+        "show_view_all": false,
+        "mobile_swipe": false,
+        "show_progress_bar": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "blog_content_jgXw8m": {
       "type": "blog-content",
       "name": "Blog content",
@@ -209,6 +226,7 @@
     "blog_post_header_X4WwjH",
     "main-article",
     "blog_content_7MMNfX",
+    "featured_collection_jT7hqK",
     "blog_content_jgXw8m",
     "collapsible_content_fG9Htt",
     "blog_footer_dm3wTw",
