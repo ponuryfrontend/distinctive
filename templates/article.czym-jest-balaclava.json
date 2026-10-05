@@ -12,6 +12,10 @@
     "main-article": {
       "type": "main-article",
       "blocks": {
+        "share_iEFp4q": {
+          "type": "share",
+          "settings": {}
+        },
         "content": {
           "type": "content",
           "settings": {}
@@ -26,6 +30,7 @@
         }
       },
       "block_order": [
+        "share_iEFp4q",
         "content",
         "tags",
         "post_navigation"
@@ -92,7 +97,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Czy w modowej balaclavie twarz jest zakryta?",
-            "open": false,
+            "open": true,
             "content": "<p>Nie. Modowe balaclavy, w tym wiązany komin Nudyess, odsłaniają cały owal twarzy, a osłaniają głowę, uszy i szyję. Modele z otworami tylko na oczy to wersje techniczne, przeznaczone do sportów zimowych i pracy na mrozie.</p>",
             "page": "",
             "custom_liquid": ""
@@ -131,11 +136,22 @@
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
       "settings": {}
+    },
+    "spacer_gtBBpY": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 20,
+        "spacer_desktop": 30,
+        "border_separator": false,
+        "border_separator_full": false
+      }
     }
   },
   "order": [
     "main-article",
     "collapsible_content_fG9Htt",
-    "breadcrumbs_Tj7iPe"
+    "breadcrumbs_Tj7iPe",
+    "spacer_gtBBpY"
   ]
 }
