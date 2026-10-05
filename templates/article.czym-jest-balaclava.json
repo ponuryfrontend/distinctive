@@ -9,15 +9,27 @@
  */
 {
   "sections": {
+    "blog_content_7MMNfX": {
+      "type": "blog-content",
+      "name": "Blog content",
+      "settings": {
+        "html": "",
+        "narrow_width": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "main-article": {
       "type": "main-article",
       "blocks": {
         "share_iEFp4q": {
           "type": "share",
+          "disabled": true,
           "settings": {}
         },
         "content": {
           "type": "content",
+          "disabled": true,
           "settings": {}
         },
         "tags": {
@@ -149,6 +161,7 @@
     }
   },
   "order": [
+    "blog_content_7MMNfX",
     "main-article",
     "collapsible_content_fG9Htt",
     "breadcrumbs_Tj7iPe",
