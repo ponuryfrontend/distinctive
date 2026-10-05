@@ -35,6 +35,98 @@
         "article_show_author": true
       }
     },
+    "collapsible_content_fG9Htt": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_tab_9WhFgd": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dlaczego balaclavę nazywa się kominiarką?",
+            "open": true,
+            "content": "<p>Kominiarka to tradycyjne polskie określenie tego samego nakrycia głowy, które osłania głowę, uszy i szyję. Jego pochodzenie nie jest jednoznacznie udokumentowane: najczęściej łączy się je z kominiarzem, a w modzie także ze słowem komin, oznaczającym szal w formie tuby. Dziś kominiarka częściej kojarzy się z wersją sportową, a balaclava z modową, odsłaniającą twarz.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_PWfVLw": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Skąd pochodzi nazwa balaclava?",
+            "open": true,
+            "content": "<p>Od Bałakławy, miasteczka na Krymie, gdzie w 1854 roku podczas wojny krymskiej rozegrała się bitwa pod Bałakławą. Brytyjscy żołnierze cierpieli wtedy z zimna, a w kraju robiono dla nich na drutach ciepłe osłony głowy. Sama nazwa balaclava pojawia się w druku dopiero pod koniec XIX wieku, więc popularna historia o żołnierzach noszących balaclavy w czasie bitwy jest uproszczeniem.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_FFtUx6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Jak się poprawnie pisze: balaclava czy balaklawa?",
+            "open": true,
+            "content": "<p>Obie formy są w użyciu. Balaclava to zapis angielski, dziś najczęściej spotykany w modzie i w sklepach. Balaklawa to forma spolszczona, zapisana zgodnie z wymową. Tradycyjnym polskim określeniem tej samej rzeczy jest kominiarka.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Ub9nER": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy baklava to to samo co balaclava?",
+            "open": true,
+            "content": "<p>Nie. Baklava, po polsku baklawa, to słodki deser z ciasta filo, orzechów i syropu, znany z kuchni tureckiej i bliskowschodniej. Balaclava to nakrycie głowy. Słowa brzmią podobnie, dlatego często się je myli, także w wyszukiwarkach.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_UdgPpM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czym różni się balaclava modowa od narciarskiej?",
+            "open": true,
+            "content": "<p>Narciarska kominiarka jest zwykle cienka i przylegająca, często syntetyczna lub z cienkiej wełny merino, i zakrywa większą część twarzy, tak żeby zmieściła się pod kaskiem. Modowa balaclava jest z grubszej, miękkiej dzianiny, odsłania całą twarz i ma być dodatkiem do płaszcza lub kurtki, a nie elementem sprzętu sportowego.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_cnbdpY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy w modowej balaclavie twarz jest zakryta?",
+            "open": false,
+            "content": "<p>Nie. Modowe balaclavy, w tym wiązany komin Nudyess, odsłaniają cały owal twarzy, a osłaniają głowę, uszy i szyję. Modele z otworami tylko na oczy to wersje techniczne, przeznaczone do sportów zimowych i pracy na mrozie.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_VXXe3K": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Czy balaclavę nosi się tylko zimą?",
+            "open": true,
+            "content": "<p>Najczęściej tak, ale nie tylko. Modele wełniane sprawdzają się od późnej jesieni do przedwiośnia, szczególnie w wietrzne dni. Cieńsze balaclavy, na przykład bawełniane, można nosić też w chłodne dni przejściowe. Model wiązany łatwo poluzować, więc dobrze sprawdza się, gdy temperatura zmienia się w ciągu dnia.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_9WhFgd",
+        "collapsible_tab_PWfVLw",
+        "collapsible_tab_FFtUx6",
+        "collapsible_tab_Ub9nER",
+        "collapsible_tab_UdgPpM",
+        "collapsible_tab_cnbdpY",
+        "collapsible_tab_VXXe3K"
+      ],
+      "name": "Collapsible content",
+      "settings": {
+        "heading": "|Najczęściej zadawane pytania o balaclavę i jej nazwę:|",
+        "description": "",
+        "uppercase_heading": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "breadcrumbs_Tj7iPe": {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
@@ -43,6 +135,7 @@
   },
   "order": [
     "main-article",
+    "collapsible_content_fG9Htt",
     "breadcrumbs_Tj7iPe"
   ]
 }
