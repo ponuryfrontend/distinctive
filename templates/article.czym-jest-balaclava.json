@@ -39,21 +39,10 @@
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
       "settings": {}
-    },
-    "spacer_fCGxgN": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 50,
-        "spacer_desktop": 100,
-        "border_separator": false,
-        "border_separator_full": false
-      }
     }
   },
   "order": [
     "main-article",
-    "breadcrumbs_Tj7iPe",
-    "spacer_fCGxgN"
+    "breadcrumbs_Tj7iPe"
   ]
 }
