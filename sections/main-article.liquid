@@ -140,7 +140,7 @@
 		</div>
 	</div>
 </article>
-{% if blog.comments_enabled? %}
+{% if blog.comments_enabled? and section.settings.article_show_comments %}
 	{{ 'comments.css' | asset_url | stylesheet_tag }}
 	<div class="row">
 		<div class="small-12 columns">
@@ -343,6 +343,13 @@
 				"type": "checkbox",
 				"id": "article_show_author",
 				"label": "Show author",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_comments",
+				"label": "Show comments",
+				"info": "Turn off when the Blog Footer section shows the comments.",
 				"default": true
 			}
     ],
