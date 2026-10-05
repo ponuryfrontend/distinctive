@@ -89,7 +89,7 @@
           "type": "button",
           "settings": {
             "button_text": "Zobacz kolekcję balaclav",
-            "button_link": "shopify://collections/balaclava-damska",
+            "button_link": "https://nudyess.com/collections/balaclava-damska?utm_source=blog&utm_medium=article&utm_campaign=what_is_balaclava&utm_content=collection_button",
             "button_outline": false
           }
         }
@@ -109,9 +109,9 @@
         "frame_border": false,
         "content_position": "text-left",
         "split_layout": "image_first",
-        "color_bg": "#FAF8F6",
-        "color_text": "#301C18",
-        "overlay_color": "#301C18",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
+        "overlay_color": "#301c18",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
