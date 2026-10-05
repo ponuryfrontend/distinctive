@@ -208,3 +208,14 @@
       left: 50%; }
   .clipboard-success .clipboard--bubble {
     opacity: 1; }
+
+.article-collapsible {
+  margin-bottom: 30px; }
+  .article-collapsible.heading-uppercase-true .accordion summary {
+    text-transform: uppercase; }
+  .article-collapsible .accordion:last-child {
+    margin-bottom: 0; }
+
+.article-collapsible__heading {
+  margin-top: 40px;
+  margin-bottom: 15px; }

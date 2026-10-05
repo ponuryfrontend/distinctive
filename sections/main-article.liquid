@@ -1,4 +1,11 @@
 {{ 'article.css' | asset_url | stylesheet_tag }}
+{%- liquid
+	assign collapsible_blocks = section.blocks | where: 'type', 'collapsible_tab'
+	assign collapsible_group_open = false
+-%}
+{%- if collapsible_blocks.size > 0 -%}
+	{{- 'collapsible-content.css' | asset_url | stylesheet_tag -}}
+{%- endif -%}
 <article class="blog-post-detail section-spacing-bottom">
 	<div class="featured-image" {{ block.shopify_attributes }}>
 		{%- liquid
@@ -24,6 +31,36 @@
 		<div class="small-12 columns">
 			<div class="page-content-width">
 			{% for block in section.blocks %}
+				{%- if collapsible_group_open and block.type != 'collapsible_tab' -%}
+					</div>
+					{%- assign collapsible_group_open = false -%}
+				{%- endif -%}
+				{% if block.type == 'collapsible_heading' %}
+					{%- if block.settings.heading != blank -%}
+						<h2 class="article-collapsible__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.heading | replace_first: '|', '<span class="body-font">' | replace: '|', '</span>' }}</h2>
+					{%- endif -%}
+				{% endif %}
+				{% if block.type == 'collapsible_tab' %}
+					{%- unless collapsible_group_open -%}
+						<div class="article-collapsible heading-uppercase-{{ section.settings.collapsible_uppercase_heading }}">
+						{%- assign collapsible_group_open = true -%}
+					{%- endunless -%}
+					{%- if block.settings.heading != blank or block.settings.page != blank -%}
+					<collapsible-row class="accordion" {{ block.shopify_attributes }}>
+						<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
+							<summary>
+								{{ block.settings.heading | default: block.settings.page.title }}
+								<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
+							</summary>
+							<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}">
+								{{ block.settings.content }}
+								{{ block.settings.page.content }}
+								{{ block.settings.custom_liquid }}
+							</div>
+						</details>
+					</collapsible-row>
+					{%- endif -%}
+				{% endif %}
 				{% if block.type == '@app' %}
 					{% render block %}
 				{% endif %}
@@ -100,6 +137,9 @@
 					{% endif %}
 				{% endif %}
 			{% endfor %}
+			{%- if collapsible_group_open -%}
+				</div>
+			{%- endif -%}
 			</div>
 		</div>
 	</div>
@@ -301,6 +341,16 @@
 				"id": "article_show_author",
 				"label": "Show author",
 				"default": true
+			},
+			{
+				"type": "header",
+				"content": "Collapsible content"
+			},
+			{
+				"type": "checkbox",
+				"id": "collapsible_uppercase_heading",
+				"default": true,
+				"label": "Make collapsible row headings uppercase"
 			}
     ],
 		"blocks": [
@@ -336,7 +386,66 @@
         "type": "post_navigation",
         "name": "Article navigation",
 	      "limit": 1
-      }
+      },
+			{
+				"type": "collapsible_heading",
+				"name": "Collapsible heading",
+				"settings": [
+					{
+						"type": "text",
+						"id": "heading",
+						"label": "Heading",
+						"default": "Collapsible |content|",
+						"info": "Wrap your text between | to use body font. For example: Heading |continued|"
+					},
+					{
+						"type": "select",
+						"id": "heading_size",
+						"options": [
+							{ "value": "h2", "label": "Large" },
+							{ "value": "h3", "label": "Medium" },
+							{ "value": "h4", "label": "Small" }
+						],
+						"default": "h3",
+						"label": "Heading size"
+					}
+				]
+			},
+			{
+				"type": "collapsible_tab",
+				"name": "Collapsible row",
+				"settings": [
+					{
+						"type": "text",
+						"id": "heading",
+						"default": "Collapsible row",
+						"info": "Include a heading that explains the content.",
+						"label": "Heading"
+					},
+					{
+						"type": "checkbox",
+						"id": "open",
+						"default": false,
+						"label": "Open by default"
+					},
+					{
+						"type": "richtext",
+						"id": "content",
+						"label": "Row content"
+					},
+					{
+						"type": "page",
+						"id": "page",
+						"label": "Row content from page"
+					},
+					{
+						"type": "liquid",
+						"id": "custom_liquid",
+						"label": "Custom liquid",
+						"info": "Add app snippets or other Liquid code to create advanced customizations."
+					}
+				]
+			}
     ]
   }
 {% endschema %}
