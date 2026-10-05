@@ -1,0 +1,72 @@
+{{ 'article.css' | asset_url | stylesheet_tag }}
+{%- liquid
+	assign header_image = section.settings.image | default: article.image
+	assign header_title = section.settings.title | default: article.title
+-%}
+<div class="blog-post-detail blog-post-header">
+	<div class="featured-image">
+		{%- if header_image != blank -%}
+			{%- liquid
+				assign master_width = header_image.width | append: 'x' | append: header_image.height
+			-%}
+			{%- render 'responsive-image', image: header_image, sizes: master_width -%}
+		{%- endif -%}
+
+		<div class="post-title page-content-width">
+			{%- if article -%}
+			<div class="post-meta-wrapper">
+				{% if section.settings.article_show_date %}
+				<aside class="post-meta">
+					{{ article.published_at | time_tag: '%b %d, %Y' }}
+				</aside>
+				{% endif %}
+				{% if section.settings.article_show_author %}
+				<aside class="post-author">{{ article.author }}</aside>
+				{% endif %}
+			</div>
+			{%- endif -%}
+			<h1 class="entry-title">{{ header_title }}</h1>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Blog Post Header",
+		"class": "section-blog-post-header",
+    "settings": [
+			{
+				"type": "paragraph",
+				"content": "Shows the article image, date, author and title. Place it as the first section of a blog post template and turn off the header in the Blog post section."
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image",
+				"info": "Optional. Overrides the article featured image."
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Title",
+				"info": "Optional. Overrides the article title."
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_date",
+				"label": "Show date",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_author",
+				"label": "Show author",
+				"default": true
+			}
+    ],
+		"presets": [
+			{
+				"name": "Blog Post Header"
+			}
+		]
+  }
+{% endschema %}

@@ -6,6 +6,7 @@
 	{{- 'collapsible-content.css' | asset_url | stylesheet_tag -}}
 {%- endif -%}
 <article class="blog-post-detail section-spacing-bottom">
+	{%- if section.settings.article_show_header -%}
 	<div class="featured-image" {{ block.shopify_attributes }}>
 		{%- liquid
 			assign master_width = article.image.width | append: 'x' | append: article.image.height
@@ -26,6 +27,7 @@
 			<h1 class="entry-title">{{ article.title }}</h1>
 		</div>
 	</div>
+	{%- endif -%}
 	<div class="row">
 		<div class="small-12 columns">
 			<div class="page-content-width">
@@ -323,6 +325,13 @@
 			{
 				"type": "header",
 				"content": "Settings"
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_header",
+				"label": "Show header (image, date, author, title)",
+				"info": "Turn off when the Blog Post Header section is used.",
+				"default": true
 			},
 			{
 				"type": "checkbox",
