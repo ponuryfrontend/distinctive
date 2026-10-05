@@ -211,3 +211,8 @@
 
 .article-collapsible {
   margin-bottom: 30px; }
+
+.blog-content.blog-post-detail {
+  margin-bottom: 0; }
+  .blog-content.blog-post-detail .post-content {
+    margin-bottom: 0; }

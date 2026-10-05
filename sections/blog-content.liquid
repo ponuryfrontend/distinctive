@@ -1,0 +1,59 @@
+{{ 'article.css' | asset_url | stylesheet_tag }}
+{%- liquid
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+{%- if section.settings.html != blank -%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="blog-post-detail blog-content section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+			<div class="{% if section.settings.narrow_width %}page-content-width{% endif %}">
+				<div class="post-content rte">
+					{{ section.settings.html }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Blog content",
+		"class": "section-blog-content",
+    "settings": [
+			{
+				"type": "html",
+				"id": "html",
+				"label": "HTML",
+				"info": "Paste the HTML of the text. It renders as formatted article content."
+			},
+			{
+				"type": "checkbox",
+				"id": "narrow_width",
+				"default": true,
+				"label": "Use article content width"
+			},
+			{
+				"type": "header",
+				"content": "Spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"presets": [
+			{
+				"name": "Blog content"
+			}
+		]
+  }
+{% endschema %}
