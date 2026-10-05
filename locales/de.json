@@ -723,6 +723,16 @@
         "location_far_away_other_items": {
           "few": "Standorte mit Ihren Einträgen: %{count}",
           "many": "Standorte mit Ihren Einträgen: %{count}"
+        },
+        "stock_details": {
+          "ship_separately": {
+            "few": "Die Positionen werden separat versandt.",
+            "many": "Die Positionen werden separat versandt."
+          },
+          "remove_items": {
+            "few": "Die Positionen werden aus der Bestellung gelöscht.",
+            "many": "Die Positionen werden aus der Bestellung gelöscht."
+          }
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -1207,6 +1217,12 @@
         "gift_card_resend_button": {
           "few": "Geschenkkarten erneut senden",
           "many": "Geschenkkarten erneut senden"
+        },
+        "fulfillment_tracking": {
+          "gift_card_sent_to_recipient": {
+            "few": "Die Geschenkkarten wurden an die Empfänger versandt.",
+            "many": "Die Geschenkkarten wurden an die Empfänger versandt."
+          }
         }
       }
     },
