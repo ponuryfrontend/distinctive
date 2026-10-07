@@ -524,7 +524,7 @@
         "name": "Sandra Do Manh",
         "heading_size": "h3",
         "job_title": "Founder & CEO Nudyess",
-        "bio": "<p>Sandra Do Manh ukończyła Technikum Odzieżowe w Warszawie. Po maturze i egzaminie zawodowym rozpoczęła praktyki u projektantki Anny Krzyżanowskiej, które zapoczątkowały jej karierę w branży mody.</p><p>W swojej pracy zdobyła doświadczenie przede wszystkim w technicznej stronie produkcji odzieży, od konstrukcji po wybór tkanin i szycie. Obecnie Founder i CEO marki NUDYESS.</p>",
+        "bio": "<p>Sandra Do Manh ukończyła Technikum Odzieżowe w Warszawie. Po maturze i zdaniu egzaminu zawodowego rozpoczęła praktyki u warszawskiej projektantki mody, które stały się początkiem jej zawodowej drogi w branży.</p><p>W swojej pracy zdobyła doświadczenie przede wszystkim w technicznej stronie produkcji odzieży - od projektowania, &nbsp;konstrukcji, przez dobór tkanin a także kontakt ze szwalniami. Obecnie jest Founderem i Dyrektorem Kreatywnym marki NUDYESS.</p>",
         "description_size": "small",
         "instagram_url": "https://www.instagram.com/sandradomanh/",
         "linkedin_url": "https://www.linkedin.com/in/sandradomanh",
@@ -533,10 +533,10 @@
         "layout": "text_first",
         "content_position": "text-center",
         "column_spacing": "small",
-        "color_bg": "#FAF8F6",
-        "color_text": "#301C18",
+        "color_bg": "#faf8f6",
+        "color_text": "#301c18",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
       }
     },
     "featured_blog_LJxRrL": {
