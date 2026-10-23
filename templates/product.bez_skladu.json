@@ -3,6 +3,7 @@
 		"main": {
 			"type": "main-product",
 			"blocks": {
+				"collapsible_tab_iJTc83": {"type": "collapsible_tab", "settings": {"heading": "Zwroty i wymiany", "heading_font_size_desktop": 13, "heading_font_size_mobile": 13, "heading_case": "uppercase", "open": false, "content": "<p><strong>Zwracany produkt nie może nosić śladów użytkowania oraz powinien posiadać wszystkie dołączone metki.&nbsp;</strong></p><p>Na zgłoszenie rezygnacji z każdego produktu zakupionego w naszym sklepie online masz 14 dni kalendarzowych od daty otrzymania przesyłki z zamówieniem. Przesyłkę zwrotną nadaj na własny koszt.</p><p>Środki pieniężne zwrócimy Ci w ciągu 14 dni kalendarzowych od otrzymania Twojego zwrotu.</p><p>Więcej informacji: <a href=\"https://nudyess.com/pages/zwroty\" title=\"https://nudyess.com/pages/zwroty\">Zwroty i wymiany</a></p>", "page": "", "custom_liquid": ""}},
 				"ed7d166d-5568-4e1a-9c05-eeffaad02629": { "type": "label", "settings": {} },
 				"7a9e8be1-39f0-4a96-a5e1-73e5fb457704": {
 					"type": "title",
@@ -131,7 +132,8 @@
 				"side_panel_PgPAFz",
 				"a9bc54b3-69df-483b-8561-10c1c4f6caac",
 				"collapsible_tab_MrtDzH",
-				"collapsible_tab_UXbKiJ"
+				"collapsible_tab_UXbKiJ",
+				"collapsible_tab_iJTc83"
 			],
 			"settings": {
 				"enable_sticky_add_to_cart": true,
