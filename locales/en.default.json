@@ -724,6 +724,10 @@
         "split_shipping_shipment_count_notice_one_time_purchase": {
           "few": "Your order will arrive in %{count} shipments",
           "many": "Your order will arrive in %{count} shipments"
+        },
+        "split_shipping_arrives_in_shipments": {
+          "few": "Will arrive in %{count} shipments",
+          "many": "Will arrive in %{count} shipments"
         }
       },
       "payment": {
@@ -774,6 +778,9 @@
               "many": "%{count} days"
             }
           }
+        },
+        "shop_pay_hsa": {
+          "pay_button_label": "Go to the health survey"
         }
       },
       "shipping_errors": {
@@ -1064,6 +1071,34 @@
           "remove_items": {
             "few": "The items will be removed from the order",
             "many": "The items will be removed from the order"
+          }
+        },
+        "unavailable_item_count": {
+          "few": "%{count} items unavailable",
+          "many": "%{count} items unavailable"
+        },
+        "ship_separately_notice": {
+          "few": "%{count} item(s) will be shipped separately",
+          "many": "%{count} item(s) will be shipped separately"
+        },
+        "stock_details_modal": {
+          "can_ship_description": {
+            "few": "The stock of these items at the selected pickup location has been depleted.",
+            "many": "The stock of these items at the selected pickup location has been depleted."
+          },
+          "cannot_ship_description": {
+            "few": "The stock of these items at the selected pickup location has been depleted and they cannot be shipped.",
+            "many": "The stock of these items at the selected pickup location has been depleted and they cannot be shipped."
+          }
+        },
+        "stock_details_banner": {
+          "heading": {
+            "few": "%{count} items are not available for pickup at %{location}",
+            "many": "%{count} items are not available for pickup at %{location}"
+          },
+          "ship_separately": {
+            "few": "send them separately",
+            "many": "send them separately"
           }
         }
       },
@@ -1381,6 +1416,36 @@
       "store_credit_multi_currency_accessibility_label": {
         "few": "{{formattedBalance}} store credit and in {{count}} other currencies",
         "many": "{{formattedBalance}} store credit and in {{count}} other currencies"
+      }
+    },
+    "returns_and_cancellations": {
+      "request_withdrawal_page": {
+        "review_changes_modal": {
+          "items_to_cancel": {
+            "few": "{{count}} items to cancel",
+            "many": "{{count}} items to cancel"
+          },
+          "items_to_return": {
+            "few": "{{count}} items to return",
+            "many": "{{count}} items to return"
+          }
+        },
+        "line_items": {
+          "ineligible_items": {
+            "few": "{{count}} ineligible items",
+            "many": "{{count}} ineligible items"
+          }
+        }
+      },
+      "estimated_refund_summary_card": {
+        "subtotal_with_count": {
+          "few": "Subtotal · {{count}} items",
+          "many": "Subtotal · {{count}} items"
+        },
+        "item_selected": {
+          "few": "{{count}} items",
+          "many": "{{count}} items"
+        }
       }
     }
   },
