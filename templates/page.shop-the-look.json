@@ -64,6 +64,73 @@
         "disable_bottom_spacing": true
       }
     },
+    "featured_product_MzbCrE": {
+      "type": "featured-product",
+      "blocks": {
+        "title_wDpADq": {
+          "type": "title",
+          "settings": {
+            "uppercase": false,
+            "title_font_size_desktop": 0,
+            "title_font_size_mobile": 0,
+            "title_font_desktop": "",
+            "title_font_desktop_picker": "archivo_narrow_n4",
+            "title_font_mobile": "",
+            "title_font_mobile_picker": "archivo_narrow_n4",
+            "title_case_desktop": "",
+            "title_case_mobile": "",
+            "title_margin_top_desktop": 0,
+            "title_margin_bottom_desktop": 0,
+            "title_margin_top_mobile": 0,
+            "title_margin_bottom_mobile": 0,
+            "show_products_rating": true,
+            "show_custom_badges": true
+          }
+        },
+        "variant_picker_BfHeaQ": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_size": "regular",
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "buy_buttons_yXddQ6": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "outline_button": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "title_wDpADq",
+        "variant_picker_BfHeaQ",
+        "buy_buttons_yXddQ6"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "product": "eos-prazkowany-top-basic-z-dlugim-rekawem-chocolate",
+        "show_taxes_included": false,
+        "enable_sticky_info": false,
+        "display_slider_pagination": true,
+        "media_aspect_ratio": "adapt",
+        "display_captions": false,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "featured_product_iJcBfV": {
       "type": "featured-product",
       "blocks": {
@@ -168,73 +235,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "featured_product_MzbCrE": {
-      "type": "featured-product",
-      "blocks": {
-        "title_wDpADq": {
-          "type": "title",
-          "settings": {
-            "uppercase": false,
-            "title_font_size_desktop": 0,
-            "title_font_size_mobile": 0,
-            "title_font_desktop": "",
-            "title_font_desktop_picker": "archivo_narrow_n4",
-            "title_font_mobile": "",
-            "title_font_mobile_picker": "archivo_narrow_n4",
-            "title_case_desktop": "",
-            "title_case_mobile": "",
-            "title_margin_top_desktop": 0,
-            "title_margin_bottom_desktop": 0,
-            "title_margin_top_mobile": 0,
-            "title_margin_bottom_mobile": 0,
-            "show_products_rating": true,
-            "show_custom_badges": true
-          }
-        },
-        "variant_picker_BfHeaQ": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "color_picker": true,
-            "color_picker_size": "regular",
-            "color_picker_use_variants": false,
-            "variant_is_disabled": true,
-            "sizing_guide_variant": "Size",
-            "sizing_guide_text": "Sizing guide",
-            "sizing_guide_icon": "ruler",
-            "sizing_guide_page": ""
-          }
-        },
-        "buy_buttons_yXddQ6": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_quantity_selector": true,
-            "outline_button": true,
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        }
-      },
-      "block_order": [
-        "title_wDpADq",
-        "variant_picker_BfHeaQ",
-        "buy_buttons_yXddQ6"
-      ],
-      "name": "Featured product",
-      "settings": {
-        "product": "eos-prazkowany-top-basic-z-dlugim-rekawem-chocolate",
-        "show_taxes_included": false,
-        "enable_sticky_info": false,
-        "display_slider_pagination": true,
-        "media_aspect_ratio": "adapt",
-        "display_captions": false,
-        "hide_variants": false,
-        "lightbox": true,
-        "enable_video_looping": false,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "shop_the_look_RUX7kX": {
       "type": "shop-the-look",
       "blocks": {
@@ -295,9 +295,9 @@
     "spacer_pAh8zT",
     "main",
     "shop_the_look_KM3BUF",
-    "featured_product_iJcBfV",
-    "shop_the_look_pV8tHU",
     "featured_product_MzbCrE",
+    "shop_the_look_pV8tHU",
+    "featured_product_iJcBfV",
     "shop_the_look_RUX7kX",
     "video_JHXyLg",
     "breadcrumbs_kPkfD6"
