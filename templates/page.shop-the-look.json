@@ -131,8 +131,8 @@
       ],
       "name": "Shop the look",
       "settings": {
-        "image": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-desktop-2.jpg",
-        "image_mobile": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-mobile-2.jpg",
+        "image": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-desktop.jpg",
+        "image_mobile": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-mobile.jpg",
         "full_width": true,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
