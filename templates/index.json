@@ -31,7 +31,7 @@
             "description_size": "medium",
             "description_font_size_desktop": 0,
             "description_font_size_mobile": 0,
-            "content_position": "bottom-right",
+            "content_position": "bottom-center",
             "text_alignment": "center",
             "content_size": "medium",
             "color_text": "#ffffff",
