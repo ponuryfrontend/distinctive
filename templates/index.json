@@ -35,7 +35,7 @@
             "text_alignment": "center",
             "content_size": "medium",
             "color_text": "#ffffff",
-            "overlay_color": "#000000",
+            "overlay_color": "rgba(0,0,0,0)",
             "overlay_opacity": 0,
             "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
             "button_1_text": "",
