@@ -19,11 +19,6 @@
         "border_separator_full": false
       }
     },
-    "breadcrumbs_kPkfD6": {
-      "type": "breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
-    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -31,11 +26,68 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
+    },
+    "shop_the_look_KM3BUF": {
+      "type": "shop-the-look",
+      "blocks": {
+        "product_CQPbyq": {
+          "type": "product",
+          "settings": {
+            "product_handle": "canvas-prazkowane-spodnie-o-luznym-kroju-z-kieszeniami-czekoladowe",
+            "x_position": 43,
+            "y_position": 73,
+            "x_position_mobile": 30,
+            "y_position_mobile": 73
+          }
+        },
+        "product_KXbWEx": {
+          "type": "product",
+          "settings": {
+            "product_handle": "eos-prazkowany-top-basic-z-dlugim-rekawem-chocolate",
+            "x_position": 48,
+            "y_position": 45,
+            "x_position_mobile": 46,
+            "y_position_mobile": 53
+          }
+        }
+      },
+      "block_order": [
+        "product_CQPbyq",
+        "product_KXbWEx"
+      ],
+      "name": "Shop the look",
+      "settings": {
+        "image": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-desktop-2.jpg",
+        "image_mobile": "shopify://shop_images/wygodny-zestaw-na-jesien-spodnie-i-top-czekoladowy-mobile-2.jpg",
+        "full_width": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "video_JHXyLg": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "full_width": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/GETCOMFY.hevc.mp4",
+        "video_autoplay": true,
+        "aspect_ratio": "16-9",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "breadcrumbs_kPkfD6": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "spacer_pAh8zT",
-    "breadcrumbs_kPkfD6",
-    "main"
+    "main",
+    "shop_the_look_KM3BUF",
+    "video_JHXyLg",
+    "breadcrumbs_kPkfD6"
   ]
 }
