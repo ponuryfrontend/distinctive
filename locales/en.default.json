@@ -1287,6 +1287,10 @@
         "load_more_items": {
           "few": "Load {{count}} more items",
           "many": "Load {{count}} more items"
+        },
+        "additional_items": {
+          "few": "+ {{count}} additional items",
+          "many": "+ {{count}} additional items"
         }
       },
       "subtotal_label_with_quantity": {
@@ -1296,7 +1300,14 @@
       "discount_order_stacking": {
         "few": "Discounts on order",
         "many": "Discounts on order"
-      }
+      },
+      "edit_summary": {
+        "updated_count": {
+          "few": "The order has been updated {{count}} times",
+          "many": "The order has been updated {{count}} times"
+        }
+      },
+      "subtotal": "Total amount"
     },
     "B2B": {
       "orders": {
