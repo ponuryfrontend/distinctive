@@ -733,6 +733,38 @@
             "few": "Die Positionen werden aus der Bestellung gelöscht.",
             "many": "Die Positionen werden aus der Bestellung gelöscht."
           }
+        },
+        "unavailable_item_count": {
+          "few": "%{count} Artikel nicht verfügbar",
+          "many": "%{count} Artikel nicht verfügbar"
+        },
+        "ship_separately_notice": {
+          "few": "%{count} Positionen werden separat versandt",
+          "many": "%{count} Positionen werden separat versandt"
+        },
+        "stock_details_modal": {
+          "can_ship_description": {
+            "few": "Der Bestand dieser Artikel am gewählten Abholort ist erschöpft.",
+            "many": "Der Bestand dieser Artikel am gewählten Abholort ist erschöpft."
+          },
+          "cannot_ship_description": {
+            "few": "Der Bestand dieser Artikel am gewählten Abholort ist aufgebraucht und kann nicht versandt werden.",
+            "many": "Der Bestand dieser Artikel am gewählten Abholort ist aufgebraucht und kann nicht versandt werden."
+          },
+          "cannot_ship_bundle_description": {
+            "few": "Der Bestand dieser Artikel am gewählten Abholort ist erschöpft und kann nicht versandt werden. Auch die Artikel im Set werden entfernt.",
+            "many": "Der Bestand dieser Artikel am gewählten Abholort ist erschöpft und kann nicht versandt werden. Auch die Artikel im Set werden entfernt."
+          }
+        },
+        "stock_details_banner": {
+          "heading": {
+            "few": "%{count} Artikel sind an der Abholstelle %{location} nicht verfügbar",
+            "many": "%{count} Artikel sind an der Abholstelle %{location} nicht verfügbar"
+          },
+          "ship_separately": {
+            "few": "schicke sie einzeln",
+            "many": "schicke sie einzeln"
+          }
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -986,6 +1018,10 @@
         "split_shipping_shipment_count_notice_one_time_purchase": {
           "few": "Die Bestellung wird in %{count} Lieferungen ankommen",
           "many": "Die Bestellung wird in %{count} Lieferungen ankommen"
+        },
+        "split_shipping_arrives_in_shipments": {
+          "few": "Wird in %{count} Sendungen ankommen",
+          "many": "Wird in %{count} Sendungen ankommen"
         }
       },
       "payment": {
@@ -1231,6 +1267,10 @@
         "load_more_items": {
           "few": "{{count}} weitere Artikel laden",
           "many": "{{count}} weitere Artikel laden"
+        },
+        "additional_items": {
+          "few": "+ {{count}} weitere Elemente",
+          "many": "+ {{count}} weitere Elemente"
         }
       },
       "subtotal_label_with_quantity": {
@@ -1240,7 +1280,14 @@
       "discount_order_stacking": {
         "few": "Rabatte auf Bestellungen",
         "many": "Rabatte auf Bestellungen"
-      }
+      },
+      "edit_summary": {
+        "updated_count": {
+          "few": "Die Bestellung wurde {{count}} Mal aktualisiert",
+          "many": "Die Bestellung wurde {{count}} Mal aktualisiert"
+        }
+      },
+      "subtotal": "Gesamtbetrag"
     },
     "B2B": {
       "orders": {
@@ -1348,6 +1395,36 @@
       "store_credit_multi_currency_accessibility_label": {
         "few": "{{formattedBalance}} Store-Guthaben und in {{count}} weiteren Währungen",
         "many": "{{formattedBalance}} Store-Guthaben und in {{count}} weiteren Währungen"
+      }
+    },
+    "returns_and_cancellations": {
+      "request_withdrawal_page": {
+        "review_changes_modal": {
+          "items_to_cancel": {
+            "few": "{{count}} Elemente zum Stornieren",
+            "many": "{{count}} Elemente zum Stornieren"
+          },
+          "items_to_return": {
+            "few": "{{count}} Artikel zum Zurückgeben",
+            "many": "{{count}} Artikel zum Zurückgeben"
+          }
+        },
+        "line_items": {
+          "ineligible_items": {
+            "few": "{{count}} nicht qualifizierte Elemente",
+            "many": "{{count}} nicht qualifizierte Elemente"
+          }
+        }
+      },
+      "estimated_refund_summary_card": {
+        "subtotal_with_count": {
+          "few": "Zwischensumme · {{count}} Positionen",
+          "many": "Zwischensumme · {{count}} Positionen"
+        },
+        "item_selected": {
+          "few": "{{count}} Elemente",
+          "many": "{{count}} Elemente"
+        }
       }
     }
   },
