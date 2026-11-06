@@ -1089,6 +1089,10 @@
           "cannot_ship_description": {
             "few": "The stock of these items at the selected pickup location has been depleted and they cannot be shipped.",
             "many": "The stock of these items at the selected pickup location has been depleted and they cannot be shipped."
+          },
+          "cannot_ship_bundle_description": {
+            "few": "The stock for these items at the selected pickup location is depleted and they cannot be shipped. Items in the bundle will also be removed.",
+            "many": "The stock for these items at the selected pickup location is depleted and they cannot be shipped. Items in the bundle will also be removed."
           }
         },
         "stock_details_banner": {
