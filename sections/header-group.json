@@ -74,7 +74,6 @@
       "blocks": {
         "promotion_mKDLDT": {
           "type": "promotion",
-          "disabled": true,
           "settings": {
             "position": "4",
             "promo_1_image": "shopify://shop_images/miniaturka_naturalne_piekno_desktop.webp",
