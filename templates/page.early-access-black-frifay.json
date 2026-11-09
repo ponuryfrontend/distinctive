@@ -32,7 +32,7 @@
       "type": "newsletter-su-form",
       "name": "Newsleter SU Form",
       "settings": {
-        "color_background": "#301c18",
+        "color_background": "#000000",
         "color_heading": "#ffffff",
         "color_text": "#e6dcd5",
         "alignment_mobile": "center",
