@@ -11,11 +11,10 @@
   "sections": {
     "spacer_pAh8zT": {
       "type": "spacer",
-      "disabled": true,
       "name": "Spacer",
       "settings": {
-        "spacer_mobile": 20,
-        "spacer_desktop": 30,
+        "spacer_mobile": 0,
+        "spacer_desktop": 90,
         "border_separator": false,
         "border_separator_full": false
       }
