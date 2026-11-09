@@ -108,7 +108,7 @@
       ],
       "name": "Slideshow",
       "settings": {
-        "desktop_height": "desktop-height-650",
+        "desktop_height": "desktop-height-full",
         "desktop_height_custom": 650,
         "mobile_height": "mobile-height-500",
         "mobile_height_custom": 500,
