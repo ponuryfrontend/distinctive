@@ -14,6 +14,7 @@
       "blocks": {
         "slide_6HFaiT": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "slide_link": "https://nudyess.com/pages/shop-by-look",
             "video_background": true,
@@ -50,6 +51,7 @@
         },
         "slide_Ff6Hif": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/dresy-banner-desktop.jpg",
             "mobile_image": "shopify://shop_images/dresy-banner-mobile.jpg",
@@ -87,22 +89,21 @@
         },
         "slide_ye8yLD": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/dresy-banner-desktop-2.jpg",
-            "mobile_image": "shopify://shop_images/dresy-banner-mobile-2.jpg",
-            "slide_link": "shopify://collections/new-now",
+            "image": "shopify://shop_images/plain-black-background-2.webp",
+            "mobile_image": "shopify://shop_images/czarne_tlo_banner_glowny_mobile.jpg",
+            "slide_link": "https://nudyess.com/pages/wczesny-dostep-do-promocji-black-friday",
             "video_background": false,
             "video": "",
             "slide_title": "",
             "subheading": "",
             "subheading_font_size_desktop": 0,
             "subheading_font_size_mobile": 0,
-            "heading": "Za dużo razy powiedziałaś sobie nie.",
+            "heading": "EARLY ACCESS",
             "heading_size": "h1-large",
             "heading_font_size_desktop": 52,
             "heading_font_size_mobile": 24,
-            "content": "Nudyess mówi TAK, za każdym razem.",
+            "content": "Dołącz do listy oczekujących na wczesny dostęp do promocji BLACK FRIDAY.\nNawet do -50% na wybrane produkty.",
             "description_size": "large",
             "description_font_size_desktop": 14,
             "description_font_size_mobile": 12,
@@ -113,10 +114,10 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
-            "button_1_text": "Odkryj kolekcję",
+            "button_1_text": "DOŁĄCZ",
             "button_1_color": "white",
-            "button_1_link": "shopify://collections/new-now",
-            "use_text_button_1": false,
+            "button_1_link": "https://nudyess.com/pages/wczesny-dostep-do-promocji-black-friday",
+            "use_text_button_1": true,
             "button_2_text": "",
             "button_2_color": "white",
             "button_2_link": "",
