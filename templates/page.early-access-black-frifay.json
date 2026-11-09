@@ -155,14 +155,6 @@
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
       "settings": {}
-    },
-    "custom_liquid_Y7ANwL": {
-      "type": "custom-liquid",
-      "name": "Custom liquid",
-      "settings": {
-        "full_width": true,
-        "custom_liquid": "<script>\n  fbq('track', 'Contact');\n</script>\n<script>insert_event_code_here;<script>"
-      }
     }
   },
   "order": [
@@ -172,7 +164,6 @@
     "slideshow_bkGzah",
     "recently_viewed_products_hbQheQ",
     "featured_blog_PkTjrG",
-    "breadcrumbs_kPkfD6",
-    "custom_liquid_Y7ANwL"
+    "breadcrumbs_kPkfD6"
   ]
 }
