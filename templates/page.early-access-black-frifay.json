@@ -58,7 +58,7 @@
         "text_size_desktop": 14,
         "text_width_mobile": 840,
         "text_width_desktop": 640,
-        "text_spacing": 0,
+        "text_spacing": 10,
         "custom_liquid": "<div class=\"klaviyo-form-SvuaHV\"></div>"
       }
     },
