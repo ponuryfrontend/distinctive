@@ -142,7 +142,7 @@
         "post_limit": 4,
         "columns_desktop": 4,
         "mobile_swipe": false,
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "show_date": true,
         "show_excerpt": true,
         "show_hover_letters": false,
