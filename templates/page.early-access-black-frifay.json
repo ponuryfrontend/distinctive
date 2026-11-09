@@ -62,6 +62,25 @@
         "custom_liquid": "<div class=\"klaviyo-form-SvuaHV\"></div>"
       }
     },
+    "featured_blog_PkTjrG": {
+      "type": "featured-blog",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Blog",
+        "description": "<p>Sprawdź o czym piszemy na naszym blogu</p>",
+        "blog": "aktualnosci",
+        "post_limit": 4,
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "show_date": true,
+        "show_excerpt": true,
+        "show_hover_letters": false,
+        "show_view_all": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "breadcrumbs_kPkfD6": {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
@@ -72,6 +91,7 @@
     "spacer_pAh8zT",
     "main",
     "newsletter_su_form_6hpTkm",
+    "featured_blog_PkTjrG",
     "breadcrumbs_kPkfD6"
   ]
 }
