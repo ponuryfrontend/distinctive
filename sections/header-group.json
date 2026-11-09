@@ -66,7 +66,7 @@
         "direction": "left",
         "speed": "20s",
         "autoplay": true,
-        "autoplay_length": 5
+        "autoplay_length": 6
       }
     },
     "header": {
