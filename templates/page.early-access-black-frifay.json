@@ -19,11 +19,6 @@
         "border_separator_full": false
       }
     },
-    "breadcrumbs_kPkfD6": {
-      "type": "breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -55,7 +50,7 @@
         "heading": "BLACK FRIDAY. YOUR FIRST ACCESS.",
         "heading_font_picker": "instrument_serif_i4",
         "heading_size_mobile": 28,
-        "heading_size_desktop": 44,
+        "heading_size_desktop": 34,
         "heading_spacing": 20,
         "text": "<p>Black Friday w NUDYESS zaczyna się wcześniej dla tych, które są z nami.</p>",
         "text_font_picker": "figtree_n5",
@@ -63,9 +58,14 @@
         "text_size_desktop": 14,
         "text_width_mobile": 520,
         "text_width_desktop": 640,
-        "text_spacing": 40,
+        "text_spacing": 12,
         "custom_liquid": "<div class=\"klaviyo-form-VwF78E\"></div>"
       }
+    },
+    "breadcrumbs_kPkfD6": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
