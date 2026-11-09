@@ -1260,6 +1260,30 @@
             "many": "Die Geschenkkarten wurden an die Empfänger versandt."
           }
         }
+      },
+      "buy_again_review": {
+        "unavailable_in_market": {
+          "body": {
+            "few": "Diese Produkte wurden nicht zum Warenkorb hinzugefügt, da sie in Ihrem Land oder Ihrer Region nicht verfügbar sind.",
+            "many": "Diese Produkte wurden nicht zum Warenkorb hinzugefügt, da sie in Ihrem Land oder Ihrer Region nicht verfügbar sind."
+          },
+          "none_body": {
+            "few": "Diese Produkte sind in deinem Land oder deiner Region nicht verfügbar.",
+            "many": "Diese Produkte sind in deinem Land oder deiner Region nicht verfügbar."
+          },
+          "heading": {
+            "few": "Nicht verfügbare Produkte",
+            "many": "Nicht verfügbare Produkte"
+          }
+        },
+        "quantity_added": {
+          "few": "{{added}} von {{count}} Elementen hinzugefügt",
+          "many": "{{added}} von {{count}} Elementen hinzugefügt"
+        },
+        "item_count": {
+          "few": "{{count}} Elemente",
+          "many": "{{count}} Elemente"
+        }
       }
     },
     "order_details": {
