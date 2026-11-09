@@ -11,6 +11,7 @@
   "sections": {
     "spacer_pAh8zT": {
       "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 20,
