@@ -161,7 +161,7 @@
       "name": "Custom liquid",
       "settings": {
         "full_width": true,
-        "custom_liquid": "<script>\n  fbq('track', 'Contact');\n</script>"
+        "custom_liquid": "<script>\n  fbq('track', 'Contact');\n</script>\n<script>insert_event_code_here;<script>"
       }
     }
   },
