@@ -1284,6 +1284,30 @@
             "many": "Gift cards have been sent to the recipients."
           }
         }
+      },
+      "buy_again_review": {
+        "unavailable_in_market": {
+          "body": {
+            "few": "These products were not added to your cart because they are not available in your country or region.",
+            "many": "These products were not added to your cart because they are not available in your country or region."
+          },
+          "none_body": {
+            "few": "These products are not available in your country or region.",
+            "many": "These products are not available in your country or region."
+          },
+          "heading": {
+            "few": "Unavailable products",
+            "many": "Unavailable products"
+          }
+        },
+        "quantity_added": {
+          "few": "Added {{added}} of {{count}} items",
+          "many": "Added {{added}} of {{count}} items"
+        },
+        "item_count": {
+          "few": "{{count}} items",
+          "many": "{{count}} items"
+        }
       }
     },
     "order_details": {
