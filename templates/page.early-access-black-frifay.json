@@ -39,7 +39,7 @@
         "alignment_desktop": "center",
         "content_width_mobile": 600,
         "content_width_desktop": 700,
-        "padding_top_mobile": 60,
+        "padding_top_mobile": 85,
         "padding_bottom_mobile": 60,
         "padding_top_desktop": 100,
         "padding_bottom_desktop": 100,
@@ -62,12 +62,61 @@
         "custom_liquid": "<div class=\"klaviyo-form-SvuaHV\"></div>"
       }
     },
-    "single_image_4EXmrn": {
-      "type": "single-image",
-      "name": "Single image",
+    "slideshow_bkGzah": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_nGgfNX": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/prazkowane-sukienki-szyte-w-polsce.jpg",
+            "slide_link": "",
+            "video_background": false,
+            "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "slide_title": "Slide",
+            "subheading": "Add a tagline",
+            "subheading_font_size_desktop": 0,
+            "subheading_font_size_mobile": 0,
+            "heading": "Slide |Heading|",
+            "heading_size": "h1-xlarge",
+            "heading_font_size_desktop": 0,
+            "heading_font_size_mobile": 0,
+            "content": "Add descriptive text for your slide here.",
+            "description_size": "medium",
+            "description_font_size_desktop": 0,
+            "description_font_size_mobile": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "content_size": "medium",
+            "color_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 70,
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
+            "button_1_text": "Shop Now",
+            "button_1_color": "accent",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "Shop Now",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_nGgfNX"
+      ],
+      "name": "Slideshow",
       "settings": {
-        "image": "shopify://shop_images/prazkowane-sukienki-szyte-w-polsce.jpg",
-        "full_width": true,
+        "desktop_height": "desktop-height-650",
+        "desktop_height_custom": 650,
+        "mobile_height": "mobile-height-500",
+        "mobile_height_custom": 500,
+        "change_header": true,
+        "autoplay": true,
+        "autoplay_length": 5,
+        "transition": "swipe",
+        "dot_style": "titles",
+        "dot_alignment": "center",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -101,7 +150,7 @@
     "spacer_pAh8zT",
     "main",
     "newsletter_su_form_6hpTkm",
-    "single_image_4EXmrn",
+    "slideshow_bkGzah",
     "featured_blog_PkTjrG",
     "breadcrumbs_kPkfD6"
   ]
