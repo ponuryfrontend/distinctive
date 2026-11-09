@@ -121,6 +121,17 @@
         "disable_bottom_spacing": true
       }
     },
+    "recently_viewed_products_hbQheQ": {
+      "type": "recently-viewed-products",
+      "name": "Recently viewed products",
+      "settings": {
+        "heading": "Nasze rekomendacje",
+        "description": "<p>Sprawdź co może Ci się spodobać</p>",
+        "mobile_swipe": false,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "featured_blog_PkTjrG": {
       "type": "featured-blog",
       "name": "Blog posts",
@@ -151,6 +162,7 @@
     "main",
     "newsletter_su_form_6hpTkm",
     "slideshow_bkGzah",
+    "recently_viewed_products_hbQheQ",
     "featured_blog_PkTjrG",
     "breadcrumbs_kPkfD6"
   ]
