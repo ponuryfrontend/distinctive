@@ -62,6 +62,16 @@
         "custom_liquid": "<div class=\"klaviyo-form-SvuaHV\"></div>"
       }
     },
+    "single_image_4EXmrn": {
+      "type": "single-image",
+      "name": "Single image",
+      "settings": {
+        "image": "shopify://shop_images/prazkowane-sukienki-szyte-w-polsce.jpg",
+        "full_width": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "featured_blog_PkTjrG": {
       "type": "featured-blog",
       "name": "Blog posts",
@@ -78,7 +88,7 @@
         "show_hover_letters": false,
         "show_view_all": true,
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "breadcrumbs_kPkfD6": {
@@ -91,6 +101,7 @@
     "spacer_pAh8zT",
     "main",
     "newsletter_su_form_6hpTkm",
+    "single_image_4EXmrn",
     "featured_blog_PkTjrG",
     "breadcrumbs_kPkfD6"
   ]
