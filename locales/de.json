@@ -1151,6 +1151,16 @@
         "items_count": {
           "few": "%{count} Artikel",
           "many": "%{count} Posten"
+        },
+        "delivery_updated_toast": {
+          "shipping": {
+            "few": "{{count}} Artikel wurden zur Lieferung weitergeleitet.",
+            "many": "{{count}} Artikel wurden zur Lieferung weitergeleitet."
+          },
+          "removal": {
+            "few": "{{count}} Elemente entfernt.",
+            "many": "{{count}} Elemente entfernt."
+          }
         }
       },
       "review": {
