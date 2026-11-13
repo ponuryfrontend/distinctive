@@ -188,6 +188,19 @@
             "custom_liquid": "{%- if product.metafields.custom.size_guide_model_note != blank -%}{{ product.metafields.custom.size_guide_model_note | metafield_tag }}{%- endif -%}\n{%- render 'size-guide', product: product, label: 'Dobierz prawidłowy rozmiar!', trigger: 'link' -%}"
           }
         },
+        "collapsible_tab_PwhiWK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PŁATNOŚCI I DOSTAWA",
+            "heading_font_size_desktop": 13,
+            "heading_font_size_mobile": 13,
+            "heading_case": "uppercase",
+            "open": false,
+            "content": "<p><strong>Przyjmowane płatności</strong></p><p>Blik, PayPo, Klarna, Visa, Mastercard, Apple Pay, Google Pay, Shop Pay, przelew przez bankowość internetową</p><p><strong>Dostawa na terenie Polski</strong></p><p>• Darmowa dostawa od 400 PLN&nbsp;</p><p>• Paczkomat InPost (1-2 dni robocze) 14.00 PLN</p><p>• Kurier Inpost (1-2 dni robocze) 16.00 PLN</p><p>Staramy się zrealizować dostawę w ciągu 2 dni roboczych dla wszystkich zamówień złożonych od poniedziałku do piątku przed godziną 12:00.</p><p><strong>Dostawa na terenie UE</strong></p><p>• Kurier standard DHL (3-5 dni robocze) od 9.99 EUR</p><p><strong>Dostawa poza UE</strong></p><p>• USA - Kurier standard Fedex (5-7 dni robocze) $ 19.90</p><p>• Wielka Brytania - Kurier standard FedEx(5-7 dni robocze) £ 9.99</p><p><strong>Nie ma Twojego kraju wysyłki? Napisz do nas na </strong><a href=\"mailto:contact@nudyess.com\" target=\"_blank\" title=\"contact@nudyess.com\"><strong>contact@nudyess.com</strong></a><strong> z prośbą o dodanie.</strong></p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
         "collapsible_tab_iJTc83x": {
           "type": "collapsible_tab",
           "settings": {
@@ -197,20 +210,6 @@
             "heading_case": "uppercase",
             "open": false,
             "content": "<p><strong>Zwracany produkt nie może nosić śladów użytkowania oraz powinien posiadać wszystkie dołączone metki.</strong></p><p><strong>Zwroty</strong></p><p>• 14 dni na zwrot zamówienia<br/>• Wygodne zgłoszenie zwrotu<br/>• Szybkie nadanie przesyłki<br/>• Więcej informacji na temat zwrotów w zakładce <a href=\"https://nudyess.com/pages/zwroty\" target=\"_blank\" title=\"Zwroty\">Zwroty</a></p><p><strong>Wymiany</strong></p><p>• Obecnie nie wykonujemy wymian produktów<br/>• Należy zwrócić niepasujący produkt<br/>• Złożyć zamówienie na inny produkt</p><p><strong>Reklamacje</strong></p><p>• Wypełnij <a href=\"https://cdn.shopify.com/s/files/1/0561/7215/0807/files/NEW_FORMULARZ_REKLAMACJI_3_01.pdf?v=1735914659\" target=\"_blank\" title=\"Formularz reklamacyjny\">formularz reklamacyjny</a><br/>• Wyślij zgłoszenie na <a href=\"mailto:contact@nudyess.com\" target=\"_blank\" title=\"contact@nudyess.com\">contact@nudyess.com</a><br/>• W zgłoszeniu załącz wypełniony formularz oraz zdjęcia wady reklamowanego produktu<br/>• Oczekuj odpowiedzi naszej Obsługi Klienta<br/>• Więcej informacji na temat reklamacji w zakładce <a href=\"https://nudyess.com/pages/reklamacje\" target=\"_blank\" title=\"Reklamacje\">Reklamacje</a></p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_iJTc83": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Płatności i dostawy",
-            "heading_font_size_desktop": 13,
-            "heading_font_size_mobile": 13,
-            "heading_case": "uppercase",
-            "open": false,
-            "content": "",
             "page": "",
             "custom_liquid": ""
           }
@@ -260,8 +259,8 @@
         "a9bc54b3-69df-483b-8561-10c1c4f6caac",
         "material_and_care_mxNRwK",
         "collapsible_tab_Ca3CWD",
+        "collapsible_tab_PwhiWK",
         "collapsible_tab_iJTc83x",
-        "collapsible_tab_iJTc83",
         "ac30e733-fe79-471f-a9b6-72b10279036c",
         "growave_loyalty_wishlist_block_product_review_widget_QC76KW"
       ],
