@@ -1104,6 +1104,12 @@
             "few": "send them separately",
             "many": "send them separately"
           }
+        },
+        "bundle_removal_modal": {
+          "message": {
+            "few": "The items {{items}} belong to the {{bundle}} bundle. The remaining items from the bundle will also be removed.",
+            "many": "The items {{items}} belong to the {{bundle}} bundle. The remaining items from the bundle will also be removed."
+          }
         }
       },
       "merchandise_unavailable_in_buyer_location": {
