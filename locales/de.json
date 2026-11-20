@@ -765,6 +765,12 @@
             "few": "schicke sie einzeln",
             "many": "schicke sie einzeln"
           }
+        },
+        "bundle_removal_modal": {
+          "message": {
+            "few": "Die Artikel {{items}} gehören zum Set {{bundle}}. Die übrigen Artikel des Sets werden ebenfalls entfernt.",
+            "many": "Die Artikel {{items}} gehören zum Set {{bundle}}. Die übrigen Artikel des Sets werden ebenfalls entfernt."
+          }
         }
       },
       "merchandise_unavailable_in_buyer_location": {
