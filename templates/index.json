@@ -92,7 +92,7 @@
           "settings": {
             "image": "shopify://shop_images/plain-black-background-2.webp",
             "mobile_image": "shopify://shop_images/czarne_tlo_banner_glowny_mobile.jpg",
-            "slide_link": "https://nudyess.com/pages/wczesny-dostep-do-promocji-black-friday",
+            "slide_link": "shopify://collections/ubrania-damskie-nudyess",
             "video_background": false,
             "video": "",
             "slide_title": "",
