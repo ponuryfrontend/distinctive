@@ -40,7 +40,7 @@
       "type": "featured-blog",
       "name": "Blog posts",
       "settings": {
-        "heading": "Zerknij na bloga",
+        "heading": "Zerknij na blog",
         "description": "<p>Przeczytaj o czym piszę w artykułach, które cyklicznie pojawiają się na blogu.</p>",
         "blog": "aktualnosci",
         "post_limit": 4,
